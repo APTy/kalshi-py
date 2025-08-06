@@ -10,6 +10,8 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
 
+from .client import AuthenticatedClient
+
 
 def load_private_key_from_file(file_path: str) -> RSAPrivateKey:
     """Load RSA private key from PEM file."""
@@ -120,7 +122,7 @@ class AuthenticatedAsyncHTTPXClient(httpx.AsyncClient):
         return await super().request(method, url, **kwargs)
 
 
-class KalshiAuthenticatedClient:
+class KalshiAuthenticatedClient(AuthenticatedClient):
     """Authenticated client for Kalshi API with RSA-PSS signature authentication."""
 
     def __init__(
@@ -138,16 +140,17 @@ class KalshiAuthenticatedClient:
             base_url: API base URL (defaults to elections API)
             **kwargs: Additional arguments passed to base Client
         """
-        from .client import Client
-
-        self.base_url = base_url
         self.access_key_id = access_key_id
         self.private_key_pem = private_key_pem
-
         self.auth = KalshiAuth(self.access_key_id, self.private_key_pem)
 
-        # Create base client
-        self.client = Client(base_url=base_url, **kwargs)
+        # Initialize base AuthenticatedClient with a dummy token
+        # We'll override the authentication in our custom httpx clients
+        super().__init__(
+            base_url=base_url,
+            token="dummy",  # Will be overridden by our custom auth
+            **kwargs
+        )
 
         # Set custom httpx clients with authentication
         self._client = None
@@ -158,13 +161,13 @@ class KalshiAuthenticatedClient:
         if self._client is None:
             self._client = AuthenticatedHTTPXClient(
                 kalshi_auth=self.auth,
-                base_url=self.base_url,
-                cookies=self.client._cookies,
-                headers=self.client._headers,
-                timeout=self.client._timeout,
-                verify=self.client._verify_ssl,
-                follow_redirects=self.client._follow_redirects,
-                **self.client._httpx_args,
+                base_url=self._base_url,
+                cookies=self._cookies,
+                headers=self._headers,
+                timeout=self._timeout,
+                verify=self._verify_ssl,
+                follow_redirects=self._follow_redirects,
+                **self._httpx_args,
             )
         return self._client
 
@@ -173,13 +176,13 @@ class KalshiAuthenticatedClient:
         if self._async_client is None:
             self._async_client = AuthenticatedAsyncHTTPXClient(
                 kalshi_auth=self.auth,
-                base_url=self.base_url,
-                cookies=self.client._cookies,
-                headers=self.client._headers,
-                timeout=self.client._timeout,
-                verify=self.client._verify_ssl,
-                follow_redirects=self.client._follow_redirects,
-                **self.client._httpx_args,
+                base_url=self._base_url,
+                cookies=self._cookies,
+                headers=self._headers,
+                timeout=self._timeout,
+                verify=self._verify_ssl,
+                follow_redirects=self._follow_redirects,
+                **self._httpx_args,
             )
         return self._async_client
 
