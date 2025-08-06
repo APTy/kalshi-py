@@ -25,9 +25,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse:
         ticker (Union[Unset, str]): Unique identifier for the market.
     """
 
-    candlesticks: Union[
-        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem"]
-    ] = UNSET
+    candlesticks: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem"]] = UNSET
     ticker: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -61,11 +59,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse:
         candlesticks = []
         _candlesticks = d.pop("candlesticks", UNSET)
         for candlesticks_item_data in _candlesticks or []:
-            candlesticks_item = (
-                GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem.from_dict(
-                    candlesticks_item_data
-                )
-            )
+            candlesticks_item = GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem.from_dict(candlesticks_item_data)
 
             candlesticks.append(candlesticks_item)
 

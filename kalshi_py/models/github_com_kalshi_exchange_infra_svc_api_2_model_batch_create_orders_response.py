@@ -53,9 +53,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse:
         orders = []
         _orders = d.pop("orders", UNSET)
         for orders_item_data in _orders or []:
-            orders_item = GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponseOrdersItem.from_dict(
-                orders_item_data
-            )
+            orders_item = GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponseOrdersItem.from_dict(orders_item_data)
 
             orders.append(orders_item)
 

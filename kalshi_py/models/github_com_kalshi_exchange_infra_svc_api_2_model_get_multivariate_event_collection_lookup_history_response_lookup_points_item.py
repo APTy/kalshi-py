@@ -88,9 +88,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLook
         selected_markets = []
         _selected_markets = d.pop("selected_markets", UNSET)
         for selected_markets_item_data in _selected_markets or []:
-            selected_markets_item = GithubComKalshiExchangeInfraSvcApi2ModelTickerPair.from_dict(
-                selected_markets_item_data
-            )
+            selected_markets_item = GithubComKalshiExchangeInfraSvcApi2ModelTickerPair.from_dict(selected_markets_item_data)
 
             selected_markets.append(selected_markets_item)
 

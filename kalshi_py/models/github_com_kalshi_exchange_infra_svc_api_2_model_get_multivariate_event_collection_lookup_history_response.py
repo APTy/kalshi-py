@@ -25,9 +25,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLook
 
     lookup_points: Union[
         Unset,
-        list[
-            "GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem"
-        ],
+        list["GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem"],
     ] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -63,16 +61,12 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLook
 
             lookup_points.append(lookup_points_item)
 
-        github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response = (
-            cls(
-                lookup_points=lookup_points,
-            )
+        github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response = cls(
+            lookup_points=lookup_points,
         )
 
         github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response.additional_properties = d
-        return (
-            github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response
-        )
+        return github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response
 
     @property
     def additional_keys(self) -> list[str]:

@@ -7,9 +7,9 @@ from kalshi_py.api.market import get_markets
 def main():
     # Create a client for public endpoints (no authentication required)
     client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
-    
+
     print("=== Kalshi API Client Example ===\n")
-    
+
     # Example 1: Get markets (public endpoint)
     print("1. Fetching markets...")
     try:
@@ -19,16 +19,14 @@ def main():
                 print(f"Found {len(markets_response.markets)} markets")
                 for market in markets_response.markets[:3]:
                     print(f"  - {market.ticker}: {market.title}")
-                    print(f"    Status: {market.status}, "
-                          f"Volume: {market.volume}")
-                    print(f"    Yes Bid: {market.yes_bid}, "
-                          f"Yes Ask: {market.yes_ask}")
+                    print(f"    Status: {market.status}, Volume: {market.volume}")
+                    print(f"    Yes Bid: {market.yes_bid}, Yes Ask: {market.yes_ask}")
                     print()
             else:
                 print("No markets found or error occurred")
     except Exception as e:
         print(f"Error fetching markets: {e}")
-    
+
     # Example 2: Get specific market details
     print("2. Fetching specific market details...")
     try:
@@ -38,8 +36,7 @@ def main():
             # if market_response:
             #     print(f"Market: {market_response.market.title}")
             #     print(f"Status: {market_response.market.status}")
-            print("(Skipping specific market fetch - "
-                  "need valid ticker)")
+            print("(Skipping specific market fetch - need valid ticker)")
     except Exception as e:
         print(f"Error fetching market details: {e}")
 
@@ -58,7 +55,7 @@ def main():
         if balance:
             print(f"Account balance: {balance.balance}")
     """)
-    
+
     print("\n=== Available API Modules ===")
     print("The generated client includes these API modules:")
     print("- market: Market data, events, order books")
@@ -69,7 +66,7 @@ def main():
     print("- milestone: Milestone tracking")
     print("- structured_target: Structured targets")
     print("- default: Untagged endpoints")
-    
+
     print("\n=== Usage Patterns ===")
     print("Each endpoint provides 4 functions:")
     print("- sync(): Synchronous call, returns parsed data")
@@ -79,4 +76,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

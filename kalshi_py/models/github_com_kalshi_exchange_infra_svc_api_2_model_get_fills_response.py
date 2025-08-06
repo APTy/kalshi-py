@@ -63,10 +63,8 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse:
         fills = []
         _fills = d.pop("fills", UNSET)
         for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item_data in _fills or []:
-            componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item = (
-                GithubComKalshiExchangeInfraSvcApi2ModelFill.from_dict(
-                    componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item_data
-                )
+            componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item = GithubComKalshiExchangeInfraSvcApi2ModelFill.from_dict(
+                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item_data
             )
 
             fills.append(componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_fills_item)

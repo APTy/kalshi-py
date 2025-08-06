@@ -60,9 +60,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponse:
         quotes = []
         _quotes = d.pop("quotes", UNSET)
         for quotes_item_data in _quotes or []:
-            quotes_item = GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponseQuotesItem.from_dict(
-                quotes_item_data
-            )
+            quotes_item = GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponseQuotesItem.from_dict(quotes_item_data)
 
             quotes.append(quotes_item)
 

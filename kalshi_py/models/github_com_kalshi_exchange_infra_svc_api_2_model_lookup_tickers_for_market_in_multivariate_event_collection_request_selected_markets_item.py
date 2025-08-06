@@ -69,9 +69,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivaria
         if isinstance(_side, Unset):
             side = UNSET
         else:
-            side = GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide(
-                _side
-            )
+            side = GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide(_side)
 
         github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item = cls(
             event_ticker=event_ticker,

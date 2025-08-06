@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.ruff",
+        "ms-python.flake8",
+        "ms-python.mypy-type-checker",
+        "ms-python.pylint",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-json",
+        "ms-vscode.hexeditor",
+        "ms-vscode.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-github-issue-notebooks",
+        "ms-vscode.vscode-github-pull-request-github",
+        "github.vscode-github-actions"
+    ]
+}

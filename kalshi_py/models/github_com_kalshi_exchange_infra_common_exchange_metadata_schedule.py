@@ -30,12 +30,8 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule:
             hours of the exchange. All times are expressed in ET. Outside of these times trading will be unavailable.
     """
 
-    maintenance_windows: Union[
-        Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem"]
-    ] = UNSET
-    standard_hours: Union[
-        Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem"]
-    ] = UNSET
+    maintenance_windows: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem"]] = UNSET
+    standard_hours: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -76,20 +72,14 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule:
         maintenance_windows = []
         _maintenance_windows = d.pop("maintenance_windows", UNSET)
         for maintenance_windows_item_data in _maintenance_windows or []:
-            maintenance_windows_item = (
-                GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem.from_dict(
-                    maintenance_windows_item_data
-                )
-            )
+            maintenance_windows_item = GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem.from_dict(maintenance_windows_item_data)
 
             maintenance_windows.append(maintenance_windows_item)
 
         standard_hours = []
         _standard_hours = d.pop("standard_hours", UNSET)
         for standard_hours_item_data in _standard_hours or []:
-            standard_hours_item = GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem.from_dict(
-                standard_hours_item_data
-            )
+            standard_hours_item = GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem.from_dict(standard_hours_item_data)
 
             standard_hours.append(standard_hours_item)
 

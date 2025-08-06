@@ -28,9 +28,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionsRes
     """
 
     cursor: Union[Unset, str] = UNSET
-    multivariate_contracts: Union[
-        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection"]
-    ] = UNSET
+    multivariate_contracts: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,9 +63,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionsRes
         multivariate_contracts = []
         _multivariate_contracts = d.pop("multivariate_contracts", UNSET)
         for multivariate_contracts_item_data in _multivariate_contracts or []:
-            multivariate_contracts_item = GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection.from_dict(
-                multivariate_contracts_item_data
-            )
+            multivariate_contracts_item = GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection.from_dict(multivariate_contracts_item_data)
 
             multivariate_contracts.append(multivariate_contracts_item)
 

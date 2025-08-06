@@ -166,9 +166,7 @@ class WeeklySchedule:
         saturday = []
         _saturday = d.pop("saturday", UNSET)
         for saturday_item_data in _saturday or []:
-            saturday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
-                saturday_item_data
-            )
+            saturday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(saturday_item_data)
 
             saturday.append(saturday_item)
 
@@ -189,9 +187,7 @@ class WeeklySchedule:
         thursday = []
         _thursday = d.pop("thursday", UNSET)
         for thursday_item_data in _thursday or []:
-            thursday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
-                thursday_item_data
-            )
+            thursday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(thursday_item_data)
 
             thursday.append(thursday_item)
 
@@ -205,9 +201,7 @@ class WeeklySchedule:
         wednesday = []
         _wednesday = d.pop("wednesday", UNSET)
         for wednesday_item_data in _wednesday or []:
-            wednesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
-                wednesday_item_data
-            )
+            wednesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(wednesday_item_data)
 
             wednesday.append(wednesday_item)
 

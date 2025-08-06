@@ -103,9 +103,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelOrderBook:
         no_dollars = []
         _no_dollars = d.pop("no_dollars", UNSET)
         for no_dollars_item_data in _no_dollars or []:
-            no_dollars_item = GithubComKalshiExchangeInfraSvcApi2ModelOrderBookNoDollarsItem.from_dict(
-                no_dollars_item_data
-            )
+            no_dollars_item = GithubComKalshiExchangeInfraSvcApi2ModelOrderBookNoDollarsItem.from_dict(no_dollars_item_data)
 
             no_dollars.append(no_dollars_item)
 
@@ -119,9 +117,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelOrderBook:
         yes_dollars = []
         _yes_dollars = d.pop("yes_dollars", UNSET)
         for yes_dollars_item_data in _yes_dollars or []:
-            yes_dollars_item = GithubComKalshiExchangeInfraSvcApi2ModelOrderBookYesDollarsItem.from_dict(
-                yes_dollars_item_data
-            )
+            yes_dollars_item = GithubComKalshiExchangeInfraSvcApi2ModelOrderBookYesDollarsItem.from_dict(yes_dollars_item_data)
 
             yes_dollars.append(yes_dollars_item)
 

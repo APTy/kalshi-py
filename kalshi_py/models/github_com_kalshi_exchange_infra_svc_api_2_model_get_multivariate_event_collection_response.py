@@ -50,9 +50,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResp
         if isinstance(_multivariate_contract, Unset):
             multivariate_contract = UNSET
         else:
-            multivariate_contract = GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection.from_dict(
-                _multivariate_contract
-            )
+            multivariate_contract = GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection.from_dict(_multivariate_contract)
 
         github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_response = cls(
             multivariate_contract=multivariate_contract,

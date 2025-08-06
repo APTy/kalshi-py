@@ -35,10 +35,10 @@ class GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse:
         trades: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.trades, Unset):
             trades = []
-            for (
-                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data
-            ) in self.trades:
-                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item = componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data.to_dict()
+            for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data in self.trades:
+                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item = (
+                    componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data.to_dict()
+                )
                 trades.append(componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item)
 
         field_dict: dict[str, Any] = {}
@@ -62,9 +62,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse:
 
         trades = []
         _trades = d.pop("trades", UNSET)
-        for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data in (
-            _trades or []
-        ):
+        for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data in _trades or []:
             componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item = (
                 GithubComKalshiExchangeInfraSvcApi2ModelPublicTrade.from_dict(
                     componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_public_trade_list_item_data

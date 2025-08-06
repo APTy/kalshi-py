@@ -23,9 +23,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponse:
             list['GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem']]):
     """
 
-    queue_positions: Union[
-        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem"]
-    ] = UNSET
+    queue_positions: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,11 +52,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponse:
         queue_positions = []
         _queue_positions = d.pop("queue_positions", UNSET)
         for queue_positions_item_data in _queue_positions or []:
-            queue_positions_item = (
-                GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem.from_dict(
-                    queue_positions_item_data
-                )
-            )
+            queue_positions_item = GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem.from_dict(queue_positions_item_data)
 
             queue_positions.append(queue_positions_item)
 

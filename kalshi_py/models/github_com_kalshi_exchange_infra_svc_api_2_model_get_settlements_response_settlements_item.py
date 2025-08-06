@@ -28,9 +28,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsI
         yes_total_cost (Union[Unset, int]):
     """
 
-    market_result: Union[
-        Unset, GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult
-    ] = UNSET
+    market_result: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult] = UNSET
     no_count: Union[Unset, int] = UNSET
     no_total_cost: Union[Unset, int] = UNSET
     revenue: Union[Unset, int] = UNSET
@@ -85,15 +83,11 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsI
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _market_result = d.pop("market_result", UNSET)
-        market_result: Union[
-            Unset, GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult
-        ]
+        market_result: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult]
         if isinstance(_market_result, Unset):
             market_result = UNSET
         else:
-            market_result = GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult(
-                _market_result
-            )
+            market_result = GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult(_market_result)
 
         no_count = d.pop("no_count", UNSET)
 

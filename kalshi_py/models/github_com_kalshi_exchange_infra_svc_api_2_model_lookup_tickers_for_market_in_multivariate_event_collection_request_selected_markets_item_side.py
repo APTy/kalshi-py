@@ -1,9 +1,7 @@
 from enum import Enum
 
 
-class GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide(
-    str, Enum
-):
+class GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide(str, Enum):
     NO = "no"
     YES = "yes"
 

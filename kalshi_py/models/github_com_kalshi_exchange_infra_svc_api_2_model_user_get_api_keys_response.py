@@ -52,9 +52,7 @@ class GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponse:
         api_keys = []
         _api_keys = d.pop("api_keys", UNSET)
         for api_keys_item_data in _api_keys or []:
-            api_keys_item = GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponseApiKeysItem.from_dict(
-                api_keys_item_data
-            )
+            api_keys_item = GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponseApiKeysItem.from_dict(api_keys_item_data)
 
             api_keys.append(api_keys_item)
 
