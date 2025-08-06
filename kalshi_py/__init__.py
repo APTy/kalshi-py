@@ -79,5 +79,9 @@ def create_client(
         )
 
     return KalshiAuthenticatedClient(
-        base_url=base_url, access_key_id=final_access_key_id, private_key_pem=final_private_key_data, raise_on_unexpected_status=True, **kwargs
+        base_url=base_url,
+        access_key_id=final_access_key_id,
+        private_key_pem=final_private_key_data,
+        raise_on_unexpected_status=True,
+        **kwargs,
     )

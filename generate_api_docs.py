@@ -30,7 +30,7 @@ def get_api_endpoints_from_files(api_dir):
         try:
             module = importlib.import_module(module_name)
             for name, obj in inspect.getmembers(module):
-                if inspect.isfunction(obj) and not name.startswith('_'):
+                if inspect.isfunction(obj) and not name.startswith("_"):
                     functions.append((name, module_name))
         except ImportError as e:
             print(f"Warning: Could not import {module_name}: {e}")
@@ -49,7 +49,7 @@ def generate_api_doc(api_name, api_dir, output_file):
         print(f"No endpoints found in {api_dir}")
         return
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         f.write(f"# {api_name.title()} API Reference\n\n")
         f.write("## Endpoints\n\n")
 
@@ -57,10 +57,10 @@ def generate_api_doc(api_name, api_dir, output_file):
             f.write(f"### {endpoint_name}\n\n")
 
             # Group functions by type (sync, asyncio, etc.)
-            sync_funcs = [f for f in functions if f[0] == 'sync']
-            asyncio_funcs = [f for f in functions if f[0] == 'asyncio']
-            sync_detailed_funcs = [f for f in functions if f[0] == 'sync_detailed']
-            asyncio_detailed_funcs = [f for f in functions if f[0] == 'asyncio_detailed']
+            sync_funcs = [f for f in functions if f[0] == "sync"]
+            asyncio_funcs = [f for f in functions if f[0] == "asyncio"]
+            sync_detailed_funcs = [f for f in functions if f[0] == "sync_detailed"]
+            asyncio_detailed_funcs = [f for f in functions if f[0] == "asyncio_detailed"]
 
             # Document sync function (most commonly used)
             if sync_funcs:
@@ -118,17 +118,17 @@ def main():
     """Generate all API documentation."""
     # API modules to document
     api_modules = {
-        'market': 'market',
-        'portfolio': 'portfolio',
-        'communications': 'communications',
-        'collection': 'collection',
-        'milestone': 'milestone',
-        'structured_target': 'structured_target',
-        'api_keys': 'api_keys',
-        'default': 'default'
+        "market": "market",
+        "portfolio": "portfolio",
+        "communications": "communications",
+        "collection": "collection",
+        "milestone": "milestone",
+        "structured_target": "structured_target",
+        "api_keys": "api_keys",
+        "default": "default",
     }
 
-    docs_dir = Path('docs/api')
+    docs_dir = Path("docs/api")
     docs_dir.mkdir(exist_ok=True)
 
     print("🔍 Discovering API endpoints...")
