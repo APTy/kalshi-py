@@ -38,7 +38,7 @@ uv build
 
 echo ""
 echo "🔍 Checking if version already exists on PyPI..."
-if uv pip index versions kalshi-py | grep -q "$CURRENT_VERSION"; then
+if curl -s "https://pypi.org/pypi/kalshi-py/json" | grep -q "\"$CURRENT_VERSION\""; then
     echo "❌ Error: Version $CURRENT_VERSION already exists on PyPI."
     echo "Please update the version in pyproject.toml before publishing."
     exit 1
