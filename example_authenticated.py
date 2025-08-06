@@ -10,7 +10,7 @@ Environment Variables:
     KALSHI_API_KEY_ID: Your Kalshi access key ID
     KALSHI_PRIVATE_KEY_PATH: Path to your RSA private key file
 
-Or pass them directly to create_authenticated_client().
+Or pass them directly to create_client().
 """
 
 import asyncio

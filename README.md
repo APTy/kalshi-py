@@ -84,12 +84,12 @@ You can set the following environment variables to avoid passing credentials exp
 The client supports both synchronous and asynchronous operations:
 
 ```python
-from kalshi_py import create_authenticated_client
+from kalshi_py import create_client
 from kalshi_py.api.market import get_markets
 from kalshi_py.api.portfolio import get_balance
 
 # Synchronous usage
-client = create_authenticated_client()
+client = create_client()
 with client as client:
     markets = get_markets.sync(client=client, limit=5)
     balance = get_balance.sync(client=client)
@@ -98,7 +98,7 @@ with client as client:
 import asyncio
 
 async def main():
-    client = create_authenticated_client()
+    client = create_client()
     async with client as client:
         markets = await get_markets.asyncio(client=client, limit=5)
         balance = await get_balance.asyncio(client=client)
@@ -140,12 +140,12 @@ client = AuthenticatedClient(
 ### Custom SSL Configuration
 
 ```python
-client = create_authenticated_client(
+client = create_client(
     verify_ssl="/path/to/certificate_bundle.pem"
 )
 
 # Or disable SSL verification (not recommended for production)
-client = create_authenticated_client(verify_ssl=False)
+client = create_client(verify_ssl=False)
 ```
 
 ### Custom Headers and Timeouts
@@ -153,7 +153,7 @@ client = create_authenticated_client(verify_ssl=False)
 ```python
 import httpx
 
-client = create_authenticated_client(
+client = create_client(
     timeout=httpx.Timeout(30.0),
     headers={"User-Agent": "MyApp/1.0"}
 )
@@ -168,7 +168,7 @@ def log_request(request):
 def log_response(response):
     print(f"Response: {response.status_code}")
 
-client = create_authenticated_client(
+client = create_client(
     httpx_args={
         "event_hooks": {
             "request": [log_request],
