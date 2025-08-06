@@ -19,10 +19,9 @@ from kalshi_py import create_client
 client = create_client()
 
 # Get account balance
-with client as client:
-    from kalshi_py.api.portfolio import get_balance
-    balance = get_balance.sync(client=client)
-    print(f"Balance: ${balance.balance}")
+from kalshi_py.api.portfolio import get_balance
+balance = get_balance.sync(client=client)
+print(f"Balance: ${balance.balance}")
 ```
 
 ## Installation

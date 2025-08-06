@@ -30,28 +30,27 @@ def sync_example():
         # This will use environment variables if not provided
         client = create_client()
 
-        with client as client:
-            # Get account balance
-            print("Fetching account balance...")
-            balance = get_balance.sync(client=client)
-            print(f"Account balance: ${balance.balance / 100:.2f}")  # Convert cents to dollars
+        # Get account balance
+        print("Fetching account balance...")
+        balance = get_balance.sync(client=client)
+        print(f"Account balance: ${balance.balance / 100:.2f}")  # Convert cents to dollars
 
-            # Get positions
-            print("\nFetching positions...")
-            positions = get_positions.sync(client=client)
-            if positions.event_positions:
-                print(f"Found {len(positions.event_positions)} event positions")
-                for pos in positions.event_positions[:3]:  # Show first 3
-                    print(f"  - {pos.event_ticker}: {pos.position} shares")
-            else:
-                print("No event positions found")
+        # Get positions
+        print("\nFetching positions...")
+        positions = get_positions.sync(client=client)
+        if positions.event_positions:
+            print(f"Found {len(positions.event_positions)} event positions")
+            for pos in positions.event_positions[:3]:  # Show first 3
+                print(f"  - {pos.event_ticker}: {pos.position} shares")
+        else:
+            print("No event positions found")
 
-            # Get markets (public endpoint, but works with authenticated client)
-            print("\nFetching markets...")
-            markets = get_markets.sync(client=client, limit=3)
-            print(f"Found {len(markets.markets)} markets")
-            for market in markets.markets:
-                print(f"  - {market.ticker}: {market.title[:50]}...")
+        # Get markets (public endpoint, but works with authenticated client)
+        print("\nFetching markets...")
+        markets = get_markets.sync(client=client, limit=3)
+        print(f"Found {len(markets.markets)} markets")
+        for market in markets.markets:
+            print(f"  - {market.ticker}: {market.title[:50]}...")
 
     except ValueError as e:
         print(f"Configuration error: {e}")
@@ -69,18 +68,17 @@ async def async_example():
     try:
         client = create_client()
 
-        async with client as client:
-            # Get account balance
-            print("Fetching account balance (async)...")
-            balance = await get_balance.asyncio(client=client)
-            print(f"Account balance: ${balance.balance / 100:.2f}")
+        # Get account balance
+        print("Fetching account balance (async)...")
+        balance = await get_balance.asyncio(client=client)
+        print(f"Account balance: ${balance.balance / 100:.2f}")
 
-            # Get markets
-            print("\nFetching markets (async)...")
-            markets = await get_markets.asyncio(client=client, limit=3)
-            print(f"Found {len(markets.markets)} markets")
-            for market in markets.markets:
-                print(f"  - {market.ticker}: {market.title[:50]}...")
+        # Get markets
+        print("\nFetching markets (async)...")
+        markets = await get_markets.asyncio(client=client, limit=3)
+        print(f"Found {len(markets.markets)} markets")
+        for market in markets.markets:
+            print(f"  - {market.ticker}: {market.title[:50]}...")
 
     except ValueError as e:
         print(f"Configuration error: {e}")
@@ -99,9 +97,8 @@ def demo_with_file_path():
     try:
         client = create_client(access_key_id=access_key_id, private_key_path=private_key_path)
 
-        with client as client:
-            balance = get_balance.sync(client=client)
-            print(f"Account balance: ${balance.balance / 100:.2f}")
+        balance = get_balance.sync(client=client)
+        print(f"Account balance: ${balance.balance / 100:.2f}")
 
     except FileNotFoundError:
         print("Private key file not found. Please update the path in the example.")
@@ -122,9 +119,8 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...
     try:
         client = create_client(access_key_id=access_key_id, private_key_data=private_key_pem)
 
-        with client as client:
-            balance = get_balance.sync(client=client)
-            print(f"Account balance: ${balance.balance / 100:.2f}")
+        balance = get_balance.sync(client=client)
+        print(f"Account balance: ${balance.balance / 100:.2f}")
 
     except Exception as e:
         print(f"Error: {e}")
@@ -146,9 +142,8 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...
 
         client = KalshiAuthenticatedClient(access_key_id=access_key_id, private_key_pem=private_key_pem)
 
-        with client as client:
-            balance = get_balance.sync(client=client)
-            print(f"Account balance: ${balance.balance / 100:.2f}")
+        balance = get_balance.sync(client=client)
+        print(f"Account balance: ${balance.balance / 100:.2f}")
 
     except Exception as e:
         print(f"Error: {e}")

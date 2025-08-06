@@ -66,10 +66,9 @@ client = create_client(
 ### Using the Client
 
 ```python
-with client as client:
-    from kalshi_py.api.market import get_markets
-    response = get_markets.sync(client=client, limit=10)
-    print(f"Found {len(response.markets)} markets")
+from kalshi_py.api.market import get_markets
+response = get_markets.sync(client=client, limit=10)
+print(f"Found {len(response.markets)} markets")
 ```
 
 ## Configuration Options

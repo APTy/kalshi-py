@@ -19,10 +19,9 @@ from kalshi_py import Client
 
 client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
-with client as client:
-    from kalshi_py.api.market import get_markets
-    response = get_markets.sync(client=client, limit=10)
-    print(f"Found {len(response.markets)} markets")
+from kalshi_py.api.market import get_markets
+response = get_markets.sync(client=client, limit=10)
+print(f"Found {len(response.markets)} markets")
 ```
 
 ### Authenticated Usage (Trading Endpoints)
@@ -47,10 +46,9 @@ client = create_client(
     private_key_data="-----BEGIN PRIVATE KEY-----\n..."
 )
 
-with client as client:
-    from kalshi_py.api.portfolio import get_balance
-    balance = get_balance.sync(client=client)
-    print(f"Account balance: {balance.balance}")
+from kalshi_py.api.portfolio import get_balance
+balance = get_balance.sync(client=client)
+print(f"Account balance: {balance.balance}")
 ```
 
 ### Direct Client Usage
@@ -66,10 +64,9 @@ client = KalshiAuthenticatedClient(
     private_key_pem="-----BEGIN PRIVATE KEY-----\n..."
 )
 
-with client as client:
-    from kalshi_py.api.portfolio import get_balance
-    balance = get_balance.sync(client=client)
-    print(f"Account balance: {balance.balance}")
+from kalshi_py.api.portfolio import get_balance
+balance = get_balance.sync(client=client)
+print(f"Account balance: {balance.balance}")
 ```
 
 ### Environment Variables
@@ -90,18 +87,16 @@ from kalshi_py.api.portfolio import get_balance
 
 # Synchronous usage
 client = create_client()
-with client as client:
-    markets = get_markets.sync(client=client, limit=5)
-    balance = get_balance.sync(client=client)
+markets = get_markets.sync(client=client, limit=5)
+balance = get_balance.sync(client=client)
 
 # Asynchronous usage
 import asyncio
 
 async def main():
     client = create_client()
-    async with client as client:
-        markets = await get_markets.asyncio(client=client, limit=5)
-        balance = await get_balance.asyncio(client=client)
+    markets = await get_markets.asyncio(client=client, limit=5)
+    balance = await get_balance.asyncio(client=client)
 
 asyncio.run(main())
 ```

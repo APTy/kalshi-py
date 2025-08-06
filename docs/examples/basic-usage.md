@@ -12,14 +12,13 @@ from kalshi_py.api.market import get_markets
 
 client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
-with client as client:
-    response = get_markets.sync(client=client, limit=10)
-    print(f"Found {len(response.markets)} markets")
+response = get_markets.sync(client=client, limit=10)
+print(f"Found {len(response.markets)} markets")
 
-    for market in response.markets:
-        print(f"- {market.ticker}: {market.title}")
-        print(f"  Status: {market.status}")
-        print(f"  Volume: {market.volume}")
+for market in response.markets:
+    print(f"- {market.ticker}: {market.title}")
+    print(f"  Status: {market.status}")
+    print(f"  Volume: {market.volume}")
 ```
 
 ## Getting Account Balance
@@ -30,9 +29,8 @@ from kalshi_py.api.portfolio import get_balance
 
 client = create_client()
 
-with client as client:
-    balance = get_balance.sync(client=client)
-    print(f"Account balance: ${balance.balance}")
+balance = get_balance.sync(client=client)
+print(f"Account balance: ${balance.balance}")
 ```
 
 ## Fetching Market Details
@@ -43,11 +41,10 @@ from kalshi_py.api.market import get_market
 
 client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
-with client as client:
-    market = get_market.sync(client=client, ticker="MARKET-TICKER")
-    print(f"Market: {market.market.title}")
-    print(f"Status: {market.market.status}")
-    print(f"Volume: {market.market.volume}")
+market = get_market.sync(client=client, ticker="MARKET-TICKER")
+print(f"Market: {market.market.title}")
+print(f"Status: {market.market.status}")
+print(f"Volume: {market.market.volume}")
 ```
 
 ## Error Handling
@@ -59,9 +56,8 @@ from kalshi_py.errors import UnexpectedStatus
 client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
 try:
-    with client as client:
-        response = get_markets.sync(client=client, limit=10)
-        print(f"Found {len(response.markets)} markets")
+    response = get_markets.sync(client=client, limit=10)
+    print(f"Found {len(response.markets)} markets")
 except UnexpectedStatus as e:
     print(f"API error: {e.status_code} - {e.response.text}")
 except Exception as e:

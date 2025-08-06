@@ -13,17 +13,16 @@ def test_sync_client():
     client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
     try:
-        with client as client:
-            response = get_markets.sync(client=client, limit=3)
+        response = get_markets.sync(client=client, limit=3)
 
-            if response and response.markets:
-                print(f"✓ Successfully fetched {len(response.markets)} markets")
-                for market in response.markets:
-                    print(f"  - {market.ticker}: {market.title[:50]}...")
-                return True
-            else:
-                print("✗ No markets returned")
-                return False
+        if response and response.markets:
+            print(f"✓ Successfully fetched {len(response.markets)} markets")
+            for market in response.markets:
+                print(f"  - {market.ticker}: {market.title[:50]}...")
+            return True
+        else:
+            print("✗ No markets returned")
+            return False
     except Exception as e:
         print(f"✗ Error: {e}")
         return False
@@ -36,15 +35,14 @@ async def test_async_client():
     client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
     try:
-        async with client as client:
-            response = await get_markets.asyncio(client=client, limit=3)
+        response = await get_markets.asyncio(client=client, limit=3)
 
-            if response and response.markets:
-                print(f"✓ Successfully fetched {len(response.markets)} markets (async)")
-                return True
-            else:
-                print("✗ No markets returned (async)")
-                return False
+        if response and response.markets:
+            print(f"✓ Successfully fetched {len(response.markets)} markets (async)")
+            return True
+        else:
+            print("✗ No markets returned (async)")
+            return False
     except Exception as e:
         print(f"✗ Error (async): {e}")
         return False

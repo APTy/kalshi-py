@@ -14,12 +14,11 @@ from kalshi_py.api.market import get_markets
 client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
 
 # Get markets
-with client as client:
-    response = get_markets.sync(client=client, limit=10)
-    print(f"Found {len(response.markets)} markets")
+response = get_markets.sync(client=client, limit=10)
+print(f"Found {len(response.markets)} markets")
 
-    for market in response.markets[:3]:
-        print(f"- {market.ticker}: {market.title}")
+for market in response.markets[:3]:
+    print(f"- {market.ticker}: {market.title}")
 ```
 
 ## Authenticated Usage (Trading Endpoints)
@@ -34,9 +33,8 @@ from kalshi_py.api.portfolio import get_balance
 client = create_client()
 
 # Get account balance
-with client as client:
-    balance = get_balance.sync(client=client)
-    print(f"Account balance: ${balance.balance}")
+balance = get_balance.sync(client=client)
+print(f"Account balance: ${balance.balance}")
 ```
 
 ## Async Usage
@@ -51,14 +49,14 @@ from kalshi_py.api.portfolio import get_balance
 
 async def main():
     client = create_client()
-    async with client as client:
-        # Get markets
-        markets = await get_markets.asyncio(client=client, limit=5)
-        print(f"Found {len(markets.markets)} markets")
 
-        # Get balance
-        balance = await get_balance.asyncio(client=client)
-        print(f"Balance: ${balance.balance}")
+    # Get markets
+    markets = await get_markets.asyncio(client=client, limit=5)
+    print(f"Found {len(markets.markets)} markets")
+
+    # Get balance
+    balance = await get_balance.asyncio(client=client)
+    print(f"Balance: ${balance.balance}")
 
 asyncio.run(main())
 ```

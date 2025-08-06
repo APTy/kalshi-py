@@ -11,17 +11,17 @@ from kalshi_py.api.market import get_markets, get_market_orderbook
 
 async def get_market_data():
     client = create_client()
-    async with client as client:
-        # Get markets
-        markets = await get_markets.asyncio(client=client, limit=5)
 
-        # Get order book for first market
-        if markets.markets:
-            ticker = markets.markets[0].ticker
-            orderbook = await get_market_orderbook.asyncio(client=client, ticker=ticker)
-            print(f"Order book for {ticker}:")
-            print(f"  Yes bids: {len(orderbook.orderbook.yes_bids)}")
-            print(f"  Yes asks: {len(orderbook.orderbook.yes_asks)}")
+    # Get markets
+    markets = await get_markets.asyncio(client=client, limit=5)
+
+    # Get order book for first market
+    if markets.markets:
+        ticker = markets.markets[0].ticker
+        orderbook = await get_market_orderbook.asyncio(client=client, ticker=ticker)
+        print(f"Order book for {ticker}:")
+        print(f"  Yes bids: {len(orderbook.orderbook.yes_bids)}")
+        print(f"  Yes asks: {len(orderbook.orderbook.yes_asks)}")
 
 asyncio.run(get_market_data())
 ```
@@ -35,19 +35,19 @@ from kalshi_py.api.portfolio import get_balance, get_positions, get_orders
 
 async def get_account_overview():
     client = create_client()
-    async with client as client:
-        # Make concurrent API calls
-        balance_task = get_balance.asyncio(client=client)
-        positions_task = get_positions.asyncio(client=client)
-        orders_task = get_orders.asyncio(client=client)
 
-        balance, positions, orders = await asyncio.gather(
-            balance_task, positions_task, orders_task
-        )
+    # Make concurrent API calls
+    balance_task = get_balance.asyncio(client=client)
+    positions_task = get_positions.asyncio(client=client)
+    orders_task = get_orders.asyncio(client=client)
 
-        print(f"Balance: ${balance.balance}")
-        print(f"Active positions: {len(positions.market_positions)}")
-        print(f"Open orders: {len(orders.orders)}")
+    balance, positions, orders = await asyncio.gather(
+        balance_task, positions_task, orders_task
+    )
+
+    print(f"Balance: ${balance.balance}")
+    print(f"Active positions: {len(positions.market_positions)}")
+    print(f"Open orders: {len(orders.orders)}")
 
 asyncio.run(get_account_overview())
 ```
@@ -149,13 +149,12 @@ def api_call_with_retry(func, max_retries=3, delay=1):
 # Usage
 client = create_client()
 
-with client as client:
-    from kalshi_py.api.portfolio import get_balance
+from kalshi_py.api.portfolio import get_balance
 
-    balance = api_call_with_retry(
-        lambda: get_balance.sync(client=client)
-    )
-    print(f"Balance: ${balance.balance}")
+balance = api_call_with_retry(
+    lambda: get_balance.sync(client=client)
+)
+print(f"Balance: ${balance.balance}")
 ```
 
 ## WebSocket-like Polling
@@ -167,29 +166,27 @@ from kalshi_py.api.market import get_market_orderbook
 
 def monitor_orderbook(ticker, interval=5):
     client = create_client()
+    last_orderbook = None
 
-    with client as client:
-        last_orderbook = None
+    while True:
+        try:
+            orderbook = get_market_orderbook.sync(client=client, ticker=ticker)
 
-        while True:
-            try:
-                orderbook = get_market_orderbook.sync(client=client, ticker=ticker)
+            # Check if orderbook changed
+            if last_orderbook != orderbook.orderbook:
+                print(f"Order book updated for {ticker}")
+                print(f"  Yes bid: {orderbook.orderbook.yes_bids[0].price if orderbook.orderbook.yes_bids else 'None'}")
+                print(f"  Yes ask: {orderbook.orderbook.yes_asks[0].price if orderbook.orderbook.yes_asks else 'None'}")
+                last_orderbook = orderbook.orderbook
 
-                # Check if orderbook changed
-                if last_orderbook != orderbook.orderbook:
-                    print(f"Order book updated for {ticker}")
-                    print(f"  Yes bid: {orderbook.orderbook.yes_bids[0].price if orderbook.orderbook.yes_bids else 'None'}")
-                    print(f"  Yes ask: {orderbook.orderbook.yes_asks[0].price if orderbook.orderbook.yes_asks else 'None'}")
-                    last_orderbook = orderbook.orderbook
+            time.sleep(interval)
 
-                time.sleep(interval)
-
-            except KeyboardInterrupt:
-                print("Monitoring stopped")
-                break
-            except Exception as e:
-                print(f"Error: {e}")
-                time.sleep(interval)
+        except KeyboardInterrupt:
+            print("Monitoring stopped")
+            break
+        except Exception as e:
+            print(f"Error: {e}")
+            time.sleep(interval)
 
 # Usage: monitor_orderbook("MARKET-TICKER")
 ```

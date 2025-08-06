@@ -83,9 +83,8 @@ from kalshi_py.api.portfolio import get_balance
 client = create_client()
 
 # Make authenticated request
-with client as client:
-    balance = get_balance.sync(client=client)
-    print(f"Balance: ${balance.balance}")
+balance = get_balance.sync(client=client)
+print(f"Balance: ${balance.balance}")
 ```
 
 Behind the scenes, the client:

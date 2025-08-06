@@ -13,30 +13,28 @@ def main():
     # Example 1: Get markets (public endpoint)
     print("1. Fetching markets...")
     try:
-        with client as client:
-            markets_response = get_markets.sync(client=client, limit=5)
-            if markets_response and markets_response.markets:
-                print(f"Found {len(markets_response.markets)} markets")
-                for market in markets_response.markets[:3]:
-                    print(f"  - {market.ticker}: {market.title}")
-                    print(f"    Status: {market.status}, Volume: {market.volume}")
-                    print(f"    Yes Bid: {market.yes_bid}, Yes Ask: {market.yes_ask}")
-                    print()
-            else:
-                print("No markets found or error occurred")
+        markets_response = get_markets.sync(client=client, limit=5)
+        if markets_response and markets_response.markets:
+            print(f"Found {len(markets_response.markets)} markets")
+            for market in markets_response.markets[:3]:
+                print(f"  - {market.ticker}: {market.title}")
+                print(f"    Status: {market.status}, Volume: {market.volume}")
+                print(f"    Yes Bid: {market.yes_bid}, Yes Ask: {market.yes_ask}")
+                print()
+        else:
+            print("No markets found or error occurred")
     except Exception as e:
         print(f"Error fetching markets: {e}")
 
     # Example 2: Get specific market details
     print("2. Fetching specific market details...")
     try:
-        with client as client:
-            # You would need a valid market ticker here
-            # market_response = get_market.sync(client=client, ticker="MARKET-TICKER")
-            # if market_response:
-            #     print(f"Market: {market_response.market.title}")
-            #     print(f"Status: {market_response.market.status}")
-            print("(Skipping specific market fetch - need valid ticker)")
+        # You would need a valid market ticker here
+        # market_response = get_market.sync(client=client, ticker="MARKET-TICKER")
+        # if market_response:
+        #     print(f"Market: {market_response.market.title}")
+        #     print(f"Status: {market_response.market.status}")
+        print("(Skipping specific market fetch - need valid ticker)")
     except Exception as e:
         print(f"Error fetching market details: {e}")
 
@@ -50,10 +48,9 @@ def main():
         token="your_api_token_here"
     )
 
-    with auth_client as client:
-        balance = get_balance.sync(client=client)
-        if balance:
-            print(f"Account balance: {balance.balance}")
+    balance = get_balance.sync(client=auth_client)
+    if balance:
+        print(f"Account balance: {balance.balance}")
     """)
 
     print("\n=== Available API Modules ===")
