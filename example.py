@@ -49,7 +49,7 @@ def main():
         base_url="https://api.elections.kalshi.com/trade-api/v2",
         token="your_api_token_here"
     )
-    
+
     with auth_client as client:
         balance = get_balance.sync(client=client)
         if balance:

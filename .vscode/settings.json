@@ -2,11 +2,15 @@
     "python.defaultInterpreterPath": "./.venv/bin/python",
     "python.terminal.activateEnvironment": true,
     "python.linting.enabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": false,
     "python.linting.ruffEnabled": true,
     "python.linting.ruffPath": "./.venv/bin/ruff",
+    "python.linting.ruffArgs": ["--config", "pyproject.toml"],
     "python.formatting.provider": "ruff",
     "python.formatting.ruffPath": "./.venv/bin/ruff",
-    "python.formatting.ruffArgs": ["format"],
+    "python.formatting.ruffArgs": ["format", "--config", "pyproject.toml"],
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",
@@ -61,5 +65,11 @@
         "**/__pycache__",
         "**/.venv",
         "**/.ruff_cache"
-    ]
+    ],
+    "python.linting.lintOnSave": true,
+    "python.linting.maxNumberOfProblems": 1000,
+    "python.linting.ignorePatterns": [],
+    "python.linting.pylintArgs": [],
+    "python.linting.flake8Args": [],
+    "python.linting.mypyArgs": []
 }

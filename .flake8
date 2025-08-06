@@ -1,0 +1,4 @@
+[flake8]
+# Disable flake8 for this project - we use ruff instead
+max-line-length = 160
+extend-ignore = ALL
