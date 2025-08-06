@@ -34,8 +34,12 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponse:
     """
 
     cursor: Union[Unset, str] = UNSET
-    event_positions: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem"]] = UNSET
-    market_positions: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem"]] = UNSET
+    event_positions: Union[
+        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem"]
+    ] = UNSET
+    market_positions: Union[
+        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem"]
+    ] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,14 +86,22 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponse:
         event_positions = []
         _event_positions = d.pop("event_positions", UNSET)
         for event_positions_item_data in _event_positions or []:
-            event_positions_item = GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem.from_dict(event_positions_item_data)
+            event_positions_item = (
+                GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem.from_dict(
+                    event_positions_item_data
+                )
+            )
 
             event_positions.append(event_positions_item)
 
         market_positions = []
         _market_positions = d.pop("market_positions", UNSET)
         for market_positions_item_data in _market_positions or []:
-            market_positions_item = GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem.from_dict(market_positions_item_data)
+            market_positions_item = (
+                GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem.from_dict(
+                    market_positions_item_data
+                )
+            )
 
             market_positions.append(market_positions_item)
 

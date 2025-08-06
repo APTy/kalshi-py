@@ -28,7 +28,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponse:
     """
 
     cursor: Union[Unset, str] = UNSET
-    settlements: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem"]] = UNSET
+    settlements: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem"]] = (
+        UNSET
+    )
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -63,7 +65,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponse:
         settlements = []
         _settlements = d.pop("settlements", UNSET)
         for settlements_item_data in _settlements or []:
-            settlements_item = GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem.from_dict(settlements_item_data)
+            settlements_item = GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem.from_dict(
+                settlements_item_data
+            )
 
             settlements.append(settlements_item)
 

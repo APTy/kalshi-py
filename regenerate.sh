@@ -28,7 +28,7 @@ fi
 
 echo ""
 echo "🔨 Regenerating client library..."
-uv run openapi-python-client generate --path openapi.yaml --meta uv --output-path .
+uv run openapi-python-client generate --path openapi.yaml --meta uv --output-path . --overwrite --config openapi-config.yaml
 
 echo ""
 echo "🎨 Formatting generated code..."

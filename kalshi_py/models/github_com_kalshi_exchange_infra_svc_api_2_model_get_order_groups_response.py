@@ -29,11 +29,13 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupsResponse:
         order_groups: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.order_groups, Unset):
             order_groups = []
-            for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data in self.order_groups:
-                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item = (
-                    componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data.to_dict()
+            for (
+                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data
+            ) in self.order_groups:
+                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item = componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data.to_dict()
+                order_groups.append(
+                    componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item
                 )
-                order_groups.append(componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,14 +54,18 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupsResponse:
         d = dict(src_dict)
         order_groups = []
         _order_groups = d.pop("order_groups", UNSET)
-        for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data in _order_groups or []:
+        for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data in (
+            _order_groups or []
+        ):
             componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item = (
                 GithubComKalshiExchangeInfraSvcApi2ModelOrderGroupSummary.from_dict(
                     componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item_data
                 )
             )
 
-            order_groups.append(componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item)
+            order_groups.append(
+                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary_list_item
+            )
 
         github_com_kalshi_exchange_infra_svc_api_2_model_get_order_groups_response = cls(
             order_groups=order_groups,

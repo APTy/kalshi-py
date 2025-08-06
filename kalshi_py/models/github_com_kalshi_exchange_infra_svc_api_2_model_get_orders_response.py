@@ -63,8 +63,10 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetOrdersResponse:
         orders = []
         _orders = d.pop("orders", UNSET)
         for componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item_data in _orders or []:
-            componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item = GithubComKalshiExchangeInfraSvcApi2ModelOrder.from_dict(
-                componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item_data
+            componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item = (
+                GithubComKalshiExchangeInfraSvcApi2ModelOrder.from_dict(
+                    componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item_data
+                )
             )
 
             orders.append(componentsschemasgithub_com_kalshi_exchange_infra_svc_api_2_model_order_list_item)

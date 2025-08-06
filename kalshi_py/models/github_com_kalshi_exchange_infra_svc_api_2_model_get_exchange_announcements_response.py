@@ -24,7 +24,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponse:
             exchange-wide announcements.
     """
 
-    announcements: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem"]] = UNSET
+    announcements: Union[
+        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem"]
+    ] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,7 +55,11 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponse:
         announcements = []
         _announcements = d.pop("announcements", UNSET)
         for announcements_item_data in _announcements or []:
-            announcements_item = GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem.from_dict(announcements_item_data)
+            announcements_item = (
+                GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem.from_dict(
+                    announcements_item_data
+                )
+            )
 
             announcements.append(announcements_item)
 

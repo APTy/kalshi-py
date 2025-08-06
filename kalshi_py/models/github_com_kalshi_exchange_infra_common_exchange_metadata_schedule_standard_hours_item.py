@@ -46,7 +46,9 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursIte
 
     end_time: Union[Unset, datetime.datetime] = UNSET
     friday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
-    monday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem"]] = UNSET
+    monday: Union[
+        Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem"]
+    ] = UNSET
     saturday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
     start_time: Union[Unset, datetime.datetime] = UNSET
     sunday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
@@ -164,14 +166,20 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursIte
         monday = []
         _monday = d.pop("monday", UNSET)
         for monday_item_data in _monday or []:
-            monday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem.from_dict(monday_item_data)
+            monday_item = (
+                GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem.from_dict(
+                    monday_item_data
+                )
+            )
 
             monday.append(monday_item)
 
         saturday = []
         _saturday = d.pop("saturday", UNSET)
         for saturday_item_data in _saturday or []:
-            saturday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(saturday_item_data)
+            saturday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                saturday_item_data
+            )
 
             saturday.append(saturday_item)
 
@@ -192,7 +200,9 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursIte
         thursday = []
         _thursday = d.pop("thursday", UNSET)
         for thursday_item_data in _thursday or []:
-            thursday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(thursday_item_data)
+            thursday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                thursday_item_data
+            )
 
             thursday.append(thursday_item)
 
@@ -206,7 +216,9 @@ class GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursIte
         wednesday = []
         _wednesday = d.pop("wednesday", UNSET)
         for wednesday_item_data in _wednesday or []:
-            wednesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(wednesday_item_data)
+            wednesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                wednesday_item_data
+            )
 
             wednesday.append(wednesday_item)
 

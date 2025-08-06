@@ -60,7 +60,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetsResponse:
         structured_targets = []
         _structured_targets = d.pop("structured_targets", UNSET)
         for structured_targets_item_data in _structured_targets or []:
-            structured_targets_item = GithubComKalshiExchangeInfraSvcApi2ModelStructuredTarget.from_dict(structured_targets_item_data)
+            structured_targets_item = GithubComKalshiExchangeInfraSvcApi2ModelStructuredTarget.from_dict(
+                structured_targets_item_data
+            )
 
             structured_targets.append(structured_targets_item)
 

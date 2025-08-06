@@ -330,8 +330,8 @@ components:
         market_result:
           description: The outcome of the market settlement ('yes' or 'no').
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
         no_count:
           description: Number of NO contracts owned at the time of settlement.
@@ -387,8 +387,8 @@ components:
         side:
           description: Side of the market (yes or no).
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
       type: object
     WeeklySchedule:
@@ -758,7 +758,7 @@ components:
     github.com.Kalshi.exchange-infra.common.unimodel.Details:
       properties:
         key:
-          $ref: "#/components/schemas/GenericObject"
+          $ref: '#/components/schemas/GenericObject'
       type: object
     github.com.Kalshi.exchange-infra.common.unimodel.MarketResult:
       type: string
@@ -771,7 +771,7 @@ components:
     github.com.Kalshi.exchange-infra.common.unimodel.ProductMetadata:
       properties:
         key:
-          $ref: "#/components/schemas/GenericObject"
+          $ref: '#/components/schemas/GenericObject'
       type: object
     github.com.Kalshi.exchange-infra.common.unimodel.Side:
       type: string
@@ -780,8 +780,8 @@ components:
         accepted_side:
           description: The side of the quote to accept (yes or no).
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
       type: object
     github.com.Kalshi.exchange-infra.svc-api2.model.AmendOrderRequest:
@@ -834,8 +834,8 @@ components:
             Side of the order (yes or no). Cannot be amended and is validated
             against original order.
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
         ticker:
           description: >-
@@ -1161,8 +1161,8 @@ components:
         side:
           description: Specifies if this is a 'yes' or 'no' order.
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
         ticker:
           description: The ticker of the market the order will be placed in.
@@ -1408,8 +1408,8 @@ components:
             #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Specifies if this is a 'yes' or 'no' fill.
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
         ticker:
           description: Unique identifier for the market.
@@ -2135,8 +2135,8 @@ components:
               market_result:
                 description: The outcome of the market settlement ('yes' or 'no').
                 enum:
-                  - "yes"
-                  - "no"
+                  - 'yes'
+                  - 'no'
                 type: string
               no_count:
                 description: Number of NO contracts owned at the time of settlement.
@@ -2231,8 +2231,8 @@ components:
               side:
                 description: Side of the market (yes or no).
                 enum:
-                  - "yes"
-                  - "no"
+                  - 'yes'
+                  - 'no'
                 type: string
             type: object
           type: array
@@ -2486,7 +2486,7 @@ components:
       type: object
     github.com.Kalshi.exchange-infra.svc-api2.model.OrderBook:
       properties:
-        "no":
+        'no':
           description: >-
             Array of price levels for no orders. Each level is [price, quantity]
             where price is in cents or centicents based on use_centi_cent
@@ -2511,7 +2511,7 @@ components:
                 type: array
             type: object
           type: array
-        "yes":
+        'yes':
           description: >-
             Array of price levels for yes orders. Each level is [price,
             quantity] where price is in cents or centicents based on
@@ -2768,8 +2768,8 @@ components:
             #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Side for the taker of this trade.
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
         ticker:
           description: Unique identifier for the market.
@@ -2927,8 +2927,8 @@ components:
         side:
           description: Side of the market (yes or no).
           enum:
-            - "yes"
-            - "no"
+            - 'yes'
+            - 'no'
           type: string
       type: object
     github.com.Kalshi.exchange-infra.svc-api2.model.UserCreateApiKeyRequest:
@@ -3382,21 +3382,21 @@ openapi: 3.0.0
 paths:
   /api_keys:
     get:
-      description: " Endpoint for retrieving all API keys associated with the authenticated user.  API keys allow programmatic access to the platform without requiring username/password authentication. Each key has a unique identifier and name."
+      description: ' Endpoint for retrieving all API keys associated with the authenticated user.  API keys allow programmatic access to the platform without requiring username/password authentication. Each key has a unique identifier and name.'
       operationId: GetApiKeys
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.UserGetApiKeysResponse
-          description: ""
+          description: ''
       summary: Get API Keys
       tags:
         - api-keys
     post:
-      description: " Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users with Premier or Market Maker API usage levels to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests."
+      description: ' Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users with Premier or Market Maker API usage levels to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests.'
       operationId: CreateApiKey
       requestBody:
         content:
@@ -3406,19 +3406,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.UserCreateApiKeyRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.UserCreateApiKeyResponse
-          description: ""
+          description: ''
       summary: Create API Key
       tags:
         - api-keys
   /api_keys/generate:
     post:
-      description: " Endpoint for generating a new API key with an automatically created key pair.  This endpoint generates both a public and private RSA key pair. The public key is stored on the platform, while the private key is returned to the user and must be stored securely. The private key cannot be retrieved again."
+      description: ' Endpoint for generating a new API key with an automatically created key pair.  This endpoint generates both a public and private RSA key pair. The public key is stored on the platform, while the private key is returned to the user and must be stored securely. The private key cannot be retrieved again.'
       operationId: GenerateApiKey
       requestBody:
         content:
@@ -3428,19 +3428,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.UserGenerateApiKeyRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.UserGenerateApiKeyResponse
-          description: ""
+          description: ''
       summary: Generate API Key
       tags:
         - api-keys
   /api_keys/{api_key}:
     delete:
-      description: " Endpoint for deleting an existing API key.  This endpoint permanently deletes an API key. Once deleted, the key can no longer be used for authentication. This action cannot be undone."
+      description: ' Endpoint for deleting an existing API key.  This endpoint permanently deletes an API key. Once deleted, the key can no longer be used for authentication. This action cannot be undone.'
       operationId: DeleteApiKey
       parameters:
         - description: API key ID to delete
@@ -3451,43 +3451,43 @@ paths:
             description: API key ID to delete
             type: string
       responses:
-        "204":
+        '204':
           description: No Content - API key successfully deleted
       summary: Delete API Key
       tags:
         - api-keys
   /communications/id:
     get:
-      description: " Endpoint for getting the communications ID of the logged-in user."
+      description: ' Endpoint for getting the communications ID of the logged-in user.'
       operationId: GetCommunicationsID
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetCommunicationsIDResponse
-          description: ""
+          description: ''
       summary: Get Communications ID
       tags:
         - communications
   /communications/quotes:
     get:
-      description: " Endpoint for getting quotes"
+      description: ' Endpoint for getting quotes'
       operationId: GetQuotes
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetQuotesResponse
-          description: ""
+          description: ''
       summary: Get Quotes
       tags:
         - communications
     post:
-      description: " Endpoint for creating a quote in response to an RFQ"
+      description: ' Endpoint for creating a quote in response to an RFQ'
       operationId: CreateQuote
       requestBody:
         content:
@@ -3497,19 +3497,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateQuoteRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateQuoteResponse
-          description: ""
+          description: ''
       summary: Create Quote
       tags:
         - communications
   /communications/quotes/{quote_id}:
     delete:
-      description: " Endpoint for deleting a quote, which means it can no longer be accepted."
+      description: ' Endpoint for deleting a quote, which means it can no longer be accepted.'
       operationId: DeleteQuote
       parameters:
         - description: Quote ID
@@ -3520,13 +3520,13 @@ paths:
             description: Quote ID
             type: string
       responses:
-        "204":
+        '204':
           description: No Content
       summary: Delete Quote
       tags:
         - communications
     get:
-      description: " Endpoint for getting a particular quote"
+      description: ' Endpoint for getting a particular quote'
       operationId: GetQuote
       parameters:
         - description: Quote ID
@@ -3537,19 +3537,19 @@ paths:
             description: Quote ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetQuoteResponse
-          description: ""
+          description: ''
       summary: Get Quote
       tags:
         - communications
   /communications/quotes/{quote_id}/accept:
     put:
-      description: " Endpoint for accepting a quote. This will require the quoter to confirm"
+      description: ' Endpoint for accepting a quote. This will require the quoter to confirm'
       operationId: AcceptQuote
       parameters:
         - description: Quote ID
@@ -3567,14 +3567,14 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.AcceptQuoteRequest
         required: true
       responses:
-        "204":
+        '204':
           description: No Content
       summary: Accept Quote
       tags:
         - communications
   /communications/quotes/{quote_id}/confirm:
     put:
-      description: " Endpoint for confirming a quote. This will start a timer for order execution"
+      description: ' Endpoint for confirming a quote. This will start a timer for order execution'
       operationId: ConfirmQuote
       parameters:
         - description: Quote ID
@@ -3585,28 +3585,28 @@ paths:
             description: Quote ID
             type: string
       responses:
-        "204":
+        '204':
           description: No Content
       summary: Confirm Quote
       tags:
         - communications
   /communications/rfqs:
     get:
-      description: " Endpoint for getting RFQs"
+      description: ' Endpoint for getting RFQs'
       operationId: GetRFQs
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetRFQsResponse
-          description: ""
+          description: ''
       summary: Get RFQs
       tags:
         - communications
     post:
-      description: " Endpoint for creating a new RFQ"
+      description: ' Endpoint for creating a new RFQ'
       operationId: CreateRFQ
       requestBody:
         content:
@@ -3616,19 +3616,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateRFQRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateRFQResponse
-          description: ""
+          description: ''
       summary: Create RFQ
       tags:
         - communications
   /communications/rfqs/{rfq_id}:
     delete:
-      description: " Endpoint for deleting an RFQ by ID"
+      description: ' Endpoint for deleting an RFQ by ID'
       operationId: DeleteRFQ
       parameters:
         - description: RFQ ID
@@ -3639,13 +3639,13 @@ paths:
             description: RFQ ID
             type: string
       responses:
-        "204":
+        '204':
           description: No Content
       summary: Delete RFQ
       tags:
         - communications
     get:
-      description: " Endpoint for getting a single RFQ by id"
+      description: ' Endpoint for getting a single RFQ by id'
       operationId: GetRFQ
       parameters:
         - description: RFQ ID
@@ -3656,19 +3656,19 @@ paths:
             description: RFQ ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetRFQResponse
-          description: ""
+          description: ''
       summary: Get RFQ
       tags:
         - communications
   /events:
     get:
-      description: " Endpoint for getting data about all events.  An event represents a real-world occurrence that can be traded on, such as an election, sports game, or economic indicator release. Events contain one or more markets where users can place trades on different outcomes.  This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-200, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available."
+      description: ' Endpoint for getting data about all events.  An event represents a real-world occurrence that can be traded on, such as an election, sports game, or economic indicator release. Events contain one or more markets where users can place trades on different outcomes.  This endpoint returns a paginated response. Use the ''limit'' parameter to control page size (1-200, defaults to 100). The response includes a ''cursor'' field - pass this value in the ''cursor'' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.'
       operationId: GetEvents
       parameters:
         - description: >-
@@ -3727,19 +3727,19 @@ paths:
               the specified series.
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetEventsResponse
-          description: ""
+          description: ''
       summary: Get Events
       tags:
         - market
   /events/{event_ticker}:
     get:
-      description: " Endpoint for getting data about an event by its ticker.  An event represents a real-world occurrence that can be traded on, such as an election, sports game, or economic indicator release. Events contain one or more markets where users can place trades on different outcomes."
+      description: ' Endpoint for getting data about an event by its ticker.  An event represents a real-world occurrence that can be traded on, such as an election, sports game, or economic indicator release. Events contain one or more markets where users can place trades on different outcomes.'
       operationId: GetEvent
       parameters:
         - description: Event ticker
@@ -3762,19 +3762,19 @@ paths:
               the response.
             type: boolean
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetEventResponse
-          description: ""
+          description: ''
       summary: Get Event
       tags:
         - market
   /events/{event_ticker}/metadata:
     get:
-      description: " Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information for an event."
+      description: ' Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information for an event.'
       operationId: GetEventMetadata
       parameters:
         - description: Event ticker
@@ -3785,67 +3785,67 @@ paths:
             description: Event ticker
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetEventMetadataResponse
-          description: ""
+          description: ''
       summary: Get Event Metadata
       tags:
         - market
   /exchange/announcements:
     get:
-      description: " Endpoint for getting all exchange-wide announcements."
+      description: ' Endpoint for getting all exchange-wide announcements.'
       operationId: GetExchangeAnnouncements
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetExchangeAnnouncementsResponse
-          description: ""
+          description: ''
       summary: Get Exchange Announcements
   /exchange/schedule:
     get:
-      description: " Endpoint for getting the exchange schedule."
+      description: ' Endpoint for getting the exchange schedule.'
       operationId: GetExchangeSchedule
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetExchangeScheduleResponse
-          description: ""
+          description: ''
       summary: Get Exchange Schedule
   /exchange/status:
     get:
-      description: " Endpoint for getting the exchange status."
+      description: ' Endpoint for getting the exchange status.'
       operationId: GetExchangeStatus
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.ExchangeStatus
-          description: ""
+          description: ''
       summary: Get Exchange Status
   /exchange/user_data_timestamp:
     get:
-      description: " There is typically a short delay before exchange events are reflected in the API endpoints. Whenever possible, combine API responses to PUT/POST/DELETE requests with websocket data to obtain the most accurate view of the exchange state. This endpoint provides an approximate indication of when the data from the following endpoints was last validated: GetBalance, GetOrder(s), GetFills, GetPositions"
+      description: ' There is typically a short delay before exchange events are reflected in the API endpoints. Whenever possible, combine API responses to PUT/POST/DELETE requests with websocket data to obtain the most accurate view of the exchange state. This endpoint provides an approximate indication of when the data from the following endpoints was last validated: GetBalance, GetOrder(s), GetFills, GetPositions'
       operationId: GetUserDataTimestamp
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetUserDataTimestampResponse
-          description: ""
+          description: ''
       summary: Get User Data Timestamp
   /markets:
     get:
@@ -3930,19 +3930,19 @@ paths:
               tickers to retrieve.
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMarketsResponse
-          description: ""
+          description: ''
       summary: Get Markets
       tags:
         - market
   /markets/trades:
     get:
-      description: " Endpoint for getting all trades for all markets.  A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information.  This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available."
+      description: ' Endpoint for getting all trades for all markets.  A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information.  This endpoint returns a paginated response. Use the ''limit'' parameter to control page size (1-1000, defaults to 100). The response includes a ''cursor'' field - pass this value in the ''cursor'' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.'
       operationId: GetTrades
       parameters:
         - description: Number of results per page. Defaults to 100. Maximum value is 1000.
@@ -3991,13 +3991,13 @@ paths:
             format: int64
             type: integer
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.PublicTradesGetResponse
-          description: ""
+          description: ''
       summary: Get Trades
       tags:
         - market
@@ -4014,19 +4014,19 @@ paths:
             description: Market ticker - unique identifier for the specific market
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMarketResponse
-          description: ""
+          description: ''
       summary: Get Market
       tags:
         - market
   /markets/{ticker}/orderbook:
     get:
-      description: " Endpoint for getting the current order book for a specific market.  The order book shows all active bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no asks are returned). This is because in binary markets, a bid for yes at price X is equivalent to an ask for no at price (100-X). For example, a yes bid at 7¢ is the same as a no ask at 93¢, with identical contract sizes.  Each side shows price levels with their corresponding quantities and order counts, organized from best to worst prices."
+      description: ' Endpoint for getting the current order book for a specific market.  The order book shows all active bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no asks are returned). This is because in binary markets, a bid for yes at price X is equivalent to an ask for no at price (100-X). For example, a yes bid at 7¢ is the same as a no ask at 93¢, with identical contract sizes.  Each side shows price levels with their corresponding quantities and order counts, organized from best to worst prices.'
       operationId: GetMarketOrderbook
       parameters:
         - description: Market ticker - unique identifier for the specific market
@@ -4048,26 +4048,26 @@ paths:
             format: int64
             type: integer
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMarketOrderbookResponse
-          description: ""
+          description: ''
       summary: Get Market Order Book
       tags:
         - market
   /milestones:
     get:
-      description: " Endpoint for getting data about milestones with optional filtering."
+      description: ' Endpoint for getting data about milestones with optional filtering.'
       operationId: GetMilestones
       parameters:
-        - description: "Minimum start date to filter milestones. Format: RFC3339 timestamp"
+        - description: 'Minimum start date to filter milestones. Format: RFC3339 timestamp'
           in: query
           name: minimum_start_date
           schema:
-            description: "Minimum start date to filter milestones. Format: RFC3339 timestamp"
+            description: 'Minimum start date to filter milestones. Format: RFC3339 timestamp'
             type: string
         - description: Filter by milestone category
           in: query
@@ -4112,19 +4112,19 @@ paths:
               response to get the next page of results
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMilestonesResponse
-          description: ""
+          description: ''
       summary: Get Milestones
       tags:
         - milestone
   /milestones/{milestone_id}:
     get:
-      description: " Endpoint for getting data about a specific milestone by its ID."
+      description: ' Endpoint for getting data about a specific milestone by its ID.'
       operationId: GetMilestone
       parameters:
         - description: Milestone ID
@@ -4135,34 +4135,34 @@ paths:
             description: Milestone ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMilestoneResponse
-          description: ""
+          description: ''
       summary: Get Milestone
       tags:
         - milestone
   /multivariate_event_collections:
     get:
-      description: " Endpoint for getting data about multivariate event collections."
+      description: ' Endpoint for getting data about multivariate event collections.'
       operationId: GetMultivariateEventCollections
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMultivariateEventCollectionsResponse
-          description: ""
+          description: ''
       summary: Get Multivariate Event Collections
       tags:
         - collection
   /multivariate_event_collections/{collection_ticker}:
     get:
-      description: " Endpoint for getting data about a multivariate event collection by its ticker."
+      description: ' Endpoint for getting data about a multivariate event collection by its ticker.'
       operationId: GetMultivariateEventCollection
       parameters:
         - description: Collection ticker
@@ -4173,18 +4173,18 @@ paths:
             description: Collection ticker
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMultivariateEventCollectionResponse
-          description: ""
+          description: ''
       summary: Get Multivariate Event Collection
       tags:
         - collection
     post:
-      description: " Endpoint for looking up an individual market in a multivariate event collection. This endpoint must be hit at least once before trading or looking up a market."
+      description: ' Endpoint for looking up an individual market in a multivariate event collection. This endpoint must be hit at least once before trading or looking up a market.'
       operationId: CreateMarketInMultivariateEventCollection
       parameters:
         - description: Collection ticker
@@ -4202,19 +4202,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateMarketInMultivariateEventCollectionRequest
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateMarketInMultivariateEventCollectionResponse
-          description: ""
+          description: ''
       summary: Create Market In Multivariate Event Collection
       tags:
         - collection
   /multivariate_event_collections/{collection_ticker}/lookup:
     get:
-      description: " Endpoint for retrieving which markets in an event collection were recently looked up."
+      description: ' Endpoint for retrieving which markets in an event collection were recently looked up.'
       operationId: GetMultivariateEventCollectionLookupHistory
       parameters:
         - description: Collection ticker
@@ -4225,18 +4225,18 @@ paths:
             description: Collection ticker
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMultivariateEventCollectionLookupHistoryResponse
-          description: ""
+          description: ''
       summary: Get Multivariate Event Collection Lookup History
       tags:
         - collection
     put:
-      description: " Endpoint for looking up an individual market in a multivariate event collection. If CreateMarketInMultivariateEventCollection has never been hit with that variable combination before, this will return a 404."
+      description: ' Endpoint for looking up an individual market in a multivariate event collection. If CreateMarketInMultivariateEventCollection has never been hit with that variable combination before, this will return a 404.'
       operationId: LookupTickersForMarketInMultivariateEventCollection
       parameters:
         - description: Collection ticker
@@ -4254,34 +4254,34 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionRequest
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionResponse
-          description: ""
+          description: ''
       summary: Lookup Tickers For Market In Multivariate Event Collection
       tags:
         - collection
   /portfolio/balance:
     get:
-      description: " Endpoint for getting the balance of a member. The balance value is returned in cents."
+      description: ' Endpoint for getting the balance of a member. The balance value is returned in cents.'
       operationId: GetBalance
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetBalanceResponse
-          description: ""
+          description: ''
       summary: Get Balance
       tags:
         - portfolio
   /portfolio/fills:
     get:
-      description: " Endpoint for getting all fills for the member. A fill is when a trade you have is matched."
+      description: ' Endpoint for getting all fills for the member. A fill is when a trade you have is matched.'
       operationId: GetFills
       parameters:
         - description: Restricts the response to trades in a specific market.
@@ -4344,34 +4344,34 @@ paths:
               cent format (0.01).
             type: boolean
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetFillsResponse
-          description: ""
+          description: ''
       summary: Get Fills
       tags:
         - portfolio
   /portfolio/order_groups:
     get:
-      description: " Retrieves all order groups for the authenticated user."
+      description: ' Retrieves all order groups for the authenticated user.'
       operationId: GetOrderGroups
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrderGroupsResponse
-          description: ""
+          description: ''
       summary: Get Order Groups
       tags:
         - portfolio
   /portfolio/order_groups/create:
     post:
-      description: " Creates a new order group with a contracts limit. When the limit is hit, all orders in the group are cancelled and no new orders can be placed until reset."
+      description: ' Creates a new order group with a contracts limit. When the limit is hit, all orders in the group are cancelled and no new orders can be placed until reset.'
       operationId: CreateOrderGroup
       requestBody:
         content:
@@ -4381,19 +4381,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateOrderGroupRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateOrderGroupResponse
-          description: ""
+          description: ''
       summary: Create Order Group
       tags:
         - portfolio
   /portfolio/order_groups/{order_group_id}:
     delete:
-      description: " Deletes an order group and cancels all orders within it. This permanently removes the group."
+      description: ' Deletes an order group and cancels all orders within it. This permanently removes the group.'
       operationId: DeleteOrderGroup
       parameters:
         - description: Order group ID
@@ -4404,18 +4404,18 @@ paths:
             description: Order group ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.EmptyResponse
-          description: ""
+          description: ''
       summary: Delete Order Group
       tags:
         - portfolio
     get:
-      description: " Retrieves details for a single order group including all order IDs and auto-cancel status."
+      description: ' Retrieves details for a single order group including all order IDs and auto-cancel status.'
       operationId: GetOrderGroup
       parameters:
         - description: Order group ID
@@ -4426,19 +4426,19 @@ paths:
             description: Order group ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrderGroupResponse
-          description: ""
+          description: ''
       summary: Get Order Group
       tags:
         - portfolio
   /portfolio/order_groups/{order_group_id}/reset:
     put:
-      description: " Resets the order group's matched contracts counter to zero, allowing new orders to be placed again after the limit was hit."
+      description: ' Resets the order group''s matched contracts counter to zero, allowing new orders to be placed again after the limit was hit.'
       operationId: ResetOrderGroup
       parameters:
         - description: Order group ID
@@ -4449,19 +4449,19 @@ paths:
             description: Order group ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.EmptyResponse
-          description: ""
+          description: ''
       summary: Reset Order Group
       tags:
         - portfolio
   /portfolio/orders:
     get:
-      description: " Endpoint for getting all orders for the member."
+      description: ' Endpoint for getting all orders for the member.'
       operationId: GetOrders
       parameters:
         - description: Restricts the response to orders in a single market.
@@ -4532,18 +4532,18 @@ paths:
             format: int64
             type: integer
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrdersResponse
-          description: ""
+          description: ''
       summary: Get Orders
       tags:
         - portfolio
     post:
-      description: " Endpoint for submitting orders in a market."
+      description: ' Endpoint for submitting orders in a market.'
       operationId: CreateOrder
       requestBody:
         content:
@@ -4553,19 +4553,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateOrderRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CreateOrderResponse
-          description: ""
+          description: ''
       summary: Create Order
       tags:
         - portfolio
   /portfolio/orders/batched:
     delete:
-      description: " Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only."
+      description: ' Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.'
       operationId: BatchCancelOrders
       requestBody:
         content:
@@ -4575,18 +4575,18 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.BatchCancelOrdersRequest
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.BatchCancelOrdersResponse
-          description: ""
+          description: ''
       summary: Batch Cancel Orders
       tags:
         - portfolio
     post:
-      description: " Endpoint for submitting a batch of orders. Each order in the batch is counted against the total rate limit for order operations. Consequently, the size of the batch is capped by the current per-second rate-limit configuration applicable to the user. At the moment of writing, the limit is 20 orders per batch. Available to members with advanced access only."
+      description: ' Endpoint for submitting a batch of orders. Each order in the batch is counted against the total rate limit for order operations. Consequently, the size of the batch is capped by the current per-second rate-limit configuration applicable to the user. At the moment of writing, the limit is 20 orders per batch. Available to members with advanced access only.'
       operationId: BatchCreateOrders
       requestBody:
         content:
@@ -4596,19 +4596,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.BatchCreateOrdersRequest
         required: true
       responses:
-        "201":
+        '201':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.BatchCreateOrdersResponse
-          description: ""
+          description: ''
       summary: Batch Create Orders
       tags:
         - portfolio
   /portfolio/orders/queue_positions:
     get:
-      description: " Endpoint for getting queue positions for all resting orders. Queue position represents the number of contracts that need to be matched before an order receives a partial or full match, determined using price-time priority."
+      description: ' Endpoint for getting queue positions for all resting orders. Queue position represents the number of contracts that need to be matched before an order receives a partial or full match, determined using price-time priority.'
       operationId: GetOrderQueuePositions
       parameters:
         - description: Comma-separated list of market tickers to filter by
@@ -4624,19 +4624,19 @@ paths:
             description: Event ticker to filter by
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrderQueuePositionsResponse
-          description: ""
+          description: ''
       summary: Get Queue Positions for Orders
       tags:
         - portfolio
   /portfolio/orders/{order_id}:
     delete:
-      description: " Endpoint for canceling orders. The value for the orderId should match the id field of the order you want to decrease. Commonly, DELETE-type endpoints return 204 status with no body content on success. But we can't completely delete the order, as it may be partially filled already. Instead, the DeleteOrder endpoint reduce the order completely, essentially zeroing the remaining resting contracts on it. The zeroed order is returned on the response payload as a form of validation for the client."
+      description: ' Endpoint for canceling orders. The value for the orderId should match the id field of the order you want to decrease. Commonly, DELETE-type endpoints return 204 status with no body content on success. But we can''t completely delete the order, as it may be partially filled already. Instead, the DeleteOrder endpoint reduce the order completely, essentially zeroing the remaining resting contracts on it. The zeroed order is returned on the response payload as a form of validation for the client.'
       operationId: CancelOrder
       parameters:
         - description: Order ID
@@ -4647,18 +4647,18 @@ paths:
             description: Order ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.CancelOrderResponse
-          description: ""
+          description: ''
       summary: Cancel Order
       tags:
         - portfolio
     get:
-      description: " Endpoint for getting a single order."
+      description: ' Endpoint for getting a single order.'
       operationId: GetOrder
       parameters:
         - description: Order ID
@@ -4669,19 +4669,19 @@ paths:
             description: Order ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrderResponse
-          description: ""
+          description: ''
       summary: Get Order
       tags:
         - portfolio
   /portfolio/orders/{order_id}/amend:
     post:
-      description: " Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max fillable contracts is `remaining_count` + `fill_count`."
+      description: ' Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max fillable contracts is `remaining_count` + `fill_count`.'
       operationId: AmendOrder
       parameters:
         - description: Order ID
@@ -4699,19 +4699,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.AmendOrderRequest
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.AmendOrderResponse
-          description: ""
+          description: ''
       summary: Amend Order
       tags:
         - portfolio
   /portfolio/orders/{order_id}/decrease:
     post:
-      description: " Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit available on order quantity. Cancelling an order is equivalent to decreasing an order amount to zero."
+      description: ' Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit available on order quantity. Cancelling an order is equivalent to decreasing an order amount to zero.'
       operationId: DecreaseOrder
       parameters:
         - description: Order ID
@@ -4729,19 +4729,19 @@ paths:
                 #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.DecreaseOrderRequest
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.DecreaseOrderResponse
-          description: ""
+          description: ''
       summary: Decrease Order
       tags:
         - portfolio
   /portfolio/orders/{order_id}/queue_position:
     get:
-      description: " Endpoint for getting an order's queue position in the order book. This represents the amount of orders that need to be matched before this order receives a partial or full match. Queue position is determined using a price-time priority."
+      description: ' Endpoint for getting an order''s queue position in the order book. This represents the amount of orders that need to be matched before this order receives a partial or full match. Queue position is determined using a price-time priority.'
       operationId: GetOrderQueuePosition
       parameters:
         - description: Order ID
@@ -4752,19 +4752,19 @@ paths:
             description: Order ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetOrderQueuePositionResponse
-          description: ""
+          description: ''
       summary: Get Queue Position for Order
       tags:
         - portfolio
   /portfolio/positions:
     get:
-      description: " Endpoint for getting all market positions for the member."
+      description: ' Endpoint for getting all market positions for the member.'
       operationId: GetPositions
       parameters:
         - description: >-
@@ -4821,19 +4821,19 @@ paths:
             description: Event ticker of desired positions.
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetPositionsResponse
-          description: ""
+          description: ''
       summary: Get Positions
       tags:
         - portfolio
   /portfolio/settlements:
     get:
-      description: " Endpoint for getting the member's settlements historical track."
+      description: ' Endpoint for getting the member''s settlements historical track.'
       operationId: GetSettlements
       parameters:
         - description: >-
@@ -4886,28 +4886,28 @@ paths:
               get the next page.
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetSettlementsResponse
-          description: ""
+          description: ''
       summary: Get Settlements
       tags:
         - portfolio
   /portfolio/summary/total_resting_order_value:
     get:
-      description: " Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended for use by FCM members (rare). Note: If you're uncertain about this endpoint, it likely does not apply to you."
+      description: ' Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended for use by FCM members (rare). Note: If you''re uncertain about this endpoint, it likely does not apply to you.'
       operationId: GetPortfolioRestingOrderTotalValue
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetUserRestingOrderTotalValueResponse
-          description: ""
+          description: ''
       summary: Get Portfolio Resting Order Total Value
       tags:
         - portfolio
@@ -4936,13 +4936,13 @@ paths:
               series.
             type: boolean
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetSeriesListResponse
-          description: ""
+          description: ''
       summary: Get Series List
       tags:
         - market
@@ -4959,19 +4959,19 @@ paths:
             description: Series ticker - unique identifier for the specific series
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetSeriesResponse
-          description: ""
+          description: ''
       summary: Get Series
       tags:
         - market
   /series/{series_ticker}/markets/{ticker}/candlesticks:
     get:
-      description: " Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC (Open, High, Low, Close) price data aggregated over specific time intervals. Each candlestick represents the price movement during that period, including opening and closing prices, as well as the highest and lowest prices reached.  The period_interval determines the time length of each candlestick and must be one of: 1 (1 minute), 60 (1 hour), or 1440 (1 day). The start_ts and end_ts parameters define the time range for the data."
+      description: ' Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC (Open, High, Low, Close) price data aggregated over specific time intervals. Each candlestick represents the price movement during that period, including opening and closing prices, as well as the highest and lowest prices reached.  The period_interval determines the time length of each candlestick and must be one of: 1 (1 minute), 60 (1 hour), or 1440 (1 day). The start_ts and end_ts parameters define the time range for the data.'
       operationId: GetMarketCandlesticks
       parameters:
         - description: Series ticker - the series that contains the target market
@@ -5025,19 +5025,19 @@ paths:
             format: int64
             type: integer
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetMarketCandlesticksResponse
-          description: ""
+          description: ''
       summary: Get Market Candlesticks
       tags:
         - market
   /structured_targets:
     get:
-      description: " Endpoint for getting data about structured targets."
+      description: ' Endpoint for getting data about structured targets.'
       operationId: GetStructuredTargets
       parameters:
         - description: Type of structured target
@@ -5052,11 +5052,11 @@ paths:
           schema:
             description: Competition filter
             type: string
-        - description: "Page size (min: 1, max: 2000)"
+        - description: 'Page size (min: 1, max: 2000)'
           in: query
           name: page_size
           schema:
-            description: "Page size (min: 1, max: 2000)"
+            description: 'Page size (min: 1, max: 2000)'
             format: int64
             type: integer
         - description: Pagination cursor
@@ -5066,19 +5066,19 @@ paths:
             description: Pagination cursor
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetStructuredTargetsResponse
-          description: ""
+          description: ''
       summary: Get Structured Targets
       tags:
         - structured_target
   /structured_targets/{structured_target_id}:
     get:
-      description: " Endpoint for getting data about a specific structured target by its ID."
+      description: ' Endpoint for getting data about a specific structured target by its ID.'
       operationId: GetStructuredTarget
       parameters:
         - description: Structured Target ID
@@ -5089,13 +5089,16 @@ paths:
             description: Structured Target ID
             type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 $ref: >-
                   #/components/schemas/github.com.Kalshi.exchange-infra.svc-api2.model.GetStructuredTargetResponse
-          description: ""
+          description: ''
       summary: Get Structured Target
       tags:
         - structured_target
+servers:
+  - description: ' Production Server'
+    url: https://api.elections.kalshi.com/trade-api/v2

@@ -12,7 +12,9 @@ if TYPE_CHECKING:
     )
 
 
-T = TypeVar("T", bound="GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest")
+T = TypeVar(
+    "T", bound="GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest"
+)
 
 
 @_attrs_define
@@ -26,7 +28,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivaria
 
     selected_markets: Union[
         Unset,
-        list["GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem"],
+        list[
+            "GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem"
+        ],
     ] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -56,10 +60,8 @@ class GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivaria
         selected_markets = []
         _selected_markets = d.pop("selected_markets", UNSET)
         for selected_markets_item_data in _selected_markets or []:
-            selected_markets_item = (
-                GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem.from_dict(
-                    selected_markets_item_data
-                )
+            selected_markets_item = GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem.from_dict(
+                selected_markets_item_data
             )
 
             selected_markets.append(selected_markets_item)

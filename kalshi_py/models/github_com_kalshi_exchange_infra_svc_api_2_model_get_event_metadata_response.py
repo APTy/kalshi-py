@@ -25,7 +25,9 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse:
     """
 
     image_url: Union[Unset, str] = UNSET
-    settlement_sources: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem"]] = UNSET
+    settlement_sources: Union[
+        Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem"]
+    ] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,8 +62,10 @@ class GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse:
         settlement_sources = []
         _settlement_sources = d.pop("settlement_sources", UNSET)
         for settlement_sources_item_data in _settlement_sources or []:
-            settlement_sources_item = GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem.from_dict(
-                settlement_sources_item_data
+            settlement_sources_item = (
+                GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem.from_dict(
+                    settlement_sources_item_data
+                )
             )
 
             settlement_sources.append(settlement_sources_item)
