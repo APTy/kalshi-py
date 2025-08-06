@@ -13,19 +13,17 @@ from kalshi_py.auth import KalshiAuth
 
 def create_test_private_key():
     """Create a test private key for testing purposes."""
-    private_key = rsa.generate_private_key(
-        public_exponent=65537,
-        key_size=2048,
-        backend=default_backend()
-    )
+    private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
 
     # Create temporary file
-    temp_file = tempfile.NamedTemporaryFile(mode='wb', delete=False, suffix='.pem')
-    temp_file.write(private_key.private_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption()
-    ))
+    temp_file = tempfile.NamedTemporaryFile(mode="wb", delete=False, suffix=".pem")
+    temp_file.write(
+        private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+    )
     temp_file.close()
 
     return temp_file.name
@@ -33,17 +31,13 @@ def create_test_private_key():
 
 def get_test_private_key_pem():
     """Create a test private key and return its PEM string."""
-    private_key = rsa.generate_private_key(
-        public_exponent=65537,
-        key_size=2048,
-        backend=default_backend()
-    )
+    private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
 
     return private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption()
-    ).decode('utf-8')
+        encryption_algorithm=serialization.NoEncryption(),
+    ).decode("utf-8")
 
 
 def test_auth_creation():
@@ -55,10 +49,7 @@ def test_auth_creation():
 
     try:
         # Test with explicit parameters
-        client = KalshiAuthenticatedClient(
-            access_key_id="test-key-id",
-            private_key_pem=private_key_pem
-        )
+        client = KalshiAuthenticatedClient(access_key_id="test-key-id", private_key_pem=private_key_pem)
 
         assert isinstance(client, KalshiAuthenticatedClient)
         assert client.access_key_id == "test-key-id"
@@ -108,6 +99,7 @@ def test_environment_variables():
         os.environ["KALSHI_PY_PRIVATE_KEY_PEM"] = private_key_pem
 
         from kalshi_py import create_client
+
         client = create_client()
 
         assert client.access_key_id == "env-key-id"
@@ -144,7 +136,7 @@ def main():
 
     print("=== Test Results ===")
     for i, result in enumerate(results):
-        test_name = tests[i].__name__.replace('_', ' ').title()
+        test_name = tests[i].__name__.replace("_", " ").title()
         print(f"{test_name}: {'✓ PASS' if result else '✗ FAIL'}")
 
     if all(results):

@@ -18,7 +18,7 @@ def create_client(
     access_key_id: str | None = None,
     private_key_path: str | None = None,
     private_key_data: str | None = None,
-    **kwargs
+    **kwargs,
 ) -> KalshiAuthenticatedClient:
     """Create an authenticated Kalshi client with RSA-PSS signature authentication.
 
@@ -74,11 +74,10 @@ def create_client(
         final_private_key_data = os.getenv("KALSHI_PY_PRIVATE_KEY_PEM")
 
     if not final_private_key_data:
-        raise ValueError("private_key_path, private_key_data, or KALSHI_PY_PRIVATE_KEY_PEM environment variable must be provided")
+        raise ValueError(
+            "private_key_path, private_key_data, or KALSHI_PY_PRIVATE_KEY_PEM environment variable must be provided"
+        )
 
     return KalshiAuthenticatedClient(
-        base_url=base_url,
-        access_key_id=final_access_key_id,
-        private_key_pem=final_private_key_data,
-        **kwargs
+        base_url=base_url, access_key_id=final_access_key_id, private_key_pem=final_private_key_data, **kwargs
     )

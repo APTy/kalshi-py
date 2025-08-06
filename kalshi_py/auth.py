@@ -16,11 +16,7 @@ from .client import AuthenticatedClient
 def load_private_key_from_file(file_path: str) -> RSAPrivateKey:
     """Load RSA private key from PEM file."""
     with open(file_path, "rb") as key_file:
-        private_key = serialization.load_pem_private_key(
-            key_file.read(),
-            password=None,
-            backend=default_backend()
-        )
+        private_key = serialization.load_pem_private_key(key_file.read(), password=None, backend=default_backend())
         if not isinstance(private_key, RSAPrivateKey):
             raise ValueError("Private key must be an RSA key")
         return private_key
@@ -29,9 +25,7 @@ def load_private_key_from_file(file_path: str) -> RSAPrivateKey:
 def load_private_key_from_string(private_key_pem: str) -> RSAPrivateKey:
     """Load RSA private key from PEM string."""
     private_key = serialization.load_pem_private_key(
-        private_key_pem.encode('utf-8'),
-        password=None,
-        backend=default_backend()
+        private_key_pem.encode("utf-8"), password=None, backend=default_backend()
     )
     if not isinstance(private_key, RSAPrivateKey):
         raise ValueError("Private key must be an RSA key")
@@ -40,18 +34,15 @@ def load_private_key_from_string(private_key_pem: str) -> RSAPrivateKey:
 
 def sign_pss_text(private_key: rsa.RSAPrivateKey, text: str) -> str:
     """Sign text using RSA-PSS with SHA256."""
-    message = text.encode('utf-8')
+    message = text.encode("utf-8")
 
     try:
         signature = private_key.sign(
             message,
-            padding.PSS(
-                mgf=padding.MGF1(hashes.SHA256()),
-                salt_length=padding.PSS.DIGEST_LENGTH
-            ),
-            hashes.SHA256()
+            padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.DIGEST_LENGTH),
+            hashes.SHA256(),
         )
-        return base64.b64encode(signature).decode('utf-8')
+        return base64.b64encode(signature).decode("utf-8")
     except InvalidSignature as e:
         raise ValueError("RSA sign PSS failed") from e
 
@@ -78,9 +69,9 @@ class KalshiAuth:
         signature = sign_pss_text(self.private_key, msg_string)
 
         return {
-            'KALSHI-ACCESS-KEY': self.access_key_id,
-            'KALSHI-ACCESS-SIGNATURE': signature,
-            'KALSHI-ACCESS-TIMESTAMP': timestamp_str
+            "KALSHI-ACCESS-KEY": self.access_key_id,
+            "KALSHI-ACCESS-SIGNATURE": signature,
+            "KALSHI-ACCESS-TIMESTAMP": timestamp_str,
         }
 
 
@@ -95,10 +86,10 @@ class AuthenticatedHTTPXClient(httpx.Client):
         """Override request to add authentication headers."""
         auth_headers = self.kalshi_auth.get_auth_headers(method, str(url))
 
-        if 'headers' in kwargs:
-            kwargs['headers'].update(auth_headers)
+        if "headers" in kwargs:
+            kwargs["headers"].update(auth_headers)
         else:
-            kwargs['headers'] = auth_headers
+            kwargs["headers"] = auth_headers
 
         return super().request(method, url, **kwargs)
 
@@ -114,10 +105,10 @@ class AuthenticatedAsyncHTTPXClient(httpx.AsyncClient):
         """Override request to add authentication headers."""
         auth_headers = self.kalshi_auth.get_auth_headers(method, str(url))
 
-        if 'headers' in kwargs:
-            kwargs['headers'].update(auth_headers)
+        if "headers" in kwargs:
+            kwargs["headers"].update(auth_headers)
         else:
-            kwargs['headers'] = auth_headers
+            kwargs["headers"] = auth_headers
 
         return await super().request(method, url, **kwargs)
 
@@ -130,7 +121,7 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         access_key_id: str,
         private_key_pem: str,
         base_url: str = "https://api.elections.kalshi.com/trade-api/v2",
-        **kwargs
+        **kwargs,
     ):
         """Initialize authenticated client.
 
@@ -149,7 +140,7 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         super().__init__(
             base_url=base_url,
             token="dummy",  # Will be overridden by our custom auth
-            **kwargs
+            **kwargs,
         )
 
         # Set custom httpx clients with authentication

@@ -97,10 +97,7 @@ def demo_with_file_path():
     private_key_path = "/path/to/your/private-key.pem"
 
     try:
-        client = create_client(
-            access_key_id=access_key_id,
-            private_key_path=private_key_path
-        )
+        client = create_client(access_key_id=access_key_id, private_key_path=private_key_path)
 
         with client as client:
             balance = get_balance.sync(client=client)
@@ -123,10 +120,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...
 -----END PRIVATE KEY-----"""
 
     try:
-        client = create_client(
-            access_key_id=access_key_id,
-            private_key_data=private_key_pem
-        )
+        client = create_client(access_key_id=access_key_id, private_key_data=private_key_pem)
 
         with client as client:
             balance = get_balance.sync(client=client)
@@ -150,10 +144,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...
         # Using KalshiAuthenticatedClient directly
         from kalshi_py import KalshiAuthenticatedClient
 
-        client = KalshiAuthenticatedClient(
-            access_key_id=access_key_id,
-            private_key_pem=private_key_pem
-        )
+        client = KalshiAuthenticatedClient(access_key_id=access_key_id, private_key_pem=private_key_pem)
 
         with client as client:
             balance = get_balance.sync(client=client)
@@ -169,10 +160,7 @@ def main():
     print("=" * 40)
 
     # Check if credentials are available
-    has_env_creds = (
-        os.getenv("KALSHI_API_KEY_ID") and
-        os.getenv("KALSHI_PY_PRIVATE_KEY_PEM")
-    )
+    has_env_creds = os.getenv("KALSHI_API_KEY_ID") and os.getenv("KALSHI_PY_PRIVATE_KEY_PEM")
 
     if has_env_creds:
         print("✓ Environment credentials found")
