@@ -17,18 +17,34 @@ echo ""
 echo "📦 Ensuring openapi-python-client is installed..."
 uv add openapi-python-client --dev
 
-if [ -d "kalshi_py" ]; then
-    echo ""
-    echo "💾 Backing up existing kalshi_py directory..."
-    if [ -d "kalshi_py_backup" ]; then
-        rm -rf kalshi_py_backup
-    fi
-    cp -r kalshi_py kalshi_py_backup
+echo ""
+echo "💾 Backing up critical custom files..."
+cp pyproject.toml pyproject.toml.backup
+cp uv.lock uv.lock.backup
+cp README.md README.md.backup
+if [ -f "kalshi_py/__init__.py" ]; then
+    cp kalshi_py/__init__.py kalshi_py/__init__.py.backup
 fi
 
 echo ""
 echo "🔨 Regenerating client library..."
 uv run openapi-python-client generate --path openapi.yaml --meta uv --output-path . --overwrite --config openapi-config.yaml
+
+echo ""
+echo "🔄 Restoring custom files..."
+cp pyproject.toml.backup pyproject.toml
+cp uv.lock.backup uv.lock
+cp README.md.backup README.md
+if [ -f "kalshi_py/__init__.py.backup" ]; then
+    cp kalshi_py/__init__.py.backup kalshi_py/__init__.py
+fi
+
+echo ""
+echo "🧹 Cleaning up backup files..."
+rm pyproject.toml.backup uv.lock.backup README.md.backup
+if [ -f "kalshi_py/__init__.py.backup" ]; then
+    rm kalshi_py/__init__.py.backup
+fi
 
 echo ""
 echo "🎨 Formatting generated code..."
@@ -40,12 +56,6 @@ if uv run ruff check kalshi_py/; then
     echo "✅ No linting issues found!"
 else
     echo "⚠️  Linting issues found. You may want to address these manually."
-fi
-
-if [ -d "kalshi_py_backup" ] && [ -d "kalshi_py" ]; then
-    echo ""
-    echo "🧹 Cleaning up backup..."
-    rm -rf kalshi_py_backup
 fi
 
 echo ""
