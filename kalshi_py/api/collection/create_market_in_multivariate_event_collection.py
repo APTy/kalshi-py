@@ -5,11 +5,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_create_market_in_multivariate_event_collection_request import (
-    SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
+from ...models.model_create_market_in_multivariate_event_collection_request import (
+    ModelCreateMarketInMultivariateEventCollectionRequest,
 )
-from ...models.svc_api_2_model_create_market_in_multivariate_event_collection_response import (
-    SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse,
+from ...models.model_create_market_in_multivariate_event_collection_response import (
+    ModelCreateMarketInMultivariateEventCollectionResponse,
 )
 from ...types import Response
 
@@ -17,7 +17,7 @@ from ...types import Response
 def _get_kwargs(
     collection_ticker: str,
     *,
-    body: SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
+    body: ModelCreateMarketInMultivariateEventCollectionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse.from_dict(response.json())
+        response_200 = ModelCreateMarketInMultivariateEventCollectionResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -49,7 +49,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,8 +62,8 @@ def sync_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Response[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+    body: ModelCreateMarketInMultivariateEventCollectionRequest,
+) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
@@ -71,14 +71,14 @@ def sync_detailed(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest):
+        body (ModelCreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]
+        Response[ModelCreateMarketInMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,8 +97,8 @@ def sync(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Optional[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+    body: ModelCreateMarketInMultivariateEventCollectionRequest,
+) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
@@ -106,14 +106,14 @@ def sync(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest):
+        body (ModelCreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse
+        ModelCreateMarketInMultivariateEventCollectionResponse
     """
 
     return sync_detailed(
@@ -127,8 +127,8 @@ async def asyncio_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Response[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+    body: ModelCreateMarketInMultivariateEventCollectionRequest,
+) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
@@ -136,14 +136,14 @@ async def asyncio_detailed(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest):
+        body (ModelCreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]
+        Response[ModelCreateMarketInMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -160,8 +160,8 @@ async def asyncio(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Optional[SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse]:
+    body: ModelCreateMarketInMultivariateEventCollectionRequest,
+) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
@@ -169,14 +169,14 @@ async def asyncio(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest):
+        body (ModelCreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse
+        ModelCreateMarketInMultivariateEventCollectionResponse
     """
 
     return (

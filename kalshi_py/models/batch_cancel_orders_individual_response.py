@@ -7,8 +7,10 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.common_api_json_error import CommonApiJSONError
-    from ..models.svc_api_2_model_order import SvcApi2ModelOrder
+    from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
+        GithubComKalshiExchangeInfraCommonApiJSONError,
+    )
+    from ..models.model_order import ModelOrder
 
 
 T = TypeVar("T", bound="BatchCancelOrdersIndividualResponse")
@@ -18,14 +20,14 @@ T = TypeVar("T", bound="BatchCancelOrdersIndividualResponse")
 class BatchCancelOrdersIndividualResponse:
     """
     Attributes:
-        error (Union[Unset, CommonApiJSONError]):
-        order (Union[Unset, SvcApi2ModelOrder]):
+        error (Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]):
+        order (Union[Unset, ModelOrder]):
         order_id (Union[Unset, str]):
         reduced_by (Union[Unset, int]): The number of contracts that were successfully canceled from this order.
     """
 
-    error: Union[Unset, "CommonApiJSONError"] = UNSET
-    order: Union[Unset, "SvcApi2ModelOrder"] = UNSET
+    error: Union[Unset, "GithubComKalshiExchangeInfraCommonApiJSONError"] = UNSET
+    order: Union[Unset, "ModelOrder"] = UNSET
     order_id: Union[Unset, str] = UNSET
     reduced_by: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -59,23 +61,25 @@ class BatchCancelOrdersIndividualResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.common_api_json_error import CommonApiJSONError
-        from ..models.svc_api_2_model_order import SvcApi2ModelOrder
+        from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
+            GithubComKalshiExchangeInfraCommonApiJSONError,
+        )
+        from ..models.model_order import ModelOrder
 
         d = dict(src_dict)
         _error = d.pop("error", UNSET)
-        error: Union[Unset, CommonApiJSONError]
+        error: Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]
         if isinstance(_error, Unset):
             error = UNSET
         else:
-            error = CommonApiJSONError.from_dict(_error)
+            error = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(_error)
 
         _order = d.pop("order", UNSET)
-        order: Union[Unset, SvcApi2ModelOrder]
+        order: Union[Unset, ModelOrder]
         if isinstance(_order, Unset):
             order = UNSET
         else:
-            order = SvcApi2ModelOrder.from_dict(_order)
+            order = ModelOrder.from_dict(_order)
 
         order_id = d.pop("order_id", UNSET)
 

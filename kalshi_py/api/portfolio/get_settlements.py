@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_settlements_response import SvcApi2ModelGetSettlementsResponse
+from ...models.model_get_settlements_response import ModelGetSettlementsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -45,9 +45,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetSettlementsResponse]:
+) -> Optional[ModelGetSettlementsResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetSettlementsResponse.from_dict(response.json())
+        response_200 = ModelGetSettlementsResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -58,7 +58,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetSettlementsResponse]:
+) -> Response[ModelGetSettlementsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +76,7 @@ def sync_detailed(
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetSettlementsResponse]:
+) -> Response[ModelGetSettlementsResponse]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
@@ -96,7 +96,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetSettlementsResponse]
+        Response[ModelGetSettlementsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -124,7 +124,7 @@ def sync(
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetSettlementsResponse]:
+) -> Optional[ModelGetSettlementsResponse]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
@@ -144,7 +144,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetSettlementsResponse
+        ModelGetSettlementsResponse
     """
 
     return sync_detailed(
@@ -167,7 +167,7 @@ async def asyncio_detailed(
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetSettlementsResponse]:
+) -> Response[ModelGetSettlementsResponse]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
@@ -187,7 +187,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetSettlementsResponse]
+        Response[ModelGetSettlementsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -213,7 +213,7 @@ async def asyncio(
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetSettlementsResponse]:
+) -> Optional[ModelGetSettlementsResponse]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
@@ -233,7 +233,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetSettlementsResponse
+        ModelGetSettlementsResponse
     """
 
     return (

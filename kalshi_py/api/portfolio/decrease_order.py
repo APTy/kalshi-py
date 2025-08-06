@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_decrease_order_request import SvcApi2ModelDecreaseOrderRequest
-from ...models.svc_api_2_model_decrease_order_response import SvcApi2ModelDecreaseOrderResponse
+from ...models.model_decrease_order_request import ModelDecreaseOrderRequest
+from ...models.model_decrease_order_response import ModelDecreaseOrderResponse
 from ...types import Response
 
 
 def _get_kwargs(
     order_id: str,
     *,
-    body: SvcApi2ModelDecreaseOrderRequest,
+    body: ModelDecreaseOrderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,9 +32,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelDecreaseOrderResponse]:
+) -> Optional[ModelDecreaseOrderResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelDecreaseOrderResponse.from_dict(response.json())
+        response_200 = ModelDecreaseOrderResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -45,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelDecreaseOrderResponse]:
+) -> Response[ModelDecreaseOrderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,8 +58,8 @@ def sync_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelDecreaseOrderRequest,
-) -> Response[SvcApi2ModelDecreaseOrderResponse]:
+    body: ModelDecreaseOrderRequest,
+) -> Response[ModelDecreaseOrderResponse]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -68,14 +68,14 @@ def sync_detailed(
 
     Args:
         order_id (str): Order ID
-        body (SvcApi2ModelDecreaseOrderRequest):
+        body (ModelDecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelDecreaseOrderResponse]
+        Response[ModelDecreaseOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,8 +94,8 @@ def sync(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelDecreaseOrderRequest,
-) -> Optional[SvcApi2ModelDecreaseOrderResponse]:
+    body: ModelDecreaseOrderRequest,
+) -> Optional[ModelDecreaseOrderResponse]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -104,14 +104,14 @@ def sync(
 
     Args:
         order_id (str): Order ID
-        body (SvcApi2ModelDecreaseOrderRequest):
+        body (ModelDecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelDecreaseOrderResponse
+        ModelDecreaseOrderResponse
     """
 
     return sync_detailed(
@@ -125,8 +125,8 @@ async def asyncio_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelDecreaseOrderRequest,
-) -> Response[SvcApi2ModelDecreaseOrderResponse]:
+    body: ModelDecreaseOrderRequest,
+) -> Response[ModelDecreaseOrderResponse]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -135,14 +135,14 @@ async def asyncio_detailed(
 
     Args:
         order_id (str): Order ID
-        body (SvcApi2ModelDecreaseOrderRequest):
+        body (ModelDecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelDecreaseOrderResponse]
+        Response[ModelDecreaseOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -159,8 +159,8 @@ async def asyncio(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelDecreaseOrderRequest,
-) -> Optional[SvcApi2ModelDecreaseOrderResponse]:
+    body: ModelDecreaseOrderRequest,
+) -> Optional[ModelDecreaseOrderResponse]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -169,14 +169,14 @@ async def asyncio(
 
     Args:
         order_id (str): Order ID
-        body (SvcApi2ModelDecreaseOrderRequest):
+        body (ModelDecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelDecreaseOrderResponse
+        ModelDecreaseOrderResponse
     """
 
     return (

@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_create_quote_request import SvcApi2ModelCreateQuoteRequest
-from ...models.svc_api_2_model_create_quote_response import SvcApi2ModelCreateQuoteResponse
+from ...models.model_create_quote_request import ModelCreateQuoteRequest
+from ...models.model_create_quote_response import ModelCreateQuoteResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SvcApi2ModelCreateQuoteRequest,
+    body: ModelCreateQuoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelCreateQuoteResponse]:
+) -> Optional[ModelCreateQuoteResponse]:
     if response.status_code == 201:
-        response_201 = SvcApi2ModelCreateQuoteResponse.from_dict(response.json())
+        response_201 = ModelCreateQuoteResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -44,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelCreateQuoteResponse]:
+) -> Response[ModelCreateQuoteResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,21 +56,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateQuoteRequest,
-) -> Response[SvcApi2ModelCreateQuoteResponse]:
+    body: ModelCreateQuoteRequest,
+) -> Response[ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (SvcApi2ModelCreateQuoteRequest):
+        body (ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateQuoteResponse]
+        Response[ModelCreateQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,21 +87,21 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateQuoteRequest,
-) -> Optional[SvcApi2ModelCreateQuoteResponse]:
+    body: ModelCreateQuoteRequest,
+) -> Optional[ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (SvcApi2ModelCreateQuoteRequest):
+        body (ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateQuoteResponse
+        ModelCreateQuoteResponse
     """
 
     return sync_detailed(
@@ -113,21 +113,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateQuoteRequest,
-) -> Response[SvcApi2ModelCreateQuoteResponse]:
+    body: ModelCreateQuoteRequest,
+) -> Response[ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (SvcApi2ModelCreateQuoteRequest):
+        body (ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateQuoteResponse]
+        Response[ModelCreateQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,21 +142,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateQuoteRequest,
-) -> Optional[SvcApi2ModelCreateQuoteResponse]:
+    body: ModelCreateQuoteRequest,
+) -> Optional[ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (SvcApi2ModelCreateQuoteRequest):
+        body (ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateQuoteResponse
+        ModelCreateQuoteResponse
     """
 
     return (

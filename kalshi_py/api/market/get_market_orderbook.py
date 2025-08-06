@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_market_orderbook_response import SvcApi2ModelGetMarketOrderbookResponse
+from ...models.model_get_market_orderbook_response import ModelGetMarketOrderbookResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Optional[ModelGetMarketOrderbookResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetMarketOrderbookResponse.from_dict(response.json())
+        response_200 = ModelGetMarketOrderbookResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -44,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Response[ModelGetMarketOrderbookResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,7 +58,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     depth: Union[Unset, int] = UNSET,
-) -> Response[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Response[ModelGetMarketOrderbookResponse]:
     """Get Market Order Book
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
@@ -78,7 +78,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetMarketOrderbookResponse]
+        Response[ModelGetMarketOrderbookResponse]
     """
 
     kwargs = _get_kwargs(
@@ -98,7 +98,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     depth: Union[Unset, int] = UNSET,
-) -> Optional[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Optional[ModelGetMarketOrderbookResponse]:
     """Get Market Order Book
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
@@ -118,7 +118,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetMarketOrderbookResponse
+        ModelGetMarketOrderbookResponse
     """
 
     return sync_detailed(
@@ -133,7 +133,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     depth: Union[Unset, int] = UNSET,
-) -> Response[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Response[ModelGetMarketOrderbookResponse]:
     """Get Market Order Book
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
@@ -153,7 +153,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetMarketOrderbookResponse]
+        Response[ModelGetMarketOrderbookResponse]
     """
 
     kwargs = _get_kwargs(
@@ -171,7 +171,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     depth: Union[Unset, int] = UNSET,
-) -> Optional[SvcApi2ModelGetMarketOrderbookResponse]:
+) -> Optional[ModelGetMarketOrderbookResponse]:
     """Get Market Order Book
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
@@ -191,7 +191,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetMarketOrderbookResponse
+        ModelGetMarketOrderbookResponse
     """
 
     return (

@@ -4,9 +4,9 @@ This page documents all the data models used in the Kalshi Python client.
 
 ## Core Models
 
-### CommonExchangeMetadataDailySchedule
+### GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule
 
-::: kalshi_py.models.common_exchange_metadata_daily_schedule.CommonExchangeMetadataDailySchedule
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_daily_schedule.GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule
     handler: python
     options:
       show_source: true
@@ -15,9 +15,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonExchangeMetadataSchedule
+### GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule
 
-::: kalshi_py.models.common_exchange_metadata_schedule.CommonExchangeMetadataSchedule
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_schedule.GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule
     handler: python
     options:
       show_source: true
@@ -26,9 +26,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonExchangeMetadataScheduleMaintenanceWindowsItem
+### GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem
 
-::: kalshi_py.models.common_exchange_metadata_schedule_maintenance_windows_item.CommonExchangeMetadataScheduleMaintenanceWindowsItem
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_maintenance_windows_item.GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem
     handler: python
     options:
       show_source: true
@@ -37,9 +37,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonExchangeMetadataScheduleStandardHoursItem
+### GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem
 
-::: kalshi_py.models.common_exchange_metadata_schedule_standard_hours_item.CommonExchangeMetadataScheduleStandardHoursItem
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_standard_hours_item.GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem
     handler: python
     options:
       show_source: true
@@ -48,9 +48,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonExchangeMetadataScheduleStandardHoursItemMondayItem
+### GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem
 
-::: kalshi_py.models.common_exchange_metadata_schedule_standard_hours_item_monday_item.CommonExchangeMetadataScheduleStandardHoursItemMondayItem
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_standard_hours_item_monday_item.GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem
     handler: python
     options:
       show_source: true
@@ -59,9 +59,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonUnimodelProductMetadata
+### GithubComKalshiExchangeInfraCommonUnimodelProductMetadata
 
-::: kalshi_py.models.common_unimodel_product_metadata.CommonUnimodelProductMetadata
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_unimodel_product_metadata.GithubComKalshiExchangeInfraCommonUnimodelProductMetadata
     handler: python
     options:
       show_source: true
@@ -70,9 +70,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelEmptyResponse
+### ModelEmptyResponse
 
-::: kalshi_py.models.svc_api_2_model_empty_response.SvcApi2ModelEmptyResponse
+::: kalshi_py.models.model_empty_response.ModelEmptyResponse
     handler: python
     options:
       show_source: true
@@ -81,9 +81,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetExchangeAnnouncementsResponse
+### ModelGetExchangeAnnouncementsResponse
 
-::: kalshi_py.models.svc_api_2_model_get_exchange_announcements_response.SvcApi2ModelGetExchangeAnnouncementsResponse
+::: kalshi_py.models.model_get_exchange_announcements_response.ModelGetExchangeAnnouncementsResponse
     handler: python
     options:
       show_source: true
@@ -92,9 +92,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem
+### ModelGetExchangeAnnouncementsResponseAnnouncementsItem
 
-::: kalshi_py.models.svc_api_2_model_get_exchange_announcements_response_announcements_item.SvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem
+::: kalshi_py.models.model_get_exchange_announcements_response_announcements_item.ModelGetExchangeAnnouncementsResponseAnnouncementsItem
     handler: python
     options:
       show_source: true
@@ -103,9 +103,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetExchangeScheduleResponse
+### ModelGetExchangeScheduleResponse
 
-::: kalshi_py.models.svc_api_2_model_get_exchange_schedule_response.SvcApi2ModelGetExchangeScheduleResponse
+::: kalshi_py.models.model_get_exchange_schedule_response.ModelGetExchangeScheduleResponse
     handler: python
     options:
       show_source: true
@@ -114,9 +114,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetMilestoneResponse
+### ModelGetMilestoneResponse
 
-::: kalshi_py.models.svc_api_2_model_get_milestone_response.SvcApi2ModelGetMilestoneResponse
+::: kalshi_py.models.model_get_milestone_response.ModelGetMilestoneResponse
     handler: python
     options:
       show_source: true
@@ -125,9 +125,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetMilestonesResponse
+### ModelGetMilestonesResponse
 
-::: kalshi_py.models.svc_api_2_model_get_milestones_response.SvcApi2ModelGetMilestonesResponse
+::: kalshi_py.models.model_get_milestones_response.ModelGetMilestonesResponse
     handler: python
     options:
       show_source: true
@@ -136,9 +136,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetRFQsResponse
+### ModelGetRFQsResponse
 
-::: kalshi_py.models.svc_api_2_model_get_rf_qs_response.SvcApi2ModelGetRFQsResponse
+::: kalshi_py.models.model_get_rf_qs_response.ModelGetRFQsResponse
     handler: python
     options:
       show_source: true
@@ -147,9 +147,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetSettlementsResponse
+### ModelGetSettlementsResponse
 
-::: kalshi_py.models.svc_api_2_model_get_settlements_response.SvcApi2ModelGetSettlementsResponse
+::: kalshi_py.models.model_get_settlements_response.ModelGetSettlementsResponse
     handler: python
     options:
       show_source: true
@@ -158,9 +158,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetSettlementsResponseSettlementsItem
+### ModelGetSettlementsResponseSettlementsItem
 
-::: kalshi_py.models.svc_api_2_model_get_settlements_response_settlements_item.SvcApi2ModelGetSettlementsResponseSettlementsItem
+::: kalshi_py.models.model_get_settlements_response_settlements_item.ModelGetSettlementsResponseSettlementsItem
     handler: python
     options:
       show_source: true
@@ -169,9 +169,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetStructuredTargetResponse
+### ModelGetStructuredTargetResponse
 
-::: kalshi_py.models.svc_api_2_model_get_structured_target_response.SvcApi2ModelGetStructuredTargetResponse
+::: kalshi_py.models.model_get_structured_target_response.ModelGetStructuredTargetResponse
     handler: python
     options:
       show_source: true
@@ -180,9 +180,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetStructuredTargetsResponse
+### ModelGetStructuredTargetsResponse
 
-::: kalshi_py.models.svc_api_2_model_get_structured_targets_response.SvcApi2ModelGetStructuredTargetsResponse
+::: kalshi_py.models.model_get_structured_targets_response.ModelGetStructuredTargetsResponse
     handler: python
     options:
       show_source: true
@@ -191,9 +191,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelPublicTradesGetResponse
+### ModelPublicTradesGetResponse
 
-::: kalshi_py.models.svc_api_2_model_public_trades_get_response.SvcApi2ModelPublicTradesGetResponse
+::: kalshi_py.models.model_public_trades_get_response.ModelPublicTradesGetResponse
     handler: python
     options:
       show_source: true
@@ -248,306 +248,306 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelCreateMarketInMultivariateEventCollectionRequest
+
+::: kalshi_py.models.model_create_market_in_multivariate_event_collection_request.ModelCreateMarketInMultivariateEventCollectionRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateMarketInMultivariateEventCollectionResponse
+
+::: kalshi_py.models.model_create_market_in_multivariate_event_collection_response.ModelCreateMarketInMultivariateEventCollectionResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelEventData
+
+::: kalshi_py.models.model_event_data.ModelEventData
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventMetadataResponse
+
+::: kalshi_py.models.model_get_event_metadata_response.ModelGetEventMetadataResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventMetadataResponseSettlementSourcesItem
+
+::: kalshi_py.models.model_get_event_metadata_response_settlement_sources_item.ModelGetEventMetadataResponseSettlementSourcesItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventResponse
+
+::: kalshi_py.models.model_get_event_response.ModelGetEventResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventsResponse
+
+::: kalshi_py.models.model_get_events_response.ModelGetEventsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMarketCandlesticksResponse
+
+::: kalshi_py.models.model_get_market_candlesticks_response.ModelGetMarketCandlesticksResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMarketCandlesticksResponseCandlesticksItem
+
+::: kalshi_py.models.model_get_market_candlesticks_response_candlesticks_item.ModelGetMarketCandlesticksResponseCandlesticksItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMarketOrderbookResponse
+
+::: kalshi_py.models.model_get_market_orderbook_response.ModelGetMarketOrderbookResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMarketResponse
+
+::: kalshi_py.models.model_get_market_response.ModelGetMarketResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMarketsResponse
+
+::: kalshi_py.models.model_get_markets_response.ModelGetMarketsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMultivariateEventCollectionLookupHistoryResponse
+
+::: kalshi_py.models.model_get_multivariate_event_collection_lookup_history_response.ModelGetMultivariateEventCollectionLookupHistoryResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem
+
+::: kalshi_py.models.model_get_multivariate_event_collection_lookup_history_response_lookup_points_item.ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMultivariateEventCollectionResponse
+
+::: kalshi_py.models.model_get_multivariate_event_collection_response.ModelGetMultivariateEventCollectionResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetMultivariateEventCollectionsResponse
+
+::: kalshi_py.models.model_get_multivariate_event_collections_response.ModelGetMultivariateEventCollectionsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetPositionsResponseEventPositionsItem
+
+::: kalshi_py.models.model_get_positions_response_event_positions_item.ModelGetPositionsResponseEventPositionsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetPositionsResponseMarketPositionsItem
+
+::: kalshi_py.models.model_get_positions_response_market_positions_item.ModelGetPositionsResponseMarketPositionsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetSettlementsResponseSettlementsItemMarketResult
+
+::: kalshi_py.models.model_get_settlements_response_settlements_item_market_result.ModelGetSettlementsResponseSettlementsItemMarketResult
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelLookupTickersForMarketInMultivariateEventCollectionRequest
+
+::: kalshi_py.models.model_lookup_tickers_for_market_in_multivariate_event_collection_request.ModelLookupTickersForMarketInMultivariateEventCollectionRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem
+
+::: kalshi_py.models.model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item.ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide
+
+::: kalshi_py.models.model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item_side.ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+
+::: kalshi_py.models.model_lookup_tickers_for_market_in_multivariate_event_collection_response.ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelMarket
+
+::: kalshi_py.models.model_market.ModelMarket
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelMultivariateEventCollection
+
+::: kalshi_py.models.model_multivariate_event_collection.ModelMultivariateEventCollection
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelTickerPair
+
+::: kalshi_py.models.model_ticker_pair.ModelTickerPair
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelTickerPairSide
+
+::: kalshi_py.models.model_ticker_pair_side.ModelTickerPairSide
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### SettlementMarketResult
 
 ::: kalshi_py.models.settlement_market_result.SettlementMarketResult
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest
-
-::: kalshi_py.models.svc_api_2_model_create_market_in_multivariate_event_collection_request.SvcApi2ModelCreateMarketInMultivariateEventCollectionRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse
-
-::: kalshi_py.models.svc_api_2_model_create_market_in_multivariate_event_collection_response.SvcApi2ModelCreateMarketInMultivariateEventCollectionResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelEventData
-
-::: kalshi_py.models.svc_api_2_model_event_data.SvcApi2ModelEventData
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetEventMetadataResponse
-
-::: kalshi_py.models.svc_api_2_model_get_event_metadata_response.SvcApi2ModelGetEventMetadataResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetEventMetadataResponseSettlementSourcesItem
-
-::: kalshi_py.models.svc_api_2_model_get_event_metadata_response_settlement_sources_item.SvcApi2ModelGetEventMetadataResponseSettlementSourcesItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetEventResponse
-
-::: kalshi_py.models.svc_api_2_model_get_event_response.SvcApi2ModelGetEventResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetEventsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_events_response.SvcApi2ModelGetEventsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMarketCandlesticksResponse
-
-::: kalshi_py.models.svc_api_2_model_get_market_candlesticks_response.SvcApi2ModelGetMarketCandlesticksResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem
-
-::: kalshi_py.models.svc_api_2_model_get_market_candlesticks_response_candlesticks_item.SvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMarketOrderbookResponse
-
-::: kalshi_py.models.svc_api_2_model_get_market_orderbook_response.SvcApi2ModelGetMarketOrderbookResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMarketResponse
-
-::: kalshi_py.models.svc_api_2_model_get_market_response.SvcApi2ModelGetMarketResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMarketsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_markets_response.SvcApi2ModelGetMarketsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponse
-
-::: kalshi_py.models.svc_api_2_model_get_multivariate_event_collection_lookup_history_response.SvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem
-
-::: kalshi_py.models.svc_api_2_model_get_multivariate_event_collection_lookup_history_response_lookup_points_item.SvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMultivariateEventCollectionResponse
-
-::: kalshi_py.models.svc_api_2_model_get_multivariate_event_collection_response.SvcApi2ModelGetMultivariateEventCollectionResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetMultivariateEventCollectionsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_multivariate_event_collections_response.SvcApi2ModelGetMultivariateEventCollectionsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetPositionsResponseEventPositionsItem
-
-::: kalshi_py.models.svc_api_2_model_get_positions_response_event_positions_item.SvcApi2ModelGetPositionsResponseEventPositionsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetPositionsResponseMarketPositionsItem
-
-::: kalshi_py.models.svc_api_2_model_get_positions_response_market_positions_item.SvcApi2ModelGetPositionsResponseMarketPositionsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult
-
-::: kalshi_py.models.svc_api_2_model_get_settlements_response_settlements_item_market_result.SvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest
-
-::: kalshi_py.models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request.SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem
-
-::: kalshi_py.models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item.SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide
-
-::: kalshi_py.models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item_side.SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
-
-::: kalshi_py.models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_response.SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelMarket
-
-::: kalshi_py.models.svc_api_2_model_market.SvcApi2ModelMarket
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelMultivariateEventCollection
-
-::: kalshi_py.models.svc_api_2_model_multivariate_event_collection.SvcApi2ModelMultivariateEventCollection
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelTickerPair
-
-::: kalshi_py.models.svc_api_2_model_ticker_pair.SvcApi2ModelTickerPair
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelTickerPairSide
-
-::: kalshi_py.models.svc_api_2_model_ticker_pair_side.SvcApi2ModelTickerPairSide
     handler: python
     options:
       show_source: true
@@ -613,427 +613,427 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelAmendOrderRequest
+
+::: kalshi_py.models.model_amend_order_request.ModelAmendOrderRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelAmendOrderRequestAction
+
+::: kalshi_py.models.model_amend_order_request_action.ModelAmendOrderRequestAction
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelAmendOrderRequestSide
+
+::: kalshi_py.models.model_amend_order_request_side.ModelAmendOrderRequestSide
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelAmendOrderResponse
+
+::: kalshi_py.models.model_amend_order_response.ModelAmendOrderResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCancelOrdersRequest
+
+::: kalshi_py.models.model_batch_cancel_orders_request.ModelBatchCancelOrdersRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCancelOrdersResponse
+
+::: kalshi_py.models.model_batch_cancel_orders_response.ModelBatchCancelOrdersResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCancelOrdersResponseOrdersItem
+
+::: kalshi_py.models.model_batch_cancel_orders_response_orders_item.ModelBatchCancelOrdersResponseOrdersItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCreateOrdersRequest
+
+::: kalshi_py.models.model_batch_create_orders_request.ModelBatchCreateOrdersRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCreateOrdersResponse
+
+::: kalshi_py.models.model_batch_create_orders_response.ModelBatchCreateOrdersResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBatchCreateOrdersResponseOrdersItem
+
+::: kalshi_py.models.model_batch_create_orders_response_orders_item.ModelBatchCreateOrdersResponseOrdersItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCancelOrderResponse
+
+::: kalshi_py.models.model_cancel_order_response.ModelCancelOrderResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderGroupRequest
+
+::: kalshi_py.models.model_create_order_group_request.ModelCreateOrderGroupRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderGroupResponse
+
+::: kalshi_py.models.model_create_order_group_response.ModelCreateOrderGroupResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderRequest
+
+::: kalshi_py.models.model_create_order_request.ModelCreateOrderRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderRequestAction
+
+::: kalshi_py.models.model_create_order_request_action.ModelCreateOrderRequestAction
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderRequestSide
+
+::: kalshi_py.models.model_create_order_request_side.ModelCreateOrderRequestSide
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderRequestTimeInForce
+
+::: kalshi_py.models.model_create_order_request_time_in_force.ModelCreateOrderRequestTimeInForce
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderRequestType
+
+::: kalshi_py.models.model_create_order_request_type.ModelCreateOrderRequestType
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelCreateOrderResponse
+
+::: kalshi_py.models.model_create_order_response.ModelCreateOrderResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelDecreaseOrderRequest
+
+::: kalshi_py.models.model_decrease_order_request.ModelDecreaseOrderRequest
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelDecreaseOrderResponse
+
+::: kalshi_py.models.model_decrease_order_response.ModelDecreaseOrderResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelFill
+
+::: kalshi_py.models.model_fill.ModelFill
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetFillsResponse
+
+::: kalshi_py.models.model_get_fills_response.ModelGetFillsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderGroupResponse
+
+::: kalshi_py.models.model_get_order_group_response.ModelGetOrderGroupResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderGroupsResponse
+
+::: kalshi_py.models.model_get_order_groups_response.ModelGetOrderGroupsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderQueuePositionResponse
+
+::: kalshi_py.models.model_get_order_queue_position_response.ModelGetOrderQueuePositionResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderQueuePositionsResponse
+
+::: kalshi_py.models.model_get_order_queue_positions_response.ModelGetOrderQueuePositionsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderQueuePositionsResponseQueuePositionsItem
+
+::: kalshi_py.models.model_get_order_queue_positions_response_queue_positions_item.ModelGetOrderQueuePositionsResponseQueuePositionsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrderResponse
+
+::: kalshi_py.models.model_get_order_response.ModelGetOrderResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetOrdersResponse
+
+::: kalshi_py.models.model_get_orders_response.ModelGetOrdersResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetPositionsResponse
+
+::: kalshi_py.models.model_get_positions_response.ModelGetPositionsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetUserRestingOrderTotalValueResponse
+
+::: kalshi_py.models.model_get_user_resting_order_total_value_response.ModelGetUserRestingOrderTotalValueResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrder
+
+::: kalshi_py.models.model_order.ModelOrder
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrderBook
+
+::: kalshi_py.models.model_order_book.ModelOrderBook
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrderBookNoDollarsItem
+
+::: kalshi_py.models.model_order_book_no_dollars_item.ModelOrderBookNoDollarsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrderBookYesDollarsItem
+
+::: kalshi_py.models.model_order_book_yes_dollars_item.ModelOrderBookYesDollarsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrderConfirmation
+
+::: kalshi_py.models.model_order_confirmation.ModelOrderConfirmation
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelOrderGroupSummary
+
+::: kalshi_py.models.model_order_group_summary.ModelOrderGroupSummary
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### OrderQueuePosition
 
 ::: kalshi_py.models.order_queue_position.OrderQueuePosition
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelAmendOrderRequest
-
-::: kalshi_py.models.svc_api_2_model_amend_order_request.SvcApi2ModelAmendOrderRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelAmendOrderRequestAction
-
-::: kalshi_py.models.svc_api_2_model_amend_order_request_action.SvcApi2ModelAmendOrderRequestAction
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelAmendOrderRequestSide
-
-::: kalshi_py.models.svc_api_2_model_amend_order_request_side.SvcApi2ModelAmendOrderRequestSide
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelAmendOrderResponse
-
-::: kalshi_py.models.svc_api_2_model_amend_order_response.SvcApi2ModelAmendOrderResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCancelOrdersRequest
-
-::: kalshi_py.models.svc_api_2_model_batch_cancel_orders_request.SvcApi2ModelBatchCancelOrdersRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCancelOrdersResponse
-
-::: kalshi_py.models.svc_api_2_model_batch_cancel_orders_response.SvcApi2ModelBatchCancelOrdersResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCancelOrdersResponseOrdersItem
-
-::: kalshi_py.models.svc_api_2_model_batch_cancel_orders_response_orders_item.SvcApi2ModelBatchCancelOrdersResponseOrdersItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCreateOrdersRequest
-
-::: kalshi_py.models.svc_api_2_model_batch_create_orders_request.SvcApi2ModelBatchCreateOrdersRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCreateOrdersResponse
-
-::: kalshi_py.models.svc_api_2_model_batch_create_orders_response.SvcApi2ModelBatchCreateOrdersResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBatchCreateOrdersResponseOrdersItem
-
-::: kalshi_py.models.svc_api_2_model_batch_create_orders_response_orders_item.SvcApi2ModelBatchCreateOrdersResponseOrdersItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCancelOrderResponse
-
-::: kalshi_py.models.svc_api_2_model_cancel_order_response.SvcApi2ModelCancelOrderResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderGroupRequest
-
-::: kalshi_py.models.svc_api_2_model_create_order_group_request.SvcApi2ModelCreateOrderGroupRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderGroupResponse
-
-::: kalshi_py.models.svc_api_2_model_create_order_group_response.SvcApi2ModelCreateOrderGroupResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderRequest
-
-::: kalshi_py.models.svc_api_2_model_create_order_request.SvcApi2ModelCreateOrderRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderRequestAction
-
-::: kalshi_py.models.svc_api_2_model_create_order_request_action.SvcApi2ModelCreateOrderRequestAction
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderRequestSide
-
-::: kalshi_py.models.svc_api_2_model_create_order_request_side.SvcApi2ModelCreateOrderRequestSide
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderRequestTimeInForce
-
-::: kalshi_py.models.svc_api_2_model_create_order_request_time_in_force.SvcApi2ModelCreateOrderRequestTimeInForce
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderRequestType
-
-::: kalshi_py.models.svc_api_2_model_create_order_request_type.SvcApi2ModelCreateOrderRequestType
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelCreateOrderResponse
-
-::: kalshi_py.models.svc_api_2_model_create_order_response.SvcApi2ModelCreateOrderResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelDecreaseOrderRequest
-
-::: kalshi_py.models.svc_api_2_model_decrease_order_request.SvcApi2ModelDecreaseOrderRequest
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelDecreaseOrderResponse
-
-::: kalshi_py.models.svc_api_2_model_decrease_order_response.SvcApi2ModelDecreaseOrderResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelFill
-
-::: kalshi_py.models.svc_api_2_model_fill.SvcApi2ModelFill
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetFillsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_fills_response.SvcApi2ModelGetFillsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderGroupResponse
-
-::: kalshi_py.models.svc_api_2_model_get_order_group_response.SvcApi2ModelGetOrderGroupResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderGroupsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_order_groups_response.SvcApi2ModelGetOrderGroupsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderQueuePositionResponse
-
-::: kalshi_py.models.svc_api_2_model_get_order_queue_position_response.SvcApi2ModelGetOrderQueuePositionResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderQueuePositionsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_order_queue_positions_response.SvcApi2ModelGetOrderQueuePositionsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem
-
-::: kalshi_py.models.svc_api_2_model_get_order_queue_positions_response_queue_positions_item.SvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrderResponse
-
-::: kalshi_py.models.svc_api_2_model_get_order_response.SvcApi2ModelGetOrderResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetOrdersResponse
-
-::: kalshi_py.models.svc_api_2_model_get_orders_response.SvcApi2ModelGetOrdersResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetPositionsResponse
-
-::: kalshi_py.models.svc_api_2_model_get_positions_response.SvcApi2ModelGetPositionsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelGetUserRestingOrderTotalValueResponse
-
-::: kalshi_py.models.svc_api_2_model_get_user_resting_order_total_value_response.SvcApi2ModelGetUserRestingOrderTotalValueResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrder
-
-::: kalshi_py.models.svc_api_2_model_order.SvcApi2ModelOrder
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrderBook
-
-::: kalshi_py.models.svc_api_2_model_order_book.SvcApi2ModelOrderBook
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrderBookNoDollarsItem
-
-::: kalshi_py.models.svc_api_2_model_order_book_no_dollars_item.SvcApi2ModelOrderBookNoDollarsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrderBookYesDollarsItem
-
-::: kalshi_py.models.svc_api_2_model_order_book_yes_dollars_item.SvcApi2ModelOrderBookYesDollarsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrderConfirmation
-
-::: kalshi_py.models.svc_api_2_model_order_confirmation.SvcApi2ModelOrderConfirmation
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelOrderGroupSummary
-
-::: kalshi_py.models.svc_api_2_model_order_group_summary.SvcApi2ModelOrderGroupSummary
     handler: python
     options:
       show_source: true
@@ -1055,9 +1055,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetBalanceResponse
+### ModelGetBalanceResponse
 
-::: kalshi_py.models.svc_api_2_model_get_balance_response.SvcApi2ModelGetBalanceResponse
+::: kalshi_py.models.model_get_balance_response.ModelGetBalanceResponse
     handler: python
     options:
       show_source: true
@@ -1066,9 +1066,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetUserDataTimestampResponse
+### ModelGetUserDataTimestampResponse
 
-::: kalshi_py.models.svc_api_2_model_get_user_data_timestamp_response.SvcApi2ModelGetUserDataTimestampResponse
+::: kalshi_py.models.model_get_user_data_timestamp_response.ModelGetUserDataTimestampResponse
     handler: python
     options:
       show_source: true
@@ -1077,9 +1077,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserCreateApiKeyRequest
+### ModelUserCreateApiKeyRequest
 
-::: kalshi_py.models.svc_api_2_model_user_create_api_key_request.SvcApi2ModelUserCreateApiKeyRequest
+::: kalshi_py.models.model_user_create_api_key_request.ModelUserCreateApiKeyRequest
     handler: python
     options:
       show_source: true
@@ -1088,9 +1088,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserCreateApiKeyResponse
+### ModelUserCreateApiKeyResponse
 
-::: kalshi_py.models.svc_api_2_model_user_create_api_key_response.SvcApi2ModelUserCreateApiKeyResponse
+::: kalshi_py.models.model_user_create_api_key_response.ModelUserCreateApiKeyResponse
     handler: python
     options:
       show_source: true
@@ -1099,9 +1099,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserGenerateApiKeyRequest
+### ModelUserGenerateApiKeyRequest
 
-::: kalshi_py.models.svc_api_2_model_user_generate_api_key_request.SvcApi2ModelUserGenerateApiKeyRequest
+::: kalshi_py.models.model_user_generate_api_key_request.ModelUserGenerateApiKeyRequest
     handler: python
     options:
       show_source: true
@@ -1110,9 +1110,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserGenerateApiKeyResponse
+### ModelUserGenerateApiKeyResponse
 
-::: kalshi_py.models.svc_api_2_model_user_generate_api_key_response.SvcApi2ModelUserGenerateApiKeyResponse
+::: kalshi_py.models.model_user_generate_api_key_response.ModelUserGenerateApiKeyResponse
     handler: python
     options:
       show_source: true
@@ -1121,9 +1121,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserGetApiKeysResponse
+### ModelUserGetApiKeysResponse
 
-::: kalshi_py.models.svc_api_2_model_user_get_api_keys_response.SvcApi2ModelUserGetApiKeysResponse
+::: kalshi_py.models.model_user_get_api_keys_response.ModelUserGetApiKeysResponse
     handler: python
     options:
       show_source: true
@@ -1132,9 +1132,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelUserGetApiKeysResponseApiKeysItem
+### ModelUserGetApiKeysResponseApiKeysItem
 
-::: kalshi_py.models.svc_api_2_model_user_get_api_keys_response_api_keys_item.SvcApi2ModelUserGetApiKeysResponseApiKeysItem
+::: kalshi_py.models.model_user_get_api_keys_response_api_keys_item.ModelUserGetApiKeysResponseApiKeysItem
     handler: python
     options:
       show_source: true
@@ -1145,9 +1145,9 @@ This page documents all the data models used in the Kalshi Python client.
 
 ## Communication Models
 
-### CommonCommunicationsQuote
+### GithubComKalshiExchangeInfraCommonCommunicationsQuote
 
-::: kalshi_py.models.common_communications_quote.CommonCommunicationsQuote
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_communications_quote.GithubComKalshiExchangeInfraCommonCommunicationsQuote
     handler: python
     options:
       show_source: true
@@ -1156,9 +1156,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### CommonCommunicationsRFQ
+### GithubComKalshiExchangeInfraCommonCommunicationsRFQ
 
-::: kalshi_py.models.common_communications_rfq.CommonCommunicationsRFQ
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_communications_rfq.GithubComKalshiExchangeInfraCommonCommunicationsRFQ
     handler: python
     options:
       show_source: true
@@ -1167,9 +1167,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelAcceptQuoteRequest
+### ModelAcceptQuoteRequest
 
-::: kalshi_py.models.svc_api_2_model_accept_quote_request.SvcApi2ModelAcceptQuoteRequest
+::: kalshi_py.models.model_accept_quote_request.ModelAcceptQuoteRequest
     handler: python
     options:
       show_source: true
@@ -1178,9 +1178,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelAcceptQuoteRequestAcceptedSide
+### ModelAcceptQuoteRequestAcceptedSide
 
-::: kalshi_py.models.svc_api_2_model_accept_quote_request_accepted_side.SvcApi2ModelAcceptQuoteRequestAcceptedSide
+::: kalshi_py.models.model_accept_quote_request_accepted_side.ModelAcceptQuoteRequestAcceptedSide
     handler: python
     options:
       show_source: true
@@ -1189,9 +1189,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelCreateQuoteRequest
+### ModelCreateQuoteRequest
 
-::: kalshi_py.models.svc_api_2_model_create_quote_request.SvcApi2ModelCreateQuoteRequest
+::: kalshi_py.models.model_create_quote_request.ModelCreateQuoteRequest
     handler: python
     options:
       show_source: true
@@ -1200,9 +1200,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelCreateQuoteResponse
+### ModelCreateQuoteResponse
 
-::: kalshi_py.models.svc_api_2_model_create_quote_response.SvcApi2ModelCreateQuoteResponse
+::: kalshi_py.models.model_create_quote_response.ModelCreateQuoteResponse
     handler: python
     options:
       show_source: true
@@ -1211,9 +1211,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelCreateRFQRequest
+### ModelCreateRFQRequest
 
-::: kalshi_py.models.svc_api_2_model_create_rfq_request.SvcApi2ModelCreateRFQRequest
+::: kalshi_py.models.model_create_rfq_request.ModelCreateRFQRequest
     handler: python
     options:
       show_source: true
@@ -1222,9 +1222,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelCreateRFQResponse
+### ModelCreateRFQResponse
 
-::: kalshi_py.models.svc_api_2_model_create_rfq_response.SvcApi2ModelCreateRFQResponse
+::: kalshi_py.models.model_create_rfq_response.ModelCreateRFQResponse
     handler: python
     options:
       show_source: true
@@ -1233,9 +1233,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetCommunicationsIDResponse
+### ModelGetCommunicationsIDResponse
 
-::: kalshi_py.models.svc_api_2_model_get_communications_id_response.SvcApi2ModelGetCommunicationsIDResponse
+::: kalshi_py.models.model_get_communications_id_response.ModelGetCommunicationsIDResponse
     handler: python
     options:
       show_source: true
@@ -1244,9 +1244,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetQuoteResponse
+### ModelGetQuoteResponse
 
-::: kalshi_py.models.svc_api_2_model_get_quote_response.SvcApi2ModelGetQuoteResponse
+::: kalshi_py.models.model_get_quote_response.ModelGetQuoteResponse
     handler: python
     options:
       show_source: true
@@ -1255,9 +1255,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetQuotesResponse
+### ModelGetQuotesResponse
 
-::: kalshi_py.models.svc_api_2_model_get_quotes_response.SvcApi2ModelGetQuotesResponse
+::: kalshi_py.models.model_get_quotes_response.ModelGetQuotesResponse
     handler: python
     options:
       show_source: true
@@ -1266,9 +1266,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetQuotesResponseQuotesItem
+### ModelGetQuotesResponseQuotesItem
 
-::: kalshi_py.models.svc_api_2_model_get_quotes_response_quotes_item.SvcApi2ModelGetQuotesResponseQuotesItem
+::: kalshi_py.models.model_get_quotes_response_quotes_item.ModelGetQuotesResponseQuotesItem
     handler: python
     options:
       show_source: true
@@ -1277,9 +1277,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetRFQsResponseRfqsItem
+### ModelGetRFQsResponseRfqsItem
 
-::: kalshi_py.models.svc_api_2_model_get_rf_qs_response_rfqs_item.SvcApi2ModelGetRFQsResponseRfqsItem
+::: kalshi_py.models.model_get_rf_qs_response_rfqs_item.ModelGetRFQsResponseRfqsItem
     handler: python
     options:
       show_source: true
@@ -1288,9 +1288,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### SvcApi2ModelGetRFQResponse
+### ModelGetRFQResponse
 
-::: kalshi_py.models.svc_api_2_model_get_rfq_response.SvcApi2ModelGetRFQResponse
+::: kalshi_py.models.model_get_rfq_response.ModelGetRFQResponse
     handler: python
     options:
       show_source: true
@@ -1304,28 +1304,6 @@ This page documents all the data models used in the Kalshi Python client.
 ### Announcement
 
 ::: kalshi_py.models.announcement.Announcement
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### CommonApiJSONError
-
-::: kalshi_py.models.common_api_json_error.CommonApiJSONError
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### CommonUnimodelDetails
-
-::: kalshi_py.models.common_unimodel_details.CommonUnimodelDetails
     handler: python
     options:
       show_source: true
@@ -1356,6 +1334,28 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### GithubComKalshiExchangeInfraCommonApiJSONError
+
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_api_json_error.GithubComKalshiExchangeInfraCommonApiJSONError
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### GithubComKalshiExchangeInfraCommonUnimodelDetails
+
+::: kalshi_py.models.github_com_kalshi_exchange_infra_common_unimodel_details.GithubComKalshiExchangeInfraCommonUnimodelDetails
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### LookupPoint
 
 ::: kalshi_py.models.lookup_point.LookupPoint
@@ -1370,6 +1370,72 @@ This page documents all the data models used in the Kalshi Python client.
 ### MaintenanceWindow
 
 ::: kalshi_py.models.maintenance_window.MaintenanceWindow
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelBidAskDistribution
+
+::: kalshi_py.models.model_bid_ask_distribution.ModelBidAskDistribution
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelExchangeStatus
+
+::: kalshi_py.models.model_exchange_status.ModelExchangeStatus
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelMilestone
+
+::: kalshi_py.models.model_milestone.ModelMilestone
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelPriceDistribution
+
+::: kalshi_py.models.model_price_distribution.ModelPriceDistribution
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelPublicTrade
+
+::: kalshi_py.models.model_public_trade.ModelPublicTrade
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelStructuredTarget
+
+::: kalshi_py.models.model_structured_target.ModelStructuredTarget
     handler: python
     options:
       show_source: true
@@ -1403,72 +1469,6 @@ This page documents all the data models used in the Kalshi Python client.
 ### SettlementSource
 
 ::: kalshi_py.models.settlement_source.SettlementSource
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelBidAskDistribution
-
-::: kalshi_py.models.svc_api_2_model_bid_ask_distribution.SvcApi2ModelBidAskDistribution
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelExchangeStatus
-
-::: kalshi_py.models.svc_api_2_model_exchange_status.SvcApi2ModelExchangeStatus
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelMilestone
-
-::: kalshi_py.models.svc_api_2_model_milestone.SvcApi2ModelMilestone
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelPriceDistribution
-
-::: kalshi_py.models.svc_api_2_model_price_distribution.SvcApi2ModelPriceDistribution
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelPublicTrade
-
-::: kalshi_py.models.svc_api_2_model_public_trade.SvcApi2ModelPublicTrade
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### SvcApi2ModelStructuredTarget
-
-::: kalshi_py.models.svc_api_2_model_structured_target.SvcApi2ModelStructuredTarget
     handler: python
     options:
       show_source: true

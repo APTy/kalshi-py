@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_balance_response import SvcApi2ModelGetBalanceResponse
+from ...models.model_get_balance_response import ModelGetBalanceResponse
 from ...types import Response
 
 
@@ -20,9 +20,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetBalanceResponse]:
+) -> Optional[ModelGetBalanceResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetBalanceResponse.from_dict(response.json())
+        response_200 = ModelGetBalanceResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -33,7 +33,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetBalanceResponse]:
+) -> Response[ModelGetBalanceResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -45,7 +45,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetBalanceResponse]:
+) -> Response[ModelGetBalanceResponse]:
     """Get Balance
 
       Endpoint for getting the balance of a member. The balance value is returned in cents.
@@ -55,7 +55,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetBalanceResponse]
+        Response[ModelGetBalanceResponse]
     """
 
     kwargs = _get_kwargs()
@@ -70,7 +70,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetBalanceResponse]:
+) -> Optional[ModelGetBalanceResponse]:
     """Get Balance
 
       Endpoint for getting the balance of a member. The balance value is returned in cents.
@@ -80,7 +80,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetBalanceResponse
+        ModelGetBalanceResponse
     """
 
     return sync_detailed(
@@ -91,7 +91,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetBalanceResponse]:
+) -> Response[ModelGetBalanceResponse]:
     """Get Balance
 
       Endpoint for getting the balance of a member. The balance value is returned in cents.
@@ -101,7 +101,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetBalanceResponse]
+        Response[ModelGetBalanceResponse]
     """
 
     kwargs = _get_kwargs()
@@ -114,7 +114,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetBalanceResponse]:
+) -> Optional[ModelGetBalanceResponse]:
     """Get Balance
 
       Endpoint for getting the balance of a member. The balance value is returned in cents.
@@ -124,7 +124,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetBalanceResponse
+        ModelGetBalanceResponse
     """
 
     return (

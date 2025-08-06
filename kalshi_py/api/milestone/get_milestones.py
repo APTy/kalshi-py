@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_milestones_response import SvcApi2ModelGetMilestonesResponse
+from ...models.model_get_milestones_response import ModelGetMilestonesResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -48,9 +48,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetMilestonesResponse]:
+) -> Optional[ModelGetMilestonesResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetMilestonesResponse.from_dict(response.json())
+        response_200 = ModelGetMilestonesResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -61,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetMilestonesResponse]:
+) -> Response[ModelGetMilestonesResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -80,7 +80,7 @@ def sync_detailed(
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetMilestonesResponse]:
+) -> Response[ModelGetMilestonesResponse]:
     """Get Milestones
 
       Endpoint for getting data about milestones with optional filtering.
@@ -101,7 +101,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetMilestonesResponse]
+        Response[ModelGetMilestonesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -131,7 +131,7 @@ def sync(
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetMilestonesResponse]:
+) -> Optional[ModelGetMilestonesResponse]:
     """Get Milestones
 
       Endpoint for getting data about milestones with optional filtering.
@@ -152,7 +152,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetMilestonesResponse
+        ModelGetMilestonesResponse
     """
 
     return sync_detailed(
@@ -177,7 +177,7 @@ async def asyncio_detailed(
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetMilestonesResponse]:
+) -> Response[ModelGetMilestonesResponse]:
     """Get Milestones
 
       Endpoint for getting data about milestones with optional filtering.
@@ -198,7 +198,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetMilestonesResponse]
+        Response[ModelGetMilestonesResponse]
     """
 
     kwargs = _get_kwargs(
@@ -226,7 +226,7 @@ async def asyncio(
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetMilestonesResponse]:
+) -> Optional[ModelGetMilestonesResponse]:
     """Get Milestones
 
       Endpoint for getting data about milestones with optional filtering.
@@ -247,7 +247,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetMilestonesResponse
+        ModelGetMilestonesResponse
     """
 
     return (

@@ -135,11 +135,13 @@ def get_models_from_files():
         try:
             module = importlib.import_module(module_name)
             for name, obj in inspect.getmembers(module):
-                if (inspect.isclass(obj) and
-                        not name.startswith("_") and
-                        name not in ["Any", "Union", "Optional", "List", "Dict"] and
-                        hasattr(obj, "__module__") and
-                        obj.__module__.startswith("kalshi_py.models")):
+                if (
+                    inspect.isclass(obj)
+                    and not name.startswith("_")
+                    and name not in ["Any", "Union", "Optional", "List", "Dict"]
+                    and hasattr(obj, "__module__")
+                    and obj.__module__.startswith("kalshi_py.models")
+                ):
                     classes.append((name, module_name))
         except ImportError as e:
             print(f"Warning: Could not import {module_name}: {e}")
@@ -152,15 +154,7 @@ def get_models_from_files():
 
 def categorize_models(models):
     """Categorize models into logical groups."""
-    categories = {
-        "core": [],
-        "market": [],
-        "order": [],
-        "user": [],
-        "collection": [],
-        "communication": [],
-        "other": []
-    }
+    categories = {"core": [], "market": [], "order": [], "user": [], "collection": [], "communication": [], "other": []}
 
     for model_name, classes in models:
         # Categorize based on model name patterns

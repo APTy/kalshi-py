@@ -9,7 +9,9 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.common_exchange_metadata_daily_schedule import CommonExchangeMetadataDailySchedule
+    from ..models.github_com_kalshi_exchange_infra_common_exchange_metadata_daily_schedule import (
+        GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule,
+    )
     from ..models.weekly_schedule_monday_item import WeeklyScheduleMondayItem
 
 
@@ -22,32 +24,32 @@ class WeeklySchedule:
     Attributes:
         end_time (Union[Unset, datetime.datetime]): End date and time for when this weekly schedule is no longer
             effective.
-        friday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Friday. May contain
-            multiple sessions.
+        friday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Friday. May contain multiple sessions.
         monday (Union[Unset, list['WeeklyScheduleMondayItem']]): Trading hours for Monday. May contain multiple
             sessions.
-        saturday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Saturday. May contain
-            multiple sessions.
+        saturday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Saturday. May contain multiple sessions.
         start_time (Union[Unset, datetime.datetime]): Start date and time for when this weekly schedule is effective.
-        sunday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Sunday. May contain
-            multiple sessions.
-        thursday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Thursday. May contain
-            multiple sessions.
-        tuesday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Tuesday. May contain
-            multiple sessions.
-        wednesday (Union[Unset, list['CommonExchangeMetadataDailySchedule']]): Trading hours for Wednesday. May contain
-            multiple sessions.
+        sunday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Sunday. May contain multiple sessions.
+        thursday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Thursday. May contain multiple sessions.
+        tuesday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Tuesday. May contain multiple sessions.
+        wednesday (Union[Unset, list['GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule']]): Trading hours
+            for Wednesday. May contain multiple sessions.
     """
 
     end_time: Union[Unset, datetime.datetime] = UNSET
-    friday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
+    friday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
     monday: Union[Unset, list["WeeklyScheduleMondayItem"]] = UNSET
-    saturday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
+    saturday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
     start_time: Union[Unset, datetime.datetime] = UNSET
-    sunday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
-    thursday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
-    tuesday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
-    wednesday: Union[Unset, list["CommonExchangeMetadataDailySchedule"]] = UNSET
+    sunday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
+    thursday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
+    tuesday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
+    wednesday: Union[Unset, list["GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -134,7 +136,9 @@ class WeeklySchedule:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.common_exchange_metadata_daily_schedule import CommonExchangeMetadataDailySchedule
+        from ..models.github_com_kalshi_exchange_infra_common_exchange_metadata_daily_schedule import (
+            GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule,
+        )
         from ..models.weekly_schedule_monday_item import WeeklyScheduleMondayItem
 
         d = dict(src_dict)
@@ -148,7 +152,7 @@ class WeeklySchedule:
         friday = []
         _friday = d.pop("friday", UNSET)
         for friday_item_data in _friday or []:
-            friday_item = CommonExchangeMetadataDailySchedule.from_dict(friday_item_data)
+            friday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(friday_item_data)
 
             friday.append(friday_item)
 
@@ -162,7 +166,9 @@ class WeeklySchedule:
         saturday = []
         _saturday = d.pop("saturday", UNSET)
         for saturday_item_data in _saturday or []:
-            saturday_item = CommonExchangeMetadataDailySchedule.from_dict(saturday_item_data)
+            saturday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                saturday_item_data
+            )
 
             saturday.append(saturday_item)
 
@@ -176,28 +182,32 @@ class WeeklySchedule:
         sunday = []
         _sunday = d.pop("sunday", UNSET)
         for sunday_item_data in _sunday or []:
-            sunday_item = CommonExchangeMetadataDailySchedule.from_dict(sunday_item_data)
+            sunday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(sunday_item_data)
 
             sunday.append(sunday_item)
 
         thursday = []
         _thursday = d.pop("thursday", UNSET)
         for thursday_item_data in _thursday or []:
-            thursday_item = CommonExchangeMetadataDailySchedule.from_dict(thursday_item_data)
+            thursday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                thursday_item_data
+            )
 
             thursday.append(thursday_item)
 
         tuesday = []
         _tuesday = d.pop("tuesday", UNSET)
         for tuesday_item_data in _tuesday or []:
-            tuesday_item = CommonExchangeMetadataDailySchedule.from_dict(tuesday_item_data)
+            tuesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(tuesday_item_data)
 
             tuesday.append(tuesday_item)
 
         wednesday = []
         _wednesday = d.pop("wednesday", UNSET)
         for wednesday_item_data in _wednesday or []:
-            wednesday_item = CommonExchangeMetadataDailySchedule.from_dict(wednesday_item_data)
+            wednesday_item = GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule.from_dict(
+                wednesday_item_data
+            )
 
             wednesday.append(wednesday_item)
 

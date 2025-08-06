@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_empty_response import SvcApi2ModelEmptyResponse
+from ...models.model_empty_response import ModelEmptyResponse
 from ...types import Response
 
 
@@ -22,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelEmptyResponse]:
+) -> Optional[ModelEmptyResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelEmptyResponse.from_dict(response.json())
+        response_200 = ModelEmptyResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelEmptyResponse]:
+) -> Response[ModelEmptyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +48,7 @@ def sync_detailed(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelEmptyResponse]:
+) -> Response[ModelEmptyResponse]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
@@ -62,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelEmptyResponse]
+        Response[ModelEmptyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -80,7 +80,7 @@ def sync(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelEmptyResponse]:
+) -> Optional[ModelEmptyResponse]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
@@ -94,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelEmptyResponse
+        ModelEmptyResponse
     """
 
     return sync_detailed(
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelEmptyResponse]:
+) -> Response[ModelEmptyResponse]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
@@ -121,7 +121,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelEmptyResponse]
+        Response[ModelEmptyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -137,7 +137,7 @@ async def asyncio(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelEmptyResponse]:
+) -> Optional[ModelEmptyResponse]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
@@ -151,7 +151,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelEmptyResponse
+        ModelEmptyResponse
     """
 
     return (

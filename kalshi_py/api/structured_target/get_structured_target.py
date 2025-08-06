@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_structured_target_response import SvcApi2ModelGetStructuredTargetResponse
+from ...models.model_get_structured_target_response import ModelGetStructuredTargetResponse
 from ...types import Response
 
 
@@ -22,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[ModelGetStructuredTargetResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetStructuredTargetResponse.from_dict(response.json())
+        response_200 = ModelGetStructuredTargetResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[ModelGetStructuredTargetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +48,7 @@ def sync_detailed(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -61,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetStructuredTargetResponse]
+        Response[ModelGetStructuredTargetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -79,7 +79,7 @@ def sync(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -92,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetStructuredTargetResponse
+        ModelGetStructuredTargetResponse
     """
 
     return sync_detailed(
@@ -105,7 +105,7 @@ async def asyncio_detailed(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -118,7 +118,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetStructuredTargetResponse]
+        Response[ModelGetStructuredTargetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -134,7 +134,7 @@ async def asyncio(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -147,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetStructuredTargetResponse
+        ModelGetStructuredTargetResponse
     """
 
     return (

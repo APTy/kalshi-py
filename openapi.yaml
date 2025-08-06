@@ -11,7 +11,7 @@ components:
           type: string
         status:
           $ref: >-
-            #/components/schemas/common.exchange_metadata.AnnouncementStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementStatus
           description: The current status of this announcement.
           enum:
             - active
@@ -19,7 +19,7 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/common.exchange_metadata.AnnouncementType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementType
           description: The type of the announcement.
           enum:
             - info
@@ -44,19 +44,19 @@ components:
       properties:
         error:
           $ref: >-
-            #/components/schemas/common.api.JSONError
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.api.JSONError
           description: >-
             Error information if the order cancellation failed. If this field is
             populated, the order field will be null.
           type: object
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Details of the canceled order. Will be null if an error occurred.
           type: object
         order_id:
           $ref: >-
-            #/components/schemas/common.types.OrderUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
           description: >-
             The order ID to identify which order had an error during batch
             cancellation.
@@ -71,21 +71,21 @@ components:
       properties:
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: >-
             The client-provided order ID from the request. This helps identify
             which order had an error in batch operations.
           type: string
         error:
           $ref: >-
-            #/components/schemas/common.api.JSONError
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.api.JSONError
           description: >-
             Error information if the order creation failed. If this field is
             populated, the order field will be null.
           type: object
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.OrderConfirmation
+            #/components/schemas/model.OrderConfirmation
           description: >-
             Order confirmation details when the order is successfully created.
             Will be null if an error occurred.
@@ -104,13 +104,13 @@ components:
       properties:
         event_exposure:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Cost of the aggregate event position in cents.
           format: int64
           type: integer
         event_exposure_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Cost of the aggregate event position in dollars.
           items:
             type: integer
@@ -120,26 +120,26 @@ components:
           type: string
         fees_paid:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fees paid on fill orders, in cents.
           format: int64
           type: integer
         fees_paid_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Fees paid on fill orders, in dollars.
           items:
             type: integer
           type: array
         realized_pnl:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Locked in profit and loss, in cents.
           format: int64
           type: integer
         realized_pnl_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Locked in profit and loss, in dollars.
           items:
             type: integer
@@ -149,13 +149,13 @@ components:
           type: integer
         total_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Total spent on this event in cents.
           format: int64
           type: integer
         total_cost_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Total spent on this event in dollars.
           items:
             type: integer
@@ -181,7 +181,7 @@ components:
           description: Markets that were selected for this lookup.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.TickerPair
+              #/components/schemas/model.TickerPair
           type: array
       type: object
     MaintenanceWindow:
@@ -197,7 +197,7 @@ components:
       type: object
     Market:
       $ref: >-
-        #/components/schemas/svc-api2.model.Market
+        #/components/schemas/model.Market
     MarketCandlestick:
       properties:
         end_period_ts:
@@ -210,7 +210,7 @@ components:
           type: integer
         price:
           $ref: >-
-            #/components/schemas/svc-api2.model.PriceDistribution
+            #/components/schemas/model.PriceDistribution
           description: >-
             Open, high, low, close (OHLC) and more data for trade YES contract
             prices on the market during the candlestick period.
@@ -222,14 +222,14 @@ components:
           type: integer
         yes_ask:
           $ref: >-
-            #/components/schemas/svc-api2.model.BidAskDistribution
+            #/components/schemas/model.BidAskDistribution
           description: >-
             Open, high, low, close (OHLC) data for YES sell offers on the market
             during the candlestick period.
           type: object
         yes_bid:
           $ref: >-
-            #/components/schemas/svc-api2.model.BidAskDistribution
+            #/components/schemas/model.BidAskDistribution
           description: >-
             Open, high, low, close (OHLC) data for YES buy offers on the market
             during the candlestick period.
@@ -239,13 +239,13 @@ components:
       properties:
         fees_paid:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fees paid on fill orders, in cents.
           format: int64
           type: integer
         fees_paid_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Fees paid on fill orders, in dollars.
           items:
             type: integer
@@ -256,13 +256,13 @@ components:
           type: string
         market_exposure:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Cost of the aggregate market position in cents.
           format: int64
           type: integer
         market_exposure_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Cost of the aggregate market position in dollars.
           items:
             type: integer
@@ -274,13 +274,13 @@ components:
           type: integer
         realized_pnl:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Locked in profit and loss, in cents.
           format: int64
           type: integer
         realized_pnl_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Locked in profit and loss, in dollars.
           items:
             type: integer
@@ -293,13 +293,13 @@ components:
           type: string
         total_traded:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Total spent on this market in cents.
           format: int64
           type: integer
         total_traded_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Total spent on this market in dollars.
           items:
             type: integer
@@ -320,7 +320,7 @@ components:
           type: integer
         Dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           items:
             type: integer
           type: array
@@ -338,13 +338,13 @@ components:
           type: integer
         no_total_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Total cost basis of all NO contracts in cents.
           format: int64
           type: integer
         revenue:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Total revenue earned from this settlement in cents (winning
             contracts pay out 100 cents each).
@@ -352,7 +352,7 @@ components:
           type: integer
         settled_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Timestamp when the market was settled and payouts were processed.
         ticker:
           description: The ticker symbol of the market that was settled.
@@ -362,7 +362,7 @@ components:
           type: integer
         yes_total_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Total cost basis of all YES contracts in cents.
           format: int64
           type: integer
@@ -403,7 +403,7 @@ components:
           description: Trading hours for Friday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
         monday:
           description: Trading hours for Monday. May contain multiple sessions.
@@ -421,7 +421,7 @@ components:
           description: Trading hours for Saturday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
         start_time:
           description: Start date and time for when this weekly schedule is effective.
@@ -431,28 +431,28 @@ components:
           description: Trading hours for Sunday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
         thursday:
           description: Trading hours for Thursday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
         tuesday:
           description: Trading hours for Tuesday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
         wednesday:
           description: Trading hours for Wednesday. May contain multiple sessions.
           items:
             $ref: >-
-              #/components/schemas/common.exchange_metadata.DailySchedule
+              #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
           type: array
       type: object
-    common.api.JSONError:
+    github.com.Kalshi.exchange-infra.common.api.JSONError:
       properties:
         code:
           description: A short identifier for the error type.
@@ -467,7 +467,7 @@ components:
           description: The name of the service that generated the error.
           type: string
       type: object
-    common.communications.Quote:
+    github.com.Kalshi.exchange-infra.common.communications.Quote:
       properties:
         accepted_side:
           description: The side that was accepted (yes or no).
@@ -496,17 +496,17 @@ components:
           type: string
         creator_id:
           $ref: >-
-            #/components/schemas/common.types.PublicCommunicationsID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
           description: Public communications ID of the quote creator.
           type: string
         creator_order_id:
           $ref: >-
-            #/components/schemas/common.types.OrderUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
           description: Order ID for the quote creator (private field).
           type: string
         creator_user_id:
           $ref: >-
-            #/components/schemas/common.types.UserUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
           description: User ID of the quote creator (private field).
           type: string
         executed_ts:
@@ -515,7 +515,7 @@ components:
           type: string
         id:
           $ref: >-
-            #/components/schemas/common.types.QuoteUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.QuoteUUID
           description: Unique identifier for the quote.
           type: string
         market_ticker:
@@ -523,7 +523,7 @@ components:
           type: string
         no_bid:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Bid price for NO contracts, in cents.
           format: int64
           type: integer
@@ -532,27 +532,27 @@ components:
           type: boolean
         rfq_creator_id:
           $ref: >-
-            #/components/schemas/common.types.PublicCommunicationsID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
           description: Public communications ID of the RFQ creator.
           type: string
         rfq_creator_order_id:
           $ref: >-
-            #/components/schemas/common.types.OrderUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
           description: Order ID for the RFQ creator (private field).
           type: string
         rfq_creator_user_id:
           $ref: >-
-            #/components/schemas/common.types.UserUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
           description: User ID of the RFQ creator (private field).
           type: string
         rfq_id:
           $ref: >-
-            #/components/schemas/common.types.RfqUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.RfqUUID
           description: ID of the RFQ this quote is responding to.
           type: string
         status:
           $ref: >-
-            #/components/schemas/common.communications.QuoteStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.QuoteStatus
           description: Current status of the quote.
           type: string
         updated_ts:
@@ -561,14 +561,14 @@ components:
           type: string
         yes_bid:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Bid price for YES contracts, in cents.
           format: int64
           type: integer
       type: object
-    common.communications.QuoteStatus:
+    github.com.Kalshi.exchange-infra.common.communications.QuoteStatus:
       type: string
-    common.communications.RFQ:
+    github.com.Kalshi.exchange-infra.common.communications.RFQ:
       properties:
         cancellation_reason:
           description: Reason for RFQ cancellation if cancelled.
@@ -586,17 +586,17 @@ components:
           type: string
         creator_id:
           $ref: >-
-            #/components/schemas/common.types.PublicCommunicationsID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
           description: Public communications ID of the RFQ creator.
           type: string
         creator_user_id:
           $ref: >-
-            #/components/schemas/common.types.UserUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
           description: User ID of the RFQ creator (private field).
           type: string
         id:
           $ref: >-
-            #/components/schemas/common.types.RfqUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.RfqUUID
           description: Unique identifier for the RFQ.
           type: string
         market_ticker:
@@ -607,7 +607,7 @@ components:
           type: boolean
         status:
           $ref: >-
-            #/components/schemas/common.communications.RFQStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.RFQStatus
           description: Current status of the RFQ (open, closed).
           type: string
         updated_ts:
@@ -615,13 +615,13 @@ components:
           format: date-time
           type: string
       type: object
-    common.communications.RFQStatus:
+    github.com.Kalshi.exchange-infra.common.communications.RFQStatus:
       type: string
-    common.exchange_metadata.AnnouncementStatus:
+    github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementStatus:
       type: string
-    common.exchange_metadata.AnnouncementType:
+    github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementType:
       type: string
-    common.exchange_metadata.DailySchedule:
+    github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule:
       properties:
         close_time:
           description: Closing time in ET (Eastern Time) format HH:MM.
@@ -630,7 +630,7 @@ components:
           description: Opening time in ET (Eastern Time) format HH:MM.
           type: string
       type: object
-    common.exchange_metadata.Schedule:
+    github.com.Kalshi.exchange-infra.common.exchange_metadata.Schedule:
       properties:
         maintenance_windows:
           description: >-
@@ -664,7 +664,7 @@ components:
                 description: Trading hours for Friday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
               monday:
                 description: Trading hours for Monday. May contain multiple sessions.
@@ -682,7 +682,7 @@ components:
                 description: Trading hours for Saturday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
               start_time:
                 description: >-
@@ -694,88 +694,88 @@ components:
                 description: Trading hours for Sunday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
               thursday:
                 description: Trading hours for Thursday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
               tuesday:
                 description: Trading hours for Tuesday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
               wednesday:
                 description: Trading hours for Wednesday. May contain multiple sessions.
                 items:
                   $ref: >-
-                    #/components/schemas/common.exchange_metadata.DailySchedule
+                    #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.DailySchedule
                 type: array
             type: object
           type: array
       type: object
-    common.types.Cent:
+    github.com.Kalshi.exchange-infra.common.types.Cent:
       format: int64
       type: integer
-    common.types.ClientOrderID:
+    github.com.Kalshi.exchange-infra.common.types.ClientOrderID:
       type: string
-    common.types.CollateralReturnType:
+    github.com.Kalshi.exchange-infra.common.types.CollateralReturnType:
       type: string
-    common.types.FixedPointDollars:
+    github.com.Kalshi.exchange-infra.common.types.FixedPointDollars:
       items:
         type: integer
       type: array
-    common.types.MoneyUnit:
+    github.com.Kalshi.exchange-infra.common.types.MoneyUnit:
       type: string
-    common.types.Number: {}
-    common.types.OrderAction:
+    github.com.Kalshi.exchange-infra.common.types.Number: {}
+    github.com.Kalshi.exchange-infra.common.types.OrderAction:
       type: string
-    common.types.OrderGroupUUID:
+    github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID:
       type: string
-    common.types.OrderStatus:
+    github.com.Kalshi.exchange-infra.common.types.OrderStatus:
       type: string
-    common.types.OrderType:
+    github.com.Kalshi.exchange-infra.common.types.OrderType:
       type: string
-    common.types.OrderUUID:
+    github.com.Kalshi.exchange-infra.common.types.OrderUUID:
       type: string
-    common.types.PriceLevelStructure:
+    github.com.Kalshi.exchange-infra.common.types.PriceLevelStructure:
       type: string
-    common.types.PublicCommunicationsID:
+    github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID:
       type: string
-    common.types.QuoteUUID:
+    github.com.Kalshi.exchange-infra.common.types.QuoteUUID:
       type: string
-    common.types.RfqUUID:
+    github.com.Kalshi.exchange-infra.common.types.RfqUUID:
       type: string
-    common.types.SelfTradePreventionType:
+    github.com.Kalshi.exchange-infra.common.types.SelfTradePreventionType:
       type: string
-    common.types.TradeUUID:
+    github.com.Kalshi.exchange-infra.common.types.TradeUUID:
       type: string
-    common.types.UserUUID:
+    github.com.Kalshi.exchange-infra.common.types.UserUUID:
       type: string
-    common.unimodel.Details:
+    github.com.Kalshi.exchange-infra.common.unimodel.Details:
       properties:
         key:
           $ref: '#/components/schemas/GenericObject'
       type: object
-    common.unimodel.MarketResult:
+    github.com.Kalshi.exchange-infra.common.unimodel.MarketResult:
       type: string
-    common.unimodel.MarketStatus:
+    github.com.Kalshi.exchange-infra.common.unimodel.MarketStatus:
       type: string
-    common.unimodel.MarketStrikeType:
+    github.com.Kalshi.exchange-infra.common.unimodel.MarketStrikeType:
       type: string
-    common.unimodel.MarketType:
+    github.com.Kalshi.exchange-infra.common.unimodel.MarketType:
       type: string
-    common.unimodel.ProductMetadata:
+    github.com.Kalshi.exchange-infra.common.unimodel.ProductMetadata:
       properties:
         key:
           $ref: '#/components/schemas/GenericObject'
       type: object
-    common.unimodel.Side:
+    github.com.Kalshi.exchange-infra.common.unimodel.Side:
       type: string
-    svc-api2.model.AcceptQuoteRequest:
+    model.AcceptQuoteRequest:
       properties:
         accepted_side:
           description: The side of the quote to accept (yes or no).
@@ -784,7 +784,7 @@ components:
             - 'no'
           type: string
       type: object
-    svc-api2.model.AmendOrderRequest:
+    model.AmendOrderRequest:
       properties:
         action:
           description: >-
@@ -796,7 +796,7 @@ components:
           type: string
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: >-
             Current client order ID that uniquely identifies the order to be
             amended. Only alphanumeric characters, '_', and '-' characters are
@@ -811,7 +811,7 @@ components:
           type: integer
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Price in cents for no side orders (0-100). Either yes_price or
             no_price must be provided based on the side.
@@ -821,7 +821,7 @@ components:
           type: integer
         no_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Submitting price of the No side of the trade, in fixed-point
             dollars. Exactly one of yes_price, no_price, yes_price_dollars, and
@@ -844,7 +844,7 @@ components:
           type: string
         updated_client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: >-
             New client order ID to be assigned to the order after successful
             amendment. Only alphanumeric characters, '_', and '-' characters are
@@ -853,7 +853,7 @@ components:
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Price in cents for yes side orders (0-100). Either yes_price or
             no_price must be provided based on the side.
@@ -863,7 +863,7 @@ components:
           type: integer
         yes_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Submitting price of the Yes side of the trade, in fixed-point
             dollars. Exactly one of yes_price, no_price, yes_price_dollars, and
@@ -872,20 +872,20 @@ components:
             type: integer
           type: array
       type: object
-    svc-api2.model.AmendOrderResponse:
+    model.AmendOrderResponse:
       properties:
         old_order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Order model for the order before amendment.
           type: object
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Order model for the order after amendment.
           type: object
       type: object
-    svc-api2.model.BatchCancelOrdersRequest:
+    model.BatchCancelOrdersRequest:
       properties:
         ids:
           description: An array of order IDs to cancel.
@@ -893,7 +893,7 @@ components:
             type: string
           type: array
       type: object
-    svc-api2.model.BatchCancelOrdersResponse:
+    model.BatchCancelOrdersResponse:
       properties:
         orders:
           description: >-
@@ -904,21 +904,21 @@ components:
             properties:
               error:
                 $ref: >-
-                  #/components/schemas/common.api.JSONError
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.api.JSONError
                 description: >-
                   Error information if the order cancellation failed. If this
                   field is populated, the order field will be null.
                 type: object
               order:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.Order
+                  #/components/schemas/model.Order
                 description: >-
                   Details of the canceled order. Will be null if an error
                   occurred.
                 type: object
               order_id:
                 $ref: >-
-                  #/components/schemas/common.types.OrderUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
                 description: >-
                   The order ID to identify which order had an error during batch
                   cancellation.
@@ -931,16 +931,16 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.BatchCreateOrdersRequest:
+    model.BatchCreateOrdersRequest:
       properties:
         orders:
           description: An array of individual orders to place.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.CreateOrderRequest
+              #/components/schemas/model.CreateOrderRequest
           type: array
       type: object
-    svc-api2.model.BatchCreateOrdersResponse:
+    model.BatchCreateOrdersResponse:
       properties:
         orders:
           description: >-
@@ -950,21 +950,21 @@ components:
             properties:
               client_order_id:
                 $ref: >-
-                  #/components/schemas/common.types.ClientOrderID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
                 description: >-
                   The client-provided order ID from the request. This helps
                   identify which order had an error in batch operations.
                 type: string
               error:
                 $ref: >-
-                  #/components/schemas/common.api.JSONError
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.api.JSONError
                 description: >-
                   Error information if the order creation failed. If this field
                   is populated, the order field will be null.
                 type: object
               order:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.OrderConfirmation
+                  #/components/schemas/model.OrderConfirmation
                 description: >-
                   Order confirmation details when the order is successfully
                   created. Will be null if an error occurred.
@@ -972,66 +972,66 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.BidAskDistribution:
+    model.BidAskDistribution:
       properties:
         close:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Offer price on the market at the end of the candlestick period.
           format: int64
           type: integer
         close_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Offer price on the market at the end of the candlestick period.
           items:
             type: integer
           type: array
         high:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Highest offer price on the market during the candlestick period.
           format: int64
           type: integer
         high_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Highest offer price on the market during the candlestick period.
           items:
             type: integer
           type: array
         low:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Lowest offer price on the market during the candlestick period.
           format: int64
           type: integer
         low_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Lowest offer price on the market during the candlestick period.
           items:
             type: integer
           type: array
         open:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Offer price on the market at the start of the candlestick period.
           format: int64
           type: integer
         open_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Offer price on the market at the start of the candlestick period.
           items:
             type: integer
           type: array
       type: object
-    svc-api2.model.CancelOrderResponse:
+    model.CancelOrderResponse:
       properties:
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Order model for the order after cancellation.
           type: object
         reduced_by:
@@ -1040,7 +1040,7 @@ components:
             operation.
           type: integer
       type: object
-    svc-api2.model.CreateMarketInMultivariateEventCollectionRequest:
+    model.CreateMarketInMultivariateEventCollectionRequest:
       properties:
         selected_markets:
           description: >-
@@ -1048,10 +1048,10 @@ components:
             market is created.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.TickerPair
+              #/components/schemas/model.TickerPair
           type: array
       type: object
-    svc-api2.model.CreateMarketInMultivariateEventCollectionResponse:
+    model.CreateMarketInMultivariateEventCollectionResponse:
       properties:
         event_ticker:
           description: Event ticker for the created market.
@@ -1060,7 +1060,7 @@ components:
           description: Market ticker for the created market.
           type: string
       type: object
-    svc-api2.model.CreateOrderGroupRequest:
+    model.CreateOrderGroupRequest:
       properties:
         contracts_limit:
           description: >-
@@ -1070,15 +1070,15 @@ components:
           minimum: 1
           type: integer
       type: object
-    svc-api2.model.CreateOrderGroupResponse:
+    model.CreateOrderGroupResponse:
       properties:
         order_group_id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           description: Unique identifier for the newly created order group.
           type: string
       type: object
-    svc-api2.model.CreateOrderRequest:
+    model.CreateOrderRequest:
       properties:
         action:
           description: Specifies if this is a buy or sell order.
@@ -1088,7 +1088,7 @@ components:
           type: string
         buy_max_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             If type = market and action = buy, buy_max_cost represents the
             maximum cents that can be spent to acquire a position. When
@@ -1098,7 +1098,7 @@ components:
           type: integer
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: >-
             Member-provided ID to attach to the order. Only alphanumeric
             characters, '_', and '-' characters are permitted. The ID must also
@@ -1118,7 +1118,7 @@ components:
           type: integer
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Submitting price of the No side of the trade, in cents. Exactly one
             of yes_price and no_price must be passed.
@@ -1128,7 +1128,7 @@ components:
           type: integer
         no_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Submitting price of the No side of the trade, in fixed-point
             dollars. Exactly one of yes_price, no_price, yes_price_dollars, and
@@ -1138,7 +1138,7 @@ components:
           type: array
         order_group_id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           type: string
         post_only:
           description: >-
@@ -1186,7 +1186,7 @@ components:
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Submitting price of the Yes side of the trade, in cents. Exactly one
             of yes_price and no_price must be passed.
@@ -1196,7 +1196,7 @@ components:
           type: integer
         yes_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Submitting price of the Yes side of the trade, in fixed-point
             dollars. Exactly one of yes_price, no_price, yes_price_dollars, and
@@ -1205,19 +1205,19 @@ components:
             type: integer
           type: array
       type: object
-    svc-api2.model.CreateOrderResponse:
+    model.CreateOrderResponse:
       properties:
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.OrderConfirmation
+            #/components/schemas/model.OrderConfirmation
           description: OrderConfirmation model for the order created.
           type: object
       type: object
-    svc-api2.model.CreateQuoteRequest:
+    model.CreateQuoteRequest:
       properties:
         no_bid:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The bid price for NO contracts, in dollars.
           items:
             type: integer
@@ -1227,24 +1227,24 @@ components:
           type: boolean
         rfq_id:
           $ref: >-
-            #/components/schemas/common.types.RfqUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.RfqUUID
           description: The ID of the RFQ to quote on.
           type: string
         yes_bid:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The bid price for YES contracts, in dollars.
           items:
             type: integer
           type: array
       type: object
-    svc-api2.model.CreateQuoteResponse:
+    model.CreateQuoteResponse:
       properties:
         id:
           description: The ID of the newly created quote.
           type: string
       type: object
-    svc-api2.model.CreateRFQRequest:
+    model.CreateRFQRequest:
       properties:
         contracts:
           description: The number of contracts for the RFQ.
@@ -1257,13 +1257,13 @@ components:
           description: Whether to rest the remainder of the RFQ after execution.
           type: boolean
       type: object
-    svc-api2.model.CreateRFQResponse:
+    model.CreateRFQResponse:
       properties:
         id:
           description: The ID of the newly created RFQ.
           type: string
       type: object
-    svc-api2.model.DecreaseOrderRequest:
+    model.DecreaseOrderRequest:
       properties:
         reduce_by:
           description: >-
@@ -1277,24 +1277,24 @@ components:
             reduce_to must be provided.
           type: integer
       type: object
-    svc-api2.model.DecreaseOrderResponse:
+    model.DecreaseOrderResponse:
       properties:
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Order model for the order after decrease.
           type: object
       type: object
-    svc-api2.model.EmptyResponse:
+    model.EmptyResponse:
       type: object
-    svc-api2.model.EventData:
+    model.EventData:
       properties:
         category:
           description: Event category (deprecated, use series-level category instead).
           type: string
         collateral_return_type:
           $ref: >-
-            #/components/schemas/common.types.CollateralReturnType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.CollateralReturnType
           description: >-
             Specifies how collateral is returned when markets settle (e.g.,
             'binary' for standard yes/no markets).
@@ -1308,7 +1308,7 @@ components:
             'with_nested_markets=true' is specified in the request.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Market
+              #/components/schemas/model.Market
           type: array
         mutually_exclusive:
           description: >-
@@ -1317,7 +1317,7 @@ components:
           type: boolean
         price_level_structure:
           $ref: >-
-            #/components/schemas/common.types.PriceLevelStructure
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PriceLevelStructure
           description: The price level structure for this event.
           type: string
         series_ticker:
@@ -1325,7 +1325,7 @@ components:
           type: string
         strike_date:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: >-
             The specific date this event is based on. Only filled when the event
             uses a date strike (mutually exclusive with strike_period).
@@ -1342,7 +1342,7 @@ components:
           description: Full title of the event (deprecated, use sub_title instead).
           type: string
       type: object
-    svc-api2.model.ExchangeStatus:
+    model.ExchangeStatus:
       properties:
         exchange_active:
           description: >-
@@ -1352,7 +1352,7 @@ components:
           type: boolean
         exchange_estimated_resume_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: >-
             Estimated downtime for the current exchange maintenance window.
             However, this is not guaranteed and can be extended.
@@ -1363,11 +1363,11 @@ components:
             reserves the right to pause at any time in case issues are detected.
           type: boolean
       type: object
-    svc-api2.model.Fill:
+    model.Fill:
       properties:
         action:
           $ref: >-
-            #/components/schemas/common.types.OrderAction
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderAction
           description: Specifies if this is a buy or sell order.
           enum:
             - buy
@@ -1378,7 +1378,7 @@ components:
           type: integer
         created_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Timestamp when this fill was executed.
         is_taker:
           description: >-
@@ -1387,25 +1387,25 @@ components:
           type: boolean
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fill price for the no side in cents.
           format: int64
           type: integer
         no_price_fixed:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Fill price for the no side in fixed point dollars.
           items:
             type: integer
           type: array
         order_id:
           $ref: >-
-            #/components/schemas/common.types.OrderUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
           description: Unique identifier for the order that resulted in this fill.
           type: string
         side:
           $ref: >-
-            #/components/schemas/common.unimodel.Side
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Specifies if this is a 'yes' or 'no' fill.
           enum:
             - 'yes'
@@ -1416,48 +1416,48 @@ components:
           type: string
         trade_id:
           $ref: >-
-            #/components/schemas/common.types.TradeUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.TradeUUID
           description: Unique identifier for this fill.
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fill price for the yes side in cents.
           format: int64
           type: integer
         yes_price_fixed:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: Fill price for the yes side in fixed point dollars.
           items:
             type: integer
           type: array
       type: object
-    svc-api2.model.Fills:
+    model.Fills:
       items:
         $ref: >-
-          #/components/schemas/svc-api2.model.Fill
+          #/components/schemas/model.Fill
       type: array
-    svc-api2.model.GetBalanceResponse:
+    model.GetBalanceResponse:
       properties:
         balance:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Member's available balance in cents. This represents the amount
             available for trading.
           format: int64
           type: integer
       type: object
-    svc-api2.model.GetCommunicationsIDResponse:
+    model.GetCommunicationsIDResponse:
       properties:
         communications_id:
           $ref: >-
-            #/components/schemas/common.types.PublicCommunicationsID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
           description: A public communications ID which is used to identify the user.
           type: string
       type: object
-    svc-api2.model.GetEventMetadataResponse:
+    model.GetEventMetadataResponse:
       properties:
         image_url:
           type: string
@@ -1473,19 +1473,19 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.GetEventResponse:
+    model.GetEventResponse:
       properties:
         event:
           $ref: >-
-            #/components/schemas/svc-api2.model.EventData
+            #/components/schemas/model.EventData
           type: object
         markets:
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Market
+              #/components/schemas/model.Market
           type: array
       type: object
-    svc-api2.model.GetEventsResponse:
+    model.GetEventsResponse:
       properties:
         cursor:
           description: >-
@@ -1496,10 +1496,10 @@ components:
           description: Array of events matching the query criteria.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.EventData
+              #/components/schemas/model.EventData
           type: array
       type: object
-    svc-api2.model.GetExchangeAnnouncementsResponse:
+    model.GetExchangeAnnouncementsResponse:
       properties:
         announcements:
           description: A list of exchange-wide announcements.
@@ -1514,7 +1514,7 @@ components:
                 type: string
               status:
                 $ref: >-
-                  #/components/schemas/common.exchange_metadata.AnnouncementStatus
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementStatus
                 description: The current status of this announcement.
                 enum:
                   - active
@@ -1522,7 +1522,7 @@ components:
                 type: string
               type:
                 $ref: >-
-                  #/components/schemas/common.exchange_metadata.AnnouncementType
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.AnnouncementType
                 description: The type of the announcement.
                 enum:
                   - info
@@ -1532,15 +1532,15 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.GetExchangeScheduleResponse:
+    model.GetExchangeScheduleResponse:
       properties:
         schedule:
           $ref: >-
-            #/components/schemas/common.exchange_metadata.Schedule
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.exchange_metadata.Schedule
           description: A description of the exchange's schedule and operating hours.
           type: object
       type: object
-    svc-api2.model.GetFillsResponse:
+    model.GetFillsResponse:
       properties:
         cursor:
           description: >-
@@ -1552,14 +1552,14 @@ components:
           type: string
         fills:
           $ref: >-
-            #/components/schemas/svc-api2.model.Fills
+            #/components/schemas/model.Fills
           description: List of fills for the member.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Fill
+              #/components/schemas/model.Fill
           type: array
       type: object
-    svc-api2.model.GetMarketCandlesticksResponse:
+    model.GetMarketCandlesticksResponse:
       properties:
         candlesticks:
           description: Array of candlestick data points for the specified time range.
@@ -1577,7 +1577,7 @@ components:
                 type: integer
               price:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.PriceDistribution
+                  #/components/schemas/model.PriceDistribution
                 description: >-
                   Open, high, low, close (OHLC) and more data for trade YES
                   contract prices on the market during the candlestick period.
@@ -1589,14 +1589,14 @@ components:
                 type: integer
               yes_ask:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.BidAskDistribution
+                  #/components/schemas/model.BidAskDistribution
                 description: >-
                   Open, high, low, close (OHLC) data for YES sell offers on the
                   market during the candlestick period.
                 type: object
               yes_bid:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.BidAskDistribution
+                  #/components/schemas/model.BidAskDistribution
                 description: >-
                   Open, high, low, close (OHLC) data for YES buy offers on the
                   market during the candlestick period.
@@ -1607,42 +1607,42 @@ components:
           description: Unique identifier for the market.
           type: string
       type: object
-    svc-api2.model.GetMarketOrderbookResponse:
+    model.GetMarketOrderbookResponse:
       properties:
         orderbook:
           $ref: >-
-            #/components/schemas/svc-api2.model.OrderBook
+            #/components/schemas/model.OrderBook
           description: >-
             The current order book showing yes and no price levels with their
             respective quantities.
           type: object
       type: object
-    svc-api2.model.GetMarketResponse:
+    model.GetMarketResponse:
       properties:
         market:
           $ref: >-
-            #/components/schemas/svc-api2.model.Market
+            #/components/schemas/model.Market
           type: object
       type: object
-    svc-api2.model.GetMarketsResponse:
+    model.GetMarketsResponse:
       properties:
         cursor:
           type: string
         markets:
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Market
+              #/components/schemas/model.Market
           type: array
       type: object
-    svc-api2.model.GetMilestoneResponse:
+    model.GetMilestoneResponse:
       properties:
         milestone:
           $ref: >-
-            #/components/schemas/svc-api2.model.Milestone
+            #/components/schemas/model.Milestone
           description: The milestone data.
           type: object
       type: object
-    svc-api2.model.GetMilestonesResponse:
+    model.GetMilestonesResponse:
       properties:
         cursor:
           description: Cursor for pagination.
@@ -1651,10 +1651,10 @@ components:
           description: List of milestones.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Milestone
+              #/components/schemas/model.Milestone
           type: array
       type: object
-    svc-api2.model.GetMultivariateEventCollectionLookupHistoryResponse:
+    model.GetMultivariateEventCollectionLookupHistoryResponse:
       properties:
         lookup_points:
           description: List of recent lookup points in the collection.
@@ -1674,20 +1674,20 @@ components:
                 description: Markets that were selected for this lookup.
                 items:
                   $ref: >-
-                    #/components/schemas/svc-api2.model.TickerPair
+                    #/components/schemas/model.TickerPair
                 type: array
             type: object
           type: array
       type: object
-    svc-api2.model.GetMultivariateEventCollectionResponse:
+    model.GetMultivariateEventCollectionResponse:
       properties:
         multivariate_contract:
           $ref: >-
-            #/components/schemas/svc-api2.model.MultivariateEventCollection
+            #/components/schemas/model.MultivariateEventCollection
           description: The multivariate event collection.
           type: object
       type: object
-    svc-api2.model.GetMultivariateEventCollectionsResponse:
+    model.GetMultivariateEventCollectionsResponse:
       properties:
         cursor:
           description: >-
@@ -1701,10 +1701,10 @@ components:
           description: List of multivariate event collections.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.MultivariateEventCollection
+              #/components/schemas/model.MultivariateEventCollection
           type: array
       type: object
-    svc-api2.model.GetOrderGroupResponse:
+    model.GetOrderGroupResponse:
       properties:
         is_auto_cancel_enabled:
           description: Whether auto-cancel is enabled for this order group.
@@ -1715,24 +1715,24 @@ components:
             type: string
           type: array
       type: object
-    svc-api2.model.GetOrderGroupsResponse:
+    model.GetOrderGroupsResponse:
       properties:
         order_groups:
           $ref: >-
-            #/components/schemas/svc-api2.model.OrderGroupSummaryList
+            #/components/schemas/model.OrderGroupSummaryList
           description: List of order groups for the member.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.OrderGroupSummary
+              #/components/schemas/model.OrderGroupSummary
           type: array
       type: object
-    svc-api2.model.GetOrderQueuePositionResponse:
+    model.GetOrderQueuePositionResponse:
       properties:
         queue_position:
           description: The position of the order in the queue.
           type: integer
       type: object
-    svc-api2.model.GetOrderQueuePositionsResponse:
+    model.GetOrderQueuePositionsResponse:
       properties:
         queue_positions:
           items:
@@ -1746,15 +1746,15 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.GetOrderResponse:
+    model.GetOrderResponse:
       properties:
         order:
           $ref: >-
-            #/components/schemas/svc-api2.model.Order
+            #/components/schemas/model.Order
           description: Order for the member.
           type: object
       type: object
-    svc-api2.model.GetOrdersResponse:
+    model.GetOrdersResponse:
       properties:
         cursor:
           description: >-
@@ -1766,14 +1766,14 @@ components:
           type: string
         orders:
           $ref: >-
-            #/components/schemas/svc-api2.model.OrderList
+            #/components/schemas/model.OrderList
           description: List of orders for the member.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Order
+              #/components/schemas/model.Order
           type: array
       type: object
-    svc-api2.model.GetPositionsResponse:
+    model.GetPositionsResponse:
       properties:
         cursor:
           description: >-
@@ -1789,13 +1789,13 @@ components:
             properties:
               event_exposure:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Cost of the aggregate event position in cents.
                 format: int64
                 type: integer
               event_exposure_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Cost of the aggregate event position in dollars.
                 items:
                   type: integer
@@ -1805,26 +1805,26 @@ components:
                 type: string
               fees_paid:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Fees paid on fill orders, in cents.
                 format: int64
                 type: integer
               fees_paid_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Fees paid on fill orders, in dollars.
                 items:
                   type: integer
                 type: array
               realized_pnl:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Locked in profit and loss, in cents.
                 format: int64
                 type: integer
               realized_pnl_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Locked in profit and loss, in dollars.
                 items:
                   type: integer
@@ -1834,13 +1834,13 @@ components:
                 type: integer
               total_cost:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Total spent on this event in cents.
                 format: int64
                 type: integer
               total_cost_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Total spent on this event in dollars.
                 items:
                   type: integer
@@ -1853,13 +1853,13 @@ components:
             properties:
               fees_paid:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Fees paid on fill orders, in cents.
                 format: int64
                 type: integer
               fees_paid_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Fees paid on fill orders, in dollars.
                 items:
                   type: integer
@@ -1870,13 +1870,13 @@ components:
                 type: string
               market_exposure:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Cost of the aggregate market position in cents.
                 format: int64
                 type: integer
               market_exposure_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Cost of the aggregate market position in dollars.
                 items:
                   type: integer
@@ -1888,13 +1888,13 @@ components:
                 type: integer
               realized_pnl:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Locked in profit and loss, in cents.
                 format: int64
                 type: integer
               realized_pnl_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Locked in profit and loss, in dollars.
                 items:
                   type: integer
@@ -1907,13 +1907,13 @@ components:
                 type: string
               total_traded:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Total spent on this market in cents.
                 format: int64
                 type: integer
               total_traded_dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 description: Total spent on this market in dollars.
                 items:
                   type: integer
@@ -1921,15 +1921,15 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.GetQuoteResponse:
+    model.GetQuoteResponse:
       properties:
         quote:
           $ref: >-
-            #/components/schemas/common.communications.Quote
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.Quote
           description: The details of the requested quote.
           type: object
       type: object
-    svc-api2.model.GetQuotesResponse:
+    model.GetQuotesResponse:
       properties:
         cursor:
           description: Cursor for pagination to get the next page of results.
@@ -1965,17 +1965,17 @@ components:
                 type: string
               creator_id:
                 $ref: >-
-                  #/components/schemas/common.types.PublicCommunicationsID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
                 description: Public communications ID of the quote creator.
                 type: string
               creator_order_id:
                 $ref: >-
-                  #/components/schemas/common.types.OrderUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
                 description: Order ID for the quote creator (private field).
                 type: string
               creator_user_id:
                 $ref: >-
-                  #/components/schemas/common.types.UserUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
                 description: User ID of the quote creator (private field).
                 type: string
               executed_ts:
@@ -1984,7 +1984,7 @@ components:
                 type: string
               id:
                 $ref: >-
-                  #/components/schemas/common.types.QuoteUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.QuoteUUID
                 description: Unique identifier for the quote.
                 type: string
               market_ticker:
@@ -1992,7 +1992,7 @@ components:
                 type: string
               no_bid:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Bid price for NO contracts, in cents.
                 format: int64
                 type: integer
@@ -2001,27 +2001,27 @@ components:
                 type: boolean
               rfq_creator_id:
                 $ref: >-
-                  #/components/schemas/common.types.PublicCommunicationsID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
                 description: Public communications ID of the RFQ creator.
                 type: string
               rfq_creator_order_id:
                 $ref: >-
-                  #/components/schemas/common.types.OrderUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderUUID
                 description: Order ID for the RFQ creator (private field).
                 type: string
               rfq_creator_user_id:
                 $ref: >-
-                  #/components/schemas/common.types.UserUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
                 description: User ID of the RFQ creator (private field).
                 type: string
               rfq_id:
                 $ref: >-
-                  #/components/schemas/common.types.RfqUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.RfqUUID
                 description: ID of the RFQ this quote is responding to.
                 type: string
               status:
                 $ref: >-
-                  #/components/schemas/common.communications.QuoteStatus
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.QuoteStatus
                 description: Current status of the quote.
                 type: string
               updated_ts:
@@ -2030,22 +2030,22 @@ components:
                 type: string
               yes_bid:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Bid price for YES contracts, in cents.
                 format: int64
                 type: integer
             type: object
           type: array
       type: object
-    svc-api2.model.GetRFQResponse:
+    model.GetRFQResponse:
       properties:
         rfq:
           $ref: >-
-            #/components/schemas/common.communications.RFQ
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.RFQ
           description: The details of the requested RFQ.
           type: object
       type: object
-    svc-api2.model.GetRFQsResponse:
+    model.GetRFQsResponse:
       properties:
         cursor:
           description: Cursor for pagination to get the next page of results.
@@ -2070,17 +2070,17 @@ components:
                 type: string
               creator_id:
                 $ref: >-
-                  #/components/schemas/common.types.PublicCommunicationsID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.PublicCommunicationsID
                 description: Public communications ID of the RFQ creator.
                 type: string
               creator_user_id:
                 $ref: >-
-                  #/components/schemas/common.types.UserUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.UserUUID
                 description: User ID of the RFQ creator (private field).
                 type: string
               id:
                 $ref: >-
-                  #/components/schemas/common.types.RfqUUID
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.RfqUUID
                 description: Unique identifier for the RFQ.
                 type: string
               market_ticker:
@@ -2091,7 +2091,7 @@ components:
                 type: boolean
               status:
                 $ref: >-
-                  #/components/schemas/common.communications.RFQStatus
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.communications.RFQStatus
                 description: Current status of the RFQ (open, closed).
                 type: string
               updated_ts:
@@ -2101,24 +2101,24 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.GetSeriesListResponse:
+    model.GetSeriesListResponse:
       properties:
         series:
           description: List of series data.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.Series
+              #/components/schemas/model.Series
           type: array
       type: object
-    svc-api2.model.GetSeriesResponse:
+    model.GetSeriesResponse:
       properties:
         series:
           $ref: >-
-            #/components/schemas/svc-api2.model.Series
+            #/components/schemas/model.Series
           description: Data for the series.
           type: object
       type: object
-    svc-api2.model.GetSettlementsResponse:
+    model.GetSettlementsResponse:
       properties:
         cursor:
           description: >-
@@ -2143,13 +2143,13 @@ components:
                 type: integer
               no_total_cost:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Total cost basis of all NO contracts in cents.
                 format: int64
                 type: integer
               revenue:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: >-
                   Total revenue earned from this settlement in cents (winning
                   contracts pay out 100 cents each).
@@ -2157,7 +2157,7 @@ components:
                 type: integer
               settled_time:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.OutputTime
+                  #/components/schemas/model.OutputTime
                 description: >-
                   Timestamp when the market was settled and payouts were
                   processed.
@@ -2169,22 +2169,22 @@ components:
                 type: integer
               yes_total_cost:
                 $ref: >-
-                  #/components/schemas/common.types.Cent
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
                 description: Total cost basis of all YES contracts in cents.
                 format: int64
                 type: integer
             type: object
           type: array
       type: object
-    svc-api2.model.GetStructuredTargetResponse:
+    model.GetStructuredTargetResponse:
       properties:
         structured_target:
           $ref: >-
-            #/components/schemas/svc-api2.model.StructuredTarget
+            #/components/schemas/model.StructuredTarget
           description: The requested structured target with all its details.
           type: object
       type: object
-    svc-api2.model.GetStructuredTargetsResponse:
+    model.GetStructuredTargetsResponse:
       properties:
         cursor:
           description: >-
@@ -2195,26 +2195,26 @@ components:
           description: Array of structured targets matching the query criteria.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.StructuredTarget
+              #/components/schemas/model.StructuredTarget
           type: array
       type: object
-    svc-api2.model.GetUserDataTimestampResponse:
+    model.GetUserDataTimestampResponse:
       properties:
         as_of_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Timestamp when user data was last updated.
       type: object
-    svc-api2.model.GetUserRestingOrderTotalValueResponse:
+    model.GetUserRestingOrderTotalValueResponse:
       properties:
         total_value:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Total value of resting orders in cents.
           format: int64
           type: integer
       type: object
-    svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionRequest:
+    model.LookupTickersForMarketInMultivariateEventCollectionRequest:
       properties:
         selected_markets:
           description: >-
@@ -2237,7 +2237,7 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionResponse:
+    model.LookupTickersForMarketInMultivariateEventCollectionResponse:
       properties:
         event_ticker:
           description: Event ticker for the looked up market.
@@ -2246,14 +2246,14 @@ components:
           description: Market ticker for the looked up market.
           type: string
       type: object
-    svc-api2.model.Milestone:
+    model.Milestone:
       properties:
         category:
           description: Category of the milestone.
           type: string
         details:
           $ref: >-
-            #/components/schemas/common.unimodel.Details
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Details
           description: Additional details about the milestone.
           type: object
         end_date:
@@ -2296,7 +2296,7 @@ components:
           description: Type of the milestone.
           type: string
       type: object
-    svc-api2.model.MultivariateEventCollection:
+    model.MultivariateEventCollection:
       properties:
         associated_event_tickers:
           description: >-
@@ -2363,25 +2363,25 @@ components:
           description: Title of the collection.
           type: string
       type: object
-    svc-api2.model.Order:
+    model.Order:
       properties:
         action:
           $ref: >-
-            #/components/schemas/common.types.OrderAction
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderAction
           description: Representing trade action; currently supports buy and sell.
           type: string
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: Optional unique identifier for order placement.
           type: string
         created_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of creation for the order.
         expiration_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of expiration for this order.
         fill_count:
           description: The size of filled orders (maker + taker).
@@ -2391,23 +2391,23 @@ components:
           type: integer
         last_update_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: The last update to an order (modify, cancel, fill).
         maker_fees:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fees paid on filled maker contracts, in cents.
           format: int64
           type: integer
         maker_fill_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The cost of filled maker orders in cents.
           format: int64
           type: integer
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Submitting price of the No side of the trade, in cents. Exactly one
             of yes_price and no_price must be passed.
@@ -2415,14 +2415,14 @@ components:
           type: integer
         no_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The no price for this order in fixed-point dollars.
           items:
             type: integer
           type: array
         order_group_id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           type: string
         order_id:
           description: Unique identifier for orders.
@@ -2435,27 +2435,27 @@ components:
           type: integer
         self_trade_prevention_type:
           $ref: >-
-            #/components/schemas/common.types.SelfTradePreventionType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.SelfTradePreventionType
           type: string
         side:
           $ref: >-
-            #/components/schemas/common.unimodel.Side
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Representing direction of the order; currently supports yes and no.
           type: string
         status:
           $ref: >-
-            #/components/schemas/common.types.OrderStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderStatus
           description: The current status of this order.
           type: string
         taker_fees:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Fees paid on filled taker contracts, in cents.
           format: int64
           type: integer
         taker_fill_cost:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The cost of filled taker orders in cents.
           format: int64
           type: integer
@@ -2464,7 +2464,7 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/common.types.OrderType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderType
           description: Representing order type; currently supports 'market' and 'limit'.
           type: string
         user_id:
@@ -2472,19 +2472,19 @@ components:
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The yes price for this order in cents.
           format: int64
           type: integer
         yes_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The yes price for this order in fixed-point dollars.
           items:
             type: integer
           type: array
       type: object
-    svc-api2.model.OrderBook:
+    model.OrderBook:
       properties:
         'no':
           description: >-
@@ -2493,7 +2493,7 @@ components:
             parameter.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.PriceLevel
+              #/components/schemas/model.PriceLevel
           type: array
         no_dollars:
           description: >-
@@ -2505,7 +2505,7 @@ components:
                 type: integer
               Dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 items:
                   type: integer
                 type: array
@@ -2531,65 +2531,65 @@ components:
                 type: integer
               Dollars:
                 $ref: >-
-                  #/components/schemas/common.types.FixedPointDollars
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
                 items:
                   type: integer
                 type: array
             type: object
           type: array
       type: object
-    svc-api2.model.OrderConfirmation:
+    model.OrderConfirmation:
       properties:
         action:
           $ref: >-
-            #/components/schemas/common.types.OrderAction
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderAction
           description: Representing trade action; currently supports buy and sell.
           type: string
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: Optional unique identifier for order placement.
           type: string
         created_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of creation for the order.
         expiration_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of expiration for this order.
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The no price for this order in cents.
           format: int64
           type: integer
         no_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The no price for this order in fixed-point dollars.
           items:
             type: integer
           type: array
         order_group_id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           type: string
         order_id:
           description: Unique identifier for orders.
           type: string
         self_trade_prevention_type:
           $ref: >-
-            #/components/schemas/common.types.SelfTradePreventionType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.SelfTradePreventionType
           type: string
         side:
           $ref: >-
-            #/components/schemas/common.unimodel.Side
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Representing direction of the order; currently supports yes and no.
           type: string
         status:
           $ref: >-
-            #/components/schemas/common.types.OrderStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderStatus
           description: The current status of a given order.
           type: string
         ticker:
@@ -2597,7 +2597,7 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/common.types.OrderType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderType
           description: Representing order type; currently supports 'market' and 'limit'.
           type: string
         user_id:
@@ -2605,45 +2605,45 @@ components:
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The yes price for this order in cents.
           format: int64
           type: integer
         yes_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The yes price for this order in fixed-point dollars.
           items:
             type: integer
           type: array
       type: object
-    svc-api2.model.OrderGroupSummary:
+    model.OrderGroupSummary:
       properties:
         id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           description: Unique identifier for the order group.
           type: string
         is_auto_cancel_enabled:
           description: Whether auto-cancel is enabled for this order group.
           type: boolean
       type: object
-    svc-api2.model.OrderGroupSummaryList:
+    model.OrderGroupSummaryList:
       items:
         $ref: >-
-          #/components/schemas/svc-api2.model.OrderGroupSummary
+          #/components/schemas/model.OrderGroupSummary
       type: array
-    svc-api2.model.OrderList:
+    model.OrderList:
       items:
         $ref: >-
-          #/components/schemas/svc-api2.model.Order
+          #/components/schemas/model.Order
       type: array
-    svc-api2.model.OutputTime: {}
-    svc-api2.model.PriceDistribution:
+    model.OutputTime: {}
+    model.PriceDistribution:
       properties:
         close:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Last traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2651,7 +2651,7 @@ components:
           type: integer
         close_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Last traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2660,7 +2660,7 @@ components:
           type: array
         high:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Highest traded YES contract price on the market during the
             candlestick period. May be empty if there was no trade during the
@@ -2669,7 +2669,7 @@ components:
           type: integer
         high_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Highest traded YES contract price on the market during the
             candlestick period. May be empty if there was no trade during the
@@ -2679,7 +2679,7 @@ components:
           type: array
         low:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Lowest traded YES contract price on the market during the
             candlestick period. May be empty if there was no trade during the
@@ -2688,7 +2688,7 @@ components:
           type: integer
         low_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Lowest traded YES contract price on the market during the
             candlestick period. May be empty if there was no trade during the
@@ -2698,7 +2698,7 @@ components:
           type: array
         mean:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Mean traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2706,7 +2706,7 @@ components:
           type: integer
         mean_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Mean traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2715,7 +2715,7 @@ components:
           type: array
         open:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             First traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2723,7 +2723,7 @@ components:
           type: integer
         open_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             First traded YES contract price on the market during the candlestick
             period. May be empty if there was no trade during the period.
@@ -2732,7 +2732,7 @@ components:
           type: array
         previous:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: >-
             Last traded YES contract price on the market before the candlestick
             period. May be empty if there were no trades before the period.
@@ -2740,7 +2740,7 @@ components:
           type: integer
         previous_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: >-
             Last traded YES contract price on the market before the candlestick
             period. May be empty if there were no trades before the period.
@@ -2748,24 +2748,24 @@ components:
             type: integer
           type: array
       type: object
-    svc-api2.model.PublicTrade:
+    model.PublicTrade:
       properties:
         count:
           description: Number of contracts bought or sold in this trade.
           type: integer
         created_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Timestamp when this trade was executed.
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: No price for this trade in cents.
           format: int64
           type: integer
         taker_side:
           $ref: >-
-            #/components/schemas/common.unimodel.Side
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Side for the taker of this trade.
           enum:
             - 'yes'
@@ -2776,22 +2776,22 @@ components:
           type: string
         trade_id:
           $ref: >-
-            #/components/schemas/common.types.TradeUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.TradeUUID
           description: Unique identifier for this trade.
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: Yes price for this trade in cents.
           format: int64
           type: integer
       type: object
-    svc-api2.model.PublicTradeList:
+    model.PublicTradeList:
       items:
         $ref: >-
-          #/components/schemas/svc-api2.model.PublicTrade
+          #/components/schemas/model.PublicTrade
       type: array
-    svc-api2.model.PublicTradesGetResponse:
+    model.PublicTradesGetResponse:
       properties:
         cursor:
           description: >-
@@ -2803,14 +2803,14 @@ components:
           type: string
         trades:
           $ref: >-
-            #/components/schemas/svc-api2.model.PublicTradeList
+            #/components/schemas/model.PublicTradeList
           description: List of public trades.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.PublicTrade
+              #/components/schemas/model.PublicTrade
           type: array
       type: object
-    svc-api2.model.Series:
+    model.Series:
       properties:
         additional_prohibitions:
           description: >-
@@ -2859,7 +2859,7 @@ components:
           type: string
         product_metadata:
           $ref: >-
-            #/components/schemas/common.unimodel.ProductMetadata
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.ProductMetadata
           description: Internal product metadata of the series.
           type: object
         settlement_sources:
@@ -2869,7 +2869,7 @@ components:
             in the rulebook.
           items:
             $ref: >-
-              #/components/schemas/svc-api2.model.SettlementSource
+              #/components/schemas/model.SettlementSource
           type: array
         tags:
           description: >-
@@ -2888,11 +2888,11 @@ components:
             series.
           type: string
       type: object
-    svc-api2.model.StructuredTarget:
+    model.StructuredTarget:
       properties:
         details:
           $ref: >-
-            #/components/schemas/common.unimodel.Details
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Details
           description: >-
             Additional details about the structured target. Contains flexible
             JSON data specific to the target type.
@@ -2916,7 +2916,7 @@ components:
           description: Type of the structured target.
           type: string
       type: object
-    svc-api2.model.TickerPair:
+    model.TickerPair:
       properties:
         event_ticker:
           description: Event ticker identifier.
@@ -2931,7 +2931,7 @@ components:
             - 'no'
           type: string
       type: object
-    svc-api2.model.UserCreateApiKeyRequest:
+    model.UserCreateApiKeyRequest:
       properties:
         name:
           description: Name for the API key. This helps identify the key's purpose.
@@ -2942,19 +2942,19 @@ components:
             on API requests.
           type: string
       type: object
-    svc-api2.model.UserCreateApiKeyResponse:
+    model.UserCreateApiKeyResponse:
       properties:
         api_key_id:
           description: Unique identifier for the newly created API key.
           type: string
       type: object
-    svc-api2.model.UserGenerateApiKeyRequest:
+    model.UserGenerateApiKeyRequest:
       properties:
         name:
           description: Name for the API key. This helps identify the key's purpose.
           type: string
       type: object
-    svc-api2.model.UserGenerateApiKeyResponse:
+    model.UserGenerateApiKeyResponse:
       properties:
         api_key_id:
           description: Unique identifier for the newly generated API key.
@@ -2965,7 +2965,7 @@ components:
             cannot be retrieved again after this response.
           type: string
       type: object
-    svc-api2.model.UserGetApiKeysResponse:
+    model.UserGetApiKeysResponse:
       properties:
         api_keys:
           description: List of all API keys associated with the user.
@@ -2984,7 +2984,7 @@ components:
             type: object
           type: array
       type: object
-    svc-api2.model.Market:
+    model.Market:
       type: object
       description: Contains information about a market
       properties:
@@ -3132,12 +3132,12 @@ components:
         - risk_limit_cents
         - rules_primary
         - rules_secondary
-    svc-api2.model.PriceLevel:
+    model.PriceLevel:
       type: array
       items:
         type: integer
       description: Array of 2 integers representing [cents, contract_count].
-    svc-api2.model.PriceLevelCentiCent:
+    model.PriceLevelCentiCent:
       type: array
       items:
         type: integer
@@ -3294,54 +3294,54 @@ components:
       properties:
         action:
           $ref: >-
-            #/components/schemas/common.types.OrderAction
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderAction
           description: Representing trade action; currently supports buy and sell.
           type: string
         client_order_id:
           $ref: >-
-            #/components/schemas/common.types.ClientOrderID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.ClientOrderID
           description: Optional unique identifier for order placement.
           type: string
         created_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of creation for the order.
         expiration_time:
           $ref: >-
-            #/components/schemas/svc-api2.model.OutputTime
+            #/components/schemas/model.OutputTime
           description: Time of expiration for this order.
         no_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The no price for this order in cents.
           format: int64
           type: integer
         no_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The no price for this order in fixed-point dollars.
           items:
             type: integer
           type: array
         order_group_id:
           $ref: >-
-            #/components/schemas/common.types.OrderGroupUUID
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderGroupUUID
           type: string
         order_id:
           description: Unique identifier for orders.
           type: string
         self_trade_prevention_type:
           $ref: >-
-            #/components/schemas/common.types.SelfTradePreventionType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.SelfTradePreventionType
           type: string
         side:
           $ref: >-
-            #/components/schemas/common.unimodel.Side
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.unimodel.Side
           description: Representing direction of the order; currently supports yes and no.
           type: string
         status:
           $ref: >-
-            #/components/schemas/common.types.OrderStatus
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderStatus
           description: The current status of a given order.
           type: string
         ticker:
@@ -3349,7 +3349,7 @@ components:
           type: string
         type:
           $ref: >-
-            #/components/schemas/common.types.OrderType
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.OrderType
           description: Representing order type; currently supports 'market' and 'limit'.
           type: string
         user_id:
@@ -3357,13 +3357,13 @@ components:
           type: string
         yes_price:
           $ref: >-
-            #/components/schemas/common.types.Cent
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
           description: The yes price for this order in cents.
           format: int64
           type: integer
         yes_price_dollars:
           $ref: >-
-            #/components/schemas/common.types.FixedPointDollars
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.FixedPointDollars
           description: The yes price for this order in fixed-point dollars.
           items:
             type: integer
@@ -3390,7 +3390,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.UserGetApiKeysResponse
+                  #/components/schemas/model.UserGetApiKeysResponse
           description: ''
       summary: Get API Keys
       tags:
@@ -3403,7 +3403,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.UserCreateApiKeyRequest
+                #/components/schemas/model.UserCreateApiKeyRequest
         required: true
       responses:
         '201':
@@ -3411,7 +3411,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.UserCreateApiKeyResponse
+                  #/components/schemas/model.UserCreateApiKeyResponse
           description: ''
       summary: Create API Key
       tags:
@@ -3425,7 +3425,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.UserGenerateApiKeyRequest
+                #/components/schemas/model.UserGenerateApiKeyRequest
         required: true
       responses:
         '201':
@@ -3433,7 +3433,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.UserGenerateApiKeyResponse
+                  #/components/schemas/model.UserGenerateApiKeyResponse
           description: ''
       summary: Generate API Key
       tags:
@@ -3466,7 +3466,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetCommunicationsIDResponse
+                  #/components/schemas/model.GetCommunicationsIDResponse
           description: ''
       summary: Get Communications ID
       tags:
@@ -3481,7 +3481,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetQuotesResponse
+                  #/components/schemas/model.GetQuotesResponse
           description: ''
       summary: Get Quotes
       tags:
@@ -3494,7 +3494,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.CreateQuoteRequest
+                #/components/schemas/model.CreateQuoteRequest
         required: true
       responses:
         '201':
@@ -3502,7 +3502,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CreateQuoteResponse
+                  #/components/schemas/model.CreateQuoteResponse
           description: ''
       summary: Create Quote
       tags:
@@ -3542,7 +3542,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetQuoteResponse
+                  #/components/schemas/model.GetQuoteResponse
           description: ''
       summary: Get Quote
       tags:
@@ -3564,7 +3564,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.AcceptQuoteRequest
+                #/components/schemas/model.AcceptQuoteRequest
         required: true
       responses:
         '204':
@@ -3600,7 +3600,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetRFQsResponse
+                  #/components/schemas/model.GetRFQsResponse
           description: ''
       summary: Get RFQs
       tags:
@@ -3613,7 +3613,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.CreateRFQRequest
+                #/components/schemas/model.CreateRFQRequest
         required: true
       responses:
         '201':
@@ -3621,7 +3621,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CreateRFQResponse
+                  #/components/schemas/model.CreateRFQResponse
           description: ''
       summary: Create RFQ
       tags:
@@ -3661,7 +3661,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetRFQResponse
+                  #/components/schemas/model.GetRFQResponse
           description: ''
       summary: Get RFQ
       tags:
@@ -3732,7 +3732,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetEventsResponse
+                  #/components/schemas/model.GetEventsResponse
           description: ''
       summary: Get Events
       tags:
@@ -3767,7 +3767,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetEventResponse
+                  #/components/schemas/model.GetEventResponse
           description: ''
       summary: Get Event
       tags:
@@ -3790,7 +3790,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetEventMetadataResponse
+                  #/components/schemas/model.GetEventMetadataResponse
           description: ''
       summary: Get Event Metadata
       tags:
@@ -3805,7 +3805,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetExchangeAnnouncementsResponse
+                  #/components/schemas/model.GetExchangeAnnouncementsResponse
           description: ''
       summary: Get Exchange Announcements
   /exchange/schedule:
@@ -3818,7 +3818,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetExchangeScheduleResponse
+                  #/components/schemas/model.GetExchangeScheduleResponse
           description: ''
       summary: Get Exchange Schedule
   /exchange/status:
@@ -3831,7 +3831,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.ExchangeStatus
+                  #/components/schemas/model.ExchangeStatus
           description: ''
       summary: Get Exchange Status
   /exchange/user_data_timestamp:
@@ -3844,7 +3844,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetUserDataTimestampResponse
+                  #/components/schemas/model.GetUserDataTimestampResponse
           description: ''
       summary: Get User Data Timestamp
   /markets:
@@ -3935,7 +3935,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMarketsResponse
+                  #/components/schemas/model.GetMarketsResponse
           description: ''
       summary: Get Markets
       tags:
@@ -3996,7 +3996,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.PublicTradesGetResponse
+                  #/components/schemas/model.PublicTradesGetResponse
           description: ''
       summary: Get Trades
       tags:
@@ -4019,7 +4019,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMarketResponse
+                  #/components/schemas/model.GetMarketResponse
           description: ''
       summary: Get Market
       tags:
@@ -4053,7 +4053,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMarketOrderbookResponse
+                  #/components/schemas/model.GetMarketOrderbookResponse
           description: ''
       summary: Get Market Order Book
       tags:
@@ -4117,7 +4117,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMilestonesResponse
+                  #/components/schemas/model.GetMilestonesResponse
           description: ''
       summary: Get Milestones
       tags:
@@ -4140,7 +4140,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMilestoneResponse
+                  #/components/schemas/model.GetMilestoneResponse
           description: ''
       summary: Get Milestone
       tags:
@@ -4155,7 +4155,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMultivariateEventCollectionsResponse
+                  #/components/schemas/model.GetMultivariateEventCollectionsResponse
           description: ''
       summary: Get Multivariate Event Collections
       tags:
@@ -4178,7 +4178,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMultivariateEventCollectionResponse
+                  #/components/schemas/model.GetMultivariateEventCollectionResponse
           description: ''
       summary: Get Multivariate Event Collection
       tags:
@@ -4199,7 +4199,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.CreateMarketInMultivariateEventCollectionRequest
+                #/components/schemas/model.CreateMarketInMultivariateEventCollectionRequest
         required: true
       responses:
         '200':
@@ -4207,7 +4207,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CreateMarketInMultivariateEventCollectionResponse
+                  #/components/schemas/model.CreateMarketInMultivariateEventCollectionResponse
           description: ''
       summary: Create Market In Multivariate Event Collection
       tags:
@@ -4230,7 +4230,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMultivariateEventCollectionLookupHistoryResponse
+                  #/components/schemas/model.GetMultivariateEventCollectionLookupHistoryResponse
           description: ''
       summary: Get Multivariate Event Collection Lookup History
       tags:
@@ -4251,7 +4251,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionRequest
+                #/components/schemas/model.LookupTickersForMarketInMultivariateEventCollectionRequest
         required: true
       responses:
         '200':
@@ -4259,7 +4259,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.LookupTickersForMarketInMultivariateEventCollectionResponse
+                  #/components/schemas/model.LookupTickersForMarketInMultivariateEventCollectionResponse
           description: ''
       summary: Lookup Tickers For Market In Multivariate Event Collection
       tags:
@@ -4274,7 +4274,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetBalanceResponse
+                  #/components/schemas/model.GetBalanceResponse
           description: ''
       summary: Get Balance
       tags:
@@ -4349,7 +4349,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetFillsResponse
+                  #/components/schemas/model.GetFillsResponse
           description: ''
       summary: Get Fills
       tags:
@@ -4364,7 +4364,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrderGroupsResponse
+                  #/components/schemas/model.GetOrderGroupsResponse
           description: ''
       summary: Get Order Groups
       tags:
@@ -4378,7 +4378,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.CreateOrderGroupRequest
+                #/components/schemas/model.CreateOrderGroupRequest
         required: true
       responses:
         '201':
@@ -4386,7 +4386,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CreateOrderGroupResponse
+                  #/components/schemas/model.CreateOrderGroupResponse
           description: ''
       summary: Create Order Group
       tags:
@@ -4409,7 +4409,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.EmptyResponse
+                  #/components/schemas/model.EmptyResponse
           description: ''
       summary: Delete Order Group
       tags:
@@ -4431,7 +4431,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrderGroupResponse
+                  #/components/schemas/model.GetOrderGroupResponse
           description: ''
       summary: Get Order Group
       tags:
@@ -4454,7 +4454,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.EmptyResponse
+                  #/components/schemas/model.EmptyResponse
           description: ''
       summary: Reset Order Group
       tags:
@@ -4537,7 +4537,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrdersResponse
+                  #/components/schemas/model.GetOrdersResponse
           description: ''
       summary: Get Orders
       tags:
@@ -4550,7 +4550,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.CreateOrderRequest
+                #/components/schemas/model.CreateOrderRequest
         required: true
       responses:
         '201':
@@ -4558,7 +4558,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CreateOrderResponse
+                  #/components/schemas/model.CreateOrderResponse
           description: ''
       summary: Create Order
       tags:
@@ -4572,7 +4572,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.BatchCancelOrdersRequest
+                #/components/schemas/model.BatchCancelOrdersRequest
         required: true
       responses:
         '200':
@@ -4580,7 +4580,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.BatchCancelOrdersResponse
+                  #/components/schemas/model.BatchCancelOrdersResponse
           description: ''
       summary: Batch Cancel Orders
       tags:
@@ -4593,7 +4593,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.BatchCreateOrdersRequest
+                #/components/schemas/model.BatchCreateOrdersRequest
         required: true
       responses:
         '201':
@@ -4601,7 +4601,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.BatchCreateOrdersResponse
+                  #/components/schemas/model.BatchCreateOrdersResponse
           description: ''
       summary: Batch Create Orders
       tags:
@@ -4629,7 +4629,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrderQueuePositionsResponse
+                  #/components/schemas/model.GetOrderQueuePositionsResponse
           description: ''
       summary: Get Queue Positions for Orders
       tags:
@@ -4652,7 +4652,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.CancelOrderResponse
+                  #/components/schemas/model.CancelOrderResponse
           description: ''
       summary: Cancel Order
       tags:
@@ -4674,7 +4674,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrderResponse
+                  #/components/schemas/model.GetOrderResponse
           description: ''
       summary: Get Order
       tags:
@@ -4696,7 +4696,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.AmendOrderRequest
+                #/components/schemas/model.AmendOrderRequest
         required: true
       responses:
         '200':
@@ -4704,7 +4704,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.AmendOrderResponse
+                  #/components/schemas/model.AmendOrderResponse
           description: ''
       summary: Amend Order
       tags:
@@ -4726,7 +4726,7 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/svc-api2.model.DecreaseOrderRequest
+                #/components/schemas/model.DecreaseOrderRequest
         required: true
       responses:
         '200':
@@ -4734,7 +4734,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.DecreaseOrderResponse
+                  #/components/schemas/model.DecreaseOrderResponse
           description: ''
       summary: Decrease Order
       tags:
@@ -4757,7 +4757,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetOrderQueuePositionResponse
+                  #/components/schemas/model.GetOrderQueuePositionResponse
           description: ''
       summary: Get Queue Position for Order
       tags:
@@ -4826,7 +4826,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetPositionsResponse
+                  #/components/schemas/model.GetPositionsResponse
           description: ''
       summary: Get Positions
       tags:
@@ -4891,7 +4891,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetSettlementsResponse
+                  #/components/schemas/model.GetSettlementsResponse
           description: ''
       summary: Get Settlements
       tags:
@@ -4906,7 +4906,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetUserRestingOrderTotalValueResponse
+                  #/components/schemas/model.GetUserRestingOrderTotalValueResponse
           description: ''
       summary: Get Portfolio Resting Order Total Value
       tags:
@@ -4941,7 +4941,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetSeriesListResponse
+                  #/components/schemas/model.GetSeriesListResponse
           description: ''
       summary: Get Series List
       tags:
@@ -4964,7 +4964,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetSeriesResponse
+                  #/components/schemas/model.GetSeriesResponse
           description: ''
       summary: Get Series
       tags:
@@ -5030,7 +5030,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetMarketCandlesticksResponse
+                  #/components/schemas/model.GetMarketCandlesticksResponse
           description: ''
       summary: Get Market Candlesticks
       tags:
@@ -5071,7 +5071,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetStructuredTargetsResponse
+                  #/components/schemas/model.GetStructuredTargetsResponse
           description: ''
       summary: Get Structured Targets
       tags:
@@ -5094,7 +5094,7 @@ paths:
             application/json:
               schema:
                 $ref: >-
-                  #/components/schemas/svc-api2.model.GetStructuredTargetResponse
+                  #/components/schemas/model.GetStructuredTargetResponse
           description: ''
       summary: Get Structured Target
       tags:

@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_user_create_api_key_request import SvcApi2ModelUserCreateApiKeyRequest
-from ...models.svc_api_2_model_user_create_api_key_response import SvcApi2ModelUserCreateApiKeyResponse
+from ...models.model_user_create_api_key_request import ModelUserCreateApiKeyRequest
+from ...models.model_user_create_api_key_response import ModelUserCreateApiKeyResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SvcApi2ModelUserCreateApiKeyRequest,
+    body: ModelUserCreateApiKeyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelUserCreateApiKeyResponse]:
+) -> Optional[ModelUserCreateApiKeyResponse]:
     if response.status_code == 201:
-        response_201 = SvcApi2ModelUserCreateApiKeyResponse.from_dict(response.json())
+        response_201 = ModelUserCreateApiKeyResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -44,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelUserCreateApiKeyResponse]:
+) -> Response[ModelUserCreateApiKeyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,8 +56,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelUserCreateApiKeyRequest,
-) -> Response[SvcApi2ModelUserCreateApiKeyResponse]:
+    body: ModelUserCreateApiKeyRequest,
+) -> Response[ModelUserCreateApiKeyResponse]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -65,14 +65,14 @@ def sync_detailed(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (SvcApi2ModelUserCreateApiKeyRequest):
+        body (ModelUserCreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelUserCreateApiKeyResponse]
+        Response[ModelUserCreateApiKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -89,8 +89,8 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelUserCreateApiKeyRequest,
-) -> Optional[SvcApi2ModelUserCreateApiKeyResponse]:
+    body: ModelUserCreateApiKeyRequest,
+) -> Optional[ModelUserCreateApiKeyResponse]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -98,14 +98,14 @@ def sync(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (SvcApi2ModelUserCreateApiKeyRequest):
+        body (ModelUserCreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelUserCreateApiKeyResponse
+        ModelUserCreateApiKeyResponse
     """
 
     return sync_detailed(
@@ -117,8 +117,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelUserCreateApiKeyRequest,
-) -> Response[SvcApi2ModelUserCreateApiKeyResponse]:
+    body: ModelUserCreateApiKeyRequest,
+) -> Response[ModelUserCreateApiKeyResponse]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -126,14 +126,14 @@ async def asyncio_detailed(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (SvcApi2ModelUserCreateApiKeyRequest):
+        body (ModelUserCreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelUserCreateApiKeyResponse]
+        Response[ModelUserCreateApiKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -148,8 +148,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelUserCreateApiKeyRequest,
-) -> Optional[SvcApi2ModelUserCreateApiKeyResponse]:
+    body: ModelUserCreateApiKeyRequest,
+) -> Optional[ModelUserCreateApiKeyResponse]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -157,14 +157,14 @@ async def asyncio(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (SvcApi2ModelUserCreateApiKeyRequest):
+        body (ModelUserCreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelUserCreateApiKeyResponse
+        ModelUserCreateApiKeyResponse
     """
 
     return (

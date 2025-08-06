@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_quote_response import SvcApi2ModelGetQuoteResponse
+from ...models.model_get_quote_response import ModelGetQuoteResponse
 from ...types import Response
 
 
@@ -22,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetQuoteResponse]:
+) -> Optional[ModelGetQuoteResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetQuoteResponse.from_dict(response.json())
+        response_200 = ModelGetQuoteResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetQuoteResponse]:
+) -> Response[ModelGetQuoteResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +48,7 @@ def sync_detailed(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetQuoteResponse]:
+) -> Response[ModelGetQuoteResponse]:
     """Get Quote
 
       Endpoint for getting a particular quote
@@ -61,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetQuoteResponse]
+        Response[ModelGetQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -79,7 +79,7 @@ def sync(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetQuoteResponse]:
+) -> Optional[ModelGetQuoteResponse]:
     """Get Quote
 
       Endpoint for getting a particular quote
@@ -92,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetQuoteResponse
+        ModelGetQuoteResponse
     """
 
     return sync_detailed(
@@ -105,7 +105,7 @@ async def asyncio_detailed(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetQuoteResponse]:
+) -> Response[ModelGetQuoteResponse]:
     """Get Quote
 
       Endpoint for getting a particular quote
@@ -118,7 +118,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetQuoteResponse]
+        Response[ModelGetQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -134,7 +134,7 @@ async def asyncio(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetQuoteResponse]:
+) -> Optional[ModelGetQuoteResponse]:
     """Get Quote
 
       Endpoint for getting a particular quote
@@ -147,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetQuoteResponse
+        ModelGetQuoteResponse
     """
 
     return (

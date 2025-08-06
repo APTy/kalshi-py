@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_accept_quote_request import SvcApi2ModelAcceptQuoteRequest
+from ...models.model_accept_quote_request import ModelAcceptQuoteRequest
 from ...types import Response
 
 
 def _get_kwargs(
     quote_id: str,
     *,
-    body: SvcApi2ModelAcceptQuoteRequest,
+    body: ModelAcceptQuoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,7 +51,7 @@ def sync_detailed(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelAcceptQuoteRequest,
+    body: ModelAcceptQuoteRequest,
 ) -> Response[Any]:
     """Accept Quote
 
@@ -59,7 +59,7 @@ def sync_detailed(
 
     Args:
         quote_id (str): Quote ID
-        body (SvcApi2ModelAcceptQuoteRequest):
+        body (ModelAcceptQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -85,7 +85,7 @@ async def asyncio_detailed(
     quote_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelAcceptQuoteRequest,
+    body: ModelAcceptQuoteRequest,
 ) -> Response[Any]:
     """Accept Quote
 
@@ -93,7 +93,7 @@ async def asyncio_detailed(
 
     Args:
         quote_id (str): Quote ID
-        body (SvcApi2ModelAcceptQuoteRequest):
+        body (ModelAcceptQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

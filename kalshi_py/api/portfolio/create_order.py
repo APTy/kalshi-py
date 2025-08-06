@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_create_order_request import SvcApi2ModelCreateOrderRequest
-from ...models.svc_api_2_model_create_order_response import SvcApi2ModelCreateOrderResponse
+from ...models.model_create_order_request import ModelCreateOrderRequest
+from ...models.model_create_order_response import ModelCreateOrderResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SvcApi2ModelCreateOrderRequest,
+    body: ModelCreateOrderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelCreateOrderResponse]:
+) -> Optional[ModelCreateOrderResponse]:
     if response.status_code == 201:
-        response_201 = SvcApi2ModelCreateOrderResponse.from_dict(response.json())
+        response_201 = ModelCreateOrderResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -44,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelCreateOrderResponse]:
+) -> Response[ModelCreateOrderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,21 +56,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateOrderRequest,
-) -> Response[SvcApi2ModelCreateOrderResponse]:
+    body: ModelCreateOrderRequest,
+) -> Response[ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (SvcApi2ModelCreateOrderRequest):
+        body (ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateOrderResponse]
+        Response[ModelCreateOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,21 +87,21 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateOrderRequest,
-) -> Optional[SvcApi2ModelCreateOrderResponse]:
+    body: ModelCreateOrderRequest,
+) -> Optional[ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (SvcApi2ModelCreateOrderRequest):
+        body (ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateOrderResponse
+        ModelCreateOrderResponse
     """
 
     return sync_detailed(
@@ -113,21 +113,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateOrderRequest,
-) -> Response[SvcApi2ModelCreateOrderResponse]:
+    body: ModelCreateOrderRequest,
+) -> Response[ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (SvcApi2ModelCreateOrderRequest):
+        body (ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelCreateOrderResponse]
+        Response[ModelCreateOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,21 +142,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelCreateOrderRequest,
-) -> Optional[SvcApi2ModelCreateOrderResponse]:
+    body: ModelCreateOrderRequest,
+) -> Optional[ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (SvcApi2ModelCreateOrderRequest):
+        body (ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelCreateOrderResponse
+        ModelCreateOrderResponse
     """
 
     return (

@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_event_metadata_response import SvcApi2ModelGetEventMetadataResponse
+from ...models.model_get_event_metadata_response import ModelGetEventMetadataResponse
 from ...types import Response
 
 
@@ -22,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[ModelGetEventMetadataResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetEventMetadataResponse.from_dict(response.json())
+        response_200 = ModelGetEventMetadataResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetEventMetadataResponse]:
+) -> Response[ModelGetEventMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +48,7 @@ def sync_detailed(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetEventMetadataResponse]:
+) -> Response[ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -62,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetEventMetadataResponse]
+        Response[ModelGetEventMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -80,7 +80,7 @@ def sync(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -94,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetEventMetadataResponse
+        ModelGetEventMetadataResponse
     """
 
     return sync_detailed(
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetEventMetadataResponse]:
+) -> Response[ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -121,7 +121,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetEventMetadataResponse]
+        Response[ModelGetEventMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -137,7 +137,7 @@ async def asyncio(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -151,7 +151,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetEventMetadataResponse
+        ModelGetEventMetadataResponse
     """
 
     return (

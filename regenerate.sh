@@ -19,7 +19,7 @@ uv add openapi-python-client --dev
 
 echo ""
 echo "🔧 Cleaning up OpenAPI spec to shorten model names..."
-sed -i '' 's/github\.com\.Kalshi\.exchange-infra\.//g' openapi.yaml
+sed -i '' 's/github\.com\.Kalshi\.exchange-infra\.svc-api2\.//g' openapi.yaml
 
 echo ""
 echo "💾 Backing up critical custom files..."

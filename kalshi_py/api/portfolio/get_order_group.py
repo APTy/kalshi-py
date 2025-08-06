@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_order_group_response import SvcApi2ModelGetOrderGroupResponse
+from ...models.model_get_order_group_response import ModelGetOrderGroupResponse
 from ...types import Response
 
 
@@ -22,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetOrderGroupResponse]:
+) -> Optional[ModelGetOrderGroupResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetOrderGroupResponse.from_dict(response.json())
+        response_200 = ModelGetOrderGroupResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetOrderGroupResponse]:
+) -> Response[ModelGetOrderGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +48,7 @@ def sync_detailed(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetOrderGroupResponse]:
+) -> Response[ModelGetOrderGroupResponse]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
@@ -61,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetOrderGroupResponse]
+        Response[ModelGetOrderGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -79,7 +79,7 @@ def sync(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetOrderGroupResponse]:
+) -> Optional[ModelGetOrderGroupResponse]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
@@ -92,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetOrderGroupResponse
+        ModelGetOrderGroupResponse
     """
 
     return sync_detailed(
@@ -105,7 +105,7 @@ async def asyncio_detailed(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetOrderGroupResponse]:
+) -> Response[ModelGetOrderGroupResponse]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
@@ -118,7 +118,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetOrderGroupResponse]
+        Response[ModelGetOrderGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -134,7 +134,7 @@ async def asyncio(
     order_group_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetOrderGroupResponse]:
+) -> Optional[ModelGetOrderGroupResponse]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
@@ -147,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetOrderGroupResponse
+        ModelGetOrderGroupResponse
     """
 
     return (

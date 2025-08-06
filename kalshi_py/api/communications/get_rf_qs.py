@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_rf_qs_response import SvcApi2ModelGetRFQsResponse
+from ...models.model_get_rf_qs_response import ModelGetRFQsResponse
 from ...types import Response
 
 
@@ -20,9 +20,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetRFQsResponse]:
+) -> Optional[ModelGetRFQsResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetRFQsResponse.from_dict(response.json())
+        response_200 = ModelGetRFQsResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -33,7 +33,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetRFQsResponse]:
+) -> Response[ModelGetRFQsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -45,7 +45,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetRFQsResponse]:
+) -> Response[ModelGetRFQsResponse]:
     """Get RFQs
 
       Endpoint for getting RFQs
@@ -55,7 +55,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetRFQsResponse]
+        Response[ModelGetRFQsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -70,7 +70,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetRFQsResponse]:
+) -> Optional[ModelGetRFQsResponse]:
     """Get RFQs
 
       Endpoint for getting RFQs
@@ -80,7 +80,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetRFQsResponse
+        ModelGetRFQsResponse
     """
 
     return sync_detailed(
@@ -91,7 +91,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[SvcApi2ModelGetRFQsResponse]:
+) -> Response[ModelGetRFQsResponse]:
     """Get RFQs
 
       Endpoint for getting RFQs
@@ -101,7 +101,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetRFQsResponse]
+        Response[ModelGetRFQsResponse]
     """
 
     kwargs = _get_kwargs()
@@ -114,7 +114,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[SvcApi2ModelGetRFQsResponse]:
+) -> Optional[ModelGetRFQsResponse]:
     """Get RFQs
 
       Endpoint for getting RFQs
@@ -124,7 +124,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetRFQsResponse
+        ModelGetRFQsResponse
     """
 
     return (

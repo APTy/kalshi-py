@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_get_structured_targets_response import SvcApi2ModelGetStructuredTargetsResponse
+from ...models.model_get_structured_targets_response import ModelGetStructuredTargetsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -39,9 +39,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Optional[ModelGetStructuredTargetsResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelGetStructuredTargetsResponse.from_dict(response.json())
+        response_200 = ModelGetStructuredTargetsResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -52,7 +52,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Response[ModelGetStructuredTargetsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,7 +68,7 @@ def sync_detailed(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Response[ModelGetStructuredTargetsResponse]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -84,7 +84,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetStructuredTargetsResponse]
+        Response[ModelGetStructuredTargetsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +108,7 @@ def sync(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Optional[ModelGetStructuredTargetsResponse]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -124,7 +124,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetStructuredTargetsResponse
+        ModelGetStructuredTargetsResponse
     """
 
     return sync_detailed(
@@ -143,7 +143,7 @@ async def asyncio_detailed(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Response[ModelGetStructuredTargetsResponse]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -159,7 +159,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelGetStructuredTargetsResponse]
+        Response[ModelGetStructuredTargetsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -181,7 +181,7 @@ async def asyncio(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[SvcApi2ModelGetStructuredTargetsResponse]:
+) -> Optional[ModelGetStructuredTargetsResponse]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -197,7 +197,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelGetStructuredTargetsResponse
+        ModelGetStructuredTargetsResponse
     """
 
     return (

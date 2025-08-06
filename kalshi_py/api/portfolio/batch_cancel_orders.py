@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.svc_api_2_model_batch_cancel_orders_request import SvcApi2ModelBatchCancelOrdersRequest
-from ...models.svc_api_2_model_batch_cancel_orders_response import SvcApi2ModelBatchCancelOrdersResponse
+from ...models.model_batch_cancel_orders_request import ModelBatchCancelOrdersRequest
+from ...models.model_batch_cancel_orders_response import ModelBatchCancelOrdersResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SvcApi2ModelBatchCancelOrdersRequest,
+    body: ModelBatchCancelOrdersRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[SvcApi2ModelBatchCancelOrdersResponse]:
+) -> Optional[ModelBatchCancelOrdersResponse]:
     if response.status_code == 200:
-        response_200 = SvcApi2ModelBatchCancelOrdersResponse.from_dict(response.json())
+        response_200 = ModelBatchCancelOrdersResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -44,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[SvcApi2ModelBatchCancelOrdersResponse]:
+) -> Response[ModelBatchCancelOrdersResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,21 +56,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelBatchCancelOrdersRequest,
-) -> Response[SvcApi2ModelBatchCancelOrdersResponse]:
+    body: ModelBatchCancelOrdersRequest,
+) -> Response[ModelBatchCancelOrdersResponse]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (SvcApi2ModelBatchCancelOrdersRequest):
+        body (ModelBatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelBatchCancelOrdersResponse]
+        Response[ModelBatchCancelOrdersResponse]
     """
 
     kwargs = _get_kwargs(
@@ -87,21 +87,21 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelBatchCancelOrdersRequest,
-) -> Optional[SvcApi2ModelBatchCancelOrdersResponse]:
+    body: ModelBatchCancelOrdersRequest,
+) -> Optional[ModelBatchCancelOrdersResponse]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (SvcApi2ModelBatchCancelOrdersRequest):
+        body (ModelBatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelBatchCancelOrdersResponse
+        ModelBatchCancelOrdersResponse
     """
 
     return sync_detailed(
@@ -113,21 +113,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelBatchCancelOrdersRequest,
-) -> Response[SvcApi2ModelBatchCancelOrdersResponse]:
+    body: ModelBatchCancelOrdersRequest,
+) -> Response[ModelBatchCancelOrdersResponse]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (SvcApi2ModelBatchCancelOrdersRequest):
+        body (ModelBatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[SvcApi2ModelBatchCancelOrdersResponse]
+        Response[ModelBatchCancelOrdersResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,21 +142,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: SvcApi2ModelBatchCancelOrdersRequest,
-) -> Optional[SvcApi2ModelBatchCancelOrdersResponse]:
+    body: ModelBatchCancelOrdersRequest,
+) -> Optional[ModelBatchCancelOrdersResponse]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (SvcApi2ModelBatchCancelOrdersRequest):
+        body (ModelBatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        SvcApi2ModelBatchCancelOrdersResponse
+        ModelBatchCancelOrdersResponse
     """
 
     return (
