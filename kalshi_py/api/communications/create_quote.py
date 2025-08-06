@@ -5,18 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_quote_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_quote_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse,
-)
+from ...models.svc_api_2_model_create_quote_request import SvcApi2ModelCreateQuoteRequest
+from ...models.svc_api_2_model_create_quote_response import SvcApi2ModelCreateQuoteResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
+    body: SvcApi2ModelCreateQuoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+) -> Optional[SvcApi2ModelCreateQuoteResponse]:
     if response.status_code == 201:
-        response_201 = GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse.from_dict(response.json())
+        response_201 = SvcApi2ModelCreateQuoteResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -48,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+) -> Response[SvcApi2ModelCreateQuoteResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,21 +56,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+    body: SvcApi2ModelCreateQuoteRequest,
+) -> Response[SvcApi2ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest):
+        body (SvcApi2ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]
+        Response[SvcApi2ModelCreateQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -91,21 +87,21 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+    body: SvcApi2ModelCreateQuoteRequest,
+) -> Optional[SvcApi2ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest):
+        body (SvcApi2ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse
+        SvcApi2ModelCreateQuoteResponse
     """
 
     return sync_detailed(
@@ -117,21 +113,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+    body: SvcApi2ModelCreateQuoteRequest,
+) -> Response[SvcApi2ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest):
+        body (SvcApi2ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]
+        Response[SvcApi2ModelCreateQuoteResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,21 +142,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse]:
+    body: SvcApi2ModelCreateQuoteRequest,
+) -> Optional[SvcApi2ModelCreateQuoteResponse]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest):
+        body (SvcApi2ModelCreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse
+        SvcApi2ModelCreateQuoteResponse
     """
 
     return (

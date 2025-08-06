@@ -5,18 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_order_group_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_order_group_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse,
-)
+from ...models.svc_api_2_model_create_order_group_request import SvcApi2ModelCreateOrderGroupRequest
+from ...models.svc_api_2_model_create_order_group_response import SvcApi2ModelCreateOrderGroupResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
+    body: SvcApi2ModelCreateOrderGroupRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+) -> Optional[SvcApi2ModelCreateOrderGroupResponse]:
     if response.status_code == 201:
-        response_201 = GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse.from_dict(response.json())
+        response_201 = SvcApi2ModelCreateOrderGroupResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -48,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+) -> Response[SvcApi2ModelCreateOrderGroupResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,22 +56,22 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+    body: SvcApi2ModelCreateOrderGroupRequest,
+) -> Response[SvcApi2ModelCreateOrderGroupResponse]:
     """Create Order Group
 
       Creates a new order group with a contracts limit. When the limit is hit, all orders in the group
     are cancelled and no new orders can be placed until reset.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest):
+        body (SvcApi2ModelCreateOrderGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]
+        Response[SvcApi2ModelCreateOrderGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -92,22 +88,22 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+    body: SvcApi2ModelCreateOrderGroupRequest,
+) -> Optional[SvcApi2ModelCreateOrderGroupResponse]:
     """Create Order Group
 
       Creates a new order group with a contracts limit. When the limit is hit, all orders in the group
     are cancelled and no new orders can be placed until reset.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest):
+        body (SvcApi2ModelCreateOrderGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse
+        SvcApi2ModelCreateOrderGroupResponse
     """
 
     return sync_detailed(
@@ -119,22 +115,22 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+    body: SvcApi2ModelCreateOrderGroupRequest,
+) -> Response[SvcApi2ModelCreateOrderGroupResponse]:
     """Create Order Group
 
       Creates a new order group with a contracts limit. When the limit is hit, all orders in the group
     are cancelled and no new orders can be placed until reset.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest):
+        body (SvcApi2ModelCreateOrderGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]
+        Response[SvcApi2ModelCreateOrderGroupResponse]
     """
 
     kwargs = _get_kwargs(
@@ -149,22 +145,22 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse]:
+    body: SvcApi2ModelCreateOrderGroupRequest,
+) -> Optional[SvcApi2ModelCreateOrderGroupResponse]:
     """Create Order Group
 
       Creates a new order group with a contracts limit. When the limit is hit, all orders in the group
     are cancelled and no new orders can be placed until reset.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest):
+        body (SvcApi2ModelCreateOrderGroupRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse
+        SvcApi2ModelCreateOrderGroupResponse
     """
 
     return (

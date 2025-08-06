@@ -5,19 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse,
-)
+from ...models.svc_api_2_model_amend_order_request import SvcApi2ModelAmendOrderRequest
+from ...models.svc_api_2_model_amend_order_response import SvcApi2ModelAmendOrderResponse
 from ...types import Response
 
 
 def _get_kwargs(
     order_id: str,
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
+    body: SvcApi2ModelAmendOrderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +32,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+) -> Optional[SvcApi2ModelAmendOrderResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelAmendOrderResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -49,7 +45,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+) -> Response[SvcApi2ModelAmendOrderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -62,8 +58,8 @@ def sync_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+    body: SvcApi2ModelAmendOrderRequest,
+) -> Response[SvcApi2ModelAmendOrderResponse]:
     """Amend Order
 
       Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max
@@ -71,14 +67,14 @@ def sync_detailed(
 
     Args:
         order_id (str): Order ID
-        body (GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest):
+        body (SvcApi2ModelAmendOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]
+        Response[SvcApi2ModelAmendOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -97,8 +93,8 @@ def sync(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+    body: SvcApi2ModelAmendOrderRequest,
+) -> Optional[SvcApi2ModelAmendOrderResponse]:
     """Amend Order
 
       Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max
@@ -106,14 +102,14 @@ def sync(
 
     Args:
         order_id (str): Order ID
-        body (GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest):
+        body (SvcApi2ModelAmendOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse
+        SvcApi2ModelAmendOrderResponse
     """
 
     return sync_detailed(
@@ -127,8 +123,8 @@ async def asyncio_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+    body: SvcApi2ModelAmendOrderRequest,
+) -> Response[SvcApi2ModelAmendOrderResponse]:
     """Amend Order
 
       Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max
@@ -136,14 +132,14 @@ async def asyncio_detailed(
 
     Args:
         order_id (str): Order ID
-        body (GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest):
+        body (SvcApi2ModelAmendOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]
+        Response[SvcApi2ModelAmendOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -160,8 +156,8 @@ async def asyncio(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse]:
+    body: SvcApi2ModelAmendOrderRequest,
+) -> Optional[SvcApi2ModelAmendOrderResponse]:
     """Amend Order
 
       Endpoint for amending the max number of fillable contracts and/or price in an existing order. Max
@@ -169,14 +165,14 @@ async def asyncio(
 
     Args:
         order_id (str): Order ID
-        body (GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest):
+        body (SvcApi2ModelAmendOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse
+        SvcApi2ModelAmendOrderResponse
     """
 
     return (

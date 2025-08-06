@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_fills_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse,
-)
+from ...models.svc_api_2_model_get_fills_response import SvcApi2ModelGetFillsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -50,9 +48,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Optional[SvcApi2ModelGetFillsResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetFillsResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -63,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Response[SvcApi2ModelGetFillsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -82,7 +80,7 @@ def sync_detailed(
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
     use_dollars: Union[Unset, bool] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Response[SvcApi2ModelGetFillsResponse]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
@@ -105,7 +103,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]
+        Response[SvcApi2ModelGetFillsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -135,7 +133,7 @@ def sync(
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
     use_dollars: Union[Unset, bool] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Optional[SvcApi2ModelGetFillsResponse]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
@@ -158,7 +156,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse
+        SvcApi2ModelGetFillsResponse
     """
 
     return sync_detailed(
@@ -183,7 +181,7 @@ async def asyncio_detailed(
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
     use_dollars: Union[Unset, bool] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Response[SvcApi2ModelGetFillsResponse]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
@@ -206,7 +204,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]
+        Response[SvcApi2ModelGetFillsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -234,7 +232,7 @@ async def asyncio(
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
     use_dollars: Union[Unset, bool] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse]:
+) -> Optional[SvcApi2ModelGetFillsResponse]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
@@ -257,7 +255,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse
+        SvcApi2ModelGetFillsResponse
     """
 
     return (

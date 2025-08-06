@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_user_data_timestamp_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse,
-)
+from ...models.svc_api_2_model_get_user_data_timestamp_response import SvcApi2ModelGetUserDataTimestampResponse
 from ...types import Response
 
 
@@ -22,9 +20,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Optional[SvcApi2ModelGetUserDataTimestampResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetUserDataTimestampResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +33,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Response[SvcApi2ModelGetUserDataTimestampResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +45,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Response[SvcApi2ModelGetUserDataTimestampResponse]:
     """Get User Data Timestamp
 
       There is typically a short delay before exchange events are reflected in the API endpoints.
@@ -61,7 +59,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]
+        Response[SvcApi2ModelGetUserDataTimestampResponse]
     """
 
     kwargs = _get_kwargs()
@@ -76,7 +74,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Optional[SvcApi2ModelGetUserDataTimestampResponse]:
     """Get User Data Timestamp
 
       There is typically a short delay before exchange events are reflected in the API endpoints.
@@ -90,7 +88,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse
+        SvcApi2ModelGetUserDataTimestampResponse
     """
 
     return sync_detailed(
@@ -101,7 +99,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Response[SvcApi2ModelGetUserDataTimestampResponse]:
     """Get User Data Timestamp
 
       There is typically a short delay before exchange events are reflected in the API endpoints.
@@ -115,7 +113,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]
+        Response[SvcApi2ModelGetUserDataTimestampResponse]
     """
 
     kwargs = _get_kwargs()
@@ -128,7 +126,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse]:
+) -> Optional[SvcApi2ModelGetUserDataTimestampResponse]:
     """Get User Data Timestamp
 
       There is typically a short delay before exchange events are reflected in the API endpoints.
@@ -142,7 +140,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse
+        SvcApi2ModelGetUserDataTimestampResponse
     """
 
     return (

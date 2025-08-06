@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_order_queue_position_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse,
-)
+from ...models.svc_api_2_model_get_order_queue_position_response import SvcApi2ModelGetOrderQueuePositionResponse
 from ...types import Response
 
 
@@ -24,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Optional[SvcApi2ModelGetOrderQueuePositionResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetOrderQueuePositionResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -37,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Response[SvcApi2ModelGetOrderQueuePositionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +48,7 @@ def sync_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Response[SvcApi2ModelGetOrderQueuePositionResponse]:
     """Get Queue Position for Order
 
       Endpoint for getting an order's queue position in the order book. This represents the amount of
@@ -65,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]
+        Response[SvcApi2ModelGetOrderQueuePositionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -83,7 +81,7 @@ def sync(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Optional[SvcApi2ModelGetOrderQueuePositionResponse]:
     """Get Queue Position for Order
 
       Endpoint for getting an order's queue position in the order book. This represents the amount of
@@ -98,7 +96,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse
+        SvcApi2ModelGetOrderQueuePositionResponse
     """
 
     return sync_detailed(
@@ -111,7 +109,7 @@ async def asyncio_detailed(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Response[SvcApi2ModelGetOrderQueuePositionResponse]:
     """Get Queue Position for Order
 
       Endpoint for getting an order's queue position in the order book. This represents the amount of
@@ -126,7 +124,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]
+        Response[SvcApi2ModelGetOrderQueuePositionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -142,7 +140,7 @@ async def asyncio(
     order_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse]:
+) -> Optional[SvcApi2ModelGetOrderQueuePositionResponse]:
     """Get Queue Position for Order
 
       Endpoint for getting an order's queue position in the order book. This represents the amount of
@@ -157,7 +155,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse
+        SvcApi2ModelGetOrderQueuePositionResponse
     """
 
     return (

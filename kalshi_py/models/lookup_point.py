@@ -9,9 +9,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_ticker_pair import (
-        GithubComKalshiExchangeInfraSvcApi2ModelTickerPair,
-    )
+    from ..models.svc_api_2_model_ticker_pair import SvcApi2ModelTickerPair
 
 
 T = TypeVar("T", bound="LookupPoint")
@@ -24,14 +22,13 @@ class LookupPoint:
         event_ticker (Union[Unset, str]): Event ticker for the lookup point.
         last_queried_ts (Union[Unset, datetime.datetime]): Timestamp when this lookup was last queried.
         market_ticker (Union[Unset, str]): Market ticker for the lookup point.
-        selected_markets (Union[Unset, list['GithubComKalshiExchangeInfraSvcApi2ModelTickerPair']]): Markets that were
-            selected for this lookup.
+        selected_markets (Union[Unset, list['SvcApi2ModelTickerPair']]): Markets that were selected for this lookup.
     """
 
     event_ticker: Union[Unset, str] = UNSET
     last_queried_ts: Union[Unset, datetime.datetime] = UNSET
     market_ticker: Union[Unset, str] = UNSET
-    selected_markets: Union[Unset, list["GithubComKalshiExchangeInfraSvcApi2ModelTickerPair"]] = UNSET
+    selected_markets: Union[Unset, list["SvcApi2ModelTickerPair"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,9 +63,7 @@ class LookupPoint:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_ticker_pair import (
-            GithubComKalshiExchangeInfraSvcApi2ModelTickerPair,
-        )
+        from ..models.svc_api_2_model_ticker_pair import SvcApi2ModelTickerPair
 
         d = dict(src_dict)
         event_ticker = d.pop("event_ticker", UNSET)
@@ -85,9 +80,7 @@ class LookupPoint:
         selected_markets = []
         _selected_markets = d.pop("selected_markets", UNSET)
         for selected_markets_item_data in _selected_markets or []:
-            selected_markets_item = GithubComKalshiExchangeInfraSvcApi2ModelTickerPair.from_dict(
-                selected_markets_item_data
-            )
+            selected_markets_item = SvcApi2ModelTickerPair.from_dict(selected_markets_item_data)
 
             selected_markets.append(selected_markets_item)
 

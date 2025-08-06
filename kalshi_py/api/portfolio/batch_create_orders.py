@@ -5,18 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_batch_create_orders_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_batch_create_orders_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse,
-)
+from ...models.svc_api_2_model_batch_create_orders_request import SvcApi2ModelBatchCreateOrdersRequest
+from ...models.svc_api_2_model_batch_create_orders_response import SvcApi2ModelBatchCreateOrdersResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
+    body: SvcApi2ModelBatchCreateOrdersRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+) -> Optional[SvcApi2ModelBatchCreateOrdersResponse]:
     if response.status_code == 201:
-        response_201 = GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse.from_dict(response.json())
+        response_201 = SvcApi2ModelBatchCreateOrdersResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -48,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+) -> Response[SvcApi2ModelBatchCreateOrdersResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,8 +56,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+    body: SvcApi2ModelBatchCreateOrdersRequest,
+) -> Response[SvcApi2ModelBatchCreateOrdersResponse]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -70,14 +66,14 @@ def sync_detailed(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest):
+        body (SvcApi2ModelBatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]
+        Response[SvcApi2ModelBatchCreateOrdersResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,8 +90,8 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+    body: SvcApi2ModelBatchCreateOrdersRequest,
+) -> Optional[SvcApi2ModelBatchCreateOrdersResponse]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -104,14 +100,14 @@ def sync(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest):
+        body (SvcApi2ModelBatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse
+        SvcApi2ModelBatchCreateOrdersResponse
     """
 
     return sync_detailed(
@@ -123,8 +119,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+    body: SvcApi2ModelBatchCreateOrdersRequest,
+) -> Response[SvcApi2ModelBatchCreateOrdersResponse]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -133,14 +129,14 @@ async def asyncio_detailed(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest):
+        body (SvcApi2ModelBatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]
+        Response[SvcApi2ModelBatchCreateOrdersResponse]
     """
 
     kwargs = _get_kwargs(
@@ -155,8 +151,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse]:
+    body: SvcApi2ModelBatchCreateOrdersRequest,
+) -> Optional[SvcApi2ModelBatchCreateOrdersResponse]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -165,14 +161,14 @@ async def asyncio(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest):
+        body (SvcApi2ModelBatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse
+        SvcApi2ModelBatchCreateOrdersResponse
     """
 
     return (

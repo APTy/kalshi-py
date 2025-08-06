@@ -5,18 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_create_order_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse,
-)
+from ...models.svc_api_2_model_create_order_request import SvcApi2ModelCreateOrderRequest
+from ...models.svc_api_2_model_create_order_response import SvcApi2ModelCreateOrderResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
+    body: SvcApi2ModelCreateOrderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+) -> Optional[SvcApi2ModelCreateOrderResponse]:
     if response.status_code == 201:
-        response_201 = GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse.from_dict(response.json())
+        response_201 = SvcApi2ModelCreateOrderResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -48,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+) -> Response[SvcApi2ModelCreateOrderResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,21 +56,21 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+    body: SvcApi2ModelCreateOrderRequest,
+) -> Response[SvcApi2ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest):
+        body (SvcApi2ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]
+        Response[SvcApi2ModelCreateOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -91,21 +87,21 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+    body: SvcApi2ModelCreateOrderRequest,
+) -> Optional[SvcApi2ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest):
+        body (SvcApi2ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse
+        SvcApi2ModelCreateOrderResponse
     """
 
     return sync_detailed(
@@ -117,21 +113,21 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+    body: SvcApi2ModelCreateOrderRequest,
+) -> Response[SvcApi2ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest):
+        body (SvcApi2ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]
+        Response[SvcApi2ModelCreateOrderResponse]
     """
 
     kwargs = _get_kwargs(
@@ -146,21 +142,21 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse]:
+    body: SvcApi2ModelCreateOrderRequest,
+) -> Optional[SvcApi2ModelCreateOrderResponse]:
     """Create Order
 
       Endpoint for submitting orders in a market.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest):
+        body (SvcApi2ModelCreateOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse
+        SvcApi2ModelCreateOrderResponse
     """
 
     return (

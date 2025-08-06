@@ -18,6 +18,10 @@ echo "📦 Ensuring openapi-python-client is installed..."
 uv add openapi-python-client --dev
 
 echo ""
+echo "🔧 Cleaning up OpenAPI spec to shorten model names..."
+sed -i '' 's/github\.com\.Kalshi\.exchange-infra\.//g' openapi.yaml
+
+echo ""
 echo "💾 Backing up critical custom files..."
 cp pyproject.toml pyproject.toml.backup
 cp uv.lock uv.lock.backup

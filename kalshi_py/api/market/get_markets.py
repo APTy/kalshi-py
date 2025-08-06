@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_markets_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse,
-)
+from ...models.svc_api_2_model_get_markets_response import SvcApi2ModelGetMarketsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -53,9 +51,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Optional[SvcApi2ModelGetMarketsResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetMarketsResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -66,7 +64,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Response[SvcApi2ModelGetMarketsResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +84,7 @@ def sync_detailed(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Response[SvcApi2ModelGetMarketsResponse]:
     r"""Get Markets
 
       Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
@@ -118,7 +116,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]
+        Response[SvcApi2ModelGetMarketsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -150,7 +148,7 @@ def sync(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Optional[SvcApi2ModelGetMarketsResponse]:
     r"""Get Markets
 
       Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
@@ -182,7 +180,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse
+        SvcApi2ModelGetMarketsResponse
     """
 
     return sync_detailed(
@@ -209,7 +207,7 @@ async def asyncio_detailed(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Response[SvcApi2ModelGetMarketsResponse]:
     r"""Get Markets
 
       Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
@@ -241,7 +239,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]
+        Response[SvcApi2ModelGetMarketsResponse]
     """
 
     kwargs = _get_kwargs(
@@ -271,7 +269,7 @@ async def asyncio(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse]:
+) -> Optional[SvcApi2ModelGetMarketsResponse]:
     r"""Get Markets
 
       Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
@@ -303,7 +301,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse
+        SvcApi2ModelGetMarketsResponse
     """
 
     return (

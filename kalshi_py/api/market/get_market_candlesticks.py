@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_market_candlesticks_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse,
-)
+from ...models.svc_api_2_model_get_market_candlesticks_response import SvcApi2ModelGetMarketCandlesticksResponse
 from ...types import UNSET, Response
 
 
@@ -40,9 +38,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Optional[SvcApi2ModelGetMarketCandlesticksResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetMarketCandlesticksResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -53,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Response[SvcApi2ModelGetMarketCandlesticksResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,7 +68,7 @@ def sync_detailed(
     start_ts: int,
     end_ts: int,
     period_interval: int,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Response[SvcApi2ModelGetMarketCandlesticksResponse]:
     """Get Market Candlesticks
 
       Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC
@@ -95,7 +93,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]
+        Response[SvcApi2ModelGetMarketCandlesticksResponse]
     """
 
     kwargs = _get_kwargs(
@@ -121,7 +119,7 @@ def sync(
     start_ts: int,
     end_ts: int,
     period_interval: int,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Optional[SvcApi2ModelGetMarketCandlesticksResponse]:
     """Get Market Candlesticks
 
       Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC
@@ -146,7 +144,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse
+        SvcApi2ModelGetMarketCandlesticksResponse
     """
 
     return sync_detailed(
@@ -167,7 +165,7 @@ async def asyncio_detailed(
     start_ts: int,
     end_ts: int,
     period_interval: int,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Response[SvcApi2ModelGetMarketCandlesticksResponse]:
     """Get Market Candlesticks
 
       Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC
@@ -192,7 +190,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]
+        Response[SvcApi2ModelGetMarketCandlesticksResponse]
     """
 
     kwargs = _get_kwargs(
@@ -216,7 +214,7 @@ async def asyncio(
     start_ts: int,
     end_ts: int,
     period_interval: int,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse]:
+) -> Optional[SvcApi2ModelGetMarketCandlesticksResponse]:
     """Get Market Candlesticks
 
       Endpoint for getting historical candlestick data for a specific market.  Candlesticks provide OHLC
@@ -241,7 +239,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse
+        SvcApi2ModelGetMarketCandlesticksResponse
     """
 
     return (

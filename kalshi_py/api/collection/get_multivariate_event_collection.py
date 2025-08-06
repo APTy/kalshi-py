@@ -5,8 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse,
+from ...models.svc_api_2_model_get_multivariate_event_collection_response import (
+    SvcApi2ModelGetMultivariateEventCollectionResponse,
 )
 from ...types import Response
 
@@ -24,11 +24,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Optional[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse.from_dict(
-            response.json()
-        )
+        response_200 = SvcApi2ModelGetMultivariateEventCollectionResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -39,7 +37,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Response[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -52,7 +50,7 @@ def sync_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Response[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     """Get Multivariate Event Collection
 
       Endpoint for getting data about a multivariate event collection by its ticker.
@@ -65,7 +63,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]
+        Response[SvcApi2ModelGetMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -83,7 +81,7 @@ def sync(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Optional[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     """Get Multivariate Event Collection
 
       Endpoint for getting data about a multivariate event collection by its ticker.
@@ -96,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse
+        SvcApi2ModelGetMultivariateEventCollectionResponse
     """
 
     return sync_detailed(
@@ -109,7 +107,7 @@ async def asyncio_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Response[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     """Get Multivariate Event Collection
 
       Endpoint for getting data about a multivariate event collection by its ticker.
@@ -122,7 +120,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]
+        Response[SvcApi2ModelGetMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -138,7 +136,7 @@ async def asyncio(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse]:
+) -> Optional[SvcApi2ModelGetMultivariateEventCollectionResponse]:
     """Get Multivariate Event Collection
 
       Endpoint for getting data about a multivariate event collection by its ticker.
@@ -151,7 +149,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse
+        SvcApi2ModelGetMultivariateEventCollectionResponse
     """
 
     return (

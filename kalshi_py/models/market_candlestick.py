@@ -7,12 +7,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_bid_ask_distribution import (
-        GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution,
-    )
-    from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_price_distribution import (
-        GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution,
-    )
+    from ..models.svc_api_2_model_bid_ask_distribution import SvcApi2ModelBidAskDistribution
+    from ..models.svc_api_2_model_price_distribution import SvcApi2ModelPriceDistribution
 
 
 T = TypeVar("T", bound="MarketCandlestick")
@@ -25,18 +21,18 @@ class MarketCandlestick:
         end_period_ts (Union[Unset, int]): Unix timestamp for the inclusive end of the candlestick period.
         open_interest (Union[Unset, int]): Number of contracts bought on the market by end of the candlestick period
             (end_period_ts).
-        price (Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution]):
+        price (Union[Unset, SvcApi2ModelPriceDistribution]):
         volume (Union[Unset, int]): Number of contracts bought on the market during the candlestick period.
-        yes_ask (Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution]):
-        yes_bid (Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution]):
+        yes_ask (Union[Unset, SvcApi2ModelBidAskDistribution]):
+        yes_bid (Union[Unset, SvcApi2ModelBidAskDistribution]):
     """
 
     end_period_ts: Union[Unset, int] = UNSET
     open_interest: Union[Unset, int] = UNSET
-    price: Union[Unset, "GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution"] = UNSET
+    price: Union[Unset, "SvcApi2ModelPriceDistribution"] = UNSET
     volume: Union[Unset, int] = UNSET
-    yes_ask: Union[Unset, "GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution"] = UNSET
-    yes_bid: Union[Unset, "GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution"] = UNSET
+    yes_ask: Union[Unset, "SvcApi2ModelBidAskDistribution"] = UNSET
+    yes_bid: Union[Unset, "SvcApi2ModelBidAskDistribution"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -78,12 +74,8 @@ class MarketCandlestick:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_bid_ask_distribution import (
-            GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution,
-        )
-        from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_price_distribution import (
-            GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution,
-        )
+        from ..models.svc_api_2_model_bid_ask_distribution import SvcApi2ModelBidAskDistribution
+        from ..models.svc_api_2_model_price_distribution import SvcApi2ModelPriceDistribution
 
         d = dict(src_dict)
         end_period_ts = d.pop("end_period_ts", UNSET)
@@ -91,27 +83,27 @@ class MarketCandlestick:
         open_interest = d.pop("open_interest", UNSET)
 
         _price = d.pop("price", UNSET)
-        price: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution]
+        price: Union[Unset, SvcApi2ModelPriceDistribution]
         if isinstance(_price, Unset):
             price = UNSET
         else:
-            price = GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution.from_dict(_price)
+            price = SvcApi2ModelPriceDistribution.from_dict(_price)
 
         volume = d.pop("volume", UNSET)
 
         _yes_ask = d.pop("yes_ask", UNSET)
-        yes_ask: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution]
+        yes_ask: Union[Unset, SvcApi2ModelBidAskDistribution]
         if isinstance(_yes_ask, Unset):
             yes_ask = UNSET
         else:
-            yes_ask = GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution.from_dict(_yes_ask)
+            yes_ask = SvcApi2ModelBidAskDistribution.from_dict(_yes_ask)
 
         _yes_bid = d.pop("yes_bid", UNSET)
-        yes_bid: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution]
+        yes_bid: Union[Unset, SvcApi2ModelBidAskDistribution]
         if isinstance(_yes_bid, Unset):
             yes_bid = UNSET
         else:
-            yes_bid = GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution.from_dict(_yes_bid)
+            yes_bid = SvcApi2ModelBidAskDistribution.from_dict(_yes_bid)
 
         market_candlestick = cls(
             end_period_ts=end_period_ts,

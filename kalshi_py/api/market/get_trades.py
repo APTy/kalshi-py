@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_public_trades_get_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse,
-)
+from ...models.svc_api_2_model_public_trades_get_response import SvcApi2ModelPublicTradesGetResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -44,9 +42,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Optional[SvcApi2ModelPublicTradesGetResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelPublicTradesGetResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -57,7 +55,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Response[SvcApi2ModelPublicTradesGetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,7 +72,7 @@ def sync_detailed(
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Response[SvcApi2ModelPublicTradesGetResponse]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -99,7 +97,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]
+        Response[SvcApi2ModelPublicTradesGetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -125,7 +123,7 @@ def sync(
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Optional[SvcApi2ModelPublicTradesGetResponse]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -150,7 +148,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse
+        SvcApi2ModelPublicTradesGetResponse
     """
 
     return sync_detailed(
@@ -171,7 +169,7 @@ async def asyncio_detailed(
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Response[SvcApi2ModelPublicTradesGetResponse]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -196,7 +194,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]
+        Response[SvcApi2ModelPublicTradesGetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -220,7 +218,7 @@ async def asyncio(
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse]:
+) -> Optional[SvcApi2ModelPublicTradesGetResponse]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -245,7 +243,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse
+        SvcApi2ModelPublicTradesGetResponse
     """
 
     return (

@@ -5,11 +5,11 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+from ...models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request import (
+    SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
 )
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse,
+from ...models.svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_response import (
+    SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse,
 )
 from ...types import Response
 
@@ -17,7 +17,7 @@ from ...types import Response
 def _get_kwargs(
     collection_ticker: str,
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+    body: SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+) -> Optional[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse.from_dict(
+        response_200 = SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse.from_dict(
             response.json()
         )
 
@@ -51,7 +51,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+) -> Response[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,8 +64,8 @@ def sync_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    body: SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Response[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -74,15 +74,14 @@ def sync_detailed(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCol
-            lectionRequest):
+        body (SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
+        Response[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -101,8 +100,8 @@ def sync(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    body: SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Optional[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -111,15 +110,14 @@ def sync(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCol
-            lectionRequest):
+        body (SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+        SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
     """
 
     return sync_detailed(
@@ -133,8 +131,8 @@ async def asyncio_detailed(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    body: SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Response[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -143,15 +141,14 @@ async def asyncio_detailed(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCol
-            lectionRequest):
+        body (SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
+        Response[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
     """
 
     kwargs = _get_kwargs(
@@ -168,8 +165,8 @@ async def asyncio(
     collection_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    body: SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Optional[SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -178,15 +175,14 @@ async def asyncio(
 
     Args:
         collection_ticker (str): Collection ticker
-        body (GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCol
-            lectionRequest):
+        body (SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+        SvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse
     """
 
     return (

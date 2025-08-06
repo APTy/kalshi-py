@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_exchange_status import (
-    GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus,
-)
+from ...models.svc_api_2_model_exchange_status import SvcApi2ModelExchangeStatus
 from ...types import Response
 
 
@@ -22,9 +20,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Optional[SvcApi2ModelExchangeStatus]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus.from_dict(response.json())
+        response_200 = SvcApi2ModelExchangeStatus.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -35,7 +33,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Response[SvcApi2ModelExchangeStatus]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,7 +45,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Response[SvcApi2ModelExchangeStatus]:
     """Get Exchange Status
 
       Endpoint for getting the exchange status.
@@ -57,7 +55,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]
+        Response[SvcApi2ModelExchangeStatus]
     """
 
     kwargs = _get_kwargs()
@@ -72,7 +70,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Optional[SvcApi2ModelExchangeStatus]:
     """Get Exchange Status
 
       Endpoint for getting the exchange status.
@@ -82,7 +80,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus
+        SvcApi2ModelExchangeStatus
     """
 
     return sync_detailed(
@@ -93,7 +91,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Response[SvcApi2ModelExchangeStatus]:
     """Get Exchange Status
 
       Endpoint for getting the exchange status.
@@ -103,7 +101,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]
+        Response[SvcApi2ModelExchangeStatus]
     """
 
     kwargs = _get_kwargs()
@@ -116,7 +114,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus]:
+) -> Optional[SvcApi2ModelExchangeStatus]:
     """Get Exchange Status
 
       Endpoint for getting the exchange status.
@@ -126,7 +124,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus
+        SvcApi2ModelExchangeStatus
     """
 
     return (

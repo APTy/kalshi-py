@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_event_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse,
-)
+from ...models.svc_api_2_model_get_event_response import SvcApi2ModelGetEventResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -33,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Optional[SvcApi2ModelGetEventResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetEventResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -46,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Response[SvcApi2ModelGetEventResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +58,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     with_nested_markets: Union[Unset, bool] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Response[SvcApi2ModelGetEventResponse]:
     """Get Event
 
       Endpoint for getting data about an event by its ticker.  An event represents a real-world
@@ -78,7 +76,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]
+        Response[SvcApi2ModelGetEventResponse]
     """
 
     kwargs = _get_kwargs(
@@ -98,7 +96,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     with_nested_markets: Union[Unset, bool] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Optional[SvcApi2ModelGetEventResponse]:
     """Get Event
 
       Endpoint for getting data about an event by its ticker.  An event represents a real-world
@@ -116,7 +114,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse
+        SvcApi2ModelGetEventResponse
     """
 
     return sync_detailed(
@@ -131,7 +129,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     with_nested_markets: Union[Unset, bool] = UNSET,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Response[SvcApi2ModelGetEventResponse]:
     """Get Event
 
       Endpoint for getting data about an event by its ticker.  An event represents a real-world
@@ -149,7 +147,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]
+        Response[SvcApi2ModelGetEventResponse]
     """
 
     kwargs = _get_kwargs(
@@ -167,7 +165,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     with_nested_markets: Union[Unset, bool] = UNSET,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse]:
+) -> Optional[SvcApi2ModelGetEventResponse]:
     """Get Event
 
       Endpoint for getting data about an event by its ticker.  An event represents a real-world
@@ -185,7 +183,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse
+        SvcApi2ModelGetEventResponse
     """
 
     return (

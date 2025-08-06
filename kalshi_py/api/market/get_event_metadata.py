@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_event_metadata_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse,
-)
+from ...models.svc_api_2_model_get_event_metadata_response import SvcApi2ModelGetEventMetadataResponse
 from ...types import Response
 
 
@@ -24,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetEventMetadataResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -37,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Response[SvcApi2ModelGetEventMetadataResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +48,7 @@ def sync_detailed(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Response[SvcApi2ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -64,7 +62,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]
+        Response[SvcApi2ModelGetEventMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -82,7 +80,7 @@ def sync(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -96,7 +94,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse
+        SvcApi2ModelGetEventMetadataResponse
     """
 
     return sync_detailed(
@@ -109,7 +107,7 @@ async def asyncio_detailed(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Response[SvcApi2ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -123,7 +121,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]
+        Response[SvcApi2ModelGetEventMetadataResponse]
     """
 
     kwargs = _get_kwargs(
@@ -139,7 +137,7 @@ async def asyncio(
     event_ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse]:
+) -> Optional[SvcApi2ModelGetEventMetadataResponse]:
     """Get Event Metadata
 
       Endpoint for getting metadata about an event by its ticker.  Returns only the metadata information
@@ -153,7 +151,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse
+        SvcApi2ModelGetEventMetadataResponse
     """
 
     return (

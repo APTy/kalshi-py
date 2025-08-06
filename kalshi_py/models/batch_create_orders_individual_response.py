@@ -7,12 +7,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
-        GithubComKalshiExchangeInfraCommonApiJSONError,
-    )
-    from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_order_confirmation import (
-        GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation,
-    )
+    from ..models.common_api_json_error import CommonApiJSONError
+    from ..models.svc_api_2_model_order_confirmation import SvcApi2ModelOrderConfirmation
 
 
 T = TypeVar("T", bound="BatchCreateOrdersIndividualResponse")
@@ -23,13 +19,13 @@ class BatchCreateOrdersIndividualResponse:
     """
     Attributes:
         client_order_id (Union[Unset, str]):
-        error (Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]):
-        order (Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation]):
+        error (Union[Unset, CommonApiJSONError]):
+        order (Union[Unset, SvcApi2ModelOrderConfirmation]):
     """
 
     client_order_id: Union[Unset, str] = UNSET
-    error: Union[Unset, "GithubComKalshiExchangeInfraCommonApiJSONError"] = UNSET
-    order: Union[Unset, "GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation"] = UNSET
+    error: Union[Unset, "CommonApiJSONError"] = UNSET
+    order: Union[Unset, "SvcApi2ModelOrderConfirmation"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,29 +53,25 @@ class BatchCreateOrdersIndividualResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
-            GithubComKalshiExchangeInfraCommonApiJSONError,
-        )
-        from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_order_confirmation import (
-            GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation,
-        )
+        from ..models.common_api_json_error import CommonApiJSONError
+        from ..models.svc_api_2_model_order_confirmation import SvcApi2ModelOrderConfirmation
 
         d = dict(src_dict)
         client_order_id = d.pop("client_order_id", UNSET)
 
         _error = d.pop("error", UNSET)
-        error: Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]
+        error: Union[Unset, CommonApiJSONError]
         if isinstance(_error, Unset):
             error = UNSET
         else:
-            error = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(_error)
+            error = CommonApiJSONError.from_dict(_error)
 
         _order = d.pop("order", UNSET)
-        order: Union[Unset, GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation]
+        order: Union[Unset, SvcApi2ModelOrderConfirmation]
         if isinstance(_order, Unset):
             order = UNSET
         else:
-            order = GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation.from_dict(_order)
+            order = SvcApi2ModelOrderConfirmation.from_dict(_order)
 
         batch_create_orders_individual_response = cls(
             client_order_id=client_order_id,

@@ -5,18 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_user_generate_api_key_request import (
-    GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
-)
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_user_generate_api_key_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse,
-)
+from ...models.svc_api_2_model_user_generate_api_key_request import SvcApi2ModelUserGenerateApiKeyRequest
+from ...models.svc_api_2_model_user_generate_api_key_response import SvcApi2ModelUserGenerateApiKeyResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
+    body: SvcApi2ModelUserGenerateApiKeyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -35,9 +31,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+) -> Optional[SvcApi2ModelUserGenerateApiKeyResponse]:
     if response.status_code == 201:
-        response_201 = GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse.from_dict(response.json())
+        response_201 = SvcApi2ModelUserGenerateApiKeyResponse.from_dict(response.json())
 
         return response_201
     if client.raise_on_unexpected_status:
@@ -48,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+) -> Response[SvcApi2ModelUserGenerateApiKeyResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,8 +56,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+    body: SvcApi2ModelUserGenerateApiKeyRequest,
+) -> Response[SvcApi2ModelUserGenerateApiKeyResponse]:
     """Generate API Key
 
       Endpoint for generating a new API key with an automatically created key pair.  This endpoint
@@ -70,14 +66,14 @@ def sync_detailed(
     retrieved again.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest):
+        body (SvcApi2ModelUserGenerateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]
+        Response[SvcApi2ModelUserGenerateApiKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -94,8 +90,8 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+    body: SvcApi2ModelUserGenerateApiKeyRequest,
+) -> Optional[SvcApi2ModelUserGenerateApiKeyResponse]:
     """Generate API Key
 
       Endpoint for generating a new API key with an automatically created key pair.  This endpoint
@@ -104,14 +100,14 @@ def sync(
     retrieved again.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest):
+        body (SvcApi2ModelUserGenerateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse
+        SvcApi2ModelUserGenerateApiKeyResponse
     """
 
     return sync_detailed(
@@ -123,8 +119,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+    body: SvcApi2ModelUserGenerateApiKeyRequest,
+) -> Response[SvcApi2ModelUserGenerateApiKeyResponse]:
     """Generate API Key
 
       Endpoint for generating a new API key with an automatically created key pair.  This endpoint
@@ -133,14 +129,14 @@ async def asyncio_detailed(
     retrieved again.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest):
+        body (SvcApi2ModelUserGenerateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]
+        Response[SvcApi2ModelUserGenerateApiKeyResponse]
     """
 
     kwargs = _get_kwargs(
@@ -155,8 +151,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse]:
+    body: SvcApi2ModelUserGenerateApiKeyRequest,
+) -> Optional[SvcApi2ModelUserGenerateApiKeyResponse]:
     """Generate API Key
 
       Endpoint for generating a new API key with an automatically created key pair.  This endpoint
@@ -165,14 +161,14 @@ async def asyncio(
     retrieved again.
 
     Args:
-        body (GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest):
+        body (SvcApi2ModelUserGenerateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse
+        SvcApi2ModelUserGenerateApiKeyResponse
     """
 
     return (

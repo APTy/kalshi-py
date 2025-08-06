@@ -5,9 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.github_com_kalshi_exchange_infra_svc_api_2_model_get_structured_target_response import (
-    GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse,
-)
+from ...models.svc_api_2_model_get_structured_target_response import SvcApi2ModelGetStructuredTargetResponse
 from ...types import Response
 
 
@@ -24,9 +22,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
     if response.status_code == 200:
-        response_200 = GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse.from_dict(response.json())
+        response_200 = SvcApi2ModelGetStructuredTargetResponse.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -37,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,7 +48,7 @@ def sync_detailed(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -63,7 +61,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]
+        Response[SvcApi2ModelGetStructuredTargetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +79,7 @@ def sync(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -94,7 +92,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse
+        SvcApi2ModelGetStructuredTargetResponse
     """
 
     return sync_detailed(
@@ -107,7 +105,7 @@ async def asyncio_detailed(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Response[SvcApi2ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -120,7 +118,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]
+        Response[SvcApi2ModelGetStructuredTargetResponse]
     """
 
     kwargs = _get_kwargs(
@@ -136,7 +134,7 @@ async def asyncio(
     structured_target_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse]:
+) -> Optional[SvcApi2ModelGetStructuredTargetResponse]:
     """Get Structured Target
 
       Endpoint for getting data about a specific structured target by its ID.
@@ -149,7 +147,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse
+        SvcApi2ModelGetStructuredTargetResponse
     """
 
     return (
