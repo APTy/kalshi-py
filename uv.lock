@@ -414,6 +414,7 @@ dependencies = [
     { name = "attrs" },
     { name = "cryptography" },
     { name = "httpx" },
+    { name = "mkdocs-material" },
     { name = "python-dateutil" },
 ]
 
@@ -434,6 +435,7 @@ requires-dist = [
     { name = "attrs", specifier = ">=22.2.0" },
     { name = "cryptography", specifier = ">=41.0.0" },
     { name = "httpx", specifier = ">=0.23.0,<0.29.0" },
+    { name = "mkdocs-material", specifier = ">=9.6.16" },
     { name = "python-dateutil", specifier = ">=2.8.0,<3" },
 ]
 

@@ -2,7 +2,9 @@
 
 A modern, type-safe Python client library for the Kalshi Trade API.
 
-## Features
+## Overview
+
+### Features
 
 - **Type Safety**: Full type hints and validation
 - **Async Support**: Both synchronous and asynchronous APIs
@@ -12,18 +14,15 @@ A modern, type-safe Python client library for the Kalshi Trade API.
 
 ## Quick Start
 
+Get up and running in minutes:
+
 ```python
 from kalshi_py import create_client
 from kalshi_py.api.portfolio import get_balance
 
 client = create_client()
-
 balance = get_balance.sync(client=client)
-if balance is None:
-    raise Exception("Balance is None")
-
 print(f"Account balance: ${balance.balance}")
-
 ```
 
 ## Installation
@@ -32,13 +31,15 @@ print(f"Account balance: ${balance.balance}")
 pip install kalshi-py
 ```
 
-## Documentation
+For more installation options, see [Installation Guide](installation.md).
 
-- **[Getting Started](getting-started/installation.md)** - Installation and setup
-- **[Quick Start](getting-started/quickstart.md)** - Your first API calls
-- **[Authentication](getting-started/authentication.md)** - Setting up authentication
+## Documentation Sections
+
+- **[Installation](installation.md)** - Requirements, installation methods, dependencies
+- **[Quick Start](quickstart.md)** - Basic usage, authenticated usage, async usage
+- **[Authentication](authentication.md)** - RSA-PSS setup, security best practices
+- **[Examples](examples.md)** - Basic, trading, and advanced code examples
 - **[API Reference](api/client.md)** - Complete API documentation
-- **[Examples](examples/basic-usage.md)** - Code examples and patterns
 
 ## API Modules
 
@@ -56,3 +57,4 @@ The client is organized into logical modules:
 
 - [GitHub Issues](https://github.com/kalshi/kalshi-py/issues)
 - [Kalshi API Documentation](https://docs.kalshi.com)
+- [API Reference](api/client.md) - Complete API documentation

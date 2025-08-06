@@ -81,5 +81,5 @@ client = create_client()  # Uses environment variables
 ## Next Steps
 
 - [Authentication](authentication.md) - Learn about RSA-PSS authentication
-- [API Reference](../api/client.md) - Explore all available endpoints
-- [Examples](../examples/basic-usage.md) - More detailed examples
+- [API Reference](api/client.md) - Explore all available endpoints
+- [Examples](examples.md) - More detailed examples

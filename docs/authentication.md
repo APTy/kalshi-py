@@ -172,3 +172,8 @@ client = AuthenticatedClient(
 ```
 
 **Note**: Bearer token authentication is not recommended for trading operations.
+
+## Next Steps
+
+- [Examples](examples.md) - See authentication in action
+- [API Reference](api/client.md) - Explore all available endpoints

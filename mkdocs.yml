@@ -39,6 +39,7 @@ theme:
     - content.tooltips
     - header.autohide
     - toc.follow
+    - toc.integrate
 
 plugins:
   - search
@@ -108,11 +109,12 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home: index.md
-  - Getting Started:
-      - Installation: getting-started/installation.md
-      - Quick Start: getting-started/quickstart.md
-      - Authentication: getting-started/authentication.md
+  - Home:
+      - Overview: index.md
+      - Installation: installation.md
+      - Quick Start: quickstart.md
+      - Authentication: authentication.md
+      - Examples: examples.md
   - API Reference:
       - Client: api/client.md
       - Market API: api/market.md
@@ -123,10 +125,6 @@ nav:
       - Structured Targets API: api/structured_target.md
       - API Keys API: api/api_keys.md
       - Default API: api/default.md
-  - Examples:
-      - Basic Usage: examples/basic-usage.md
-      - Trading Examples: examples/trading.md
-      - Advanced Examples: examples/advanced.md
   - Development:
       - Contributing: development/contributing.md
       - Building: development/building.md
