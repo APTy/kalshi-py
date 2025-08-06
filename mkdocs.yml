@@ -126,6 +126,7 @@ nav:
       - Structured Targets API: api/structured_target.md
       - API Keys API: api/api_keys.md
       - Default API: api/default.md
+      - Data Models: api/models.md
   - Development:
       - Contributing: development/contributing.md
       - Building: development/building.md

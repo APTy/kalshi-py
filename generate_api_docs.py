@@ -114,6 +114,104 @@ def generate_api_doc(api_name, api_dir, output_file):
                 f.write("      filters: ['!^_']\n\n")
 
 
+def get_models_from_files():
+    """Get all model classes from the models directory."""
+    models = []
+    models_path = Path("kalshi_py/models")
+
+    if not models_path.exists():
+        return models
+
+    for py_file in models_path.glob("*.py"):
+        if py_file.name == "__init__.py":
+            continue
+
+        # Extract the model name from the filename
+        model_name = py_file.stem
+        module_name = f"kalshi_py.models.{py_file.stem}"
+
+        # Get the classes from this module
+        classes = []
+        try:
+            module = importlib.import_module(module_name)
+            for name, obj in inspect.getmembers(module):
+                if (inspect.isclass(obj) and
+                        not name.startswith("_") and
+                        name not in ["Any", "Union", "Optional", "List", "Dict"] and
+                        hasattr(obj, "__module__") and
+                        obj.__module__.startswith("kalshi_py.models")):
+                    classes.append((name, module_name))
+        except ImportError as e:
+            print(f"Warning: Could not import {module_name}: {e}")
+
+        if classes:
+            models.append((model_name, classes))
+
+    return sorted(models, key=lambda x: x[0])
+
+
+def categorize_models(models):
+    """Categorize models into logical groups."""
+    categories = {
+        "core": [],
+        "market": [],
+        "order": [],
+        "user": [],
+        "collection": [],
+        "communication": [],
+        "other": []
+    }
+
+    for model_name, classes in models:
+        # Categorize based on model name patterns
+        if any(keyword in model_name.lower() for keyword in ["event", "market", "ticker"]):
+            categories["market"].append((model_name, classes))
+        elif any(keyword in model_name.lower() for keyword in ["order", "position", "fill"]):
+            categories["order"].append((model_name, classes))
+        elif any(keyword in model_name.lower() for keyword in ["user", "api_key", "balance"]):
+            categories["user"].append((model_name, classes))
+        elif any(keyword in model_name.lower() for keyword in ["collection", "multivariate"]):
+            categories["collection"].append((model_name, classes))
+        elif any(keyword in model_name.lower() for keyword in ["quote", "rfq", "communication"]):
+            categories["communication"].append((model_name, classes))
+        elif any(keyword in model_name.lower() for keyword in ["response", "request", "data"]):
+            categories["core"].append((model_name, classes))
+        else:
+            categories["other"].append((model_name, classes))
+
+    return categories
+
+
+def generate_models_doc(output_file):
+    """Generate documentation for all models."""
+    models = get_models_from_files()
+    categories = categorize_models(models)
+
+    with open(output_file, "w") as f:
+        f.write("# Data Models Reference\n\n")
+        f.write("This page documents all the data models used in the Kalshi Python client.\n\n")
+
+        for category_name, category_models in categories.items():
+            if not category_models:
+                continue
+
+            f.write(f"## {category_name.title()} Models\n\n")
+
+            for model_name, classes in category_models:
+                # Use the first class as the main one to document
+                if classes:
+                    class_name, module_name = classes[0]
+                    f.write(f"### {class_name}\n\n")
+                    f.write(f"::: {module_name}.{class_name}\n")
+                    f.write("    handler: python\n")
+                    f.write("    options:\n")
+                    f.write("      show_source: true\n")
+                    f.write("      show_root_heading: true\n")
+                    f.write("      heading_level: 4\n")
+                    f.write("      members_order: source\n")
+                    f.write("      filters: ['!^_']\n\n")
+
+
 def main():
     """Generate all API documentation."""
     # API modules to document
@@ -138,7 +236,12 @@ def main():
         print(f"📝 Generating {api_name} API docs...")
         generate_api_doc(api_name, api_dir, output_file)
 
+    print("📝 Generating models documentation...")
+    models_output_file = docs_dir / "models.md"
+    generate_models_doc(models_output_file)
+
     print("✅ API documentation generated!")
+    print("✅ Models documentation generated!")
     print("\nTo build the docs:")
     print("  ./docs.sh")
 
