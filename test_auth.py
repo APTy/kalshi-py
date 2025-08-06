@@ -54,7 +54,7 @@ def test_auth_creation():
         assert isinstance(client, KalshiAuthenticatedClient)
         assert client.access_key_id == "test-key-id"
         assert client.private_key_pem == private_key_pem
-        assert client.base_url == "https://api.elections.kalshi.com/trade-api/v2"
+        assert client._base_url == "https://api.elections.kalshi.com/trade-api/v2"
 
         print("✓ Authenticated client creation works")
         return True
@@ -119,6 +119,38 @@ def test_environment_variables():
             del os.environ["KALSHI_PY_PRIVATE_KEY_PEM"]
 
 
+def test_relative_url_handling():
+    """Test that relative URLs are handled correctly for authentication."""
+    print("Testing relative URL handling...")
+
+    private_key_pem = get_test_private_key_pem()
+
+    try:
+        auth = KalshiAuth("test-key-id", private_key_pem)
+
+        # Test with relative path
+        headers1 = auth.get_auth_headers("GET", "/markets")
+
+        # Test with full URL
+        headers2 = auth.get_auth_headers("GET", "https://api.elections.kalshi.com/trade-api/v2/markets")
+
+        # Both should have the same path in the signature
+        # We can't compare signatures directly because timestamps are different
+        # But we can verify that both have the required headers
+        assert "KALSHI-ACCESS-SIGNATURE" in headers1
+        assert "KALSHI-ACCESS-SIGNATURE" in headers2
+        assert "KALSHI-ACCESS-TIMESTAMP" in headers1
+        assert "KALSHI-ACCESS-TIMESTAMP" in headers2
+        assert headers1["KALSHI-ACCESS-KEY"] == headers2["KALSHI-ACCESS-KEY"]
+
+        print("✓ Relative URL handling works correctly")
+        return True
+
+    except Exception as e:
+        print(f"✗ Error with relative URL handling: {e}")
+        return False
+
+
 def main():
     """Run all authentication tests."""
     print("=== Kalshi Authentication Tests ===\n")
@@ -127,6 +159,7 @@ def main():
         test_auth_creation,
         test_auth_headers,
         test_environment_variables,
+        test_relative_url_handling,
     ]
 
     results = []

@@ -14,14 +14,16 @@ A modern, type-safe Python client library for the Kalshi Trade API.
 
 ```python
 from kalshi_py import create_client
+from kalshi_py.api.portfolio import get_balance
 
-# Create authenticated client
 client = create_client()
 
-# Get account balance
-from kalshi_py.api.portfolio import get_balance
 balance = get_balance.sync(client=client)
-print(f"Balance: ${balance.balance}")
+if balance is None:
+    raise Exception("Balance is None")
+
+print(f"Account balance: ${balance.balance}")
+
 ```
 
 ## Installation

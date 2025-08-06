@@ -62,8 +62,20 @@ class KalshiAuth:
         current_time_milliseconds = int(timestamp * 1000)
         timestamp_str = str(current_time_milliseconds)
 
-        parsed_url = urlparse(url)
-        path = parsed_url.path
+        # Ensure method is uppercase
+        method = method.upper()
+
+        # Handle both full URLs and relative paths
+        if url.startswith('http'):
+            parsed_url = urlparse(url)
+            path = parsed_url.path
+        else:
+            # If it's a relative path, we need to construct the full path
+            # The base_url is https://api.elections.kalshi.com/trade-api/v2
+            # So we need to add /trade-api/v2 to the relative path
+            relative_path = url if url.startswith('/') else f'/{url}'
+            path = f"/trade-api/v2{relative_path}"
+
         msg_string = timestamp_str + method + path
 
         signature = sign_pss_text(self.private_key, msg_string)
