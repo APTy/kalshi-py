@@ -59,10 +59,31 @@ else
 fi
 
 echo ""
+echo "📚 Regenerating API documentation..."
+if [ -f "generate_api_docs.py" ]; then
+    echo "🔨 Generating API docs from updated code..."
+    uv run python generate_api_docs.py
+    echo "✅ API documentation regenerated!"
+else
+    echo "⚠️  No generate_api_docs.py found, skipping API doc generation"
+fi
+
+echo ""
+echo "📚 Building documentation..."
+if [ -f "mkdocs.yml" ]; then
+    echo "🔨 Building documentation with updated API..."
+    uv run mkdocs build
+    echo "✅ Documentation rebuilt successfully!"
+else
+    echo "⚠️  No mkdocs.yml found, skipping documentation rebuild"
+fi
+
+echo ""
 echo "🎉 Regeneration complete!"
 echo ""
 echo "Next steps:"
 echo "1. Review the generated code"
 echo "2. Test the client: uv run python test_client.py"
-echo "3. Update version in pyproject.toml if needed"
-echo "4. Commit your changes"
+echo "3. Review the updated documentation: uv run mkdocs serve"
+echo "4. Update version in pyproject.toml if needed"
+echo "5. Commit your changes"

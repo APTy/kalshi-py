@@ -21,3 +21,16 @@ dmypy.json
 
 /coverage.xml
 /.coverage
+
+# Documentation
+site/
+
+# Ruff
+.ruff_cache/
+
+# Documentation cache
+.mkdocs_cache/
+
+# Temporary files
+*.tmp
+*.temp
