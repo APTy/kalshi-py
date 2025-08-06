@@ -1,0 +1,487 @@
+"""Contains all the data models used in inputs/outputs"""
+
+from .announcement import Announcement
+from .api_key import ApiKey
+from .batch_cancel_orders_individual_response import BatchCancelOrdersIndividualResponse
+from .batch_create_orders_individual_response import BatchCreateOrdersIndividualResponse
+from .daily_schedule import DailySchedule
+from .event_position import EventPosition
+from .generic_object import GenericObject
+from .github_com_kalshi_exchange_infra_common_api_json_error import GithubComKalshiExchangeInfraCommonApiJSONError
+from .github_com_kalshi_exchange_infra_common_communications_quote import (
+    GithubComKalshiExchangeInfraCommonCommunicationsQuote,
+)
+from .github_com_kalshi_exchange_infra_common_communications_rfq import (
+    GithubComKalshiExchangeInfraCommonCommunicationsRFQ,
+)
+from .github_com_kalshi_exchange_infra_common_exchange_metadata_daily_schedule import (
+    GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule,
+)
+from .github_com_kalshi_exchange_infra_common_exchange_metadata_schedule import (
+    GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule,
+)
+from .github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_maintenance_windows_item import (
+    GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem,
+)
+from .github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_standard_hours_item import (
+    GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem,
+)
+from .github_com_kalshi_exchange_infra_common_exchange_metadata_schedule_standard_hours_item_monday_item import (
+    GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem,
+)
+from .github_com_kalshi_exchange_infra_common_unimodel_details import GithubComKalshiExchangeInfraCommonUnimodelDetails
+from .github_com_kalshi_exchange_infra_common_unimodel_product_metadata import (
+    GithubComKalshiExchangeInfraCommonUnimodelProductMetadata,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_accept_quote_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAcceptQuoteRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_accept_quote_request_accepted_side import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAcceptQuoteRequestAcceptedSide,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_request_action import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequestAction,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_request_side import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequestSide,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_amend_order_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_cancel_orders_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_cancel_orders_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_cancel_orders_response_orders_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersResponseOrdersItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_create_orders_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_create_orders_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_batch_create_orders_response_orders_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponseOrdersItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_bid_ask_distribution import (
+    GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_cancel_order_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCancelOrderResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_market_in_multivariate_event_collection_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateMarketInMultivariateEventCollectionRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_market_in_multivariate_event_collection_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateMarketInMultivariateEventCollectionResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_group_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_group_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request_action import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestAction,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request_side import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestSide,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request_time_in_force import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestTimeInForce,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_request_type import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestType,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_order_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_quote_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_quote_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_rfq_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateRFQRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_create_rfq_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelCreateRFQResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_decrease_order_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelDecreaseOrderRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_decrease_order_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelDecreaseOrderResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_empty_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelEmptyResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_event_data import (
+    GithubComKalshiExchangeInfraSvcApi2ModelEventData,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_exchange_status import (
+    GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_fill import GithubComKalshiExchangeInfraSvcApi2ModelFill
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_balance_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetBalanceResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_communications_id_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetCommunicationsIDResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_event_metadata_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_event_metadata_response_settlement_sources_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_event_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_events_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetEventsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_exchange_announcements_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_exchange_announcements_response_announcements_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_exchange_schedule_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeScheduleResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_fills_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_market_candlesticks_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_market_candlesticks_response_candlesticks_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_market_orderbook_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketOrderbookResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_market_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_markets_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_milestone_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMilestoneResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_milestones_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMilestonesResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_lookup_history_response_lookup_points_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collection_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_multivariate_event_collections_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_group_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_groups_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_queue_position_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_queue_positions_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_queue_positions_response_queue_positions_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_order_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrderResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_orders_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetOrdersResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_positions_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_positions_response_event_positions_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_positions_response_market_positions_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_quote_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetQuoteResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_quotes_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_quotes_response_quotes_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponseQuotesItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_rf_qs_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetRFQsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_rf_qs_response_rfqs_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetRFQsResponseRfqsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_rfq_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetRFQResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_settlements_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_settlements_response_settlements_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_settlements_response_settlements_item_market_result import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_structured_target_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_structured_targets_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetsResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_user_data_timestamp_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_get_user_resting_order_total_value_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelGetUserRestingOrderTotalValueResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_request_selected_markets_item_side import (
+    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_lookup_tickers_for_market_in_multivariate_event_collection_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_market import GithubComKalshiExchangeInfraSvcApi2ModelMarket
+from .github_com_kalshi_exchange_infra_svc_api_2_model_milestone import (
+    GithubComKalshiExchangeInfraSvcApi2ModelMilestone,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_multivariate_event_collection import (
+    GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order import GithubComKalshiExchangeInfraSvcApi2ModelOrder
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order_book import (
+    GithubComKalshiExchangeInfraSvcApi2ModelOrderBook,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order_book_no_dollars_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelOrderBookNoDollarsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order_book_yes_dollars_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelOrderBookYesDollarsItem,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order_confirmation import (
+    GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_order_group_summary import (
+    GithubComKalshiExchangeInfraSvcApi2ModelOrderGroupSummary,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_price_distribution import (
+    GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_public_trade import (
+    GithubComKalshiExchangeInfraSvcApi2ModelPublicTrade,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_public_trades_get_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_structured_target import (
+    GithubComKalshiExchangeInfraSvcApi2ModelStructuredTarget,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_ticker_pair import (
+    GithubComKalshiExchangeInfraSvcApi2ModelTickerPair,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_ticker_pair_side import (
+    GithubComKalshiExchangeInfraSvcApi2ModelTickerPairSide,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_create_api_key_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserCreateApiKeyRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_create_api_key_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserCreateApiKeyResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_generate_api_key_request import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_generate_api_key_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_get_api_keys_response import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponse,
+)
+from .github_com_kalshi_exchange_infra_svc_api_2_model_user_get_api_keys_response_api_keys_item import (
+    GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponseApiKeysItem,
+)
+from .lookup_point import LookupPoint
+from .maintenance_window import MaintenanceWindow
+from .market_candlestick import MarketCandlestick
+from .market_position import MarketPosition
+from .order_queue_position import OrderQueuePosition
+from .price_level_dollars import PriceLevelDollars
+from .settlement import Settlement
+from .settlement_market_result import SettlementMarketResult
+from .settlement_source import SettlementSource
+from .ticker_pair import TickerPair
+from .ticker_pair_side import TickerPairSide
+from .weekly_schedule import WeeklySchedule
+from .weekly_schedule_monday_item import WeeklyScheduleMondayItem
+
+__all__ = (
+    "Announcement",
+    "ApiKey",
+    "BatchCancelOrdersIndividualResponse",
+    "BatchCreateOrdersIndividualResponse",
+    "DailySchedule",
+    "EventPosition",
+    "GenericObject",
+    "GithubComKalshiExchangeInfraCommonApiJSONError",
+    "GithubComKalshiExchangeInfraCommonCommunicationsQuote",
+    "GithubComKalshiExchangeInfraCommonCommunicationsRFQ",
+    "GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule",
+    "GithubComKalshiExchangeInfraCommonExchangeMetadataSchedule",
+    "GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleMaintenanceWindowsItem",
+    "GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItem",
+    "GithubComKalshiExchangeInfraCommonExchangeMetadataScheduleStandardHoursItemMondayItem",
+    "GithubComKalshiExchangeInfraCommonUnimodelDetails",
+    "GithubComKalshiExchangeInfraCommonUnimodelProductMetadata",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAcceptQuoteRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAcceptQuoteRequestAcceptedSide",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequestAction",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderRequestSide",
+    "GithubComKalshiExchangeInfraSvcApi2ModelAmendOrderResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCancelOrdersResponseOrdersItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBatchCreateOrdersResponseOrdersItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelBidAskDistribution",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCancelOrderResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateMarketInMultivariateEventCollectionRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateMarketInMultivariateEventCollectionResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderGroupResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestAction",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestSide",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestTimeInForce",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderRequestType",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateOrderResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateQuoteResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateRFQRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelCreateRFQResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelDecreaseOrderRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelDecreaseOrderResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelEmptyResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelEventData",
+    "GithubComKalshiExchangeInfraSvcApi2ModelExchangeStatus",
+    "GithubComKalshiExchangeInfraSvcApi2ModelFill",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetBalanceResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetCommunicationsIDResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetEventMetadataResponseSettlementSourcesItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetEventResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetEventsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeAnnouncementsResponseAnnouncementsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetExchangeScheduleResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetFillsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMarketCandlesticksResponseCandlesticksItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMarketOrderbookResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMarketResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMarketsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMilestoneResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMilestonesResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionLookupHistoryResponseLookupPointsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetMultivariateEventCollectionsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderGroupsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderQueuePositionsResponseQueuePositionsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrderResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetOrdersResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseEventPositionsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetPositionsResponseMarketPositionsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetQuoteResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetQuotesResponseQuotesItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetRFQResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetRFQsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetRFQsResponseRfqsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetSettlementsResponseSettlementsItemMarketResult",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetStructuredTargetsResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetUserDataTimestampResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelGetUserRestingOrderTotalValueResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionRequestSelectedMarketsItemSide",
+    "GithubComKalshiExchangeInfraSvcApi2ModelLookupTickersForMarketInMultivariateEventCollectionResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelMarket",
+    "GithubComKalshiExchangeInfraSvcApi2ModelMilestone",
+    "GithubComKalshiExchangeInfraSvcApi2ModelMultivariateEventCollection",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrder",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrderBook",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrderBookNoDollarsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrderBookYesDollarsItem",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation",
+    "GithubComKalshiExchangeInfraSvcApi2ModelOrderGroupSummary",
+    "GithubComKalshiExchangeInfraSvcApi2ModelPriceDistribution",
+    "GithubComKalshiExchangeInfraSvcApi2ModelPublicTrade",
+    "GithubComKalshiExchangeInfraSvcApi2ModelPublicTradesGetResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelStructuredTarget",
+    "GithubComKalshiExchangeInfraSvcApi2ModelTickerPair",
+    "GithubComKalshiExchangeInfraSvcApi2ModelTickerPairSide",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserCreateApiKeyRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserCreateApiKeyResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyRequest",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserGenerateApiKeyResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponse",
+    "GithubComKalshiExchangeInfraSvcApi2ModelUserGetApiKeysResponseApiKeysItem",
+    "LookupPoint",
+    "MaintenanceWindow",
+    "MarketCandlestick",
+    "MarketPosition",
+    "OrderQueuePosition",
+    "PriceLevelDollars",
+    "Settlement",
+    "SettlementMarketResult",
+    "SettlementSource",
+    "TickerPair",
+    "TickerPairSide",
+    "WeeklySchedule",
+    "WeeklyScheduleMondayItem",
+)
