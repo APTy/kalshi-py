@@ -8,6 +8,8 @@ on:
 jobs:
   fetch-and-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -36,3 +38,5 @@ jobs:
           git add openapi.yaml
           git commit -m "Update OpenAPI specification from Kalshi docs"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
