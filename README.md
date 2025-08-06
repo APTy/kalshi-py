@@ -2,6 +2,8 @@
 
 A client library for accessing Kalshi Trade API
 
+📚 **[Documentation](https://apty.github.io/kalshi-py/)** - Complete API reference, examples, and guides
+
 ## Installation
 
 ```bash
