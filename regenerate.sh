@@ -22,6 +22,9 @@ echo "💾 Backing up critical custom files..."
 cp pyproject.toml pyproject.toml.backup
 cp uv.lock uv.lock.backup
 cp README.md README.md.backup
+if [ -f ".gitignore" ]; then
+    cp .gitignore .gitignore.backup
+fi
 if [ -f "kalshi_py/__init__.py" ]; then
     cp kalshi_py/__init__.py kalshi_py/__init__.py.backup
 fi
@@ -35,6 +38,9 @@ echo "🔄 Restoring custom files..."
 cp pyproject.toml.backup pyproject.toml
 cp uv.lock.backup uv.lock
 cp README.md.backup README.md
+if [ -f ".gitignore.backup" ]; then
+    cp .gitignore.backup .gitignore
+fi
 if [ -f "kalshi_py/__init__.py.backup" ]; then
     cp kalshi_py/__init__.py.backup kalshi_py/__init__.py
 fi
@@ -42,6 +48,9 @@ fi
 echo ""
 echo "🧹 Cleaning up backup files..."
 rm pyproject.toml.backup uv.lock.backup README.md.backup
+if [ -f ".gitignore.backup" ]; then
+    rm .gitignore.backup
+fi
 if [ -f "kalshi_py/__init__.py.backup" ]; then
     rm kalshi_py/__init__.py.backup
 fi
