@@ -1,4 +1,4 @@
-name: Fetch Kalshi OpenAPI Specification
+name: Regenerate Kalshi Python Client
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  fetch-and-commit:
+  regenerate-and-commit:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,14 +17,24 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch OpenAPI specification
-        run: |
-          curl -s https://docs.kalshi.com/openapi.yaml -o openapi.yaml
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
-      - name: Check if file changed
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Regenerate client library
+        run: |
+          ./regenerate.sh
+
+      - name: Check if files changed
         id: check_changes
         run: |
-          if git diff --quiet openapi.yaml; then
+          if git diff --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -35,8 +45,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add openapi.yaml
-          git commit -m "Update OpenAPI specification from Kalshi docs"
+          git add .
+          git commit -m "Regenerate client library from latest OpenAPI spec"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
