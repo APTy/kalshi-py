@@ -1,123 +1,206 @@
 # kalshi-py
+
 A client library for accessing Kalshi Trade API
 
+## Installation
+
+```bash
+pip install kalshi-py
+```
+
 ## Usage
-First, create a client:
+
+### Basic Usage (Public Endpoints)
+
+For public endpoints that don't require authentication:
 
 ```python
 from kalshi_py import Client
 
-client = Client(base_url="https://api.example.com")
+client = Client(base_url="https://api.elections.kalshi.com/trade-api/v2")
+
+with client as client:
+    from kalshi_py.api.market import get_markets
+    response = get_markets.sync(client=client, limit=10)
+    print(f"Found {len(response.markets)} markets")
 ```
 
-If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
+### Authenticated Usage (Trading Endpoints)
+
+For trading endpoints that require authentication, use the Kalshi-specific authenticated client:
+
+```python
+from kalshi_py import create_client
+
+# Using environment variables ("KALSHI_API_KEY_ID" and "KALSHI_PY_PRIVATE_KEY_PEM")
+client = create_client()
+
+# Or with file path
+client = create_client(
+    access_key_id="your-access-key-id",
+    private_key_path="/path/to/your/private-key.pem"
+)
+
+# Or with PEM data directly
+client = create_client(
+    access_key_id="your-access-key-id",
+    private_key_data="-----BEGIN PRIVATE KEY-----\n..."
+)
+
+with client as client:
+    from kalshi_py.api.portfolio import get_balance
+    balance = get_balance.sync(client=client)
+    print(f"Account balance: {balance.balance}")
+```
+
+### Direct Client Usage
+
+You can also create the authenticated client directly if you prefer:
+
+```python
+from kalshi_py import KalshiAuthenticatedClient
+
+# Direct usage requires explicit credentials
+client = KalshiAuthenticatedClient(
+    access_key_id="your-access-key-id",
+    private_key_pem="-----BEGIN PRIVATE KEY-----\n..."
+)
+
+with client as client:
+    from kalshi_py.api.portfolio import get_balance
+    balance = get_balance.sync(client=client)
+    print(f"Account balance: {balance.balance}")
+```
+
+### Environment Variables
+
+You can set the following environment variables to avoid passing credentials explicitly:
+
+- `KALSHI_API_KEY_ID`: Your Kalshi access key ID
+- `KALSHI_PY_PRIVATE_KEY_PEM`: Your RSA private key in PEM format
+
+### API Endpoints
+
+The client supports both synchronous and asynchronous operations:
+
+```python
+from kalshi_py import create_authenticated_client
+from kalshi_py.api.market import get_markets
+from kalshi_py.api.portfolio import get_balance
+
+# Synchronous usage
+client = create_authenticated_client()
+with client as client:
+    markets = get_markets.sync(client=client, limit=5)
+    balance = get_balance.sync(client=client)
+
+# Asynchronous usage
+import asyncio
+
+async def main():
+    client = create_authenticated_client()
+    async with client as client:
+        markets = await get_markets.asyncio(client=client, limit=5)
+        balance = await get_balance.asyncio(client=client)
+
+asyncio.run(main())
+```
+
+### Authentication Details
+
+The Kalshi API uses RSA-PSS signature authentication. Each request is signed with:
+
+1. **Timestamp**: Current time in milliseconds
+2. **Method**: HTTP method (GET, POST, etc.)
+3. **Path**: API endpoint path
+4. **Signature**: RSA-PSS signature of `timestamp + method + path`
+
+The client automatically handles:
+
+- Loading your private key from file
+- Generating timestamps
+- Creating signatures for each request
+- Adding required headers (`KALSHI-ACCESS-KEY`, `KALSHI-ACCESS-SIGNATURE`, `KALSHI-ACCESS-TIMESTAMP`)
+
+### Legacy Bearer Token Authentication
+
+If you need to use the legacy bearer token authentication (not recommended for trading):
 
 ```python
 from kalshi_py import AuthenticatedClient
 
-client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
-```
-
-Now call your endpoint and use your models:
-
-```python
-from kalshi_py.models import MyDataModel
-from kalshi_py.api.my_tag import get_my_data_model
-from kalshi_py.types import Response
-
-with client as client:
-    my_data: MyDataModel = get_my_data_model.sync(client=client)
-    # or if you need more info (e.g. status_code)
-    response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
-```
-
-Or do the same thing with an async version:
-
-```python
-from kalshi_py.models import MyDataModel
-from kalshi_py.api.my_tag import get_my_data_model
-from kalshi_py.types import Response
-
-async with client as client:
-    my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
-    response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
-```
-
-By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
-
-```python
 client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken",
-    verify_ssl="/path/to/certificate_bundle.pem",
+    base_url="https://api.elections.kalshi.com/trade-api/v2",
+    token="your-bearer-token"
 )
 ```
 
-You can also disable certificate validation altogether, but beware that **this is a security risk**.
+## Advanced Customizations
+
+### Custom SSL Configuration
 
 ```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken", 
-    verify_ssl=False
-)
-```
-
-Things to know:
-1. Every path/method combo becomes a Python module with four functions:
-    1. `sync`: Blocking request that returns parsed data (if successful) or `None`
-    1. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
-    1. `asyncio`: Like `sync` but async instead of blocking
-    1. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
-
-1. All path/query params, and bodies become method arguments.
-1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
-1. Any endpoint which did not have a tag will be in `kalshi_py.api.default`
-
-## Advanced customizations
-
-There are more settings on the generated `Client` class which let you control more runtime behavior, check out the docstring on that class for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
-
-```python
-from kalshi_py import Client
-
-def log_request(request):
-    print(f"Request event hook: {request.method} {request.url} - Waiting for response")
-
-def log_response(response):
-    request = response.request
-    print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
-
-client = Client(
-    base_url="https://api.example.com",
-    httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
+client = create_authenticated_client(
+    verify_ssl="/path/to/certificate_bundle.pem"
 )
 
-# Or get the underlying httpx client to modify directly with client.get_httpx_client() or client.get_async_httpx_client()
+# Or disable SSL verification (not recommended for production)
+client = create_authenticated_client(verify_ssl=False)
 ```
 
-You can even set the httpx client directly, but beware that this will override any existing settings (e.g., base_url):
+### Custom Headers and Timeouts
 
 ```python
 import httpx
-from kalshi_py import Client
 
-client = Client(
-    base_url="https://api.example.com",
+client = create_authenticated_client(
+    timeout=httpx.Timeout(30.0),
+    headers={"User-Agent": "MyApp/1.0"}
 )
-# Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
-client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
 ```
 
-## Building / publishing this package
+### Request Logging
+
+```python
+def log_request(request):
+    print(f"Request: {request.method} {request.url}")
+
+def log_response(response):
+    print(f"Response: {response.status_code}")
+
+client = create_authenticated_client(
+    httpx_args={
+        "event_hooks": {
+            "request": [log_request],
+            "response": [log_response]
+        }
+    }
+)
+```
+
+## API Structure
+
+Every API endpoint becomes a Python module with four functions:
+
+1. `sync`: Blocking request that returns parsed data
+2. `sync_detailed`: Blocking request that returns full response details
+3. `asyncio`: Async request that returns parsed data
+4. `asyncio_detailed`: Async request that returns full response details
+
+All path/query parameters and request bodies become function arguments.
+
+## Building / Publishing this package
+
 This project uses [uv](https://github.com/astral-sh/uv) to manage dependencies and packaging. Here are the basics:
+
 1. Update the metadata in `pyproject.toml` (e.g. authors, version).
 2. If you're using a private repository: https://docs.astral.sh/uv/guides/integration/alternative-indexes/
 3. Build a distribution with `uv build`, builds `sdist` and `wheel` by default.
-1. Publish the client with `uv publish`, see documentation for publishing to private indexes.
+4. Publish the client with `uv publish`, see documentation for publishing to private indexes.
 
 If you want to install this client into another project without publishing it (e.g. for development) then:
+
 1. If that project **is using uv**, you can simply do `uv add <path-to-this-client>` from that project
-1. If that project is not using uv:
-    1. Build a wheel with `uv build --wheel`.
-    1. Install that wheel from the other project `pip install <path-to-wheel>`.
+2. If that project is not using uv:
+   1. Build a wheel with `uv build --wheel`.
+   2. Install that wheel from the other project `pip install <path-to-wheel>`.
