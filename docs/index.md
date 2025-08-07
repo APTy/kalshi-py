@@ -20,6 +20,7 @@ Get up and running in minutes:
 from kalshi_py import create_client
 from kalshi_py.api.portfolio import get_balance
 
+# Uses "KALSHI_API_KEY_ID" and "KALSHI_PY_PRIVATE_KEY_PEM" env vars, see Authenticate for more options
 client = create_client()
 balance = get_balance.sync(client=client)
 print(f"Account balance: ${balance.balance}")

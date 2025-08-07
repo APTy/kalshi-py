@@ -40,15 +40,6 @@ kalshi-py has the following dependencies:
 - `python-dateutil>=2.8.0,<3` - Date parsing
 - `cryptography>=41.0.0` - RSA-PSS signatures
 
-## Verify Installation
-
-You can verify the installation by running:
-
-```python
-import kalshi_py
-print(kalshi_py.__version__)
-```
-
 ## Next Steps
 
 - [Quick Start](quickstart.md) - Make your first API call
