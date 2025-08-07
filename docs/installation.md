@@ -26,7 +26,7 @@ uv add kalshi-py
 To install the latest development version:
 
 ```bash
-git clone https://github.com/kalshi/kalshi-py.git
+git clone https://github.com/APTy/kalshi-py.git
 cd kalshi-py
 pip install -e .
 ```

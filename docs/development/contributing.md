@@ -7,7 +7,7 @@ Thank you for your interest in contributing to kalshi-py!
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/kalshi/kalshi-py.git
+   git clone https://github.com/APTy/kalshi-py.git
    cd kalshi-py
    ```
 

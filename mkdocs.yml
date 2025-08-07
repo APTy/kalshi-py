@@ -1,9 +1,9 @@
 site_name: kalshi-py
 site_description: A client library for accessing Kalshi Trade API
 site_author: Kalshi
-site_url: https://kalshi.com
-repo_name: kalshi/kalshi-py
-repo_url: https://github.com/kalshi/kalshi-py
+site_url: https://apty.github.io/kalshi-py/
+repo_name: APTy/kalshi-py
+repo_url: https://github.com/APTy/kalshi-py
 edit_uri: edit/main/docs/
 
 theme:

@@ -56,6 +56,6 @@ The client is organized into logical modules:
 
 ## Support
 
-- [GitHub Issues](https://github.com/kalshi/kalshi-py/issues)
+- [GitHub Issues](https://github.com/APTy/kalshi-py/issues)
 - [Kalshi API Documentation](https://docs.kalshi.com)
 - [API Reference](api/client.md) - Complete API documentation
