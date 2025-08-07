@@ -1,16 +1,14 @@
 # kalshi-py
 
-A modern, type-safe Python client library for the Kalshi Trade API.
+A modern, type-safe Python client library for the Kalshi Trade API, built daily from [Kalshi OpenAPI spec](https://docs.kalshi.com/openapi.yaml).
 
-## Overview
+## Installation
 
-### Features
+```bash
+pip install kalshi-py
+```
 
-- **Type Safety**: Full type hints and validation
-- **Async Support**: Both synchronous and asynchronous APIs
-- **Authentication**: Built-in RSA-PSS signature authentication
-- **Auto-generated**: Generated from OpenAPI specification
-- **Modern**: Built with httpx and attrs
+For more installation options, see [Installation Guide](installation.md).
 
 ## Quick Start
 
@@ -26,13 +24,15 @@ balance = get_balance.sync(client=client)
 print(f"Account balance: ${balance.balance}")
 ```
 
-## Installation
+## Overview
 
-```bash
-pip install kalshi-py
-```
+### Features
 
-For more installation options, see [Installation Guide](installation.md).
+- **Type Safety**: Full type hints and validation
+- **Async Support**: Both synchronous and asynchronous APIs
+- **Authentication**: Built-in RSA-PSS signature authentication
+- **Auto-generated**: Generated from OpenAPI specification
+- **Modern**: Built with httpx and attrs
 
 ## Documentation Sections
 
