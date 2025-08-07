@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://kalshi.com/</loc>
+         <loc>https://apty.github.io/kalshi-py/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/authentication/</loc>
+         <loc>https://apty.github.io/kalshi-py/authentication/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/examples/</loc>
+         <loc>https://apty.github.io/kalshi-py/examples/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/installation/</loc>
+         <loc>https://apty.github.io/kalshi-py/installation/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/quickstart/</loc>
+         <loc>https://apty.github.io/kalshi-py/quickstart/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/api_keys/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/api_keys/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/client/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/client/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/collection/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/collection/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/communications/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/communications/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/default/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/default/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/market/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/market/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/milestone/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/milestone/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/models/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/models/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/portfolio/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/portfolio/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/api/structured_target/</loc>
+         <loc>https://apty.github.io/kalshi-py/api/structured_target/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/development/building/</loc>
+         <loc>https://apty.github.io/kalshi-py/development/building/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
     <url>
-         <loc>https://kalshi.com/development/contributing/</loc>
+         <loc>https://apty.github.io/kalshi-py/development/contributing/</loc>
          <lastmod>2025-08-07</lastmod>
     </url>
 </urlset>
