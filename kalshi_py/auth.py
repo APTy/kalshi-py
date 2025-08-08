@@ -195,7 +195,9 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         self.get_httpx_client().__enter__()
         return self
 
-    def __exit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> None:
+    def __exit__(
+        self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None
+    ) -> None:
         """Context manager exit."""
         return self.get_httpx_client().__exit__(exc_type, exc_value, traceback)
 
@@ -204,6 +206,8 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         await self.get_async_httpx_client().__aenter__()
         return self
 
-    async def __aexit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> None:
+    async def __aexit__(
+        self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None
+    ) -> None:
         """Async context manager exit."""
         return await self.get_async_httpx_client().__aexit__(exc_type, exc_value, traceback)

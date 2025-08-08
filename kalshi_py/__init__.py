@@ -18,7 +18,7 @@ def create_client(
     access_key_id: str | None = None,
     private_key_path: str | None = None,
     private_key_data: str | None = None,
-    **kwargs,
+    **kwargs: object,
 ) -> KalshiAuthenticatedClient:
     """Create an authenticated Kalshi client with RSA-PSS signature authentication.
 

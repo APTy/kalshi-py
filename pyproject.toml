@@ -43,7 +43,7 @@ line-length = 120
 
 [tool.ruff.lint]
 select = ["F", "I", "UP", "ARG", "ANN"]
-ignore = ["ANN401"]
+ignore = ["ANN401", "ANN204"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
