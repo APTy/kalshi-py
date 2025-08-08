@@ -37,4 +37,5 @@ dev = [
 line-length = 120
 
 [tool.ruff.lint]
-select = ["F", "I", "UP"]
+select = ["F", "I", "UP", "ARG", "ANN"]
+ignore = ["ANN401"]

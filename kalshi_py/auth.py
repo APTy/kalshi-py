@@ -1,6 +1,7 @@
 import base64
 import datetime
-from typing import Union
+from types import TracebackType
+from typing import Any, Union
 from urllib.parse import urlparse
 
 import httpx
@@ -50,7 +51,7 @@ def sign_pss_text(private_key: rsa.RSAPrivateKey, text: str) -> str:
 class KalshiAuth:
     """Authentication handler for Kalshi API using RSA-PSS signatures."""
 
-    def __init__(self, access_key_id: str, private_key_pem: str):
+    def __init__(self, access_key_id: str, private_key_pem: str) -> None:
         """Initialize authentication with access key ID and private key PEM string."""
         self.access_key_id = access_key_id
         self.private_key = load_private_key_from_string(private_key_pem)
@@ -90,11 +91,11 @@ class KalshiAuth:
 class AuthenticatedHTTPXClient(httpx.Client):
     """Custom httpx client that adds Kalshi authentication headers to each request."""
 
-    def __init__(self, kalshi_auth: KalshiAuth, **kwargs):
+    def __init__(self, kalshi_auth: KalshiAuth, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.kalshi_auth = kalshi_auth
 
-    def request(self, method: str, url: Union[str, httpx.URL], **kwargs):
+    def request(self, method: str, url: Union[str, httpx.URL], **kwargs: Any) -> httpx.Response:
         """Override request to add authentication headers."""
         auth_headers = self.kalshi_auth.get_auth_headers(method, str(url))
 
@@ -109,11 +110,11 @@ class AuthenticatedHTTPXClient(httpx.Client):
 class AuthenticatedAsyncHTTPXClient(httpx.AsyncClient):
     """Custom async httpx client that adds Kalshi authentication headers to each request."""
 
-    def __init__(self, kalshi_auth: KalshiAuth, **kwargs):
+    def __init__(self, kalshi_auth: KalshiAuth, **kwargs: Any) -> None:
         super().__init__(**kwargs)
         self.kalshi_auth = kalshi_auth
 
-    async def request(self, method: str, url: Union[str, httpx.URL], **kwargs):
+    async def request(self, method: str, url: Union[str, httpx.URL], **kwargs: Any) -> httpx.Response:
         """Override request to add authentication headers."""
         auth_headers = self.kalshi_auth.get_auth_headers(method, str(url))
 
@@ -133,8 +134,8 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         access_key_id: str,
         private_key_pem: str,
         base_url: str = "https://api.elections.kalshi.com/trade-api/v2",
-        **kwargs,
-    ):
+        **kwargs: Any,
+    ) -> None:
         """Initialize authenticated client.
 
         Args:
@@ -159,7 +160,7 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
         self._client = None
         self._async_client = None
 
-    def get_httpx_client(self):
+    def get_httpx_client(self) -> httpx.Client:
         """Get the underlying authenticated httpx client."""
         if self._client is None:
             self._client = AuthenticatedHTTPXClient(
@@ -174,7 +175,7 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
             )
         return self._client
 
-    def get_async_httpx_client(self):
+    def get_async_httpx_client(self) -> httpx.AsyncClient:
         """Get the underlying authenticated async httpx client."""
         if self._async_client is None:
             self._async_client = AuthenticatedAsyncHTTPXClient(
@@ -189,20 +190,20 @@ class KalshiAuthenticatedClient(AuthenticatedClient):
             )
         return self._async_client
 
-    def __enter__(self):
+    def __enter__(self) -> "KalshiAuthenticatedClient":
         """Context manager entry."""
         self.get_httpx_client().__enter__()
         return self
 
-    def __exit__(self, *args, **kwargs):
+    def __exit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> None:
         """Context manager exit."""
-        return self.get_httpx_client().__exit__(*args, **kwargs)
+        return self.get_httpx_client().__exit__(exc_type, exc_value, traceback)
 
-    async def __aenter__(self):
+    async def __aenter__(self) -> "KalshiAuthenticatedClient":
         """Async context manager entry."""
         await self.get_async_httpx_client().__aenter__()
         return self
 
-    async def __aexit__(self, *args, **kwargs):
+    async def __aexit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> None:
         """Async context manager exit."""
-        return await self.get_async_httpx_client().__aexit__(*args, **kwargs)
+        return await self.get_async_httpx_client().__aexit__(exc_type, exc_value, traceback)
