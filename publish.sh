@@ -16,7 +16,7 @@ echo "Current version: $CURRENT_VERSION"
 
 echo ""
 echo "🔍 Running linting checks..."
-if ! uv run ruff check .; then
+if ! uv run ruff check kalshi_py/; then
     echo "❌ Linting failed. Please fix the issues before publishing."
     exit 1
 fi
@@ -24,7 +24,7 @@ echo "✅ Linting passed!"
 
 echo ""
 echo "🔍 Checking code formatting..."
-if ! uv run ruff format --check .; then
+if ! uv run ruff format --check kalshi_py/; then
     echo "❌ Code formatting check failed. Please run 'uv run ruff format .' to fix formatting issues."
     exit 1
 fi
@@ -32,7 +32,7 @@ echo "✅ Code formatting is correct!"
 
 echo ""
 echo "🧪 Running tests..."
-uv run python test_client.py
+uv run pytest
 
 echo ""
 echo "🔍 Checking for uncommitted changes..."
