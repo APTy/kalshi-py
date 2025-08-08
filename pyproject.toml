@@ -13,6 +13,9 @@ dependencies = [
     "mkdocs-material>=9.6.16",
 ]
 
+[project.scripts]
+test = "pytest:main"
+
 [tool.uv.build-backend]
 module-name = "kalshi_py"
 module-root = ""
@@ -31,6 +34,8 @@ dev = [
     "mkdocs-gen-files>=0.5.0",
     "mkdocs-literate-nav>=0.6.0",
     "mkdocs-section-index>=0.3.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
 ]
 
 [tool.ruff]
@@ -39,3 +44,20 @@ line-length = 120
 [tool.ruff.lint]
 select = ["F", "I", "UP", "ARG", "ANN"]
 ignore = ["ANN401"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=kalshi_py",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+]
