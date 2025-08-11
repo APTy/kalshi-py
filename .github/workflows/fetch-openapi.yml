@@ -58,9 +58,4 @@ jobs:
           branch: regenerate-client-library
           delete-branch: true
           base: main
-
-      - name: Auto-merge PR
-        if: steps.check_changes.outputs.changed == 'true'
-        uses: pascalgn/automerge-action@v0.15.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          labels: automerge
