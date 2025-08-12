@@ -51,6 +51,10 @@ class ModelMarket:
         rules_primary (str): Primary market rules
         rules_secondary (str): Secondary market rules
         title (Union[Unset, str]): Full title describing this market
+        settlement_value (Union[Unset, int]): The settlement value of the YES/LONG side of the contract. Only filled
+            after determination.
+        settlement_value_dollars (Union[Unset, str]): The settlement value of the YES/LONG side of the contract. Only
+            filled after determination.
     """
 
     ticker: str
@@ -88,6 +92,8 @@ class ModelMarket:
     rules_primary: str
     rules_secondary: str
     title: Union[Unset, str] = UNSET
+    settlement_value: Union[Unset, int] = UNSET
+    settlement_value_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -161,6 +167,10 @@ class ModelMarket:
 
         title = self.title
 
+        settlement_value = self.settlement_value
+
+        settlement_value_dollars = self.settlement_value_dollars
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -203,6 +213,10 @@ class ModelMarket:
         )
         if title is not UNSET:
             field_dict["title"] = title
+        if settlement_value is not UNSET:
+            field_dict["settlement_value"] = settlement_value
+        if settlement_value_dollars is not UNSET:
+            field_dict["settlement_value_dollars"] = settlement_value_dollars
 
         return field_dict
 
@@ -279,6 +293,10 @@ class ModelMarket:
 
         title = d.pop("title", UNSET)
 
+        settlement_value = d.pop("settlement_value", UNSET)
+
+        settlement_value_dollars = d.pop("settlement_value_dollars", UNSET)
+
         model_market = cls(
             ticker=ticker,
             event_ticker=event_ticker,
@@ -315,6 +333,8 @@ class ModelMarket:
             rules_primary=rules_primary,
             rules_secondary=rules_secondary,
             title=title,
+            settlement_value=settlement_value,
+            settlement_value_dollars=settlement_value_dollars,
         )
 
         model_market.additional_properties = d
