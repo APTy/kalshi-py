@@ -38,7 +38,8 @@ class ModelCreateOrderRequest:
         side (Union[Unset, ModelCreateOrderRequestSide]): Specifies if this is a 'yes' or 'no' order.
         ticker (Union[Unset, str]): The ticker of the market the order will be placed in.
         time_in_force (Union[Unset, ModelCreateOrderRequestTimeInForce]): Currently only 'fill_or_kill' and
-            'immediate_or_cancel' are supported. Other time in forces are controlled through expiration_ts.
+            'immediate_or_cancel' are supported. When not specified, defaults to GTC (Good Till Canceled) if no
+            expiration_ts is provided, or GTT (Good Till Time) if expiration_ts is provided.
         type_ (Union[Unset, ModelCreateOrderRequestType]): Specifies if this is a 'market' or a 'limit' order. Note that
             either the Yes Price or the No Price must be provided for limit orders.
         yes_price (Union[Unset, int]):

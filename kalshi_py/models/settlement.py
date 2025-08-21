@@ -14,7 +14,9 @@ T = TypeVar("T", bound="Settlement")
 class Settlement:
     """
     Attributes:
-        market_result (Union[Unset, SettlementMarketResult]): The outcome of the market settlement ('yes' or 'no').
+        market_result (Union[Unset, SettlementMarketResult]): The outcome of the market settlement. 'yes' = market
+            resolved to YES, 'no' = market resolved to NO, 'scalar' = scalar market settled at a specific value, 'void' =
+            market was voided/cancelled and all positions returned at original cost.
         no_count (Union[Unset, int]): Number of NO contracts owned at the time of settlement.
         no_total_cost (Union[Unset, int]):
         revenue (Union[Unset, int]):

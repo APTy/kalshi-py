@@ -16,6 +16,7 @@ def _get_kwargs(
     with_nested_markets: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
+    min_close_ts: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -28,6 +29,8 @@ def _get_kwargs(
     params["status"] = status
 
     params["series_ticker"] = series_ticker
+
+    params["min_close_ts"] = min_close_ts
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -72,6 +75,7 @@ def sync_detailed(
     with_nested_markets: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
+    min_close_ts: Union[Unset, int] = UNSET,
 ) -> Response[ModelGetEventsResponse]:
     """Get Events
 
@@ -95,6 +99,8 @@ def sync_detailed(
             'settled'. Leave empty to return events with any status.
         series_ticker (Union[Unset, str]): Filter events by series ticker. Returns only events
             belonging to the specified series.
+        min_close_ts (Union[Unset, int]): Filter events with at least one market with close
+            timestamp greater than this Unix timestamp (in seconds).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,6 +116,7 @@ def sync_detailed(
         with_nested_markets=with_nested_markets,
         status=status,
         series_ticker=series_ticker,
+        min_close_ts=min_close_ts,
     )
 
     response = client.get_httpx_client().request(
@@ -127,6 +134,7 @@ def sync(
     with_nested_markets: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
+    min_close_ts: Union[Unset, int] = UNSET,
 ) -> Optional[ModelGetEventsResponse]:
     """Get Events
 
@@ -150,6 +158,8 @@ def sync(
             'settled'. Leave empty to return events with any status.
         series_ticker (Union[Unset, str]): Filter events by series ticker. Returns only events
             belonging to the specified series.
+        min_close_ts (Union[Unset, int]): Filter events with at least one market with close
+            timestamp greater than this Unix timestamp (in seconds).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -166,6 +176,7 @@ def sync(
         with_nested_markets=with_nested_markets,
         status=status,
         series_ticker=series_ticker,
+        min_close_ts=min_close_ts,
     ).parsed
 
 
@@ -177,6 +188,7 @@ async def asyncio_detailed(
     with_nested_markets: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
+    min_close_ts: Union[Unset, int] = UNSET,
 ) -> Response[ModelGetEventsResponse]:
     """Get Events
 
@@ -200,6 +212,8 @@ async def asyncio_detailed(
             'settled'. Leave empty to return events with any status.
         series_ticker (Union[Unset, str]): Filter events by series ticker. Returns only events
             belonging to the specified series.
+        min_close_ts (Union[Unset, int]): Filter events with at least one market with close
+            timestamp greater than this Unix timestamp (in seconds).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -215,6 +229,7 @@ async def asyncio_detailed(
         with_nested_markets=with_nested_markets,
         status=status,
         series_ticker=series_ticker,
+        min_close_ts=min_close_ts,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -230,6 +245,7 @@ async def asyncio(
     with_nested_markets: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
+    min_close_ts: Union[Unset, int] = UNSET,
 ) -> Optional[ModelGetEventsResponse]:
     """Get Events
 
@@ -253,6 +269,8 @@ async def asyncio(
             'settled'. Leave empty to return events with any status.
         series_ticker (Union[Unset, str]): Filter events by series ticker. Returns only events
             belonging to the specified series.
+        min_close_ts (Union[Unset, int]): Filter events with at least one market with close
+            timestamp greater than this Unix timestamp (in seconds).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -270,5 +288,6 @@ async def asyncio(
             with_nested_markets=with_nested_markets,
             status=status,
             series_ticker=series_ticker,
+            min_close_ts=min_close_ts,
         )
     ).parsed
