@@ -328,10 +328,16 @@ components:
     Settlement:
       properties:
         market_result:
-          description: The outcome of the market settlement ('yes' or 'no').
+          description: >-
+            The outcome of the market settlement. 'yes' = market resolved to
+            YES, 'no' = market resolved to NO, 'scalar' = scalar market settled
+            at a specific value, 'void' = market was voided/cancelled and all
+            positions returned at original cost.
           enum:
             - 'yes'
             - 'no'
+            - scalar
+            - void
           type: string
         no_count:
           description: Number of NO contracts owned at the time of settlement.
@@ -1066,7 +1072,6 @@ components:
           description: >-
             Specifies the maximum number of contracts that can be matched within
             this group.
-          maximum: 1000000
           minimum: 1
           type: integer
       type: object
@@ -1170,8 +1175,9 @@ components:
         time_in_force:
           description: >-
             Currently only 'fill_or_kill' and 'immediate_or_cancel' are
-            supported. Other time in forces are controlled through
-            expiration_ts.
+            supported. When not specified, defaults to GTC (Good Till Canceled)
+            if no expiration_ts is provided, or GTT (Good Till Time) if
+            expiration_ts is provided.
           enum:
             - fill_or_kill
             - immediate_or_cancel
@@ -2133,10 +2139,16 @@ components:
           items:
             properties:
               market_result:
-                description: The outcome of the market settlement ('yes' or 'no').
+                description: >-
+                  The outcome of the market settlement. 'yes' = market resolved
+                  to YES, 'no' = market resolved to NO, 'scalar' = scalar market
+                  settled at a specific value, 'void' = market was
+                  voided/cancelled and all positions returned at original cost.
                 enum:
                   - 'yes'
                   - 'no'
+                  - scalar
+                  - void
                 type: string
               no_count:
                 description: Number of NO contracts owned at the time of settlement.
@@ -3746,6 +3758,17 @@ paths:
               Filter events by series ticker. Returns only events belonging to
               the specified series.
             type: string
+        - description: >-
+            Filter events with at least one market with close timestamp greater
+            than this Unix timestamp (in seconds).
+          in: query
+          name: min_close_ts
+          schema:
+            description: >-
+              Filter events with at least one market with close timestamp
+              greater than this Unix timestamp (in seconds).
+            format: int64
+            type: integer
       responses:
         '200':
           content:
@@ -4955,6 +4978,17 @@ paths:
               Include additional product metadata in the response for each
               series.
             type: boolean
+        - description: >-
+            Comma separated list of tags to filter series by. If specified, only
+            series containing at least one of these tags will be returned.
+          in: query
+          name: tags
+          schema:
+            description: >-
+              Comma separated list of tags to filter series by. If specified,
+              only series containing at least one of these tags will be
+              returned.
+            type: string
       responses:
         '200':
           content:

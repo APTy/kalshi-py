@@ -12,12 +12,15 @@ def _get_kwargs(
     *,
     category: str,
     include_product_metadata: Union[Unset, bool] = UNSET,
+    tags: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["category"] = category
 
     params["include_product_metadata"] = include_product_metadata
+
+    params["tags"] = tags
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -51,6 +54,7 @@ def sync_detailed(
     client: Union[AuthenticatedClient, Client],
     category: str,
     include_product_metadata: Union[Unset, bool] = UNSET,
+    tags: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     r"""Get Series List
 
@@ -64,6 +68,8 @@ def sync_detailed(
             category.
         include_product_metadata (Union[Unset, bool]): Include additional product metadata in the
             response for each series.
+        tags (Union[Unset, str]): Comma separated list of tags to filter series by. If specified,
+            only series containing at least one of these tags will be returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -76,6 +82,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         category=category,
         include_product_metadata=include_product_metadata,
+        tags=tags,
     )
 
     response = client.get_httpx_client().request(
@@ -90,6 +97,7 @@ async def asyncio_detailed(
     client: Union[AuthenticatedClient, Client],
     category: str,
     include_product_metadata: Union[Unset, bool] = UNSET,
+    tags: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     r"""Get Series List
 
@@ -103,6 +111,8 @@ async def asyncio_detailed(
             category.
         include_product_metadata (Union[Unset, bool]): Include additional product metadata in the
             response for each series.
+        tags (Union[Unset, str]): Comma separated list of tags to filter series by. If specified,
+            only series containing at least one of these tags will be returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,6 +125,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         category=category,
         include_product_metadata=include_product_metadata,
+        tags=tags,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
