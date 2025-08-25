@@ -24,6 +24,7 @@ class ModelGetSettlementsResponseSettlementsItem:
         revenue (Union[Unset, int]):
         settled_time (Union[Unset, Any]):
         ticker (Union[Unset, str]): The ticker symbol of the market that was settled.
+        value (Union[Unset, int]):
         yes_count (Union[Unset, int]): Number of YES contracts owned at the time of settlement.
         yes_total_cost (Union[Unset, int]):
     """
@@ -34,6 +35,7 @@ class ModelGetSettlementsResponseSettlementsItem:
     revenue: Union[Unset, int] = UNSET
     settled_time: Union[Unset, Any] = UNSET
     ticker: Union[Unset, str] = UNSET
+    value: Union[Unset, int] = UNSET
     yes_count: Union[Unset, int] = UNSET
     yes_total_cost: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -52,6 +54,8 @@ class ModelGetSettlementsResponseSettlementsItem:
         settled_time = self.settled_time
 
         ticker = self.ticker
+
+        value = self.value
 
         yes_count = self.yes_count
 
@@ -72,6 +76,8 @@ class ModelGetSettlementsResponseSettlementsItem:
             field_dict["settled_time"] = settled_time
         if ticker is not UNSET:
             field_dict["ticker"] = ticker
+        if value is not UNSET:
+            field_dict["value"] = value
         if yes_count is not UNSET:
             field_dict["yes_count"] = yes_count
         if yes_total_cost is not UNSET:
@@ -99,6 +105,8 @@ class ModelGetSettlementsResponseSettlementsItem:
 
         ticker = d.pop("ticker", UNSET)
 
+        value = d.pop("value", UNSET)
+
         yes_count = d.pop("yes_count", UNSET)
 
         yes_total_cost = d.pop("yes_total_cost", UNSET)
@@ -110,6 +118,7 @@ class ModelGetSettlementsResponseSettlementsItem:
             revenue=revenue,
             settled_time=settled_time,
             ticker=ticker,
+            value=value,
             yes_count=yes_count,
             yes_total_cost=yes_total_cost,
         )

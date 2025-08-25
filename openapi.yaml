@@ -363,6 +363,12 @@ components:
         ticker:
           description: The ticker symbol of the market that was settled.
           type: string
+        value:
+          $ref: >-
+            #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
+          description: Payout of a single yes contract in cents.
+          format: int64
+          type: integer
         yes_count:
           description: Number of YES contracts owned at the time of settlement.
           type: integer
@@ -2176,6 +2182,12 @@ components:
               ticker:
                 description: The ticker symbol of the market that was settled.
                 type: string
+              value:
+                $ref: >-
+                  #/components/schemas/github.com.Kalshi.exchange-infra.common.types.Cent
+                description: Payout of a single yes contract in cents.
+                format: int64
+                type: integer
               yes_count:
                 description: Number of YES contracts owned at the time of settlement.
                 type: integer
