@@ -4,7 +4,6 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.ticker_pair_side import TickerPairSide
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="TickerPair")
@@ -14,14 +13,14 @@ T = TypeVar("T", bound="TickerPair")
 class TickerPair:
     """
     Attributes:
-        event_ticker (Union[Unset, str]): Event ticker identifier.
-        market_ticker (Union[Unset, str]): Market ticker identifier.
-        side (Union[Unset, TickerPairSide]): Side of the market (yes or no).
+        event_ticker (Union[Unset, str]): Event ticker for this leg.
+        market_ticker (Union[Unset, str]): Market ticker for this leg.
+        side (Union[Unset, str]): Side (YES/NO) for this leg.
     """
 
     event_ticker: Union[Unset, str] = UNSET
     market_ticker: Union[Unset, str] = UNSET
-    side: Union[Unset, TickerPairSide] = UNSET
+    side: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,9 +28,7 @@ class TickerPair:
 
         market_ticker = self.market_ticker
 
-        side: Union[Unset, str] = UNSET
-        if not isinstance(self.side, Unset):
-            side = self.side.value
+        side = self.side
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,12 +49,7 @@ class TickerPair:
 
         market_ticker = d.pop("market_ticker", UNSET)
 
-        _side = d.pop("side", UNSET)
-        side: Union[Unset, TickerPairSide]
-        if isinstance(_side, Unset):
-            side = UNSET
-        else:
-            side = TickerPairSide(_side)
+        side = d.pop("side", UNSET)
 
         ticker_pair = cls(
             event_ticker=event_ticker,

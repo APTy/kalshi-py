@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,6 +14,8 @@ class ModelOrder:
     """
     Attributes:
         action (Union[Unset, str]):
+        cancel_order_on_pause (Union[Unset, bool]): If this flag is set to true, the order will be canceled if the order
+            is open and trading on the exchange is paused for any reason.
         client_order_id (Union[Unset, str]):
         created_time (Union[Unset, Any]):
         expiration_time (Union[Unset, Any]):
@@ -21,26 +23,34 @@ class ModelOrder:
         initial_count (Union[Unset, int]): The initial size of the order (contract units).
         last_update_time (Union[Unset, Any]):
         maker_fees (Union[Unset, int]):
+        maker_fees_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         maker_fill_cost (Union[Unset, int]):
         no_price (Union[Unset, int]):
-        no_price_dollars (Union[Unset, list[int]]):
+        no_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         order_group_id (Union[Unset, str]):
         order_id (Union[Unset, str]): Unique identifier for orders.
-        queue_position (Union[Unset, int]): Position in the priority queue at a given price level.
+        queue_position (Union[Unset, int]): DEPRECATED: This field is deprecated and will always return 0. Please use
+            the GET /portfolio/orders/{order_id}/queue_position endpoint instead
         remaining_count (Union[Unset, int]): The size of the remaining resting orders (contract units).
         self_trade_prevention_type (Union[Unset, str]):
         side (Union[Unset, str]):
         status (Union[Unset, str]):
         taker_fees (Union[Unset, int]):
+        taker_fees_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         taker_fill_cost (Union[Unset, int]):
         ticker (Union[Unset, str]): Unique identifier for markets.
         type_ (Union[Unset, str]):
         user_id (Union[Unset, str]): Unique identifier for users.
         yes_price (Union[Unset, int]):
-        yes_price_dollars (Union[Unset, list[int]]):
+        yes_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
     """
 
     action: Union[Unset, str] = UNSET
+    cancel_order_on_pause: Union[Unset, bool] = UNSET
     client_order_id: Union[Unset, str] = UNSET
     created_time: Union[Unset, Any] = UNSET
     expiration_time: Union[Unset, Any] = UNSET
@@ -48,9 +58,10 @@ class ModelOrder:
     initial_count: Union[Unset, int] = UNSET
     last_update_time: Union[Unset, Any] = UNSET
     maker_fees: Union[Unset, int] = UNSET
+    maker_fees_dollars: Union[Unset, str] = UNSET
     maker_fill_cost: Union[Unset, int] = UNSET
     no_price: Union[Unset, int] = UNSET
-    no_price_dollars: Union[Unset, list[int]] = UNSET
+    no_price_dollars: Union[Unset, str] = UNSET
     order_group_id: Union[Unset, str] = UNSET
     order_id: Union[Unset, str] = UNSET
     queue_position: Union[Unset, int] = UNSET
@@ -59,16 +70,19 @@ class ModelOrder:
     side: Union[Unset, str] = UNSET
     status: Union[Unset, str] = UNSET
     taker_fees: Union[Unset, int] = UNSET
+    taker_fees_dollars: Union[Unset, str] = UNSET
     taker_fill_cost: Union[Unset, int] = UNSET
     ticker: Union[Unset, str] = UNSET
     type_: Union[Unset, str] = UNSET
     user_id: Union[Unset, str] = UNSET
     yes_price: Union[Unset, int] = UNSET
-    yes_price_dollars: Union[Unset, list[int]] = UNSET
+    yes_price_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         action = self.action
+
+        cancel_order_on_pause = self.cancel_order_on_pause
 
         client_order_id = self.client_order_id
 
@@ -84,13 +98,13 @@ class ModelOrder:
 
         maker_fees = self.maker_fees
 
+        maker_fees_dollars = self.maker_fees_dollars
+
         maker_fill_cost = self.maker_fill_cost
 
         no_price = self.no_price
 
-        no_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.no_price_dollars, Unset):
-            no_price_dollars = self.no_price_dollars
+        no_price_dollars = self.no_price_dollars
 
         order_group_id = self.order_group_id
 
@@ -108,6 +122,8 @@ class ModelOrder:
 
         taker_fees = self.taker_fees
 
+        taker_fees_dollars = self.taker_fees_dollars
+
         taker_fill_cost = self.taker_fill_cost
 
         ticker = self.ticker
@@ -118,15 +134,15 @@ class ModelOrder:
 
         yes_price = self.yes_price
 
-        yes_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.yes_price_dollars, Unset):
-            yes_price_dollars = self.yes_price_dollars
+        yes_price_dollars = self.yes_price_dollars
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if action is not UNSET:
             field_dict["action"] = action
+        if cancel_order_on_pause is not UNSET:
+            field_dict["cancel_order_on_pause"] = cancel_order_on_pause
         if client_order_id is not UNSET:
             field_dict["client_order_id"] = client_order_id
         if created_time is not UNSET:
@@ -141,6 +157,8 @@ class ModelOrder:
             field_dict["last_update_time"] = last_update_time
         if maker_fees is not UNSET:
             field_dict["maker_fees"] = maker_fees
+        if maker_fees_dollars is not UNSET:
+            field_dict["maker_fees_dollars"] = maker_fees_dollars
         if maker_fill_cost is not UNSET:
             field_dict["maker_fill_cost"] = maker_fill_cost
         if no_price is not UNSET:
@@ -163,6 +181,8 @@ class ModelOrder:
             field_dict["status"] = status
         if taker_fees is not UNSET:
             field_dict["taker_fees"] = taker_fees
+        if taker_fees_dollars is not UNSET:
+            field_dict["taker_fees_dollars"] = taker_fees_dollars
         if taker_fill_cost is not UNSET:
             field_dict["taker_fill_cost"] = taker_fill_cost
         if ticker is not UNSET:
@@ -183,6 +203,8 @@ class ModelOrder:
         d = dict(src_dict)
         action = d.pop("action", UNSET)
 
+        cancel_order_on_pause = d.pop("cancel_order_on_pause", UNSET)
+
         client_order_id = d.pop("client_order_id", UNSET)
 
         created_time = d.pop("created_time", UNSET)
@@ -197,11 +219,13 @@ class ModelOrder:
 
         maker_fees = d.pop("maker_fees", UNSET)
 
+        maker_fees_dollars = d.pop("maker_fees_dollars", UNSET)
+
         maker_fill_cost = d.pop("maker_fill_cost", UNSET)
 
         no_price = d.pop("no_price", UNSET)
 
-        no_price_dollars = cast(list[int], d.pop("no_price_dollars", UNSET))
+        no_price_dollars = d.pop("no_price_dollars", UNSET)
 
         order_group_id = d.pop("order_group_id", UNSET)
 
@@ -219,6 +243,8 @@ class ModelOrder:
 
         taker_fees = d.pop("taker_fees", UNSET)
 
+        taker_fees_dollars = d.pop("taker_fees_dollars", UNSET)
+
         taker_fill_cost = d.pop("taker_fill_cost", UNSET)
 
         ticker = d.pop("ticker", UNSET)
@@ -229,10 +255,11 @@ class ModelOrder:
 
         yes_price = d.pop("yes_price", UNSET)
 
-        yes_price_dollars = cast(list[int], d.pop("yes_price_dollars", UNSET))
+        yes_price_dollars = d.pop("yes_price_dollars", UNSET)
 
         model_order = cls(
             action=action,
+            cancel_order_on_pause=cancel_order_on_pause,
             client_order_id=client_order_id,
             created_time=created_time,
             expiration_time=expiration_time,
@@ -240,6 +267,7 @@ class ModelOrder:
             initial_count=initial_count,
             last_update_time=last_update_time,
             maker_fees=maker_fees,
+            maker_fees_dollars=maker_fees_dollars,
             maker_fill_cost=maker_fill_cost,
             no_price=no_price,
             no_price_dollars=no_price_dollars,
@@ -251,6 +279,7 @@ class ModelOrder:
             side=side,
             status=status,
             taker_fees=taker_fees,
+            taker_fees_dollars=taker_fees_dollars,
             taker_fill_cost=taker_fill_cost,
             ticker=ticker,
             type_=type_,

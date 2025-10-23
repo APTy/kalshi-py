@@ -1,12 +1,18 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.model_multivariate_event_collection_associated_events_item import (
+        ModelMultivariateEventCollectionAssociatedEventsItem,
+    )
+
 
 T = TypeVar("T", bound="ModelMultivariateEventCollection")
 
@@ -15,19 +21,23 @@ T = TypeVar("T", bound="ModelMultivariateEventCollection")
 class ModelMultivariateEventCollection:
     """
     Attributes:
-        associated_event_tickers (Union[Unset, list[str]]): A list of events associated with the collection. Markets in
-            these events can be passed as inputs to the Lookup and Create endpoints.
+        associated_event_tickers (Union[Unset, list[str]]): [DEPRECATED - Use associated_events instead] A list of
+            events associated with the collection. Markets in these events can be passed as inputs to the Lookup and Create
+            endpoints.
+        associated_events (Union[Unset, list['ModelMultivariateEventCollectionAssociatedEventsItem']]): List of events
+            with their individual configuration.
         close_date (Union[Unset, datetime.datetime]): The close date of the collection. After this time, the collection
             cannot be interacted with.
         collection_ticker (Union[Unset, str]): Unique identifier for the collection.
         description (Union[Unset, str]): Short description of the collection.
         functional_description (Union[Unset, str]): A functional description of the collection describing how inputs
             affect the output.
-        is_all_yes (Union[Unset, bool]): Whether the collection requires that only the market side of 'yes' may be used.
+        is_all_yes (Union[Unset, bool]): [DEPRECATED - Use associated_events instead] Whether the collection requires
+            that only the market side of 'yes' may be used.
         is_ordered (Union[Unset, bool]): Whether the collection is ordered. If true, the order of markets passed into
             Lookup/Create affects the output. If false, the order does not matter.
-        is_single_market_per_event (Union[Unset, bool]): Whether the collection accepts multiple markets from the same
-            event passed into Lookup/Create.
+        is_single_market_per_event (Union[Unset, bool]): [DEPRECATED - Use associated_events instead] Whether the
+            collection accepts multiple markets from the same event passed into Lookup/Create.
         open_date (Union[Unset, datetime.datetime]): The open date of the collection. Before this time, the collection
             cannot be interacted with.
         series_ticker (Union[Unset, str]): Series associated with the collection. Events produced in the collection will
@@ -38,6 +48,7 @@ class ModelMultivariateEventCollection:
     """
 
     associated_event_tickers: Union[Unset, list[str]] = UNSET
+    associated_events: Union[Unset, list["ModelMultivariateEventCollectionAssociatedEventsItem"]] = UNSET
     close_date: Union[Unset, datetime.datetime] = UNSET
     collection_ticker: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -56,6 +67,13 @@ class ModelMultivariateEventCollection:
         associated_event_tickers: Union[Unset, list[str]] = UNSET
         if not isinstance(self.associated_event_tickers, Unset):
             associated_event_tickers = self.associated_event_tickers
+
+        associated_events: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.associated_events, Unset):
+            associated_events = []
+            for associated_events_item_data in self.associated_events:
+                associated_events_item = associated_events_item_data.to_dict()
+                associated_events.append(associated_events_item)
 
         close_date: Union[Unset, str] = UNSET
         if not isinstance(self.close_date, Unset):
@@ -90,6 +108,8 @@ class ModelMultivariateEventCollection:
         field_dict.update({})
         if associated_event_tickers is not UNSET:
             field_dict["associated_event_tickers"] = associated_event_tickers
+        if associated_events is not UNSET:
+            field_dict["associated_events"] = associated_events
         if close_date is not UNSET:
             field_dict["close_date"] = close_date
         if collection_ticker is not UNSET:
@@ -119,8 +139,21 @@ class ModelMultivariateEventCollection:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.model_multivariate_event_collection_associated_events_item import (
+            ModelMultivariateEventCollectionAssociatedEventsItem,
+        )
+
         d = dict(src_dict)
         associated_event_tickers = cast(list[str], d.pop("associated_event_tickers", UNSET))
+
+        associated_events = []
+        _associated_events = d.pop("associated_events", UNSET)
+        for associated_events_item_data in _associated_events or []:
+            associated_events_item = ModelMultivariateEventCollectionAssociatedEventsItem.from_dict(
+                associated_events_item_data
+            )
+
+            associated_events.append(associated_events_item)
 
         _close_date = d.pop("close_date", UNSET)
         close_date: Union[Unset, datetime.datetime]
@@ -158,6 +191,7 @@ class ModelMultivariateEventCollection:
 
         model_multivariate_event_collection = cls(
             associated_event_tickers=associated_event_tickers,
+            associated_events=associated_events,
             close_date=close_date,
             collection_ticker=collection_ticker,
             description=description,

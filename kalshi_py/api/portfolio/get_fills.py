@@ -17,7 +17,6 @@ def _get_kwargs(
     max_ts: Union[Unset, int] = UNSET,
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -32,8 +31,6 @@ def _get_kwargs(
     params["limit"] = limit
 
     params["cursor"] = cursor
-
-    params["use_dollars"] = use_dollars
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -79,7 +76,6 @@ def sync_detailed(
     max_ts: Union[Unset, int] = UNSET,
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> Response[ModelGetFillsResponse]:
     """Get Fills
 
@@ -95,8 +91,6 @@ def sync_detailed(
             to 100.
         cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
             the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,7 +107,6 @@ def sync_detailed(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     )
 
     response = client.get_httpx_client().request(
@@ -132,7 +125,6 @@ def sync(
     max_ts: Union[Unset, int] = UNSET,
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> Optional[ModelGetFillsResponse]:
     """Get Fills
 
@@ -148,8 +140,6 @@ def sync(
             to 100.
         cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
             the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,7 +157,6 @@ def sync(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     ).parsed
 
 
@@ -180,7 +169,6 @@ async def asyncio_detailed(
     max_ts: Union[Unset, int] = UNSET,
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> Response[ModelGetFillsResponse]:
     """Get Fills
 
@@ -196,8 +184,6 @@ async def asyncio_detailed(
             to 100.
         cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
             the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -214,7 +200,6 @@ async def asyncio_detailed(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -231,7 +216,6 @@ async def asyncio(
     max_ts: Union[Unset, int] = UNSET,
     limit: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> Optional[ModelGetFillsResponse]:
     """Get Fills
 
@@ -247,8 +231,6 @@ async def asyncio(
             to 100.
         cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
             the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -267,6 +249,5 @@ async def asyncio(
             max_ts=max_ts,
             limit=limit,
             cursor=cursor,
-            use_dollars=use_dollars,
         )
     ).parsed

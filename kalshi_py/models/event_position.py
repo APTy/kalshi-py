@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,57 +14,53 @@ class EventPosition:
     """
     Attributes:
         event_exposure (Union[Unset, int]):
-        event_exposure_dollars (Union[Unset, list[int]]):
+        event_exposure_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         event_ticker (Union[Unset, str]): Unique identifier for events.
         fees_paid (Union[Unset, int]):
-        fees_paid_dollars (Union[Unset, list[int]]):
+        fees_paid_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         realized_pnl (Union[Unset, int]):
-        realized_pnl_dollars (Union[Unset, list[int]]):
+        realized_pnl_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         resting_order_count (Union[Unset, int]): Aggregate size of resting orders in contract units.
         total_cost (Union[Unset, int]):
-        total_cost_dollars (Union[Unset, list[int]]):
+        total_cost_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
     """
 
     event_exposure: Union[Unset, int] = UNSET
-    event_exposure_dollars: Union[Unset, list[int]] = UNSET
+    event_exposure_dollars: Union[Unset, str] = UNSET
     event_ticker: Union[Unset, str] = UNSET
     fees_paid: Union[Unset, int] = UNSET
-    fees_paid_dollars: Union[Unset, list[int]] = UNSET
+    fees_paid_dollars: Union[Unset, str] = UNSET
     realized_pnl: Union[Unset, int] = UNSET
-    realized_pnl_dollars: Union[Unset, list[int]] = UNSET
+    realized_pnl_dollars: Union[Unset, str] = UNSET
     resting_order_count: Union[Unset, int] = UNSET
     total_cost: Union[Unset, int] = UNSET
-    total_cost_dollars: Union[Unset, list[int]] = UNSET
+    total_cost_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         event_exposure = self.event_exposure
 
-        event_exposure_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.event_exposure_dollars, Unset):
-            event_exposure_dollars = self.event_exposure_dollars
+        event_exposure_dollars = self.event_exposure_dollars
 
         event_ticker = self.event_ticker
 
         fees_paid = self.fees_paid
 
-        fees_paid_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.fees_paid_dollars, Unset):
-            fees_paid_dollars = self.fees_paid_dollars
+        fees_paid_dollars = self.fees_paid_dollars
 
         realized_pnl = self.realized_pnl
 
-        realized_pnl_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.realized_pnl_dollars, Unset):
-            realized_pnl_dollars = self.realized_pnl_dollars
+        realized_pnl_dollars = self.realized_pnl_dollars
 
         resting_order_count = self.resting_order_count
 
         total_cost = self.total_cost
 
-        total_cost_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.total_cost_dollars, Unset):
-            total_cost_dollars = self.total_cost_dollars
+        total_cost_dollars = self.total_cost_dollars
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -97,23 +93,23 @@ class EventPosition:
         d = dict(src_dict)
         event_exposure = d.pop("event_exposure", UNSET)
 
-        event_exposure_dollars = cast(list[int], d.pop("event_exposure_dollars", UNSET))
+        event_exposure_dollars = d.pop("event_exposure_dollars", UNSET)
 
         event_ticker = d.pop("event_ticker", UNSET)
 
         fees_paid = d.pop("fees_paid", UNSET)
 
-        fees_paid_dollars = cast(list[int], d.pop("fees_paid_dollars", UNSET))
+        fees_paid_dollars = d.pop("fees_paid_dollars", UNSET)
 
         realized_pnl = d.pop("realized_pnl", UNSET)
 
-        realized_pnl_dollars = cast(list[int], d.pop("realized_pnl_dollars", UNSET))
+        realized_pnl_dollars = d.pop("realized_pnl_dollars", UNSET)
 
         resting_order_count = d.pop("resting_order_count", UNSET)
 
         total_cost = d.pop("total_cost", UNSET)
 
-        total_cost_dollars = cast(list[int], d.pop("total_cost_dollars", UNSET))
+        total_cost_dollars = d.pop("total_cost_dollars", UNSET)
 
         event_position = cls(
             event_exposure=event_exposure,

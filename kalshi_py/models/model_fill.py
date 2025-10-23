@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -18,13 +18,16 @@ class ModelFill:
         created_time (Union[Unset, Any]):
         is_taker (Union[Unset, bool]): If true, this fill was a taker (removed liquidity from the order book).
         no_price (Union[Unset, int]):
-        no_price_fixed (Union[Unset, list[int]]):
+        no_price_fixed (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345 indicates
+            $1.23 and 45/100 of a cent. Example: 0.2300.
         order_id (Union[Unset, str]):
+        purchased_side (Union[Unset, str]):
         side (Union[Unset, str]):
         ticker (Union[Unset, str]): Unique identifier for the market.
         trade_id (Union[Unset, str]):
         yes_price (Union[Unset, int]):
-        yes_price_fixed (Union[Unset, list[int]]):
+        yes_price_fixed (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
     """
 
     action: Union[Unset, str] = UNSET
@@ -32,13 +35,14 @@ class ModelFill:
     created_time: Union[Unset, Any] = UNSET
     is_taker: Union[Unset, bool] = UNSET
     no_price: Union[Unset, int] = UNSET
-    no_price_fixed: Union[Unset, list[int]] = UNSET
+    no_price_fixed: Union[Unset, str] = UNSET
     order_id: Union[Unset, str] = UNSET
+    purchased_side: Union[Unset, str] = UNSET
     side: Union[Unset, str] = UNSET
     ticker: Union[Unset, str] = UNSET
     trade_id: Union[Unset, str] = UNSET
     yes_price: Union[Unset, int] = UNSET
-    yes_price_fixed: Union[Unset, list[int]] = UNSET
+    yes_price_fixed: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,11 +56,11 @@ class ModelFill:
 
         no_price = self.no_price
 
-        no_price_fixed: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.no_price_fixed, Unset):
-            no_price_fixed = self.no_price_fixed
+        no_price_fixed = self.no_price_fixed
 
         order_id = self.order_id
+
+        purchased_side = self.purchased_side
 
         side = self.side
 
@@ -66,9 +70,7 @@ class ModelFill:
 
         yes_price = self.yes_price
 
-        yes_price_fixed: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.yes_price_fixed, Unset):
-            yes_price_fixed = self.yes_price_fixed
+        yes_price_fixed = self.yes_price_fixed
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -87,6 +89,8 @@ class ModelFill:
             field_dict["no_price_fixed"] = no_price_fixed
         if order_id is not UNSET:
             field_dict["order_id"] = order_id
+        if purchased_side is not UNSET:
+            field_dict["purchased_side"] = purchased_side
         if side is not UNSET:
             field_dict["side"] = side
         if ticker is not UNSET:
@@ -113,9 +117,11 @@ class ModelFill:
 
         no_price = d.pop("no_price", UNSET)
 
-        no_price_fixed = cast(list[int], d.pop("no_price_fixed", UNSET))
+        no_price_fixed = d.pop("no_price_fixed", UNSET)
 
         order_id = d.pop("order_id", UNSET)
+
+        purchased_side = d.pop("purchased_side", UNSET)
 
         side = d.pop("side", UNSET)
 
@@ -125,7 +131,7 @@ class ModelFill:
 
         yes_price = d.pop("yes_price", UNSET)
 
-        yes_price_fixed = cast(list[int], d.pop("yes_price_fixed", UNSET))
+        yes_price_fixed = d.pop("yes_price_fixed", UNSET)
 
         model_fill = cls(
             action=action,
@@ -135,6 +141,7 @@ class ModelFill:
             no_price=no_price,
             no_price_fixed=no_price_fixed,
             order_id=order_id,
+            purchased_side=purchased_side,
             side=side,
             ticker=ticker,
             trade_id=trade_id,

@@ -7,7 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.model_order_confirmation import ModelOrderConfirmation
+    from ..models.model_order import ModelOrder
 
 
 T = TypeVar("T", bound="ModelCreateOrderResponse")
@@ -17,10 +17,10 @@ T = TypeVar("T", bound="ModelCreateOrderResponse")
 class ModelCreateOrderResponse:
     """
     Attributes:
-        order (Union[Unset, ModelOrderConfirmation]):
+        order (Union[Unset, ModelOrder]):
     """
 
-    order: Union[Unset, "ModelOrderConfirmation"] = UNSET
+    order: Union[Unset, "ModelOrder"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -38,15 +38,15 @@ class ModelCreateOrderResponse:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.model_order_confirmation import ModelOrderConfirmation
+        from ..models.model_order import ModelOrder
 
         d = dict(src_dict)
         _order = d.pop("order", UNSET)
-        order: Union[Unset, ModelOrderConfirmation]
+        order: Union[Unset, ModelOrder]
         if isinstance(_order, Unset):
             order = UNSET
         else:
-            order = ModelOrderConfirmation.from_dict(_order)
+            order = ModelOrder.from_dict(_order)
 
         model_create_order_response = cls(
             order=order,

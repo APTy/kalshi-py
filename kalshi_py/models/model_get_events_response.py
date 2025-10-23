@@ -8,6 +8,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.model_event_data import ModelEventData
+    from ..models.model_milestone import ModelMilestone
 
 
 T = TypeVar("T", bound="ModelGetEventsResponse")
@@ -19,10 +20,12 @@ class ModelGetEventsResponse:
     Attributes:
         cursor (Union[Unset, str]): Pagination cursor for the next page. Empty if there are no more results.
         events (Union[Unset, list['ModelEventData']]): Array of events matching the query criteria.
+        milestones (Union[Unset, list['ModelMilestone']]): Array of milestones related to the events.
     """
 
     cursor: Union[Unset, str] = UNSET
     events: Union[Unset, list["ModelEventData"]] = UNSET
+    milestones: Union[Unset, list["ModelMilestone"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,6 +38,13 @@ class ModelGetEventsResponse:
                 events_item = events_item_data.to_dict()
                 events.append(events_item)
 
+        milestones: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.milestones, Unset):
+            milestones = []
+            for milestones_item_data in self.milestones:
+                milestones_item = milestones_item_data.to_dict()
+                milestones.append(milestones_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -42,12 +52,15 @@ class ModelGetEventsResponse:
             field_dict["cursor"] = cursor
         if events is not UNSET:
             field_dict["events"] = events
+        if milestones is not UNSET:
+            field_dict["milestones"] = milestones
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.model_event_data import ModelEventData
+        from ..models.model_milestone import ModelMilestone
 
         d = dict(src_dict)
         cursor = d.pop("cursor", UNSET)
@@ -59,9 +72,17 @@ class ModelGetEventsResponse:
 
             events.append(events_item)
 
+        milestones = []
+        _milestones = d.pop("milestones", UNSET)
+        for milestones_item_data in _milestones or []:
+            milestones_item = ModelMilestone.from_dict(milestones_item_data)
+
+            milestones.append(milestones_item)
+
         model_get_events_response = cls(
             cursor=cursor,
             events=events,
+            milestones=milestones,
         )
 
         model_get_events_response.additional_properties = d

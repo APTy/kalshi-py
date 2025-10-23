@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,7 +7,6 @@ from attrs import field as _attrs_field
 from ..models.model_create_order_request_action import ModelCreateOrderRequestAction
 from ..models.model_create_order_request_side import ModelCreateOrderRequestSide
 from ..models.model_create_order_request_time_in_force import ModelCreateOrderRequestTimeInForce
-from ..models.model_create_order_request_type import ModelCreateOrderRequestType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ModelCreateOrderRequest")
@@ -19,6 +18,8 @@ class ModelCreateOrderRequest:
     Attributes:
         action (Union[Unset, ModelCreateOrderRequestAction]): Specifies if this is a buy or sell order.
         buy_max_cost (Union[Unset, int]):
+        cancel_order_on_pause (Union[Unset, bool]): If this flag is set to true, the order will be canceled if the order
+            is open and trading on the exchange is paused for any reason.
         client_order_id (Union[Unset, str]):
         count (Union[Unset, int]): Number of contracts to be bought or sold.
         expiration_ts (Union[Unset, int]): Expiration time of the order, in unix seconds. If not supplied, the order
@@ -26,7 +27,8 @@ class ModelCreateOrderRequest:
             cancel any remainder (IOC). If the time is in the future, the unfilled quantity will expire at the specified
             time.
         no_price (Union[Unset, int]):
-        no_price_dollars (Union[Unset, list[int]]):
+        no_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         order_group_id (Union[Unset, str]):
         post_only (Union[Unset, bool]): If this flag is set to true, an order will be rejected if it crosses the spread
             and executes.
@@ -40,19 +42,19 @@ class ModelCreateOrderRequest:
         time_in_force (Union[Unset, ModelCreateOrderRequestTimeInForce]): Currently only 'fill_or_kill' and
             'immediate_or_cancel' are supported. When not specified, defaults to GTC (Good Till Canceled) if no
             expiration_ts is provided, or GTT (Good Till Time) if expiration_ts is provided.
-        type_ (Union[Unset, ModelCreateOrderRequestType]): Specifies if this is a 'market' or a 'limit' order. Note that
-            either the Yes Price or the No Price must be provided for limit orders.
         yes_price (Union[Unset, int]):
-        yes_price_dollars (Union[Unset, list[int]]):
+        yes_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
     """
 
     action: Union[Unset, ModelCreateOrderRequestAction] = UNSET
     buy_max_cost: Union[Unset, int] = UNSET
+    cancel_order_on_pause: Union[Unset, bool] = UNSET
     client_order_id: Union[Unset, str] = UNSET
     count: Union[Unset, int] = UNSET
     expiration_ts: Union[Unset, int] = UNSET
     no_price: Union[Unset, int] = UNSET
-    no_price_dollars: Union[Unset, list[int]] = UNSET
+    no_price_dollars: Union[Unset, str] = UNSET
     order_group_id: Union[Unset, str] = UNSET
     post_only: Union[Unset, bool] = UNSET
     self_trade_prevention_type: Union[Unset, str] = UNSET
@@ -61,9 +63,8 @@ class ModelCreateOrderRequest:
     side: Union[Unset, ModelCreateOrderRequestSide] = UNSET
     ticker: Union[Unset, str] = UNSET
     time_in_force: Union[Unset, ModelCreateOrderRequestTimeInForce] = UNSET
-    type_: Union[Unset, ModelCreateOrderRequestType] = UNSET
     yes_price: Union[Unset, int] = UNSET
-    yes_price_dollars: Union[Unset, list[int]] = UNSET
+    yes_price_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,6 +74,8 @@ class ModelCreateOrderRequest:
 
         buy_max_cost = self.buy_max_cost
 
+        cancel_order_on_pause = self.cancel_order_on_pause
+
         client_order_id = self.client_order_id
 
         count = self.count
@@ -81,9 +84,7 @@ class ModelCreateOrderRequest:
 
         no_price = self.no_price
 
-        no_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.no_price_dollars, Unset):
-            no_price_dollars = self.no_price_dollars
+        no_price_dollars = self.no_price_dollars
 
         order_group_id = self.order_group_id
 
@@ -105,15 +106,9 @@ class ModelCreateOrderRequest:
         if not isinstance(self.time_in_force, Unset):
             time_in_force = self.time_in_force.value
 
-        type_: Union[Unset, str] = UNSET
-        if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
-
         yes_price = self.yes_price
 
-        yes_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.yes_price_dollars, Unset):
-            yes_price_dollars = self.yes_price_dollars
+        yes_price_dollars = self.yes_price_dollars
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -122,6 +117,8 @@ class ModelCreateOrderRequest:
             field_dict["action"] = action
         if buy_max_cost is not UNSET:
             field_dict["buy_max_cost"] = buy_max_cost
+        if cancel_order_on_pause is not UNSET:
+            field_dict["cancel_order_on_pause"] = cancel_order_on_pause
         if client_order_id is not UNSET:
             field_dict["client_order_id"] = client_order_id
         if count is not UNSET:
@@ -148,8 +145,6 @@ class ModelCreateOrderRequest:
             field_dict["ticker"] = ticker
         if time_in_force is not UNSET:
             field_dict["time_in_force"] = time_in_force
-        if type_ is not UNSET:
-            field_dict["type"] = type_
         if yes_price is not UNSET:
             field_dict["yes_price"] = yes_price
         if yes_price_dollars is not UNSET:
@@ -169,6 +164,8 @@ class ModelCreateOrderRequest:
 
         buy_max_cost = d.pop("buy_max_cost", UNSET)
 
+        cancel_order_on_pause = d.pop("cancel_order_on_pause", UNSET)
+
         client_order_id = d.pop("client_order_id", UNSET)
 
         count = d.pop("count", UNSET)
@@ -177,7 +174,7 @@ class ModelCreateOrderRequest:
 
         no_price = d.pop("no_price", UNSET)
 
-        no_price_dollars = cast(list[int], d.pop("no_price_dollars", UNSET))
+        no_price_dollars = d.pop("no_price_dollars", UNSET)
 
         order_group_id = d.pop("order_group_id", UNSET)
 
@@ -205,20 +202,14 @@ class ModelCreateOrderRequest:
         else:
             time_in_force = ModelCreateOrderRequestTimeInForce(_time_in_force)
 
-        _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, ModelCreateOrderRequestType]
-        if isinstance(_type_, Unset):
-            type_ = UNSET
-        else:
-            type_ = ModelCreateOrderRequestType(_type_)
-
         yes_price = d.pop("yes_price", UNSET)
 
-        yes_price_dollars = cast(list[int], d.pop("yes_price_dollars", UNSET))
+        yes_price_dollars = d.pop("yes_price_dollars", UNSET)
 
         model_create_order_request = cls(
             action=action,
             buy_max_cost=buy_max_cost,
+            cancel_order_on_pause=cancel_order_on_pause,
             client_order_id=client_order_id,
             count=count,
             expiration_ts=expiration_ts,
@@ -232,7 +223,6 @@ class ModelCreateOrderRequest:
             side=side,
             ticker=ticker,
             time_in_force=time_in_force,
-            type_=type_,
             yes_price=yes_price,
             yes_price_dollars=yes_price_dollars,
         )

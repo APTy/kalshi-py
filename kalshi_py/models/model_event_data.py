@@ -17,6 +17,7 @@ T = TypeVar("T", bound="ModelEventData")
 class ModelEventData:
     """
     Attributes:
+        available_on_brokers (Union[Unset, bool]): Whether this event is available to trade on brokers.
         category (Union[Unset, str]): Event category (deprecated, use series-level category instead).
         collateral_return_type (Union[Unset, str]):
         event_ticker (Union[Unset, str]): Unique identifier for this event.
@@ -24,21 +25,20 @@ class ModelEventData:
             'with_nested_markets=true' is specified in the request.
         mutually_exclusive (Union[Unset, bool]): If true, only one market in this event can resolve to 'yes'. If false,
             multiple markets can resolve to 'yes'.
-        price_level_structure (Union[Unset, str]):
         series_ticker (Union[Unset, str]): Unique identifier for the series this event belongs to.
         strike_date (Union[Unset, Any]):
         strike_period (Union[Unset, str]): The time period this event covers (e.g., 'week', 'month'). Only filled when
             the event uses a period strike (mutually exclusive with strike_date).
         sub_title (Union[Unset, str]): Shortened descriptive title for the event.
-        title (Union[Unset, str]): Full title of the event (deprecated, use sub_title instead).
+        title (Union[Unset, str]): Full title of the event.
     """
 
+    available_on_brokers: Union[Unset, bool] = UNSET
     category: Union[Unset, str] = UNSET
     collateral_return_type: Union[Unset, str] = UNSET
     event_ticker: Union[Unset, str] = UNSET
     markets: Union[Unset, list["ModelMarket"]] = UNSET
     mutually_exclusive: Union[Unset, bool] = UNSET
-    price_level_structure: Union[Unset, str] = UNSET
     series_ticker: Union[Unset, str] = UNSET
     strike_date: Union[Unset, Any] = UNSET
     strike_period: Union[Unset, str] = UNSET
@@ -47,6 +47,8 @@ class ModelEventData:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        available_on_brokers = self.available_on_brokers
+
         category = self.category
 
         collateral_return_type = self.collateral_return_type
@@ -62,8 +64,6 @@ class ModelEventData:
 
         mutually_exclusive = self.mutually_exclusive
 
-        price_level_structure = self.price_level_structure
-
         series_ticker = self.series_ticker
 
         strike_date = self.strike_date
@@ -77,6 +77,8 @@ class ModelEventData:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if available_on_brokers is not UNSET:
+            field_dict["available_on_brokers"] = available_on_brokers
         if category is not UNSET:
             field_dict["category"] = category
         if collateral_return_type is not UNSET:
@@ -87,8 +89,6 @@ class ModelEventData:
             field_dict["markets"] = markets
         if mutually_exclusive is not UNSET:
             field_dict["mutually_exclusive"] = mutually_exclusive
-        if price_level_structure is not UNSET:
-            field_dict["price_level_structure"] = price_level_structure
         if series_ticker is not UNSET:
             field_dict["series_ticker"] = series_ticker
         if strike_date is not UNSET:
@@ -107,6 +107,8 @@ class ModelEventData:
         from ..models.model_market import ModelMarket
 
         d = dict(src_dict)
+        available_on_brokers = d.pop("available_on_brokers", UNSET)
+
         category = d.pop("category", UNSET)
 
         collateral_return_type = d.pop("collateral_return_type", UNSET)
@@ -122,8 +124,6 @@ class ModelEventData:
 
         mutually_exclusive = d.pop("mutually_exclusive", UNSET)
 
-        price_level_structure = d.pop("price_level_structure", UNSET)
-
         series_ticker = d.pop("series_ticker", UNSET)
 
         strike_date = d.pop("strike_date", UNSET)
@@ -135,12 +135,12 @@ class ModelEventData:
         title = d.pop("title", UNSET)
 
         model_event_data = cls(
+            available_on_brokers=available_on_brokers,
             category=category,
             collateral_return_type=collateral_return_type,
             event_ticker=event_ticker,
             markets=markets,
             mutually_exclusive=mutually_exclusive,
-            price_level_structure=price_level_structure,
             series_ticker=series_ticker,
             strike_date=strike_date,
             strike_period=strike_period,

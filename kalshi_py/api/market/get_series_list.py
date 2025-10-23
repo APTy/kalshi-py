@@ -68,8 +68,9 @@ def sync_detailed(
             category.
         include_product_metadata (Union[Unset, bool]): Include additional product metadata in the
             response for each series.
-        tags (Union[Unset, str]): Comma separated list of tags to filter series by. If specified,
-            only series containing at least one of these tags will be returned.
+        tags (Union[Unset, str]): Comma-separated list of tags to filter series by (e.g., 'Rotten
+            Tomatoes,Television'). Tags with spaces are supported. If specified, only series
+            containing at least one of these tags will be returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -111,8 +112,9 @@ async def asyncio_detailed(
             category.
         include_product_metadata (Union[Unset, bool]): Include additional product metadata in the
             response for each series.
-        tags (Union[Unset, str]): Comma separated list of tags to filter series by. If specified,
-            only series containing at least one of these tags will be returned.
+        tags (Union[Unset, str]): Comma-separated list of tags to filter series by (e.g., 'Rotten
+            Tomatoes,Television'). Tags with spaces are supported. If specified, only series
+            containing at least one of these tags will be returned.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

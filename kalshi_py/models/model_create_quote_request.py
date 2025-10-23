@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -13,30 +13,28 @@ T = TypeVar("T", bound="ModelCreateQuoteRequest")
 class ModelCreateQuoteRequest:
     """
     Attributes:
-        no_bid (Union[Unset, list[int]]):
+        no_bid (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345 indicates $1.23
+            and 45/100 of a cent. Example: 0.2300.
         rest_remainder (Union[Unset, bool]): Whether to rest the remainder of the quote after execution.
         rfq_id (Union[Unset, str]):
-        yes_bid (Union[Unset, list[int]]):
+        yes_bid (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345 indicates $1.23
+            and 45/100 of a cent. Example: 0.2300.
     """
 
-    no_bid: Union[Unset, list[int]] = UNSET
+    no_bid: Union[Unset, str] = UNSET
     rest_remainder: Union[Unset, bool] = UNSET
     rfq_id: Union[Unset, str] = UNSET
-    yes_bid: Union[Unset, list[int]] = UNSET
+    yes_bid: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        no_bid: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.no_bid, Unset):
-            no_bid = self.no_bid
+        no_bid = self.no_bid
 
         rest_remainder = self.rest_remainder
 
         rfq_id = self.rfq_id
 
-        yes_bid: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.yes_bid, Unset):
-            yes_bid = self.yes_bid
+        yes_bid = self.yes_bid
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -55,13 +53,13 @@ class ModelCreateQuoteRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        no_bid = cast(list[int], d.pop("no_bid", UNSET))
+        no_bid = d.pop("no_bid", UNSET)
 
         rest_remainder = d.pop("rest_remainder", UNSET)
 
         rfq_id = d.pop("rfq_id", UNSET)
 
-        yes_bid = cast(list[int], d.pop("yes_bid", UNSET))
+        yes_bid = d.pop("yes_bid", UNSET)
 
         model_create_quote_request = cls(
             no_bid=no_bid,

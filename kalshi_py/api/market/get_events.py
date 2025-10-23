@@ -17,6 +17,7 @@ def _get_kwargs(
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
     min_close_ts: Union[Unset, int] = UNSET,
+    with_milestones: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -31,6 +32,8 @@ def _get_kwargs(
     params["series_ticker"] = series_ticker
 
     params["min_close_ts"] = min_close_ts
+
+    params["with_milestones"] = with_milestones
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -76,6 +79,7 @@ def sync_detailed(
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
     min_close_ts: Union[Unset, int] = UNSET,
+    with_milestones: Union[Unset, bool] = UNSET,
 ) -> Response[ModelGetEventsResponse]:
     """Get Events
 
@@ -101,6 +105,8 @@ def sync_detailed(
             belonging to the specified series.
         min_close_ts (Union[Unset, int]): Filter events with at least one market with close
             timestamp greater than this Unix timestamp (in seconds).
+        with_milestones (Union[Unset, bool]): If true, includes related milestones as a field
+            alongside events.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,6 +123,7 @@ def sync_detailed(
         status=status,
         series_ticker=series_ticker,
         min_close_ts=min_close_ts,
+        with_milestones=with_milestones,
     )
 
     response = client.get_httpx_client().request(
@@ -135,6 +142,7 @@ def sync(
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
     min_close_ts: Union[Unset, int] = UNSET,
+    with_milestones: Union[Unset, bool] = UNSET,
 ) -> Optional[ModelGetEventsResponse]:
     """Get Events
 
@@ -160,6 +168,8 @@ def sync(
             belonging to the specified series.
         min_close_ts (Union[Unset, int]): Filter events with at least one market with close
             timestamp greater than this Unix timestamp (in seconds).
+        with_milestones (Union[Unset, bool]): If true, includes related milestones as a field
+            alongside events.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,6 +187,7 @@ def sync(
         status=status,
         series_ticker=series_ticker,
         min_close_ts=min_close_ts,
+        with_milestones=with_milestones,
     ).parsed
 
 
@@ -189,6 +200,7 @@ async def asyncio_detailed(
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
     min_close_ts: Union[Unset, int] = UNSET,
+    with_milestones: Union[Unset, bool] = UNSET,
 ) -> Response[ModelGetEventsResponse]:
     """Get Events
 
@@ -214,6 +226,8 @@ async def asyncio_detailed(
             belonging to the specified series.
         min_close_ts (Union[Unset, int]): Filter events with at least one market with close
             timestamp greater than this Unix timestamp (in seconds).
+        with_milestones (Union[Unset, bool]): If true, includes related milestones as a field
+            alongside events.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -230,6 +244,7 @@ async def asyncio_detailed(
         status=status,
         series_ticker=series_ticker,
         min_close_ts=min_close_ts,
+        with_milestones=with_milestones,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -246,6 +261,7 @@ async def asyncio(
     status: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
     min_close_ts: Union[Unset, int] = UNSET,
+    with_milestones: Union[Unset, bool] = UNSET,
 ) -> Optional[ModelGetEventsResponse]:
     """Get Events
 
@@ -271,6 +287,8 @@ async def asyncio(
             belonging to the specified series.
         min_close_ts (Union[Unset, int]): Filter events with at least one market with close
             timestamp greater than this Unix timestamp (in seconds).
+        with_milestones (Union[Unset, bool]): If true, includes related milestones as a field
+            alongside events.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -289,5 +307,6 @@ async def asyncio(
             status=status,
             series_ticker=series_ticker,
             min_close_ts=min_close_ts,
+            with_milestones=with_milestones,
         )
     ).parsed

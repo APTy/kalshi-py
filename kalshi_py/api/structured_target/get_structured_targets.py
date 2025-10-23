@@ -5,7 +5,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_structured_targets_response import ModelGetStructuredTargetsResponse
+from ...models.github_com_kalshi_exchange_infra_common_api_json_error import (
+    GithubComKalshiExchangeInfraCommonApiJSONError,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -39,9 +41,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetStructuredTargetsResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     if response.status_code == 200:
-        response_200 = ModelGetStructuredTargetsResponse.from_dict(response.json())
+        response_200 = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -52,7 +54,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetStructuredTargetsResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -68,7 +70,7 @@ def sync_detailed(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetStructuredTargetsResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -84,7 +86,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetStructuredTargetsResponse]
+        Response[GithubComKalshiExchangeInfraCommonApiJSONError]
     """
 
     kwargs = _get_kwargs(
@@ -108,7 +110,7 @@ def sync(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetStructuredTargetsResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -124,7 +126,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetStructuredTargetsResponse
+        GithubComKalshiExchangeInfraCommonApiJSONError
     """
 
     return sync_detailed(
@@ -143,7 +145,7 @@ async def asyncio_detailed(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetStructuredTargetsResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -159,7 +161,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetStructuredTargetsResponse]
+        Response[GithubComKalshiExchangeInfraCommonApiJSONError]
     """
 
     kwargs = _get_kwargs(
@@ -181,7 +183,7 @@ async def asyncio(
     competition: Union[Unset, str] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetStructuredTargetsResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Structured Targets
 
       Endpoint for getting data about structured targets.
@@ -197,7 +199,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetStructuredTargetsResponse
+        GithubComKalshiExchangeInfraCommonApiJSONError
     """
 
     return (

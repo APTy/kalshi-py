@@ -87,7 +87,8 @@ def sync_detailed(
 
     Args:
         ticker (Union[Unset, str]): Restricts the response to orders in a single market.
-        event_ticker (Union[Unset, str]): Restricts the response to orders in a single event.
+        event_ticker (Union[Unset, str]): Restricts the response to orders in one or more events.
+            Multiple event tickers can be provided as a comma-separated list.
         min_ts (Union[Unset, int]): Restricts the response to orders after a timestamp, formatted
             as a Unix Timestamp.
         max_ts (Union[Unset, int]): Restricts the response to orders before a timestamp, formatted
@@ -141,7 +142,8 @@ def sync(
 
     Args:
         ticker (Union[Unset, str]): Restricts the response to orders in a single market.
-        event_ticker (Union[Unset, str]): Restricts the response to orders in a single event.
+        event_ticker (Union[Unset, str]): Restricts the response to orders in one or more events.
+            Multiple event tickers can be provided as a comma-separated list.
         min_ts (Union[Unset, int]): Restricts the response to orders after a timestamp, formatted
             as a Unix Timestamp.
         max_ts (Union[Unset, int]): Restricts the response to orders before a timestamp, formatted
@@ -190,7 +192,8 @@ async def asyncio_detailed(
 
     Args:
         ticker (Union[Unset, str]): Restricts the response to orders in a single market.
-        event_ticker (Union[Unset, str]): Restricts the response to orders in a single event.
+        event_ticker (Union[Unset, str]): Restricts the response to orders in one or more events.
+            Multiple event tickers can be provided as a comma-separated list.
         min_ts (Union[Unset, int]): Restricts the response to orders after a timestamp, formatted
             as a Unix Timestamp.
         max_ts (Union[Unset, int]): Restricts the response to orders before a timestamp, formatted
@@ -242,7 +245,8 @@ async def asyncio(
 
     Args:
         ticker (Union[Unset, str]): Restricts the response to orders in a single market.
-        event_ticker (Union[Unset, str]): Restricts the response to orders in a single event.
+        event_ticker (Union[Unset, str]): Restricts the response to orders in one or more events.
+            Multiple event tickers can be provided as a comma-separated list.
         min_ts (Union[Unset, int]): Restricts the response to orders after a timestamp, formatted
             as a Unix Timestamp.
         max_ts (Union[Unset, int]): Restricts the response to orders before a timestamp, formatted

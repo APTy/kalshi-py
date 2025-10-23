@@ -1,12 +1,19 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.github_com_kalshi_exchange_infra_svc_api_2_model_market_price_level_structure import (
+    GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure,
+)
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.model_price_range import ModelPriceRange
+
 
 T = TypeVar("T", bound="GithubComKalshiExchangeInfraSvcApi2ModelMarket")
 
@@ -50,11 +57,24 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
         risk_limit_cents (int): Risk limit in cents
         rules_primary (str): Primary market rules
         rules_secondary (str): Secondary market rules
+        price_level_structure (GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure): Price level structure
+            name for this market.
+        price_ranges (list['ModelPriceRange']): Valid price ranges for orders on this market.
         title (Union[Unset, str]): Full title describing this market
+        notional_value_dollars (Union[Unset, str]): Notional value of contract in dollars Example: 0.2300.
+        yes_bid_dollars (Union[Unset, str]): Highest YES buy offer price in dollars Example: 0.2300.
+        yes_ask_dollars (Union[Unset, str]): Lowest YES sell offer price in dollars Example: 0.2300.
+        no_bid_dollars (Union[Unset, str]): Highest NO buy offer price in dollars Example: 0.2300.
+        no_ask_dollars (Union[Unset, str]): Lowest NO sell offer price in dollars Example: 0.2300.
+        last_price_dollars (Union[Unset, str]): Last traded price in dollars Example: 0.2300.
+        previous_yes_bid_dollars (Union[Unset, str]): Previous YES bid price in dollars Example: 0.2300.
+        previous_yes_ask_dollars (Union[Unset, str]): Previous YES ask price in dollars Example: 0.2300.
+        previous_price_dollars (Union[Unset, str]): Previous traded price in dollars Example: 0.2300.
+        liquidity_dollars (Union[Unset, str]): Current liquidity in dollars Example: 0.2300.
         settlement_value (Union[Unset, int]): The settlement value of the YES/LONG side of the contract. Only filled
             after determination.
         settlement_value_dollars (Union[Unset, str]): The settlement value of the YES/LONG side of the contract. Only
-            filled after determination.
+            filled after determination. Example: 0.2300.
     """
 
     ticker: str
@@ -91,7 +111,19 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
     risk_limit_cents: int
     rules_primary: str
     rules_secondary: str
+    price_level_structure: GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure
+    price_ranges: list["ModelPriceRange"]
     title: Union[Unset, str] = UNSET
+    notional_value_dollars: Union[Unset, str] = UNSET
+    yes_bid_dollars: Union[Unset, str] = UNSET
+    yes_ask_dollars: Union[Unset, str] = UNSET
+    no_bid_dollars: Union[Unset, str] = UNSET
+    no_ask_dollars: Union[Unset, str] = UNSET
+    last_price_dollars: Union[Unset, str] = UNSET
+    previous_yes_bid_dollars: Union[Unset, str] = UNSET
+    previous_yes_ask_dollars: Union[Unset, str] = UNSET
+    previous_price_dollars: Union[Unset, str] = UNSET
+    liquidity_dollars: Union[Unset, str] = UNSET
     settlement_value: Union[Unset, int] = UNSET
     settlement_value_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -165,7 +197,34 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
 
         rules_secondary = self.rules_secondary
 
+        price_level_structure = self.price_level_structure.value
+
+        price_ranges = []
+        for price_ranges_item_data in self.price_ranges:
+            price_ranges_item = price_ranges_item_data.to_dict()
+            price_ranges.append(price_ranges_item)
+
         title = self.title
+
+        notional_value_dollars = self.notional_value_dollars
+
+        yes_bid_dollars = self.yes_bid_dollars
+
+        yes_ask_dollars = self.yes_ask_dollars
+
+        no_bid_dollars = self.no_bid_dollars
+
+        no_ask_dollars = self.no_ask_dollars
+
+        last_price_dollars = self.last_price_dollars
+
+        previous_yes_bid_dollars = self.previous_yes_bid_dollars
+
+        previous_yes_ask_dollars = self.previous_yes_ask_dollars
+
+        previous_price_dollars = self.previous_price_dollars
+
+        liquidity_dollars = self.liquidity_dollars
 
         settlement_value = self.settlement_value
 
@@ -209,10 +268,32 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
                 "risk_limit_cents": risk_limit_cents,
                 "rules_primary": rules_primary,
                 "rules_secondary": rules_secondary,
+                "price_level_structure": price_level_structure,
+                "price_ranges": price_ranges,
             }
         )
         if title is not UNSET:
             field_dict["title"] = title
+        if notional_value_dollars is not UNSET:
+            field_dict["notional_value_dollars"] = notional_value_dollars
+        if yes_bid_dollars is not UNSET:
+            field_dict["yes_bid_dollars"] = yes_bid_dollars
+        if yes_ask_dollars is not UNSET:
+            field_dict["yes_ask_dollars"] = yes_ask_dollars
+        if no_bid_dollars is not UNSET:
+            field_dict["no_bid_dollars"] = no_bid_dollars
+        if no_ask_dollars is not UNSET:
+            field_dict["no_ask_dollars"] = no_ask_dollars
+        if last_price_dollars is not UNSET:
+            field_dict["last_price_dollars"] = last_price_dollars
+        if previous_yes_bid_dollars is not UNSET:
+            field_dict["previous_yes_bid_dollars"] = previous_yes_bid_dollars
+        if previous_yes_ask_dollars is not UNSET:
+            field_dict["previous_yes_ask_dollars"] = previous_yes_ask_dollars
+        if previous_price_dollars is not UNSET:
+            field_dict["previous_price_dollars"] = previous_price_dollars
+        if liquidity_dollars is not UNSET:
+            field_dict["liquidity_dollars"] = liquidity_dollars
         if settlement_value is not UNSET:
             field_dict["settlement_value"] = settlement_value
         if settlement_value_dollars is not UNSET:
@@ -222,6 +303,8 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.model_price_range import ModelPriceRange
+
         d = dict(src_dict)
         ticker = d.pop("ticker")
 
@@ -291,7 +374,38 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
 
         rules_secondary = d.pop("rules_secondary")
 
+        price_level_structure = GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure(
+            d.pop("price_level_structure")
+        )
+
+        price_ranges = []
+        _price_ranges = d.pop("price_ranges")
+        for price_ranges_item_data in _price_ranges:
+            price_ranges_item = ModelPriceRange.from_dict(price_ranges_item_data)
+
+            price_ranges.append(price_ranges_item)
+
         title = d.pop("title", UNSET)
+
+        notional_value_dollars = d.pop("notional_value_dollars", UNSET)
+
+        yes_bid_dollars = d.pop("yes_bid_dollars", UNSET)
+
+        yes_ask_dollars = d.pop("yes_ask_dollars", UNSET)
+
+        no_bid_dollars = d.pop("no_bid_dollars", UNSET)
+
+        no_ask_dollars = d.pop("no_ask_dollars", UNSET)
+
+        last_price_dollars = d.pop("last_price_dollars", UNSET)
+
+        previous_yes_bid_dollars = d.pop("previous_yes_bid_dollars", UNSET)
+
+        previous_yes_ask_dollars = d.pop("previous_yes_ask_dollars", UNSET)
+
+        previous_price_dollars = d.pop("previous_price_dollars", UNSET)
+
+        liquidity_dollars = d.pop("liquidity_dollars", UNSET)
 
         settlement_value = d.pop("settlement_value", UNSET)
 
@@ -332,7 +446,19 @@ class GithubComKalshiExchangeInfraSvcApi2ModelMarket:
             risk_limit_cents=risk_limit_cents,
             rules_primary=rules_primary,
             rules_secondary=rules_secondary,
+            price_level_structure=price_level_structure,
+            price_ranges=price_ranges,
             title=title,
+            notional_value_dollars=notional_value_dollars,
+            yes_bid_dollars=yes_bid_dollars,
+            yes_ask_dollars=yes_ask_dollars,
+            no_bid_dollars=no_bid_dollars,
+            no_ask_dollars=no_ask_dollars,
+            last_price_dollars=last_price_dollars,
+            previous_yes_bid_dollars=previous_yes_bid_dollars,
+            previous_yes_ask_dollars=previous_yes_ask_dollars,
+            previous_price_dollars=previous_price_dollars,
+            liquidity_dollars=liquidity_dollars,
             settlement_value=settlement_value,
             settlement_value_dollars=settlement_value_dollars,
         )

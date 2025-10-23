@@ -11,11 +11,11 @@ if TYPE_CHECKING:
     from ..models.model_price_distribution import ModelPriceDistribution
 
 
-T = TypeVar("T", bound="ModelGetMarketCandlesticksResponseCandlesticksItem")
+T = TypeVar("T", bound="ModelGetEventCandlesticksResponseMarketCandlesticksItemItem")
 
 
 @_attrs_define
-class ModelGetMarketCandlesticksResponseCandlesticksItem:
+class ModelGetEventCandlesticksResponseMarketCandlesticksItemItem:
     """
     Attributes:
         end_period_ts (Union[Unset, int]): Unix timestamp for the inclusive end of the candlestick period.
@@ -105,7 +105,7 @@ class ModelGetMarketCandlesticksResponseCandlesticksItem:
         else:
             yes_bid = ModelBidAskDistribution.from_dict(_yes_bid)
 
-        model_get_market_candlesticks_response_candlesticks_item = cls(
+        model_get_event_candlesticks_response_market_candlesticks_item_item = cls(
             end_period_ts=end_period_ts,
             open_interest=open_interest,
             price=price,
@@ -114,8 +114,8 @@ class ModelGetMarketCandlesticksResponseCandlesticksItem:
             yes_bid=yes_bid,
         )
 
-        model_get_market_candlesticks_response_candlesticks_item.additional_properties = d
-        return model_get_market_candlesticks_response_candlesticks_item
+        model_get_event_candlesticks_response_market_candlesticks_item_item.additional_properties = d
+        return model_get_event_candlesticks_response_market_candlesticks_item_item
 
     @property
     def additional_keys(self) -> list[str]:

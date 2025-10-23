@@ -29,14 +29,19 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
         id (Union[Unset, str]):
         market_ticker (Union[Unset, str]): The ticker of the market this quote is for.
         no_bid (Union[Unset, int]):
+        no_contracts_offered (Union[Unset, int]): Number of NO contracts offered in the quote.
+        no_contracts_offered_effective_american_odds (Union[Unset, str]): Filled only for target cost based RFQs.
         rest_remainder (Union[Unset, bool]): Whether to rest the remainder of the quote after execution.
         rfq_creator_id (Union[Unset, str]):
         rfq_creator_order_id (Union[Unset, str]):
         rfq_creator_user_id (Union[Unset, str]):
         rfq_id (Union[Unset, str]):
+        rfq_target_cost_centi_cents (Union[Unset, int]):
         status (Union[Unset, str]):
         updated_ts (Union[Unset, datetime.datetime]): Timestamp when the quote was last updated.
         yes_bid (Union[Unset, int]):
+        yes_contracts_offered (Union[Unset, int]): Number of YES contracts offered in the quote.
+        yes_contracts_offered_effective_american_odds (Union[Unset, str]): Filled only for target cost based RFQs.
     """
 
     accepted_side: Union[Unset, str] = UNSET
@@ -53,14 +58,19 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
     id: Union[Unset, str] = UNSET
     market_ticker: Union[Unset, str] = UNSET
     no_bid: Union[Unset, int] = UNSET
+    no_contracts_offered: Union[Unset, int] = UNSET
+    no_contracts_offered_effective_american_odds: Union[Unset, str] = UNSET
     rest_remainder: Union[Unset, bool] = UNSET
     rfq_creator_id: Union[Unset, str] = UNSET
     rfq_creator_order_id: Union[Unset, str] = UNSET
     rfq_creator_user_id: Union[Unset, str] = UNSET
     rfq_id: Union[Unset, str] = UNSET
+    rfq_target_cost_centi_cents: Union[Unset, int] = UNSET
     status: Union[Unset, str] = UNSET
     updated_ts: Union[Unset, datetime.datetime] = UNSET
     yes_bid: Union[Unset, int] = UNSET
+    yes_contracts_offered: Union[Unset, int] = UNSET
+    yes_contracts_offered_effective_american_odds: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -102,6 +112,10 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
 
         no_bid = self.no_bid
 
+        no_contracts_offered = self.no_contracts_offered
+
+        no_contracts_offered_effective_american_odds = self.no_contracts_offered_effective_american_odds
+
         rest_remainder = self.rest_remainder
 
         rfq_creator_id = self.rfq_creator_id
@@ -112,6 +126,8 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
 
         rfq_id = self.rfq_id
 
+        rfq_target_cost_centi_cents = self.rfq_target_cost_centi_cents
+
         status = self.status
 
         updated_ts: Union[Unset, str] = UNSET
@@ -119,6 +135,10 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
             updated_ts = self.updated_ts.isoformat()
 
         yes_bid = self.yes_bid
+
+        yes_contracts_offered = self.yes_contracts_offered
+
+        yes_contracts_offered_effective_american_odds = self.yes_contracts_offered_effective_american_odds
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -151,6 +171,10 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
             field_dict["market_ticker"] = market_ticker
         if no_bid is not UNSET:
             field_dict["no_bid"] = no_bid
+        if no_contracts_offered is not UNSET:
+            field_dict["no_contracts_offered"] = no_contracts_offered
+        if no_contracts_offered_effective_american_odds is not UNSET:
+            field_dict["no_contracts_offered_effective_american_odds"] = no_contracts_offered_effective_american_odds
         if rest_remainder is not UNSET:
             field_dict["rest_remainder"] = rest_remainder
         if rfq_creator_id is not UNSET:
@@ -161,12 +185,18 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
             field_dict["rfq_creator_user_id"] = rfq_creator_user_id
         if rfq_id is not UNSET:
             field_dict["rfq_id"] = rfq_id
+        if rfq_target_cost_centi_cents is not UNSET:
+            field_dict["rfq_target_cost_centi_cents"] = rfq_target_cost_centi_cents
         if status is not UNSET:
             field_dict["status"] = status
         if updated_ts is not UNSET:
             field_dict["updated_ts"] = updated_ts
         if yes_bid is not UNSET:
             field_dict["yes_bid"] = yes_bid
+        if yes_contracts_offered is not UNSET:
+            field_dict["yes_contracts_offered"] = yes_contracts_offered
+        if yes_contracts_offered_effective_american_odds is not UNSET:
+            field_dict["yes_contracts_offered_effective_american_odds"] = yes_contracts_offered_effective_american_odds
 
         return field_dict
 
@@ -226,6 +256,10 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
 
         no_bid = d.pop("no_bid", UNSET)
 
+        no_contracts_offered = d.pop("no_contracts_offered", UNSET)
+
+        no_contracts_offered_effective_american_odds = d.pop("no_contracts_offered_effective_american_odds", UNSET)
+
         rest_remainder = d.pop("rest_remainder", UNSET)
 
         rfq_creator_id = d.pop("rfq_creator_id", UNSET)
@@ -235,6 +269,8 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
         rfq_creator_user_id = d.pop("rfq_creator_user_id", UNSET)
 
         rfq_id = d.pop("rfq_id", UNSET)
+
+        rfq_target_cost_centi_cents = d.pop("rfq_target_cost_centi_cents", UNSET)
 
         status = d.pop("status", UNSET)
 
@@ -246,6 +282,10 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
             updated_ts = isoparse(_updated_ts)
 
         yes_bid = d.pop("yes_bid", UNSET)
+
+        yes_contracts_offered = d.pop("yes_contracts_offered", UNSET)
+
+        yes_contracts_offered_effective_american_odds = d.pop("yes_contracts_offered_effective_american_odds", UNSET)
 
         github_com_kalshi_exchange_infra_common_communications_quote = cls(
             accepted_side=accepted_side,
@@ -262,14 +302,19 @@ class GithubComKalshiExchangeInfraCommonCommunicationsQuote:
             id=id,
             market_ticker=market_ticker,
             no_bid=no_bid,
+            no_contracts_offered=no_contracts_offered,
+            no_contracts_offered_effective_american_odds=no_contracts_offered_effective_american_odds,
             rest_remainder=rest_remainder,
             rfq_creator_id=rfq_creator_id,
             rfq_creator_order_id=rfq_creator_order_id,
             rfq_creator_user_id=rfq_creator_user_id,
             rfq_id=rfq_id,
+            rfq_target_cost_centi_cents=rfq_target_cost_centi_cents,
             status=status,
             updated_ts=updated_ts,
             yes_bid=yes_bid,
+            yes_contracts_offered=yes_contracts_offered,
+            yes_contracts_offered_effective_american_odds=yes_contracts_offered_effective_american_odds,
         )
 
         github_com_kalshi_exchange_infra_common_communications_quote.additional_properties = d

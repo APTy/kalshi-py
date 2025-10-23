@@ -1,57 +1,66 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ModelOrderBookYesDollarsItem")
+T = TypeVar("T", bound="ModelPriceRange")
 
 
 @_attrs_define
-class ModelOrderBookYesDollarsItem:
-    """
+class ModelPriceRange:
+    """Represents a range of prices with a specific tick size.
+
+    Example:
+        {'start': '0.00', 'end': '1.00', 'step': '0.01'}
+
     Attributes:
-        count (Union[Unset, int]):
-        dollars (Union[Unset, list[int]]):
+        start (str): Starting price for this range in dollars. Example: 0.00.
+        end (str): Ending price for this range in dollars. Example: 1.00.
+        step (str): Price step/tick size for this range in dollars. Example: 0.01.
     """
 
-    count: Union[Unset, int] = UNSET
-    dollars: Union[Unset, list[int]] = UNSET
+    start: str
+    end: str
+    step: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        count = self.count
+        start = self.start
 
-        dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.dollars, Unset):
-            dollars = self.dollars
+        end = self.end
+
+        step = self.step
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if count is not UNSET:
-            field_dict["Count"] = count
-        if dollars is not UNSET:
-            field_dict["Dollars"] = dollars
+        field_dict.update(
+            {
+                "start": start,
+                "end": end,
+                "step": step,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        count = d.pop("Count", UNSET)
+        start = d.pop("start")
 
-        dollars = cast(list[int], d.pop("Dollars", UNSET))
+        end = d.pop("end")
 
-        model_order_book_yes_dollars_item = cls(
-            count=count,
-            dollars=dollars,
+        step = d.pop("step")
+
+        model_price_range = cls(
+            start=start,
+            end=end,
+            step=step,
         )
 
-        model_order_book_yes_dollars_item.additional_properties = d
-        return model_order_book_yes_dollars_item
+        model_price_range.additional_properties = d
+        return model_price_range
 
     @property
     def additional_keys(self) -> list[str]:

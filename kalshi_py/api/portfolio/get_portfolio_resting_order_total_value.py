@@ -5,7 +5,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_user_resting_order_total_value_response import ModelGetUserRestingOrderTotalValueResponse
+from ...models.github_com_kalshi_exchange_infra_common_api_json_error import (
+    GithubComKalshiExchangeInfraCommonApiJSONError,
+)
 from ...types import Response
 
 
@@ -20,9 +22,9 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     if response.status_code == 200:
-        response_200 = ModelGetUserRestingOrderTotalValueResponse.from_dict(response.json())
+        response_200 = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -33,7 +35,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -45,7 +47,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Portfolio Resting Order Total Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
@@ -57,7 +59,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetUserRestingOrderTotalValueResponse]
+        Response[GithubComKalshiExchangeInfraCommonApiJSONError]
     """
 
     kwargs = _get_kwargs()
@@ -72,7 +74,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Portfolio Resting Order Total Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
@@ -84,7 +86,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetUserRestingOrderTotalValueResponse
+        GithubComKalshiExchangeInfraCommonApiJSONError
     """
 
     return sync_detailed(
@@ -95,7 +97,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Response[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Portfolio Resting Order Total Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
@@ -107,7 +109,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetUserRestingOrderTotalValueResponse]
+        Response[GithubComKalshiExchangeInfraCommonApiJSONError]
     """
 
     kwargs = _get_kwargs()
@@ -120,7 +122,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Optional[GithubComKalshiExchangeInfraCommonApiJSONError]:
     """Get Portfolio Resting Order Total Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
@@ -132,7 +134,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetUserRestingOrderTotalValueResponse
+        GithubComKalshiExchangeInfraCommonApiJSONError
     """
 
     return (

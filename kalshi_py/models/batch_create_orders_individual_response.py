@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
         GithubComKalshiExchangeInfraCommonApiJSONError,
     )
-    from ..models.model_order_confirmation import ModelOrderConfirmation
+    from ..models.model_order import ModelOrder
 
 
 T = TypeVar("T", bound="BatchCreateOrdersIndividualResponse")
@@ -22,12 +22,12 @@ class BatchCreateOrdersIndividualResponse:
     Attributes:
         client_order_id (Union[Unset, str]):
         error (Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]):
-        order (Union[Unset, ModelOrderConfirmation]):
+        order (Union[Unset, ModelOrder]):
     """
 
     client_order_id: Union[Unset, str] = UNSET
     error: Union[Unset, "GithubComKalshiExchangeInfraCommonApiJSONError"] = UNSET
-    order: Union[Unset, "ModelOrderConfirmation"] = UNSET
+    order: Union[Unset, "ModelOrder"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -58,7 +58,7 @@ class BatchCreateOrdersIndividualResponse:
         from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
             GithubComKalshiExchangeInfraCommonApiJSONError,
         )
-        from ..models.model_order_confirmation import ModelOrderConfirmation
+        from ..models.model_order import ModelOrder
 
         d = dict(src_dict)
         client_order_id = d.pop("client_order_id", UNSET)
@@ -71,11 +71,11 @@ class BatchCreateOrdersIndividualResponse:
             error = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(_error)
 
         _order = d.pop("order", UNSET)
-        order: Union[Unset, ModelOrderConfirmation]
+        order: Union[Unset, ModelOrder]
         if isinstance(_order, Unset):
             order = UNSET
         else:
-            order = ModelOrderConfirmation.from_dict(_order)
+            order = ModelOrder.from_dict(_order)
 
         batch_create_orders_individual_response = cls(
             client_order_id=client_order_id,

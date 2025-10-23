@@ -376,28 +376,6 @@
 
 ### Get Rfq
 
-**Synchronous API Call**
-
-::: kalshi_py.api.communications.get_rfq.sync
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-**Asynchronous API Call**
-
-::: kalshi_py.api.communications.get_rfq.asyncio
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 **Synchronous Detailed Response**
 
 ::: kalshi_py.api.communications.get_rfq.sync_detailed

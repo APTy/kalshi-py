@@ -6,41 +6,59 @@ from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="ModelGetUserRestingOrderTotalValueResponse")
+T = TypeVar("T", bound="MveSelectedLeg")
 
 
 @_attrs_define
-class ModelGetUserRestingOrderTotalValueResponse:
+class MveSelectedLeg:
     """
     Attributes:
-        total_value (Union[Unset, int]):
+        event_ticker (Union[Unset, str]):
+        market_ticker (Union[Unset, str]):
+        side (Union[Unset, str]):
     """
 
-    total_value: Union[Unset, int] = UNSET
+    event_ticker: Union[Unset, str] = UNSET
+    market_ticker: Union[Unset, str] = UNSET
+    side: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        total_value = self.total_value
+        event_ticker = self.event_ticker
+
+        market_ticker = self.market_ticker
+
+        side = self.side
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if total_value is not UNSET:
-            field_dict["total_value"] = total_value
+        if event_ticker is not UNSET:
+            field_dict["event_ticker"] = event_ticker
+        if market_ticker is not UNSET:
+            field_dict["market_ticker"] = market_ticker
+        if side is not UNSET:
+            field_dict["side"] = side
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        total_value = d.pop("total_value", UNSET)
+        event_ticker = d.pop("event_ticker", UNSET)
 
-        model_get_user_resting_order_total_value_response = cls(
-            total_value=total_value,
+        market_ticker = d.pop("market_ticker", UNSET)
+
+        side = d.pop("side", UNSET)
+
+        mve_selected_leg = cls(
+            event_ticker=event_ticker,
+            market_ticker=market_ticker,
+            side=side,
         )
 
-        model_get_user_resting_order_total_value_response.additional_properties = d
-        return model_get_user_resting_order_total_value_response
+        mve_selected_leg.additional_properties = d
+        return mve_selected_leg
 
     @property
     def additional_keys(self) -> list[str]:

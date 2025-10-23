@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,19 +14,18 @@ class PriceLevelDollars:
     """
     Attributes:
         count (Union[Unset, int]):
-        dollars (Union[Unset, list[int]]):
+        dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345 indicates $1.23
+            and 45/100 of a cent. Example: 0.2300.
     """
 
     count: Union[Unset, int] = UNSET
-    dollars: Union[Unset, list[int]] = UNSET
+    dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         count = self.count
 
-        dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.dollars, Unset):
-            dollars = self.dollars
+        dollars = self.dollars
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -43,7 +42,7 @@ class PriceLevelDollars:
         d = dict(src_dict)
         count = d.pop("Count", UNSET)
 
-        dollars = cast(list[int], d.pop("Dollars", UNSET))
+        dollars = d.pop("Dollars", UNSET)
 
         price_level_dollars = cls(
             count=count,

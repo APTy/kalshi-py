@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -21,25 +21,27 @@ class ModelAmendOrderRequest:
         count (Union[Unset, int]): New total number of contracts for the order. This is the desired final count, not a
             delta.
         no_price (Union[Unset, int]):
-        no_price_dollars (Union[Unset, list[int]]):
+        no_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
         side (Union[Unset, ModelAmendOrderRequestSide]): Side of the order (yes or no). Cannot be amended and is
             validated against original order.
         ticker (Union[Unset, str]): Market ticker. Cannot be amended and is validated against original order.
         updated_client_order_id (Union[Unset, str]):
         yes_price (Union[Unset, int]):
-        yes_price_dollars (Union[Unset, list[int]]):
+        yes_price_dollars (Union[Unset, str]): Fixed point representation of a subpenny dollar amount e.g. 1.2345
+            indicates $1.23 and 45/100 of a cent. Example: 0.2300.
     """
 
     action: Union[Unset, ModelAmendOrderRequestAction] = UNSET
     client_order_id: Union[Unset, str] = UNSET
     count: Union[Unset, int] = UNSET
     no_price: Union[Unset, int] = UNSET
-    no_price_dollars: Union[Unset, list[int]] = UNSET
+    no_price_dollars: Union[Unset, str] = UNSET
     side: Union[Unset, ModelAmendOrderRequestSide] = UNSET
     ticker: Union[Unset, str] = UNSET
     updated_client_order_id: Union[Unset, str] = UNSET
     yes_price: Union[Unset, int] = UNSET
-    yes_price_dollars: Union[Unset, list[int]] = UNSET
+    yes_price_dollars: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,9 +55,7 @@ class ModelAmendOrderRequest:
 
         no_price = self.no_price
 
-        no_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.no_price_dollars, Unset):
-            no_price_dollars = self.no_price_dollars
+        no_price_dollars = self.no_price_dollars
 
         side: Union[Unset, str] = UNSET
         if not isinstance(self.side, Unset):
@@ -67,9 +67,7 @@ class ModelAmendOrderRequest:
 
         yes_price = self.yes_price
 
-        yes_price_dollars: Union[Unset, list[int]] = UNSET
-        if not isinstance(self.yes_price_dollars, Unset):
-            yes_price_dollars = self.yes_price_dollars
+        yes_price_dollars = self.yes_price_dollars
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -113,7 +111,7 @@ class ModelAmendOrderRequest:
 
         no_price = d.pop("no_price", UNSET)
 
-        no_price_dollars = cast(list[int], d.pop("no_price_dollars", UNSET))
+        no_price_dollars = d.pop("no_price_dollars", UNSET)
 
         _side = d.pop("side", UNSET)
         side: Union[Unset, ModelAmendOrderRequestSide]
@@ -128,7 +126,7 @@ class ModelAmendOrderRequest:
 
         yes_price = d.pop("yes_price", UNSET)
 
-        yes_price_dollars = cast(list[int], d.pop("yes_price_dollars", UNSET))
+        yes_price_dollars = d.pop("yes_price_dollars", UNSET)
 
         model_amend_order_request = cls(
             action=action,

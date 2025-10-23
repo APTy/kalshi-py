@@ -19,15 +19,23 @@ T = TypeVar("T", bound="ModelGetEventMetadataResponse")
 class ModelGetEventMetadataResponse:
     """
     Attributes:
+        competition (Union[Unset, str]):
+        competition_scope (Union[Unset, str]):
         image_url (Union[Unset, str]):
         settlement_sources (Union[Unset, list['ModelGetEventMetadataResponseSettlementSourcesItem']]):
     """
 
+    competition: Union[Unset, str] = UNSET
+    competition_scope: Union[Unset, str] = UNSET
     image_url: Union[Unset, str] = UNSET
     settlement_sources: Union[Unset, list["ModelGetEventMetadataResponseSettlementSourcesItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        competition = self.competition
+
+        competition_scope = self.competition_scope
+
         image_url = self.image_url
 
         settlement_sources: Union[Unset, list[dict[str, Any]]] = UNSET
@@ -40,6 +48,10 @@ class ModelGetEventMetadataResponse:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if competition is not UNSET:
+            field_dict["competition"] = competition
+        if competition_scope is not UNSET:
+            field_dict["competition_scope"] = competition_scope
         if image_url is not UNSET:
             field_dict["image_url"] = image_url
         if settlement_sources is not UNSET:
@@ -54,6 +66,10 @@ class ModelGetEventMetadataResponse:
         )
 
         d = dict(src_dict)
+        competition = d.pop("competition", UNSET)
+
+        competition_scope = d.pop("competition_scope", UNSET)
+
         image_url = d.pop("image_url", UNSET)
 
         settlement_sources = []
@@ -66,6 +82,8 @@ class ModelGetEventMetadataResponse:
             settlement_sources.append(settlement_sources_item)
 
         model_get_event_metadata_response = cls(
+            competition=competition,
+            competition_scope=competition_scope,
             image_url=image_url,
             settlement_sources=settlement_sources,
         )

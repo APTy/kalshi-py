@@ -4,6 +4,17 @@ This page documents all the data models used in the Kalshi Python client.
 
 ## Core Models
 
+### ControllersWebcontrollerErrorResponse
+
+::: kalshi_py.models.controllers_webcontroller_error_response.ControllersWebcontrollerErrorResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule
 
 ::: kalshi_py.models.github_com_kalshi_exchange_infra_common_exchange_metadata_daily_schedule.GithubComKalshiExchangeInfraCommonExchangeMetadataDailySchedule
@@ -114,6 +125,28 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelGetIncentiveProgramsResponse
+
+::: kalshi_py.models.model_get_incentive_programs_response.ModelGetIncentiveProgramsResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetIncentiveProgramsResponseIncentiveProgramsItem
+
+::: kalshi_py.models.model_get_incentive_programs_response_incentive_programs_item.ModelGetIncentiveProgramsResponseIncentiveProgramsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### ModelGetMilestoneResponse
 
 ::: kalshi_py.models.model_get_milestone_response.ModelGetMilestoneResponse
@@ -147,6 +180,28 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelGetSeriesFeeChangesResponse
+
+::: kalshi_py.models.model_get_series_fee_changes_response.ModelGetSeriesFeeChangesResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetSeriesFeeChangesResponseSeriesFeeChangeArrItem
+
+::: kalshi_py.models.model_get_series_fee_changes_response_series_fee_change_arr_item.ModelGetSeriesFeeChangesResponseSeriesFeeChangeArrItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### ModelGetSettlementsResponse
 
 ::: kalshi_py.models.model_get_settlements_response.ModelGetSettlementsResponse
@@ -169,28 +224,6 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelGetStructuredTargetResponse
-
-::: kalshi_py.models.model_get_structured_target_response.ModelGetStructuredTargetResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelGetStructuredTargetsResponse
-
-::: kalshi_py.models.model_get_structured_targets_response.ModelGetStructuredTargetsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 ### ModelPublicTradesGetResponse
 
 ::: kalshi_py.models.model_public_trades_get_response.ModelPublicTradesGetResponse
@@ -203,6 +236,17 @@ This page documents all the data models used in the Kalshi Python client.
       filters: ['!^_']
 
 ## Market Models
+
+### AssociatedEvent
+
+::: kalshi_py.models.associated_event.AssociatedEvent
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
 
 ### EventPosition
 
@@ -218,6 +262,17 @@ This page documents all the data models used in the Kalshi Python client.
 ### GithubComKalshiExchangeInfraSvcApi2ModelMarket
 
 ::: kalshi_py.models.github_com_kalshi_exchange_infra_svc_api_2_model_market.GithubComKalshiExchangeInfraSvcApi2ModelMarket
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure
+
+::: kalshi_py.models.github_com_kalshi_exchange_infra_svc_api_2_model_market_price_level_structure.GithubComKalshiExchangeInfraSvcApi2ModelMarketPriceLevelStructure
     handler: python
     options:
       show_source: true
@@ -281,6 +336,61 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelGetEventCandlesticksResponse
+
+::: kalshi_py.models.model_get_event_candlesticks_response.ModelGetEventCandlesticksResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventCandlesticksResponseMarketCandlesticksItemItem
+
+::: kalshi_py.models.model_get_event_candlesticks_response_market_candlesticks_item_item.ModelGetEventCandlesticksResponseMarketCandlesticksItemItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventForecastPercentilesHistoryResponse
+
+::: kalshi_py.models.model_get_event_forecast_percentiles_history_response.ModelGetEventForecastPercentilesHistoryResponse
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventForecastPercentilesHistoryResponseForecastHistoryItem
+
+::: kalshi_py.models.model_get_event_forecast_percentiles_history_response_forecast_history_item.ModelGetEventForecastPercentilesHistoryResponseForecastHistoryItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ModelGetEventForecastPercentilesHistoryResponseForecastHistoryItemPercentilePointsItem
+
+::: kalshi_py.models.model_get_event_forecast_percentiles_history_response_forecast_history_item_percentile_points_item.ModelGetEventForecastPercentilesHistoryResponseForecastHistoryItemPercentilePointsItem
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### ModelGetEventMetadataResponse
 
 ::: kalshi_py.models.model_get_event_metadata_response.ModelGetEventMetadataResponse
@@ -317,39 +427,6 @@ This page documents all the data models used in the Kalshi Python client.
 ### ModelGetEventsResponse
 
 ::: kalshi_py.models.model_get_events_response.ModelGetEventsResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelGetMarketCandlesticksResponse
-
-::: kalshi_py.models.model_get_market_candlesticks_response.ModelGetMarketCandlesticksResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelGetMarketCandlesticksResponseCandlesticksItem
-
-::: kalshi_py.models.model_get_market_candlesticks_response_candlesticks_item.ModelGetMarketCandlesticksResponseCandlesticksItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelGetMarketOrderbookResponse
-
-::: kalshi_py.models.model_get_market_orderbook_response.ModelGetMarketOrderbookResponse
     handler: python
     options:
       show_source: true
@@ -512,6 +589,17 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelMarketPriceLevelStructure
+
+::: kalshi_py.models.model_market_price_level_structure.ModelMarketPriceLevelStructure
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### ModelMultivariateEventCollection
 
 ::: kalshi_py.models.model_multivariate_event_collection.ModelMultivariateEventCollection
@@ -523,9 +611,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelTickerPair
+### ModelMultivariateEventCollectionAssociatedEventsItem
 
-::: kalshi_py.models.model_ticker_pair.ModelTickerPair
+::: kalshi_py.models.model_multivariate_event_collection_associated_events_item.ModelMultivariateEventCollectionAssociatedEventsItem
     handler: python
     options:
       show_source: true
@@ -534,9 +622,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelTickerPairSide
+### ModelTickerPair
 
-::: kalshi_py.models.model_ticker_pair_side.ModelTickerPairSide
+::: kalshi_py.models.model_ticker_pair.ModelTickerPair
     handler: python
     options:
       show_source: true
@@ -567,17 +655,6 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### TickerPairSide
-
-::: kalshi_py.models.ticker_pair_side.TickerPairSide
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 ## Order Models
 
 ### BatchCancelOrdersIndividualResponse
@@ -594,17 +671,6 @@ This page documents all the data models used in the Kalshi Python client.
 ### BatchCreateOrdersIndividualResponse
 
 ::: kalshi_py.models.batch_create_orders_individual_response.BatchCreateOrdersIndividualResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation
-
-::: kalshi_py.models.github_com_kalshi_exchange_infra_svc_api_2_model_order_confirmation.GithubComKalshiExchangeInfraSvcApi2ModelOrderConfirmation
     handler: python
     options:
       show_source: true
@@ -800,17 +866,6 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelCreateOrderRequestType
-
-::: kalshi_py.models.model_create_order_request_type.ModelCreateOrderRequestType
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 ### ModelCreateOrderResponse
 
 ::: kalshi_py.models.model_create_order_response.ModelCreateOrderResponse
@@ -954,64 +1009,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelGetUserRestingOrderTotalValueResponse
-
-::: kalshi_py.models.model_get_user_resting_order_total_value_response.ModelGetUserRestingOrderTotalValueResponse
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 ### ModelOrder
 
 ::: kalshi_py.models.model_order.ModelOrder
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelOrderBook
-
-::: kalshi_py.models.model_order_book.ModelOrderBook
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelOrderBookNoDollarsItem
-
-::: kalshi_py.models.model_order_book_no_dollars_item.ModelOrderBookNoDollarsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelOrderBookYesDollarsItem
-
-::: kalshi_py.models.model_order_book_yes_dollars_item.ModelOrderBookYesDollarsItem
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
-### ModelOrderConfirmation
-
-::: kalshi_py.models.model_order_confirmation.ModelOrderConfirmation
     handler: python
     options:
       show_source: true
@@ -1156,17 +1156,6 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### GithubComKalshiExchangeInfraCommonCommunicationsRFQ
-
-::: kalshi_py.models.github_com_kalshi_exchange_infra_common_communications_rfq.GithubComKalshiExchangeInfraCommonCommunicationsRFQ
-    handler: python
-    options:
-      show_source: true
-      show_root_heading: true
-      heading_level: 4
-      members_order: source
-      filters: ['!^_']
-
 ### ModelAcceptQuoteRequest
 
 ::: kalshi_py.models.model_accept_quote_request.ModelAcceptQuoteRequest
@@ -1288,9 +1277,9 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelGetRFQResponse
+### ModelGetRFQsResponseRfqsItemMveSelectedLegsItem
 
-::: kalshi_py.models.model_get_rfq_response.ModelGetRFQResponse
+::: kalshi_py.models.model_get_rf_qs_response_rfqs_item_mve_selected_legs_item.ModelGetRFQsResponseRfqsItemMveSelectedLegsItem
     handler: python
     options:
       show_source: true
@@ -1315,6 +1304,28 @@ This page documents all the data models used in the Kalshi Python client.
 ### DailySchedule
 
 ::: kalshi_py.models.daily_schedule.DailySchedule
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ForecastPercentilesPoint
+
+::: kalshi_py.models.forecast_percentiles_point.ForecastPercentilesPoint
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### ForecastPercentilesPointPercentilePointsItem
+
+::: kalshi_py.models.forecast_percentiles_point_percentile_points_item.ForecastPercentilesPointPercentilePointsItem
     handler: python
     options:
       show_source: true
@@ -1348,6 +1359,17 @@ This page documents all the data models used in the Kalshi Python client.
 ### GithubComKalshiExchangeInfraCommonUnimodelDetails
 
 ::: kalshi_py.models.github_com_kalshi_exchange_infra_common_unimodel_details.GithubComKalshiExchangeInfraCommonUnimodelDetails
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### IncentiveProgram
+
+::: kalshi_py.models.incentive_program.IncentiveProgram
     handler: python
     options:
       show_source: true
@@ -1422,6 +1444,17 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
+### ModelPriceRange
+
+::: kalshi_py.models.model_price_range.ModelPriceRange
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 ### ModelPublicTrade
 
 ::: kalshi_py.models.model_public_trade.ModelPublicTrade
@@ -1433,9 +1466,20 @@ This page documents all the data models used in the Kalshi Python client.
       members_order: source
       filters: ['!^_']
 
-### ModelStructuredTarget
+### MveSelectedLeg
 
-::: kalshi_py.models.model_structured_target.ModelStructuredTarget
+::: kalshi_py.models.mve_selected_leg.MveSelectedLeg
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### PercentilePoint
+
+::: kalshi_py.models.percentile_point.PercentilePoint
     handler: python
     options:
       show_source: true
@@ -1447,6 +1491,28 @@ This page documents all the data models used in the Kalshi Python client.
 ### PriceLevelDollars
 
 ::: kalshi_py.models.price_level_dollars.PriceLevelDollars
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### PriceRange
+
+::: kalshi_py.models.price_range.PriceRange
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+### SeriesFeeChange
+
+::: kalshi_py.models.series_fee_change.SeriesFeeChange
     handler: python
     options:
       show_source: true

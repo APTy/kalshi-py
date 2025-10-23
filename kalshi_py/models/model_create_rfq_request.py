@@ -16,11 +16,13 @@ class ModelCreateRFQRequest:
         contracts (Union[Unset, int]): The number of contracts for the RFQ.
         market_ticker (Union[Unset, str]): The ticker of the market for which to create an RFQ.
         rest_remainder (Union[Unset, bool]): Whether to rest the remainder of the RFQ after execution.
+        target_cost_centi_cents (Union[Unset, int]):
     """
 
     contracts: Union[Unset, int] = UNSET
     market_ticker: Union[Unset, str] = UNSET
     rest_remainder: Union[Unset, bool] = UNSET
+    target_cost_centi_cents: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +31,8 @@ class ModelCreateRFQRequest:
         market_ticker = self.market_ticker
 
         rest_remainder = self.rest_remainder
+
+        target_cost_centi_cents = self.target_cost_centi_cents
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -39,6 +43,8 @@ class ModelCreateRFQRequest:
             field_dict["market_ticker"] = market_ticker
         if rest_remainder is not UNSET:
             field_dict["rest_remainder"] = rest_remainder
+        if target_cost_centi_cents is not UNSET:
+            field_dict["target_cost_centi_cents"] = target_cost_centi_cents
 
         return field_dict
 
@@ -51,10 +57,13 @@ class ModelCreateRFQRequest:
 
         rest_remainder = d.pop("rest_remainder", UNSET)
 
+        target_cost_centi_cents = d.pop("target_cost_centi_cents", UNSET)
+
         model_create_rfq_request = cls(
             contracts=contracts,
             market_ticker=market_ticker,
             rest_remainder=rest_remainder,
+            target_cost_centi_cents=target_cost_centi_cents,
         )
 
         model_create_rfq_request.additional_properties = d

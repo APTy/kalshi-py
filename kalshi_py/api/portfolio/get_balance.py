@@ -48,7 +48,8 @@ def sync_detailed(
 ) -> Response[ModelGetBalanceResponse]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -73,7 +74,8 @@ def sync(
 ) -> Optional[ModelGetBalanceResponse]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -94,7 +96,8 @@ async def asyncio_detailed(
 ) -> Response[ModelGetBalanceResponse]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,7 +120,8 @@ async def asyncio(
 ) -> Optional[ModelGetBalanceResponse]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

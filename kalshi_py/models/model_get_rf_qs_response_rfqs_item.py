@@ -1,12 +1,18 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.model_get_rf_qs_response_rfqs_item_mve_selected_legs_item import (
+        ModelGetRFQsResponseRfqsItemMveSelectedLegsItem,
+    )
+
 
 T = TypeVar("T", bound="ModelGetRFQsResponseRfqsItem")
 
@@ -23,8 +29,12 @@ class ModelGetRFQsResponseRfqsItem:
         creator_user_id (Union[Unset, str]):
         id (Union[Unset, str]):
         market_ticker (Union[Unset, str]): The ticker of the market this RFQ is for.
+        mve_collection_ticker (Union[Unset, str]): Ticker of the MVE collection this market belongs to.
+        mve_selected_legs (Union[Unset, list['ModelGetRFQsResponseRfqsItemMveSelectedLegsItem']]): Selected legs for the
+            MVE collection.
         rest_remainder (Union[Unset, bool]): Whether to rest the remainder of the RFQ after execution.
         status (Union[Unset, str]):
+        target_cost_centi_cents (Union[Unset, int]):
         updated_ts (Union[Unset, datetime.datetime]): Timestamp when the RFQ was last updated.
     """
 
@@ -36,8 +46,11 @@ class ModelGetRFQsResponseRfqsItem:
     creator_user_id: Union[Unset, str] = UNSET
     id: Union[Unset, str] = UNSET
     market_ticker: Union[Unset, str] = UNSET
+    mve_collection_ticker: Union[Unset, str] = UNSET
+    mve_selected_legs: Union[Unset, list["ModelGetRFQsResponseRfqsItemMveSelectedLegsItem"]] = UNSET
     rest_remainder: Union[Unset, bool] = UNSET
     status: Union[Unset, str] = UNSET
+    target_cost_centi_cents: Union[Unset, int] = UNSET
     updated_ts: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -62,9 +75,20 @@ class ModelGetRFQsResponseRfqsItem:
 
         market_ticker = self.market_ticker
 
+        mve_collection_ticker = self.mve_collection_ticker
+
+        mve_selected_legs: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.mve_selected_legs, Unset):
+            mve_selected_legs = []
+            for mve_selected_legs_item_data in self.mve_selected_legs:
+                mve_selected_legs_item = mve_selected_legs_item_data.to_dict()
+                mve_selected_legs.append(mve_selected_legs_item)
+
         rest_remainder = self.rest_remainder
 
         status = self.status
+
+        target_cost_centi_cents = self.target_cost_centi_cents
 
         updated_ts: Union[Unset, str] = UNSET
         if not isinstance(self.updated_ts, Unset):
@@ -89,10 +113,16 @@ class ModelGetRFQsResponseRfqsItem:
             field_dict["id"] = id
         if market_ticker is not UNSET:
             field_dict["market_ticker"] = market_ticker
+        if mve_collection_ticker is not UNSET:
+            field_dict["mve_collection_ticker"] = mve_collection_ticker
+        if mve_selected_legs is not UNSET:
+            field_dict["mve_selected_legs"] = mve_selected_legs
         if rest_remainder is not UNSET:
             field_dict["rest_remainder"] = rest_remainder
         if status is not UNSET:
             field_dict["status"] = status
+        if target_cost_centi_cents is not UNSET:
+            field_dict["target_cost_centi_cents"] = target_cost_centi_cents
         if updated_ts is not UNSET:
             field_dict["updated_ts"] = updated_ts
 
@@ -100,6 +130,10 @@ class ModelGetRFQsResponseRfqsItem:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.model_get_rf_qs_response_rfqs_item_mve_selected_legs_item import (
+            ModelGetRFQsResponseRfqsItemMveSelectedLegsItem,
+        )
+
         d = dict(src_dict)
         cancellation_reason = d.pop("cancellation_reason", UNSET)
 
@@ -127,9 +161,22 @@ class ModelGetRFQsResponseRfqsItem:
 
         market_ticker = d.pop("market_ticker", UNSET)
 
+        mve_collection_ticker = d.pop("mve_collection_ticker", UNSET)
+
+        mve_selected_legs = []
+        _mve_selected_legs = d.pop("mve_selected_legs", UNSET)
+        for mve_selected_legs_item_data in _mve_selected_legs or []:
+            mve_selected_legs_item = ModelGetRFQsResponseRfqsItemMveSelectedLegsItem.from_dict(
+                mve_selected_legs_item_data
+            )
+
+            mve_selected_legs.append(mve_selected_legs_item)
+
         rest_remainder = d.pop("rest_remainder", UNSET)
 
         status = d.pop("status", UNSET)
+
+        target_cost_centi_cents = d.pop("target_cost_centi_cents", UNSET)
 
         _updated_ts = d.pop("updated_ts", UNSET)
         updated_ts: Union[Unset, datetime.datetime]
@@ -147,8 +194,11 @@ class ModelGetRFQsResponseRfqsItem:
             creator_user_id=creator_user_id,
             id=id,
             market_ticker=market_ticker,
+            mve_collection_ticker=mve_collection_ticker,
+            mve_selected_legs=mve_selected_legs,
             rest_remainder=rest_remainder,
             status=status,
+            target_cost_centi_cents=target_cost_centi_cents,
             updated_ts=updated_ts,
         )
 
