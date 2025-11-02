@@ -1,11 +1,11 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_milestone_response import ModelGetMilestoneResponse
+from ...models.get_milestone_response import GetMilestoneResponse
 from ...types import Response
 
 
@@ -22,11 +22,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetMilestoneResponse]:
+) -> Optional[Union[Any, GetMilestoneResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetMilestoneResponse.from_dict(response.json())
+        response_200 = GetMilestoneResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -35,7 +47,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetMilestoneResponse]:
+) -> Response[Union[Any, GetMilestoneResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,20 +60,20 @@ def sync_detailed(
     milestone_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetMilestoneResponse]:
+) -> Response[Union[Any, GetMilestoneResponse]]:
     """Get Milestone
 
       Endpoint for getting data about a specific milestone by its ID.
 
     Args:
-        milestone_id (str): Milestone ID
+        milestone_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMilestoneResponse]
+        Response[Union[Any, GetMilestoneResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -79,20 +91,20 @@ def sync(
     milestone_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetMilestoneResponse]:
+) -> Optional[Union[Any, GetMilestoneResponse]]:
     """Get Milestone
 
       Endpoint for getting data about a specific milestone by its ID.
 
     Args:
-        milestone_id (str): Milestone ID
+        milestone_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMilestoneResponse
+        Union[Any, GetMilestoneResponse]
     """
 
     return sync_detailed(
@@ -105,20 +117,20 @@ async def asyncio_detailed(
     milestone_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetMilestoneResponse]:
+) -> Response[Union[Any, GetMilestoneResponse]]:
     """Get Milestone
 
       Endpoint for getting data about a specific milestone by its ID.
 
     Args:
-        milestone_id (str): Milestone ID
+        milestone_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMilestoneResponse]
+        Response[Union[Any, GetMilestoneResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -134,20 +146,20 @@ async def asyncio(
     milestone_id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetMilestoneResponse]:
+) -> Optional[Union[Any, GetMilestoneResponse]]:
     """Get Milestone
 
       Endpoint for getting data about a specific milestone by its ID.
 
     Args:
-        milestone_id (str): Milestone ID
+        milestone_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMilestoneResponse
+        Union[Any, GetMilestoneResponse]
     """
 
     return (

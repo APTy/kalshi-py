@@ -215,9 +215,9 @@ def main():
         "communications": "communications",
         "collection": "collection",
         "milestone": "milestone",
-        "structured_target": "structured_target",
+        "structured_target": "structured_targets",
         "api_keys": "api_keys",
-        "default": "default",
+        "exchange": "exchange",
     }
 
     docs_dir = Path("docs/api")

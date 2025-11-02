@@ -5,16 +5,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_positions_response import ModelGetPositionsResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_positions_response import GetPositionsResponse
+from ...models.get_positions_settlement_status import GetPositionsSettlementStatus
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     cursor: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     count_filter: Union[Unset, str] = UNSET,
-    settlement_status: Union[Unset, str] = UNSET,
+    settlement_status: Union[Unset, GetPositionsSettlementStatus] = GetPositionsSettlementStatus.UNSETTLED,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
@@ -26,7 +28,11 @@ def _get_kwargs(
 
     params["count_filter"] = count_filter
 
-    params["settlement_status"] = settlement_status
+    json_settlement_status: Union[Unset, str] = UNSET
+    if not isinstance(settlement_status, Unset):
+        json_settlement_status = settlement_status.value
+
+    params["settlement_status"] = json_settlement_status
 
     params["ticker"] = ticker
 
@@ -45,11 +51,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetPositionsResponse]:
+) -> Optional[Union[ErrorResponse, GetPositionsResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetPositionsResponse.from_dict(response.json())
+        response_200 = GetPositionsResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -58,7 +76,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetPositionsResponse]:
+) -> Response[Union[ErrorResponse, GetPositionsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,37 +87,34 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     cursor: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     count_filter: Union[Unset, str] = UNSET,
-    settlement_status: Union[Unset, str] = UNSET,
+    settlement_status: Union[Unset, GetPositionsSettlementStatus] = GetPositionsSettlementStatus.UNSETTLED,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
-) -> Response[ModelGetPositionsResponse]:
+) -> Response[Union[ErrorResponse, GetPositionsResponse]]:
     """Get Positions
 
-      Endpoint for getting all market positions for the member.
+     Restricts the positions to those with any of following fields with non-zero values, as a comma
+    separated list. The following values are accepted: position, total_traded, resting_order_count
 
     Args:
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        count_filter (Union[Unset, str]): Restricts the positions to those with any of following
-            fields with non-zero values, as a comma separated list. The following values are accepted:
-            position, total_traded, resting_order_count
-        settlement_status (Union[Unset, str]): Settlement status of the markets to return.
-            Defaults to unsettled.
-        ticker (Union[Unset, str]): Ticker of desired positions.
-        event_ticker (Union[Unset, str]): Event ticker of desired positions.
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        count_filter (Union[Unset, str]):
+        settlement_status (Union[Unset, GetPositionsSettlementStatus]):  Default:
+            GetPositionsSettlementStatus.UNSETTLED.
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetPositionsResponse]
+        Response[Union[ErrorResponse, GetPositionsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -120,37 +135,34 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     cursor: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     count_filter: Union[Unset, str] = UNSET,
-    settlement_status: Union[Unset, str] = UNSET,
+    settlement_status: Union[Unset, GetPositionsSettlementStatus] = GetPositionsSettlementStatus.UNSETTLED,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetPositionsResponse]:
+) -> Optional[Union[ErrorResponse, GetPositionsResponse]]:
     """Get Positions
 
-      Endpoint for getting all market positions for the member.
+     Restricts the positions to those with any of following fields with non-zero values, as a comma
+    separated list. The following values are accepted: position, total_traded, resting_order_count
 
     Args:
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        count_filter (Union[Unset, str]): Restricts the positions to those with any of following
-            fields with non-zero values, as a comma separated list. The following values are accepted:
-            position, total_traded, resting_order_count
-        settlement_status (Union[Unset, str]): Settlement status of the markets to return.
-            Defaults to unsettled.
-        ticker (Union[Unset, str]): Ticker of desired positions.
-        event_ticker (Union[Unset, str]): Event ticker of desired positions.
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        count_filter (Union[Unset, str]):
+        settlement_status (Union[Unset, GetPositionsSettlementStatus]):  Default:
+            GetPositionsSettlementStatus.UNSETTLED.
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetPositionsResponse
+        Union[ErrorResponse, GetPositionsResponse]
     """
 
     return sync_detailed(
@@ -166,37 +178,34 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     cursor: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     count_filter: Union[Unset, str] = UNSET,
-    settlement_status: Union[Unset, str] = UNSET,
+    settlement_status: Union[Unset, GetPositionsSettlementStatus] = GetPositionsSettlementStatus.UNSETTLED,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
-) -> Response[ModelGetPositionsResponse]:
+) -> Response[Union[ErrorResponse, GetPositionsResponse]]:
     """Get Positions
 
-      Endpoint for getting all market positions for the member.
+     Restricts the positions to those with any of following fields with non-zero values, as a comma
+    separated list. The following values are accepted: position, total_traded, resting_order_count
 
     Args:
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        count_filter (Union[Unset, str]): Restricts the positions to those with any of following
-            fields with non-zero values, as a comma separated list. The following values are accepted:
-            position, total_traded, resting_order_count
-        settlement_status (Union[Unset, str]): Settlement status of the markets to return.
-            Defaults to unsettled.
-        ticker (Union[Unset, str]): Ticker of desired positions.
-        event_ticker (Union[Unset, str]): Event ticker of desired positions.
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        count_filter (Union[Unset, str]):
+        settlement_status (Union[Unset, GetPositionsSettlementStatus]):  Default:
+            GetPositionsSettlementStatus.UNSETTLED.
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetPositionsResponse]
+        Response[Union[ErrorResponse, GetPositionsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -215,37 +224,34 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     cursor: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     count_filter: Union[Unset, str] = UNSET,
-    settlement_status: Union[Unset, str] = UNSET,
+    settlement_status: Union[Unset, GetPositionsSettlementStatus] = GetPositionsSettlementStatus.UNSETTLED,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetPositionsResponse]:
+) -> Optional[Union[ErrorResponse, GetPositionsResponse]]:
     """Get Positions
 
-      Endpoint for getting all market positions for the member.
+     Restricts the positions to those with any of following fields with non-zero values, as a comma
+    separated list. The following values are accepted: position, total_traded, resting_order_count
 
     Args:
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        count_filter (Union[Unset, str]): Restricts the positions to those with any of following
-            fields with non-zero values, as a comma separated list. The following values are accepted:
-            position, total_traded, resting_order_count
-        settlement_status (Union[Unset, str]): Settlement status of the markets to return.
-            Defaults to unsettled.
-        ticker (Union[Unset, str]): Ticker of desired positions.
-        event_ticker (Union[Unset, str]): Event ticker of desired positions.
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        count_filter (Union[Unset, str]):
+        settlement_status (Union[Unset, GetPositionsSettlementStatus]):  Default:
+            GetPositionsSettlementStatus.UNSETTLED.
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetPositionsResponse
+        Union[ErrorResponse, GetPositionsResponse]
     """
 
     return (

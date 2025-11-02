@@ -1,11 +1,11 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_fills_response import ModelGetFillsResponse
+from ...models.get_fills_response import GetFillsResponse
 from ...types import UNSET, Response, Unset
 
 
@@ -15,9 +15,8 @@ def _get_kwargs(
     order_id: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -33,8 +32,6 @@ def _get_kwargs(
 
     params["cursor"] = cursor
 
-    params["use_dollars"] = use_dollars
-
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -48,11 +45,20 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetFillsResponse]:
+) -> Optional[Union[Any, GetFillsResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetFillsResponse.from_dict(response.json())
+        response_200 = GetFillsResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -61,7 +67,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetFillsResponse]:
+) -> Response[Union[Any, GetFillsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,38 +78,32 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     ticker: Union[Unset, str] = UNSET,
     order_id: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
-) -> Response[ModelGetFillsResponse]:
+) -> Response[Union[Any, GetFillsResponse]]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
 
     Args:
-        ticker (Union[Unset, str]): Restricts the response to trades in a specific market.
-        order_id (Union[Unset, str]): Restricts the response to trades related to a specific
-            order.
-        min_ts (Union[Unset, int]): Restricts the response to trades after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to trades before a timestamp.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
+        ticker (Union[Unset, str]):
+        order_id (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetFillsResponse]
+        Response[Union[Any, GetFillsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -113,7 +113,6 @@ def sync_detailed(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     )
 
     response = client.get_httpx_client().request(
@@ -125,38 +124,32 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     ticker: Union[Unset, str] = UNSET,
     order_id: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
-) -> Optional[ModelGetFillsResponse]:
+) -> Optional[Union[Any, GetFillsResponse]]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
 
     Args:
-        ticker (Union[Unset, str]): Restricts the response to trades in a specific market.
-        order_id (Union[Unset, str]): Restricts the response to trades related to a specific
-            order.
-        min_ts (Union[Unset, int]): Restricts the response to trades after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to trades before a timestamp.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
+        ticker (Union[Unset, str]):
+        order_id (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetFillsResponse
+        Union[Any, GetFillsResponse]
     """
 
     return sync_detailed(
@@ -167,44 +160,37 @@ def sync(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     ticker: Union[Unset, str] = UNSET,
     order_id: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
-) -> Response[ModelGetFillsResponse]:
+) -> Response[Union[Any, GetFillsResponse]]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
 
     Args:
-        ticker (Union[Unset, str]): Restricts the response to trades in a specific market.
-        order_id (Union[Unset, str]): Restricts the response to trades related to a specific
-            order.
-        min_ts (Union[Unset, int]): Restricts the response to trades after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to trades before a timestamp.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
+        ticker (Union[Unset, str]):
+        order_id (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetFillsResponse]
+        Response[Union[Any, GetFillsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -214,7 +200,6 @@ async def asyncio_detailed(
         max_ts=max_ts,
         limit=limit,
         cursor=cursor,
-        use_dollars=use_dollars,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -224,38 +209,32 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
     ticker: Union[Unset, str] = UNSET,
     order_id: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
-    use_dollars: Union[Unset, bool] = UNSET,
-) -> Optional[ModelGetFillsResponse]:
+) -> Optional[Union[Any, GetFillsResponse]]:
     """Get Fills
 
       Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
 
     Args:
-        ticker (Union[Unset, str]): Restricts the response to trades in a specific market.
-        order_id (Union[Unset, str]): Restricts the response to trades related to a specific
-            order.
-        min_ts (Union[Unset, int]): Restricts the response to trades after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to trades before a timestamp.
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
-        use_dollars (Union[Unset, bool]): Whether to return prices in centi-cent format (0.0001)
-            instead of cent format (0.01).
+        ticker (Union[Unset, str]):
+        order_id (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetFillsResponse
+        Union[Any, GetFillsResponse]
     """
 
     return (
@@ -267,6 +246,5 @@ async def asyncio(
             max_ts=max_ts,
             limit=limit,
             cursor=cursor,
-            use_dollars=use_dollars,
         )
     ).parsed

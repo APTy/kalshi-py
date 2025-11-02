@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_balance_response import ModelGetBalanceResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_balance_response import GetBalanceResponse
 from ...types import Response
 
 
@@ -20,11 +21,19 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetBalanceResponse]:
+) -> Optional[Union[ErrorResponse, GetBalanceResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetBalanceResponse.from_dict(response.json())
+        response_200 = GetBalanceResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -33,7 +42,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetBalanceResponse]:
+) -> Response[Union[ErrorResponse, GetBalanceResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,18 +53,19 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetBalanceResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetBalanceResponse]]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetBalanceResponse]
+        Response[Union[ErrorResponse, GetBalanceResponse]]
     """
 
     kwargs = _get_kwargs()
@@ -69,18 +79,19 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetBalanceResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetBalanceResponse]]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetBalanceResponse
+        Union[ErrorResponse, GetBalanceResponse]
     """
 
     return sync_detailed(
@@ -90,18 +101,19 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetBalanceResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetBalanceResponse]]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetBalanceResponse]
+        Response[Union[ErrorResponse, GetBalanceResponse]]
     """
 
     kwargs = _get_kwargs()
@@ -113,18 +125,19 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetBalanceResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetBalanceResponse]]:
     """Get Balance
 
-      Endpoint for getting the balance of a member. The balance value is returned in cents.
+      Endpoint for getting the balance and portfolio value of a member. Both values are returned in
+    cents.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetBalanceResponse
+        Union[ErrorResponse, GetBalanceResponse]
     """
 
     return (

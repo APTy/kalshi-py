@@ -5,15 +5,16 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_decrease_order_request import ModelDecreaseOrderRequest
-from ...models.model_decrease_order_response import ModelDecreaseOrderResponse
+from ...models.decrease_order_request import DecreaseOrderRequest
+from ...models.decrease_order_response import DecreaseOrderResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     order_id: str,
     *,
-    body: ModelDecreaseOrderRequest,
+    body: DecreaseOrderRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -32,11 +33,27 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelDecreaseOrderResponse]:
+) -> Optional[Union[DecreaseOrderResponse, ErrorResponse]]:
     if response.status_code == 200:
-        response_200 = ModelDecreaseOrderResponse.from_dict(response.json())
+        response_200 = DecreaseOrderResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -45,7 +62,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelDecreaseOrderResponse]:
+) -> Response[Union[DecreaseOrderResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,9 +74,9 @@ def _build_response(
 def sync_detailed(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelDecreaseOrderRequest,
-) -> Response[ModelDecreaseOrderResponse]:
+    client: AuthenticatedClient,
+    body: DecreaseOrderRequest,
+) -> Response[Union[DecreaseOrderResponse, ErrorResponse]]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -67,15 +84,15 @@ def sync_detailed(
     zero.
 
     Args:
-        order_id (str): Order ID
-        body (ModelDecreaseOrderRequest):
+        order_id (str):
+        body (DecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelDecreaseOrderResponse]
+        Response[Union[DecreaseOrderResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -93,9 +110,9 @@ def sync_detailed(
 def sync(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelDecreaseOrderRequest,
-) -> Optional[ModelDecreaseOrderResponse]:
+    client: AuthenticatedClient,
+    body: DecreaseOrderRequest,
+) -> Optional[Union[DecreaseOrderResponse, ErrorResponse]]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -103,15 +120,15 @@ def sync(
     zero.
 
     Args:
-        order_id (str): Order ID
-        body (ModelDecreaseOrderRequest):
+        order_id (str):
+        body (DecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelDecreaseOrderResponse
+        Union[DecreaseOrderResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -124,9 +141,9 @@ def sync(
 async def asyncio_detailed(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelDecreaseOrderRequest,
-) -> Response[ModelDecreaseOrderResponse]:
+    client: AuthenticatedClient,
+    body: DecreaseOrderRequest,
+) -> Response[Union[DecreaseOrderResponse, ErrorResponse]]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -134,15 +151,15 @@ async def asyncio_detailed(
     zero.
 
     Args:
-        order_id (str): Order ID
-        body (ModelDecreaseOrderRequest):
+        order_id (str):
+        body (DecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelDecreaseOrderResponse]
+        Response[Union[DecreaseOrderResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -158,9 +175,9 @@ async def asyncio_detailed(
 async def asyncio(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelDecreaseOrderRequest,
-) -> Optional[ModelDecreaseOrderResponse]:
+    client: AuthenticatedClient,
+    body: DecreaseOrderRequest,
+) -> Optional[Union[DecreaseOrderResponse, ErrorResponse]]:
     """Decrease Order
 
       Endpoint for decreasing the number of contracts in an existing order. This is the only kind of edit
@@ -168,15 +185,15 @@ async def asyncio(
     zero.
 
     Args:
-        order_id (str): Order ID
-        body (ModelDecreaseOrderRequest):
+        order_id (str):
+        body (DecreaseOrderRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelDecreaseOrderResponse
+        Union[DecreaseOrderResponse, ErrorResponse]
     """
 
     return (

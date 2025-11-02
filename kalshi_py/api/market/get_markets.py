@@ -1,17 +1,17 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_markets_response import ModelGetMarketsResponse
+from ...models.get_markets_response import GetMarketsResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
@@ -51,11 +51,20 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetMarketsResponse]:
+) -> Optional[Union[Any, GetMarketsResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetMarketsResponse.from_dict(response.json())
+        response_200 = GetMarketsResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -64,7 +73,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetMarketsResponse]:
+) -> Response[Union[Any, GetMarketsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +85,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
@@ -84,39 +93,28 @@ def sync_detailed(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Response[ModelGetMarketsResponse]:
-    r"""Get Markets
+) -> Response[Union[Any, GetMarketsResponse]]:
+    """Get Markets
 
-      Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
-    outcome within an event that users can trade on (e.g., \"Will candidate X win?\"). Markets have
-    yes/no positions, current prices, volume, and settlement rules. This endpoint returns a paginated
-    response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response
-    includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get
-    the next page. An empty cursor indicates no more pages are available.
+     Filter by market status. Comma-separated list. Possible values: 'unopened', 'open', 'closed',
+    'settled'. Leave empty to return markets with any status.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        event_ticker (Union[Unset, str]): Filter markets by event ticker. Returns only markets
-            belonging to the specified event.
-        series_ticker (Union[Unset, str]): Filter markets by series ticker. Returns only markets
-            belonging to events in the specified series.
-        max_close_ts (Union[Unset, int]): Filter markets that close before this Unix timestamp.
-        min_close_ts (Union[Unset, int]): Filter markets that close after this Unix timestamp.
-        status (Union[Unset, str]): Filter by market status. Comma-separated list. Possible
-            values: 'unopened', 'open', 'closed', 'settled'. Leave empty to return markets with any
-            status.
-        tickers (Union[Unset, str]): Filter by specific market tickers. Comma-separated list of
-            market tickers to retrieve.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        series_ticker (Union[Unset, str]):
+        max_close_ts (Union[Unset, int]):
+        min_close_ts (Union[Unset, int]):
+        status (Union[Unset, str]):
+        tickers (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketsResponse]
+        Response[Union[Any, GetMarketsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -140,7 +138,7 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
@@ -148,39 +146,28 @@ def sync(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetMarketsResponse]:
-    r"""Get Markets
+) -> Optional[Union[Any, GetMarketsResponse]]:
+    """Get Markets
 
-      Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
-    outcome within an event that users can trade on (e.g., \"Will candidate X win?\"). Markets have
-    yes/no positions, current prices, volume, and settlement rules. This endpoint returns a paginated
-    response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response
-    includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get
-    the next page. An empty cursor indicates no more pages are available.
+     Filter by market status. Comma-separated list. Possible values: 'unopened', 'open', 'closed',
+    'settled'. Leave empty to return markets with any status.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        event_ticker (Union[Unset, str]): Filter markets by event ticker. Returns only markets
-            belonging to the specified event.
-        series_ticker (Union[Unset, str]): Filter markets by series ticker. Returns only markets
-            belonging to events in the specified series.
-        max_close_ts (Union[Unset, int]): Filter markets that close before this Unix timestamp.
-        min_close_ts (Union[Unset, int]): Filter markets that close after this Unix timestamp.
-        status (Union[Unset, str]): Filter by market status. Comma-separated list. Possible
-            values: 'unopened', 'open', 'closed', 'settled'. Leave empty to return markets with any
-            status.
-        tickers (Union[Unset, str]): Filter by specific market tickers. Comma-separated list of
-            market tickers to retrieve.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        series_ticker (Union[Unset, str]):
+        max_close_ts (Union[Unset, int]):
+        min_close_ts (Union[Unset, int]):
+        status (Union[Unset, str]):
+        tickers (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketsResponse
+        Union[Any, GetMarketsResponse]
     """
 
     return sync_detailed(
@@ -199,7 +186,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
@@ -207,39 +194,28 @@ async def asyncio_detailed(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Response[ModelGetMarketsResponse]:
-    r"""Get Markets
+) -> Response[Union[Any, GetMarketsResponse]]:
+    """Get Markets
 
-      Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
-    outcome within an event that users can trade on (e.g., \"Will candidate X win?\"). Markets have
-    yes/no positions, current prices, volume, and settlement rules. This endpoint returns a paginated
-    response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response
-    includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get
-    the next page. An empty cursor indicates no more pages are available.
+     Filter by market status. Comma-separated list. Possible values: 'unopened', 'open', 'closed',
+    'settled'. Leave empty to return markets with any status.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        event_ticker (Union[Unset, str]): Filter markets by event ticker. Returns only markets
-            belonging to the specified event.
-        series_ticker (Union[Unset, str]): Filter markets by series ticker. Returns only markets
-            belonging to events in the specified series.
-        max_close_ts (Union[Unset, int]): Filter markets that close before this Unix timestamp.
-        min_close_ts (Union[Unset, int]): Filter markets that close after this Unix timestamp.
-        status (Union[Unset, str]): Filter by market status. Comma-separated list. Possible
-            values: 'unopened', 'open', 'closed', 'settled'. Leave empty to return markets with any
-            status.
-        tickers (Union[Unset, str]): Filter by specific market tickers. Comma-separated list of
-            market tickers to retrieve.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        series_ticker (Union[Unset, str]):
+        max_close_ts (Union[Unset, int]):
+        min_close_ts (Union[Unset, int]):
+        status (Union[Unset, str]):
+        tickers (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketsResponse]
+        Response[Union[Any, GetMarketsResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -261,7 +237,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     series_ticker: Union[Unset, str] = UNSET,
@@ -269,39 +245,28 @@ async def asyncio(
     min_close_ts: Union[Unset, int] = UNSET,
     status: Union[Unset, str] = UNSET,
     tickers: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetMarketsResponse]:
-    r"""Get Markets
+) -> Optional[Union[Any, GetMarketsResponse]]:
+    """Get Markets
 
-      Endpoint for listing and discovering markets on Kalshi. A market represents a specific binary
-    outcome within an event that users can trade on (e.g., \"Will candidate X win?\"). Markets have
-    yes/no positions, current prices, volume, and settlement rules. This endpoint returns a paginated
-    response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response
-    includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get
-    the next page. An empty cursor indicates no more pages are available.
+     Filter by market status. Comma-separated list. Possible values: 'unopened', 'open', 'closed',
+    'settled'. Leave empty to return markets with any status.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        event_ticker (Union[Unset, str]): Filter markets by event ticker. Returns only markets
-            belonging to the specified event.
-        series_ticker (Union[Unset, str]): Filter markets by series ticker. Returns only markets
-            belonging to events in the specified series.
-        max_close_ts (Union[Unset, int]): Filter markets that close before this Unix timestamp.
-        min_close_ts (Union[Unset, int]): Filter markets that close after this Unix timestamp.
-        status (Union[Unset, str]): Filter by market status. Comma-separated list. Possible
-            values: 'unopened', 'open', 'closed', 'settled'. Leave empty to return markets with any
-            status.
-        tickers (Union[Unset, str]): Filter by specific market tickers. Comma-separated list of
-            market tickers to retrieve.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        series_ticker (Union[Unset, str]):
+        max_close_ts (Union[Unset, int]):
+        min_close_ts (Union[Unset, int]):
+        status (Union[Unset, str]):
+        tickers (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketsResponse
+        Union[Any, GetMarketsResponse]
     """
 
     return (

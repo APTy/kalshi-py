@@ -5,22 +5,25 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_settlements_response import ModelGetSettlementsResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_settlements_response import GetSettlementsResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
+    cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    cursor: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["limit"] = limit
+
+    params["cursor"] = cursor
 
     params["ticker"] = ticker
 
@@ -29,8 +32,6 @@ def _get_kwargs(
     params["min_ts"] = min_ts
 
     params["max_ts"] = max_ts
-
-    params["cursor"] = cursor
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -45,11 +46,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetSettlementsResponse]:
+) -> Optional[Union[ErrorResponse, GetSettlementsResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetSettlementsResponse.from_dict(response.json())
+        response_200 = GetSettlementsResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -58,7 +71,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetSettlementsResponse]:
+) -> Response[Union[ErrorResponse, GetSettlementsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,43 +82,41 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    client: AuthenticatedClient,
+    limit: Union[Unset, int] = 100,
+    cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetSettlementsResponse]:
+) -> Response[Union[ErrorResponse, GetSettlementsResponse]]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
 
     Args:
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        ticker (Union[Unset, str]): Restricts the response to settlements in a specific market.
-        event_ticker (Union[Unset, str]): Restricts the response to settlements in a single event.
-        min_ts (Union[Unset, int]): Restricts the response to settlements after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to settlements before a timestamp.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetSettlementsResponse]
+        Response[Union[ErrorResponse, GetSettlementsResponse]]
     """
 
     kwargs = _get_kwargs(
         limit=limit,
+        cursor=cursor,
         ticker=ticker,
         event_ticker=event_ticker,
         min_ts=min_ts,
         max_ts=max_ts,
-        cursor=cursor,
     )
 
     response = client.get_httpx_client().request(
@@ -117,86 +128,82 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    client: AuthenticatedClient,
+    limit: Union[Unset, int] = 100,
+    cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetSettlementsResponse]:
+) -> Optional[Union[ErrorResponse, GetSettlementsResponse]]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
 
     Args:
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        ticker (Union[Unset, str]): Restricts the response to settlements in a specific market.
-        event_ticker (Union[Unset, str]): Restricts the response to settlements in a single event.
-        min_ts (Union[Unset, int]): Restricts the response to settlements after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to settlements before a timestamp.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetSettlementsResponse
+        Union[ErrorResponse, GetSettlementsResponse]
     """
 
     return sync_detailed(
         client=client,
         limit=limit,
+        cursor=cursor,
         ticker=ticker,
         event_ticker=event_ticker,
         min_ts=min_ts,
         max_ts=max_ts,
-        cursor=cursor,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    client: AuthenticatedClient,
+    limit: Union[Unset, int] = 100,
+    cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetSettlementsResponse]:
+) -> Response[Union[ErrorResponse, GetSettlementsResponse]]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
 
     Args:
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        ticker (Union[Unset, str]): Restricts the response to settlements in a specific market.
-        event_ticker (Union[Unset, str]): Restricts the response to settlements in a single event.
-        min_ts (Union[Unset, int]): Restricts the response to settlements after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to settlements before a timestamp.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetSettlementsResponse]
+        Response[Union[ErrorResponse, GetSettlementsResponse]]
     """
 
     kwargs = _get_kwargs(
         limit=limit,
+        cursor=cursor,
         ticker=ticker,
         event_ticker=event_ticker,
         min_ts=min_ts,
         max_ts=max_ts,
-        cursor=cursor,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -206,44 +213,42 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    client: AuthenticatedClient,
+    limit: Union[Unset, int] = 100,
+    cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     event_ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-    cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetSettlementsResponse]:
+) -> Optional[Union[ErrorResponse, GetSettlementsResponse]]:
     """Get Settlements
 
       Endpoint for getting the member's settlements historical track.
 
     Args:
-        limit (Union[Unset, int]): Parameter to specify the number of results per page. Defaults
-            to 100.
-        ticker (Union[Unset, str]): Restricts the response to settlements in a specific market.
-        event_ticker (Union[Unset, str]): Restricts the response to settlements in a single event.
-        min_ts (Union[Unset, int]): Restricts the response to settlements after a timestamp.
-        max_ts (Union[Unset, int]): Restricts the response to settlements before a timestamp.
-        cursor (Union[Unset, str]): The Cursor represents a pointer to the next page of records in
-            the pagination. Use the value returned from the previous response to get the next page.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetSettlementsResponse
+        Union[ErrorResponse, GetSettlementsResponse]
     """
 
     return (
         await asyncio_detailed(
             client=client,
             limit=limit,
+            cursor=cursor,
             ticker=ticker,
             event_ticker=event_ticker,
             min_ts=min_ts,
             max_ts=max_ts,
-            cursor=cursor,
         )
     ).parsed

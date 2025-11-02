@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_batch_cancel_orders_request import ModelBatchCancelOrdersRequest
-from ...models.model_batch_cancel_orders_response import ModelBatchCancelOrdersResponse
+from ...models.batch_cancel_orders_request import BatchCancelOrdersRequest
+from ...models.batch_cancel_orders_response import BatchCancelOrdersResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ModelBatchCancelOrdersRequest,
+    body: BatchCancelOrdersRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +32,27 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelBatchCancelOrdersResponse]:
+) -> Optional[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     if response.status_code == 200:
-        response_200 = ModelBatchCancelOrdersResponse.from_dict(response.json())
+        response_200 = BatchCancelOrdersResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 403:
+        response_403 = ErrorResponse.from_dict(response.json())
+
+        return response_403
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -44,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelBatchCancelOrdersResponse]:
+) -> Response[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,22 +72,22 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCancelOrdersRequest,
-) -> Response[ModelBatchCancelOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCancelOrdersRequest,
+) -> Response[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCancelOrdersRequest):
+        body (BatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelBatchCancelOrdersResponse]
+        Response[Union[BatchCancelOrdersResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -86,22 +103,22 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCancelOrdersRequest,
-) -> Optional[ModelBatchCancelOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCancelOrdersRequest,
+) -> Optional[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCancelOrdersRequest):
+        body (BatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelBatchCancelOrdersResponse
+        Union[BatchCancelOrdersResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -112,22 +129,22 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCancelOrdersRequest,
-) -> Response[ModelBatchCancelOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCancelOrdersRequest,
+) -> Response[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCancelOrdersRequest):
+        body (BatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelBatchCancelOrdersResponse]
+        Response[Union[BatchCancelOrdersResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -141,22 +158,22 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCancelOrdersRequest,
-) -> Optional[ModelBatchCancelOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCancelOrdersRequest,
+) -> Optional[Union[BatchCancelOrdersResponse, ErrorResponse]]:
     """Batch Cancel Orders
 
       Endpoint for cancelling up to 20 orders at once. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCancelOrdersRequest):
+        body (BatchCancelOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelBatchCancelOrdersResponse
+        Union[BatchCancelOrdersResponse, ErrorResponse]
     """
 
     return (

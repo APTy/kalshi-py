@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_batch_create_orders_request import ModelBatchCreateOrdersRequest
-from ...models.model_batch_create_orders_response import ModelBatchCreateOrdersResponse
+from ...models.batch_create_orders_request import BatchCreateOrdersRequest
+from ...models.batch_create_orders_response import BatchCreateOrdersResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ModelBatchCreateOrdersRequest,
+    body: BatchCreateOrdersRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +32,27 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelBatchCreateOrdersResponse]:
+) -> Optional[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     if response.status_code == 201:
-        response_201 = ModelBatchCreateOrdersResponse.from_dict(response.json())
+        response_201 = BatchCreateOrdersResponse.from_dict(response.json())
 
         return response_201
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 403:
+        response_403 = ErrorResponse.from_dict(response.json())
+
+        return response_403
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -44,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelBatchCreateOrdersResponse]:
+) -> Response[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,9 +72,9 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCreateOrdersRequest,
-) -> Response[ModelBatchCreateOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCreateOrdersRequest,
+) -> Response[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -66,14 +83,14 @@ def sync_detailed(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCreateOrdersRequest):
+        body (BatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelBatchCreateOrdersResponse]
+        Response[Union[BatchCreateOrdersResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -89,9 +106,9 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCreateOrdersRequest,
-) -> Optional[ModelBatchCreateOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCreateOrdersRequest,
+) -> Optional[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -100,14 +117,14 @@ def sync(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCreateOrdersRequest):
+        body (BatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelBatchCreateOrdersResponse
+        Union[BatchCreateOrdersResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -118,9 +135,9 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCreateOrdersRequest,
-) -> Response[ModelBatchCreateOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCreateOrdersRequest,
+) -> Response[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -129,14 +146,14 @@ async def asyncio_detailed(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCreateOrdersRequest):
+        body (BatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelBatchCreateOrdersResponse]
+        Response[Union[BatchCreateOrdersResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -150,9 +167,9 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelBatchCreateOrdersRequest,
-) -> Optional[ModelBatchCreateOrdersResponse]:
+    client: AuthenticatedClient,
+    body: BatchCreateOrdersRequest,
+) -> Optional[Union[BatchCreateOrdersResponse, ErrorResponse]]:
     """Batch Create Orders
 
       Endpoint for submitting a batch of orders. Each order in the batch is counted against the total
@@ -161,14 +178,14 @@ async def asyncio(
     orders per batch. Available to members with advanced access only.
 
     Args:
-        body (ModelBatchCreateOrdersRequest):
+        body (BatchCreateOrdersRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelBatchCreateOrdersResponse
+        Union[BatchCreateOrdersResponse, ErrorResponse]
     """
 
     return (

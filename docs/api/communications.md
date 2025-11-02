@@ -4,6 +4,28 @@
 
 ### Accept Quote
 
+**Synchronous API Call**
+
+::: kalshi_py.api.communications.accept_quote.sync
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+**Asynchronous API Call**
+
+::: kalshi_py.api.communications.accept_quote.asyncio
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 **Synchronous Detailed Response**
 
 ::: kalshi_py.api.communications.accept_quote.sync_detailed
@@ -27,6 +49,28 @@
       filters: ['!^_']
 
 ### Confirm Quote
+
+**Synchronous API Call**
+
+::: kalshi_py.api.communications.confirm_quote.sync
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+**Asynchronous API Call**
+
+::: kalshi_py.api.communications.confirm_quote.asyncio
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
 
 **Synchronous Detailed Response**
 
@@ -144,6 +188,28 @@
 
 ### Delete Quote
 
+**Synchronous API Call**
+
+::: kalshi_py.api.communications.delete_quote.sync
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+**Asynchronous API Call**
+
+::: kalshi_py.api.communications.delete_quote.asyncio
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
 **Synchronous Detailed Response**
 
 ::: kalshi_py.api.communications.delete_quote.sync_detailed
@@ -167,6 +233,28 @@
       filters: ['!^_']
 
 ### Delete Rfq
+
+**Synchronous API Call**
+
+::: kalshi_py.api.communications.delete_rfq.sync
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
+
+**Asynchronous API Call**
+
+::: kalshi_py.api.communications.delete_rfq.asyncio
+    handler: python
+    options:
+      show_source: true
+      show_root_heading: true
+      heading_level: 4
+      members_order: source
+      filters: ['!^_']
 
 **Synchronous Detailed Response**
 

@@ -1,10 +1,8 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
-
-from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DailySchedule")
 
@@ -13,39 +11,40 @@ T = TypeVar("T", bound="DailySchedule")
 class DailySchedule:
     """
     Attributes:
-        close_time (Union[Unset, str]): Closing time in ET (Eastern Time) format HH:MM.
-        open_time (Union[Unset, str]): Opening time in ET (Eastern Time) format HH:MM.
+        open_time (str): Opening time in ET (Eastern Time) format HH:MM.
+        close_time (str): Closing time in ET (Eastern Time) format HH:MM.
     """
 
-    close_time: Union[Unset, str] = UNSET
-    open_time: Union[Unset, str] = UNSET
+    open_time: str
+    close_time: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        close_time = self.close_time
-
         open_time = self.open_time
+
+        close_time = self.close_time
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if close_time is not UNSET:
-            field_dict["close_time"] = close_time
-        if open_time is not UNSET:
-            field_dict["open_time"] = open_time
+        field_dict.update(
+            {
+                "open_time": open_time,
+                "close_time": close_time,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        close_time = d.pop("close_time", UNSET)
+        open_time = d.pop("open_time")
 
-        open_time = d.pop("open_time", UNSET)
+        close_time = d.pop("close_time")
 
         daily_schedule = cls(
-            close_time=close_time,
             open_time=open_time,
+            close_time=close_time,
         )
 
         daily_schedule.additional_properties = d

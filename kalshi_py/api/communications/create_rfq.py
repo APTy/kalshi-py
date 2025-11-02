@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_create_rfq_request import ModelCreateRFQRequest
-from ...models.model_create_rfq_response import ModelCreateRFQResponse
+from ...models.create_rfq_request import CreateRFQRequest
+from ...models.create_rfq_response import CreateRFQResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ModelCreateRFQRequest,
+    body: CreateRFQRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +32,27 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelCreateRFQResponse]:
+) -> Optional[Union[CreateRFQResponse, ErrorResponse]]:
     if response.status_code == 201:
-        response_201 = ModelCreateRFQResponse.from_dict(response.json())
+        response_201 = CreateRFQResponse.from_dict(response.json())
 
         return response_201
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 409:
+        response_409 = ErrorResponse.from_dict(response.json())
+
+        return response_409
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -44,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelCreateRFQResponse]:
+) -> Response[Union[CreateRFQResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,22 +72,22 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateRFQRequest,
-) -> Response[ModelCreateRFQResponse]:
+    client: AuthenticatedClient,
+    body: CreateRFQRequest,
+) -> Response[Union[CreateRFQResponse, ErrorResponse]]:
     """Create RFQ
 
-      Endpoint for creating a new RFQ
+      Endpoint for creating a new RFQ. You can have a maximum of 100 open RFQs at a time.
 
     Args:
-        body (ModelCreateRFQRequest):
+        body (CreateRFQRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateRFQResponse]
+        Response[Union[CreateRFQResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -86,22 +103,22 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateRFQRequest,
-) -> Optional[ModelCreateRFQResponse]:
+    client: AuthenticatedClient,
+    body: CreateRFQRequest,
+) -> Optional[Union[CreateRFQResponse, ErrorResponse]]:
     """Create RFQ
 
-      Endpoint for creating a new RFQ
+      Endpoint for creating a new RFQ. You can have a maximum of 100 open RFQs at a time.
 
     Args:
-        body (ModelCreateRFQRequest):
+        body (CreateRFQRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateRFQResponse
+        Union[CreateRFQResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -112,22 +129,22 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateRFQRequest,
-) -> Response[ModelCreateRFQResponse]:
+    client: AuthenticatedClient,
+    body: CreateRFQRequest,
+) -> Response[Union[CreateRFQResponse, ErrorResponse]]:
     """Create RFQ
 
-      Endpoint for creating a new RFQ
+      Endpoint for creating a new RFQ. You can have a maximum of 100 open RFQs at a time.
 
     Args:
-        body (ModelCreateRFQRequest):
+        body (CreateRFQRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateRFQResponse]
+        Response[Union[CreateRFQResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -141,22 +158,22 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateRFQRequest,
-) -> Optional[ModelCreateRFQResponse]:
+    client: AuthenticatedClient,
+    body: CreateRFQRequest,
+) -> Optional[Union[CreateRFQResponse, ErrorResponse]]:
     """Create RFQ
 
-      Endpoint for creating a new RFQ
+      Endpoint for creating a new RFQ. You can have a maximum of 100 open RFQs at a time.
 
     Args:
-        body (ModelCreateRFQRequest):
+        body (CreateRFQRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateRFQResponse
+        Union[CreateRFQResponse, ErrorResponse]
     """
 
     return (

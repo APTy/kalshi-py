@@ -5,19 +5,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_create_market_in_multivariate_event_collection_request import (
-    ModelCreateMarketInMultivariateEventCollectionRequest,
+from ...models.create_market_in_multivariate_event_collection_request import (
+    CreateMarketInMultivariateEventCollectionRequest,
 )
-from ...models.model_create_market_in_multivariate_event_collection_response import (
-    ModelCreateMarketInMultivariateEventCollectionResponse,
+from ...models.create_market_in_multivariate_event_collection_response import (
+    CreateMarketInMultivariateEventCollectionResponse,
 )
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     collection_ticker: str,
     *,
-    body: ModelCreateMarketInMultivariateEventCollectionRequest,
+    body: CreateMarketInMultivariateEventCollectionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,11 +37,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
+) -> Optional[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     if response.status_code == 200:
-        response_200 = ModelCreateMarketInMultivariateEventCollectionResponse.from_dict(response.json())
+        response_200 = CreateMarketInMultivariateEventCollectionResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -49,7 +62,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
+) -> Response[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,24 +74,24 @@ def _build_response(
 def sync_detailed(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: CreateMarketInMultivariateEventCollectionRequest,
+) -> Response[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
     be hit at least once before trading or looking up a market.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelCreateMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (CreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateMarketInMultivariateEventCollectionResponse]
+        Response[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -96,24 +109,24 @@ def sync_detailed(
 def sync(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: CreateMarketInMultivariateEventCollectionRequest,
+) -> Optional[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
     be hit at least once before trading or looking up a market.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelCreateMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (CreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateMarketInMultivariateEventCollectionResponse
+        Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -126,24 +139,24 @@ def sync(
 async def asyncio_detailed(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Response[ModelCreateMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: CreateMarketInMultivariateEventCollectionRequest,
+) -> Response[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
     be hit at least once before trading or looking up a market.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelCreateMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (CreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateMarketInMultivariateEventCollectionResponse]
+        Response[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -159,24 +172,24 @@ async def asyncio_detailed(
 async def asyncio(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateMarketInMultivariateEventCollectionRequest,
-) -> Optional[ModelCreateMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: CreateMarketInMultivariateEventCollectionRequest,
+) -> Optional[Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]]:
     """Create Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. This endpoint must
     be hit at least once before trading or looking up a market.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelCreateMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (CreateMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateMarketInMultivariateEventCollectionResponse
+        Union[CreateMarketInMultivariateEventCollectionResponse, ErrorResponse]
     """
 
     return (

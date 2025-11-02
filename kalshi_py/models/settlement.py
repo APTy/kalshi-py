@@ -1,8 +1,10 @@
+import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.settlement_market_result import SettlementMarketResult
 from ..types import UNSET, Unset
@@ -14,30 +16,38 @@ T = TypeVar("T", bound="Settlement")
 class Settlement:
     """
     Attributes:
-        market_result (Union[Unset, SettlementMarketResult]): The outcome of the market settlement ('yes' or 'no').
-        no_count (Union[Unset, int]): Number of NO contracts owned at the time of settlement.
-        no_total_cost (Union[Unset, int]):
-        revenue (Union[Unset, int]):
-        settled_time (Union[Unset, Any]):
-        ticker (Union[Unset, str]): The ticker symbol of the market that was settled.
-        yes_count (Union[Unset, int]): Number of YES contracts owned at the time of settlement.
-        yes_total_cost (Union[Unset, int]):
+        ticker (str): The ticker symbol of the market that was settled.
+        market_result (SettlementMarketResult): The outcome of the market settlement. 'yes' = market resolved to YES,
+            'no' = market resolved to NO, 'scalar' = scalar market settled at a specific value, 'void' = market was
+            voided/cancelled and all positions returned at original cost.
+        yes_count (int): Number of YES contracts owned at the time of settlement.
+        yes_total_cost (int): Total cost basis of all YES contracts in cents.
+        no_count (int): Number of NO contracts owned at the time of settlement.
+        no_total_cost (int): Total cost basis of all NO contracts in cents.
+        revenue (int): Total revenue earned from this settlement in cents (winning contracts pay out 100 cents each).
+        settled_time (datetime.datetime): Timestamp when the market was settled and payouts were processed.
+        value (Union[None, Unset, int]): Payout of a single yes contract in cents.
     """
 
-    market_result: Union[Unset, SettlementMarketResult] = UNSET
-    no_count: Union[Unset, int] = UNSET
-    no_total_cost: Union[Unset, int] = UNSET
-    revenue: Union[Unset, int] = UNSET
-    settled_time: Union[Unset, Any] = UNSET
-    ticker: Union[Unset, str] = UNSET
-    yes_count: Union[Unset, int] = UNSET
-    yes_total_cost: Union[Unset, int] = UNSET
+    ticker: str
+    market_result: SettlementMarketResult
+    yes_count: int
+    yes_total_cost: int
+    no_count: int
+    no_total_cost: int
+    revenue: int
+    settled_time: datetime.datetime
+    value: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        market_result: Union[Unset, str] = UNSET
-        if not isinstance(self.market_result, Unset):
-            market_result = self.market_result.value
+        ticker = self.ticker
+
+        market_result = self.market_result.value
+
+        yes_count = self.yes_count
+
+        yes_total_cost = self.yes_total_cost
 
         no_count = self.no_count
 
@@ -45,69 +55,71 @@ class Settlement:
 
         revenue = self.revenue
 
-        settled_time = self.settled_time
+        settled_time = self.settled_time.isoformat()
 
-        ticker = self.ticker
-
-        yes_count = self.yes_count
-
-        yes_total_cost = self.yes_total_cost
+        value: Union[None, Unset, int]
+        if isinstance(self.value, Unset):
+            value = UNSET
+        else:
+            value = self.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if market_result is not UNSET:
-            field_dict["market_result"] = market_result
-        if no_count is not UNSET:
-            field_dict["no_count"] = no_count
-        if no_total_cost is not UNSET:
-            field_dict["no_total_cost"] = no_total_cost
-        if revenue is not UNSET:
-            field_dict["revenue"] = revenue
-        if settled_time is not UNSET:
-            field_dict["settled_time"] = settled_time
-        if ticker is not UNSET:
-            field_dict["ticker"] = ticker
-        if yes_count is not UNSET:
-            field_dict["yes_count"] = yes_count
-        if yes_total_cost is not UNSET:
-            field_dict["yes_total_cost"] = yes_total_cost
+        field_dict.update(
+            {
+                "ticker": ticker,
+                "market_result": market_result,
+                "yes_count": yes_count,
+                "yes_total_cost": yes_total_cost,
+                "no_count": no_count,
+                "no_total_cost": no_total_cost,
+                "revenue": revenue,
+                "settled_time": settled_time,
+            }
+        )
+        if value is not UNSET:
+            field_dict["value"] = value
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _market_result = d.pop("market_result", UNSET)
-        market_result: Union[Unset, SettlementMarketResult]
-        if isinstance(_market_result, Unset):
-            market_result = UNSET
-        else:
-            market_result = SettlementMarketResult(_market_result)
+        ticker = d.pop("ticker")
 
-        no_count = d.pop("no_count", UNSET)
+        market_result = SettlementMarketResult(d.pop("market_result"))
 
-        no_total_cost = d.pop("no_total_cost", UNSET)
+        yes_count = d.pop("yes_count")
 
-        revenue = d.pop("revenue", UNSET)
+        yes_total_cost = d.pop("yes_total_cost")
 
-        settled_time = d.pop("settled_time", UNSET)
+        no_count = d.pop("no_count")
 
-        ticker = d.pop("ticker", UNSET)
+        no_total_cost = d.pop("no_total_cost")
 
-        yes_count = d.pop("yes_count", UNSET)
+        revenue = d.pop("revenue")
 
-        yes_total_cost = d.pop("yes_total_cost", UNSET)
+        settled_time = isoparse(d.pop("settled_time"))
+
+        def _parse_value(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        value = _parse_value(d.pop("value", UNSET))
 
         settlement = cls(
+            ticker=ticker,
             market_result=market_result,
+            yes_count=yes_count,
+            yes_total_cost=yes_total_cost,
             no_count=no_count,
             no_total_cost=no_total_cost,
             revenue=revenue,
             settled_time=settled_time,
-            ticker=ticker,
-            yes_count=yes_count,
-            yes_total_cost=yes_total_cost,
+            value=value,
         )
 
         settlement.additional_properties = d

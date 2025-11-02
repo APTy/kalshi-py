@@ -5,11 +5,12 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_lookup_tickers_for_market_in_multivariate_event_collection_request import (
-    ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+from ...models.error_response import ErrorResponse
+from ...models.lookup_tickers_for_market_in_multivariate_event_collection_request import (
+    LookupTickersForMarketInMultivariateEventCollectionRequest,
 )
-from ...models.model_lookup_tickers_for_market_in_multivariate_event_collection_response import (
-    ModelLookupTickersForMarketInMultivariateEventCollectionResponse,
+from ...models.lookup_tickers_for_market_in_multivariate_event_collection_response import (
+    LookupTickersForMarketInMultivariateEventCollectionResponse,
 )
 from ...types import Response
 
@@ -17,7 +18,7 @@ from ...types import Response
 def _get_kwargs(
     collection_ticker: str,
     *,
-    body: ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
+    body: LookupTickersForMarketInMultivariateEventCollectionRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -36,11 +37,27 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+) -> Optional[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     if response.status_code == 200:
-        response_200 = ModelLookupTickersForMarketInMultivariateEventCollectionResponse.from_dict(response.json())
+        response_200 = LookupTickersForMarketInMultivariateEventCollectionResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -49,7 +66,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+) -> Response[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -61,9 +78,9 @@ def _build_response(
 def sync_detailed(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Response[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: LookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Response[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -71,15 +88,15 @@ def sync_detailed(
     this will return a 404.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (LookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
+        Response[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -97,9 +114,9 @@ def sync_detailed(
 def sync(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Optional[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: LookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Optional[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -107,15 +124,15 @@ def sync(
     this will return a 404.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (LookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+        Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]
     """
 
     return sync_detailed(
@@ -128,9 +145,9 @@ def sync(
 async def asyncio_detailed(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Response[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: LookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Response[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -138,15 +155,15 @@ async def asyncio_detailed(
     this will return a 404.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (LookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]
+        Response[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -162,9 +179,9 @@ async def asyncio_detailed(
 async def asyncio(
     collection_ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelLookupTickersForMarketInMultivariateEventCollectionRequest,
-) -> Optional[ModelLookupTickersForMarketInMultivariateEventCollectionResponse]:
+    client: AuthenticatedClient,
+    body: LookupTickersForMarketInMultivariateEventCollectionRequest,
+) -> Optional[Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]]:
     """Lookup Tickers For Market In Multivariate Event Collection
 
       Endpoint for looking up an individual market in a multivariate event collection. If
@@ -172,15 +189,15 @@ async def asyncio(
     this will return a 404.
 
     Args:
-        collection_ticker (str): Collection ticker
-        body (ModelLookupTickersForMarketInMultivariateEventCollectionRequest):
+        collection_ticker (str):
+        body (LookupTickersForMarketInMultivariateEventCollectionRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelLookupTickersForMarketInMultivariateEventCollectionResponse
+        Union[ErrorResponse, LookupTickersForMarketInMultivariateEventCollectionResponse]
     """
 
     return (

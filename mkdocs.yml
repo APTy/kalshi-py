@@ -125,7 +125,7 @@ nav:
       - Milestones API: api/milestone.md
       - Structured Targets API: api/structured_target.md
       - API Keys API: api/api_keys.md
-      - Default API: api/default.md
+      - Exchange API: api/exchange.md
       - Data Models: api/models.md
   - Development:
       - Contributing: development/contributing.md

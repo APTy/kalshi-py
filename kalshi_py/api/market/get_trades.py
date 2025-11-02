@@ -1,17 +1,17 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_public_trades_get_response import ModelPublicTradesGetResponse
+from ...models.get_trades_response import GetTradesResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
@@ -42,11 +42,17 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelPublicTradesGetResponse]:
+) -> Optional[Union[Any, GetTradesResponse]]:
     if response.status_code == 200:
-        response_200 = ModelPublicTradesGetResponse.from_dict(response.json())
+        response_200 = GetTradesResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -55,7 +61,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelPublicTradesGetResponse]:
+) -> Response[Union[Any, GetTradesResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,12 +73,12 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Response[ModelPublicTradesGetResponse]:
+) -> Response[Union[Any, GetTradesResponse]]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -83,21 +89,18 @@ def sync_detailed(
     no more pages are available.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        ticker (Union[Unset, str]): Filter trades by market ticker. Returns only trades for the
-            specified market.
-        min_ts (Union[Unset, int]): Filter trades that occurred after this Unix timestamp.
-        max_ts (Union[Unset, int]): Filter trades that occurred before this Unix timestamp.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelPublicTradesGetResponse]
+        Response[Union[Any, GetTradesResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -118,12 +121,12 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Optional[ModelPublicTradesGetResponse]:
+) -> Optional[Union[Any, GetTradesResponse]]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -134,21 +137,18 @@ def sync(
     no more pages are available.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        ticker (Union[Unset, str]): Filter trades by market ticker. Returns only trades for the
-            specified market.
-        min_ts (Union[Unset, int]): Filter trades that occurred after this Unix timestamp.
-        max_ts (Union[Unset, int]): Filter trades that occurred before this Unix timestamp.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelPublicTradesGetResponse
+        Union[Any, GetTradesResponse]
     """
 
     return sync_detailed(
@@ -164,12 +164,12 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Response[ModelPublicTradesGetResponse]:
+) -> Response[Union[Any, GetTradesResponse]]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -180,21 +180,18 @@ async def asyncio_detailed(
     no more pages are available.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        ticker (Union[Unset, str]): Filter trades by market ticker. Returns only trades for the
-            specified market.
-        min_ts (Union[Unset, int]): Filter trades that occurred after this Unix timestamp.
-        max_ts (Union[Unset, int]): Filter trades that occurred before this Unix timestamp.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelPublicTradesGetResponse]
+        Response[Union[Any, GetTradesResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -213,12 +210,12 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    limit: Union[Unset, int] = UNSET,
+    limit: Union[Unset, int] = 100,
     cursor: Union[Unset, str] = UNSET,
     ticker: Union[Unset, str] = UNSET,
     min_ts: Union[Unset, int] = UNSET,
     max_ts: Union[Unset, int] = UNSET,
-) -> Optional[ModelPublicTradesGetResponse]:
+) -> Optional[Union[Any, GetTradesResponse]]:
     """Get Trades
 
       Endpoint for getting all trades for all markets.  A trade represents a completed transaction
@@ -229,21 +226,18 @@ async def asyncio(
     no more pages are available.
 
     Args:
-        limit (Union[Unset, int]): Number of results per page. Defaults to 100. Maximum value is
-            1000.
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results. Leave empty for the first page.
-        ticker (Union[Unset, str]): Filter trades by market ticker. Returns only trades for the
-            specified market.
-        min_ts (Union[Unset, int]): Filter trades that occurred after this Unix timestamp.
-        max_ts (Union[Unset, int]): Filter trades that occurred before this Unix timestamp.
+        limit (Union[Unset, int]):  Default: 100.
+        cursor (Union[Unset, str]):
+        ticker (Union[Unset, str]):
+        min_ts (Union[Unset, int]):
+        max_ts (Union[Unset, int]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelPublicTradesGetResponse
+        Union[Any, GetTradesResponse]
     """
 
     return (

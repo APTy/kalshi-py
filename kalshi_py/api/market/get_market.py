@@ -1,11 +1,11 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_market_response import ModelGetMarketResponse
+from ...models.get_market_response import GetMarketResponse
 from ...types import Response
 
 
@@ -22,11 +22,20 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetMarketResponse]:
+) -> Optional[Union[Any, GetMarketResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetMarketResponse.from_dict(response.json())
+        response_200 = GetMarketResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -35,7 +44,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetMarketResponse]:
+) -> Response[Union[Any, GetMarketResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,7 +57,7 @@ def sync_detailed(
     ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetMarketResponse]:
+) -> Response[Union[Any, GetMarketResponse]]:
     r"""Get Market
 
       Endpoint for getting data about a specific market by its ticker. A market represents a specific
@@ -56,14 +65,14 @@ def sync_detailed(
     have yes/no positions, current prices, volume, and settlement rules.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
+        ticker (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketResponse]
+        Response[Union[Any, GetMarketResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -81,7 +90,7 @@ def sync(
     ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetMarketResponse]:
+) -> Optional[Union[Any, GetMarketResponse]]:
     r"""Get Market
 
       Endpoint for getting data about a specific market by its ticker. A market represents a specific
@@ -89,14 +98,14 @@ def sync(
     have yes/no positions, current prices, volume, and settlement rules.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
+        ticker (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketResponse
+        Union[Any, GetMarketResponse]
     """
 
     return sync_detailed(
@@ -109,7 +118,7 @@ async def asyncio_detailed(
     ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetMarketResponse]:
+) -> Response[Union[Any, GetMarketResponse]]:
     r"""Get Market
 
       Endpoint for getting data about a specific market by its ticker. A market represents a specific
@@ -117,14 +126,14 @@ async def asyncio_detailed(
     have yes/no positions, current prices, volume, and settlement rules.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
+        ticker (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketResponse]
+        Response[Union[Any, GetMarketResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -140,7 +149,7 @@ async def asyncio(
     ticker: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetMarketResponse]:
+) -> Optional[Union[Any, GetMarketResponse]]:
     r"""Get Market
 
       Endpoint for getting data about a specific market by its ticker. A market represents a specific
@@ -148,14 +157,14 @@ async def asyncio(
     have yes/no positions, current prices, volume, and settlement rules.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
+        ticker (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketResponse
+        Union[Any, GetMarketResponse]
     """
 
     return (

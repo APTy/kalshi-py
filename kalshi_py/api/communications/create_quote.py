@@ -5,14 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_create_quote_request import ModelCreateQuoteRequest
-from ...models.model_create_quote_response import ModelCreateQuoteResponse
+from ...models.create_quote_request import CreateQuoteRequest
+from ...models.create_quote_response import CreateQuoteResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ModelCreateQuoteRequest,
+    body: CreateQuoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +32,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelCreateQuoteResponse]:
+) -> Optional[Union[CreateQuoteResponse, ErrorResponse]]:
     if response.status_code == 201:
-        response_201 = ModelCreateQuoteResponse.from_dict(response.json())
+        response_201 = CreateQuoteResponse.from_dict(response.json())
 
         return response_201
+    if response.status_code == 400:
+        response_400 = ErrorResponse.from_dict(response.json())
+
+        return response_400
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -44,7 +57,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelCreateQuoteResponse]:
+) -> Response[Union[CreateQuoteResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,22 +68,22 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateQuoteRequest,
-) -> Response[ModelCreateQuoteResponse]:
+    client: AuthenticatedClient,
+    body: CreateQuoteRequest,
+) -> Response[Union[CreateQuoteResponse, ErrorResponse]]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (ModelCreateQuoteRequest):
+        body (CreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateQuoteResponse]
+        Response[Union[CreateQuoteResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -86,22 +99,22 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateQuoteRequest,
-) -> Optional[ModelCreateQuoteResponse]:
+    client: AuthenticatedClient,
+    body: CreateQuoteRequest,
+) -> Optional[Union[CreateQuoteResponse, ErrorResponse]]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (ModelCreateQuoteRequest):
+        body (CreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateQuoteResponse
+        Union[CreateQuoteResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -112,22 +125,22 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateQuoteRequest,
-) -> Response[ModelCreateQuoteResponse]:
+    client: AuthenticatedClient,
+    body: CreateQuoteRequest,
+) -> Response[Union[CreateQuoteResponse, ErrorResponse]]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (ModelCreateQuoteRequest):
+        body (CreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelCreateQuoteResponse]
+        Response[Union[CreateQuoteResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -141,22 +154,22 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelCreateQuoteRequest,
-) -> Optional[ModelCreateQuoteResponse]:
+    client: AuthenticatedClient,
+    body: CreateQuoteRequest,
+) -> Optional[Union[CreateQuoteResponse, ErrorResponse]]:
     """Create Quote
 
       Endpoint for creating a quote in response to an RFQ
 
     Args:
-        body (ModelCreateQuoteRequest):
+        body (CreateQuoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelCreateQuoteResponse
+        Union[CreateQuoteResponse, ErrorResponse]
     """
 
     return (

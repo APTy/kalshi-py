@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_user_resting_order_total_value_response import ModelGetUserRestingOrderTotalValueResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_portfolio_resting_order_total_value_response import GetPortfolioRestingOrderTotalValueResponse
 from ...types import Response
 
 
@@ -20,11 +21,19 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Optional[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetUserRestingOrderTotalValueResponse.from_dict(response.json())
+        response_200 = GetPortfolioRestingOrderTotalValueResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -33,7 +42,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
+) -> Response[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,9 +53,9 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
-    """Get Portfolio Resting Order Total Value
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
+    """Get Total Resting Order Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
     for use by FCM members (rare). Note: If you're uncertain about this endpoint, it likely does not
@@ -57,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetUserRestingOrderTotalValueResponse]
+        Response[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]
     """
 
     kwargs = _get_kwargs()
@@ -71,9 +80,9 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
-    """Get Portfolio Resting Order Total Value
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
+    """Get Total Resting Order Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
     for use by FCM members (rare). Note: If you're uncertain about this endpoint, it likely does not
@@ -84,7 +93,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetUserRestingOrderTotalValueResponse
+        Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]
     """
 
     return sync_detailed(
@@ -94,9 +103,9 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetUserRestingOrderTotalValueResponse]:
-    """Get Portfolio Resting Order Total Value
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
+    """Get Total Resting Order Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
     for use by FCM members (rare). Note: If you're uncertain about this endpoint, it likely does not
@@ -107,7 +116,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetUserRestingOrderTotalValueResponse]
+        Response[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]
     """
 
     kwargs = _get_kwargs()
@@ -119,9 +128,9 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetUserRestingOrderTotalValueResponse]:
-    """Get Portfolio Resting Order Total Value
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]]:
+    """Get Total Resting Order Value
 
       Endpoint for getting the total value, in cents, of resting orders. This endpoint is only intended
     for use by FCM members (rare). Note: If you're uncertain about this endpoint, it likely does not
@@ -132,7 +141,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetUserRestingOrderTotalValueResponse
+        Union[ErrorResponse, GetPortfolioRestingOrderTotalValueResponse]
     """
 
     return (

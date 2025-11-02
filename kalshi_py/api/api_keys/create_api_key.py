@@ -1,18 +1,18 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_user_create_api_key_request import ModelUserCreateApiKeyRequest
-from ...models.model_user_create_api_key_response import ModelUserCreateApiKeyResponse
+from ...models.create_api_key_request import CreateApiKeyRequest
+from ...models.create_api_key_response import CreateApiKeyResponse
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: ModelUserCreateApiKeyRequest,
+    body: CreateApiKeyRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +31,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelUserCreateApiKeyResponse]:
+) -> Optional[Union[Any, CreateApiKeyResponse]]:
     if response.status_code == 201:
-        response_201 = ModelUserCreateApiKeyResponse.from_dict(response.json())
+        response_201 = CreateApiKeyResponse.from_dict(response.json())
 
         return response_201
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 403:
+        response_403 = cast(Any, None)
+        return response_403
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -44,7 +56,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelUserCreateApiKeyResponse]:
+) -> Response[Union[Any, CreateApiKeyResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,9 +67,9 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelUserCreateApiKeyRequest,
-) -> Response[ModelUserCreateApiKeyResponse]:
+    client: AuthenticatedClient,
+    body: CreateApiKeyRequest,
+) -> Response[Union[Any, CreateApiKeyResponse]]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -65,14 +77,14 @@ def sync_detailed(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (ModelUserCreateApiKeyRequest):
+        body (CreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelUserCreateApiKeyResponse]
+        Response[Union[Any, CreateApiKeyResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -88,9 +100,9 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelUserCreateApiKeyRequest,
-) -> Optional[ModelUserCreateApiKeyResponse]:
+    client: AuthenticatedClient,
+    body: CreateApiKeyRequest,
+) -> Optional[Union[Any, CreateApiKeyResponse]]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -98,14 +110,14 @@ def sync(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (ModelUserCreateApiKeyRequest):
+        body (CreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelUserCreateApiKeyResponse
+        Union[Any, CreateApiKeyResponse]
     """
 
     return sync_detailed(
@@ -116,9 +128,9 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelUserCreateApiKeyRequest,
-) -> Response[ModelUserCreateApiKeyResponse]:
+    client: AuthenticatedClient,
+    body: CreateApiKeyRequest,
+) -> Response[Union[Any, CreateApiKeyResponse]]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -126,14 +138,14 @@ async def asyncio_detailed(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (ModelUserCreateApiKeyRequest):
+        body (CreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelUserCreateApiKeyResponse]
+        Response[Union[Any, CreateApiKeyResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -147,9 +159,9 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-    body: ModelUserCreateApiKeyRequest,
-) -> Optional[ModelUserCreateApiKeyResponse]:
+    client: AuthenticatedClient,
+    body: CreateApiKeyRequest,
+) -> Optional[Union[Any, CreateApiKeyResponse]]:
     """Create API Key
 
       Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users
@@ -157,14 +169,14 @@ async def asyncio(
     key. The platform will use this public key to verify signatures on API requests.
 
     Args:
-        body (ModelUserCreateApiKeyRequest):
+        body (CreateApiKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelUserCreateApiKeyResponse
+        Union[Any, CreateApiKeyResponse]
     """
 
     return (

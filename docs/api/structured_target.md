@@ -6,7 +6,7 @@
 
 **Synchronous API Call**
 
-::: kalshi_py.api.structured_target.get_structured_target.sync
+::: kalshi_py.api.structured_targets.get_structured_target.sync
     handler: python
     options:
       show_source: true
@@ -17,7 +17,7 @@
 
 **Asynchronous API Call**
 
-::: kalshi_py.api.structured_target.get_structured_target.asyncio
+::: kalshi_py.api.structured_targets.get_structured_target.asyncio
     handler: python
     options:
       show_source: true
@@ -28,7 +28,7 @@
 
 **Synchronous Detailed Response**
 
-::: kalshi_py.api.structured_target.get_structured_target.sync_detailed
+::: kalshi_py.api.structured_targets.get_structured_target.sync_detailed
     handler: python
     options:
       show_source: true
@@ -39,7 +39,7 @@
 
 **Asynchronous Detailed Response**
 
-::: kalshi_py.api.structured_target.get_structured_target.asyncio_detailed
+::: kalshi_py.api.structured_targets.get_structured_target.asyncio_detailed
     handler: python
     options:
       show_source: true
@@ -52,7 +52,7 @@
 
 **Synchronous API Call**
 
-::: kalshi_py.api.structured_target.get_structured_targets.sync
+::: kalshi_py.api.structured_targets.get_structured_targets.sync
     handler: python
     options:
       show_source: true
@@ -63,7 +63,7 @@
 
 **Asynchronous API Call**
 
-::: kalshi_py.api.structured_target.get_structured_targets.asyncio
+::: kalshi_py.api.structured_targets.get_structured_targets.asyncio
     handler: python
     options:
       show_source: true
@@ -74,7 +74,7 @@
 
 **Synchronous Detailed Response**
 
-::: kalshi_py.api.structured_target.get_structured_targets.sync_detailed
+::: kalshi_py.api.structured_targets.get_structured_targets.sync_detailed
     handler: python
     options:
       show_source: true
@@ -85,7 +85,7 @@
 
 **Asynchronous Detailed Response**
 
-::: kalshi_py.api.structured_target.get_structured_targets.asyncio_detailed
+::: kalshi_py.api.structured_targets.get_structured_targets.asyncio_detailed
     handler: python
     options:
       show_source: true

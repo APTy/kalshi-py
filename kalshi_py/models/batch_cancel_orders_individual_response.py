@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,10 +7,8 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
-        GithubComKalshiExchangeInfraCommonApiJSONError,
-    )
-    from ..models.model_order import ModelOrder
+    from ..models.error_response import ErrorResponse
+    from ..models.order import Order
 
 
 T = TypeVar("T", bound="BatchCancelOrdersIndividualResponse")
@@ -20,76 +18,106 @@ T = TypeVar("T", bound="BatchCancelOrdersIndividualResponse")
 class BatchCancelOrdersIndividualResponse:
     """
     Attributes:
-        error (Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]):
-        order (Union[Unset, ModelOrder]):
-        order_id (Union[Unset, str]):
-        reduced_by (Union[Unset, int]): The number of contracts that were successfully canceled from this order.
+        order_id (str): The order ID to identify which order had an error during batch cancellation
+        reduced_by (int): The number of contracts that were successfully canceled from this order
+        order (Union['Order', None, Unset]):
+        error (Union['ErrorResponse', None, Unset]):
     """
 
-    error: Union[Unset, "GithubComKalshiExchangeInfraCommonApiJSONError"] = UNSET
-    order: Union[Unset, "ModelOrder"] = UNSET
-    order_id: Union[Unset, str] = UNSET
-    reduced_by: Union[Unset, int] = UNSET
+    order_id: str
+    reduced_by: int
+    order: Union["Order", None, Unset] = UNSET
+    error: Union["ErrorResponse", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        error: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.error, Unset):
-            error = self.error.to_dict()
-
-        order: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.order, Unset):
-            order = self.order.to_dict()
+        from ..models.error_response import ErrorResponse
+        from ..models.order import Order
 
         order_id = self.order_id
 
         reduced_by = self.reduced_by
 
+        order: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.order, Unset):
+            order = UNSET
+        elif isinstance(self.order, Order):
+            order = self.order.to_dict()
+        else:
+            order = self.order
+
+        error: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.error, Unset):
+            error = UNSET
+        elif isinstance(self.error, ErrorResponse):
+            error = self.error.to_dict()
+        else:
+            error = self.error
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if error is not UNSET:
-            field_dict["error"] = error
+        field_dict.update(
+            {
+                "order_id": order_id,
+                "reduced_by": reduced_by,
+            }
+        )
         if order is not UNSET:
             field_dict["order"] = order
-        if order_id is not UNSET:
-            field_dict["order_id"] = order_id
-        if reduced_by is not UNSET:
-            field_dict["reduced_by"] = reduced_by
+        if error is not UNSET:
+            field_dict["error"] = error
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_com_kalshi_exchange_infra_common_api_json_error import (
-            GithubComKalshiExchangeInfraCommonApiJSONError,
-        )
-        from ..models.model_order import ModelOrder
+        from ..models.error_response import ErrorResponse
+        from ..models.order import Order
 
         d = dict(src_dict)
-        _error = d.pop("error", UNSET)
-        error: Union[Unset, GithubComKalshiExchangeInfraCommonApiJSONError]
-        if isinstance(_error, Unset):
-            error = UNSET
-        else:
-            error = GithubComKalshiExchangeInfraCommonApiJSONError.from_dict(_error)
+        order_id = d.pop("order_id")
 
-        _order = d.pop("order", UNSET)
-        order: Union[Unset, ModelOrder]
-        if isinstance(_order, Unset):
-            order = UNSET
-        else:
-            order = ModelOrder.from_dict(_order)
+        reduced_by = d.pop("reduced_by")
 
-        order_id = d.pop("order_id", UNSET)
+        def _parse_order(data: object) -> Union["Order", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                order_type_1 = Order.from_dict(data)
 
-        reduced_by = d.pop("reduced_by", UNSET)
+                return order_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["Order", None, Unset], data)
+
+        order = _parse_order(d.pop("order", UNSET))
+
+        def _parse_error(data: object) -> Union["ErrorResponse", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                error_type_1 = ErrorResponse.from_dict(data)
+
+                return error_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["ErrorResponse", None, Unset], data)
+
+        error = _parse_error(d.pop("error", UNSET))
 
         batch_cancel_orders_individual_response = cls(
-            error=error,
-            order=order,
             order_id=order_id,
             reduced_by=reduced_by,
+            order=order,
+            error=error,
         )
 
         batch_cancel_orders_individual_response.additional_properties = d

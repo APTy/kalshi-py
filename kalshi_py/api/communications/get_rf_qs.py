@@ -5,14 +5,40 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_rf_qs_response import ModelGetRFQsResponse
-from ...types import Response
+from ...models.error_response import ErrorResponse
+from ...models.get_rf_qs_response import GetRFQsResponse
+from ...types import UNSET, Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    cursor: Union[Unset, str] = UNSET,
+    limit: Union[Unset, int] = 100,
+    market_ticker: Union[Unset, str] = UNSET,
+    event_ticker: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    creator_user_id: Union[Unset, str] = UNSET,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    params["cursor"] = cursor
+
+    params["limit"] = limit
+
+    params["market_ticker"] = market_ticker
+
+    params["event_ticker"] = event_ticker
+
+    params["status"] = status
+
+    params["creator_user_id"] = creator_user_id
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/communications/rfqs",
+        "params": params,
     }
 
     return _kwargs
@@ -20,11 +46,19 @@ def _get_kwargs() -> dict[str, Any]:
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetRFQsResponse]:
+) -> Optional[Union[ErrorResponse, GetRFQsResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetRFQsResponse.from_dict(response.json())
+        response_200 = GetRFQsResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -33,7 +67,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetRFQsResponse]:
+) -> Response[Union[ErrorResponse, GetRFQsResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,21 +78,42 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetRFQsResponse]:
+    client: AuthenticatedClient,
+    cursor: Union[Unset, str] = UNSET,
+    limit: Union[Unset, int] = 100,
+    market_ticker: Union[Unset, str] = UNSET,
+    event_ticker: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    creator_user_id: Union[Unset, str] = UNSET,
+) -> Response[Union[ErrorResponse, GetRFQsResponse]]:
     """Get RFQs
 
       Endpoint for getting RFQs
+
+    Args:
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        market_ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        status (Union[Unset, str]):
+        creator_user_id (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetRFQsResponse]
+        Response[Union[ErrorResponse, GetRFQsResponse]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        cursor=cursor,
+        limit=limit,
+        market_ticker=market_ticker,
+        event_ticker=event_ticker,
+        status=status,
+        creator_user_id=creator_user_id,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -69,42 +124,83 @@ def sync_detailed(
 
 def sync(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetRFQsResponse]:
+    client: AuthenticatedClient,
+    cursor: Union[Unset, str] = UNSET,
+    limit: Union[Unset, int] = 100,
+    market_ticker: Union[Unset, str] = UNSET,
+    event_ticker: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    creator_user_id: Union[Unset, str] = UNSET,
+) -> Optional[Union[ErrorResponse, GetRFQsResponse]]:
     """Get RFQs
 
       Endpoint for getting RFQs
+
+    Args:
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        market_ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        status (Union[Unset, str]):
+        creator_user_id (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetRFQsResponse
+        Union[ErrorResponse, GetRFQsResponse]
     """
 
     return sync_detailed(
         client=client,
+        cursor=cursor,
+        limit=limit,
+        market_ticker=market_ticker,
+        event_ticker=event_ticker,
+        status=status,
+        creator_user_id=creator_user_id,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetRFQsResponse]:
+    client: AuthenticatedClient,
+    cursor: Union[Unset, str] = UNSET,
+    limit: Union[Unset, int] = 100,
+    market_ticker: Union[Unset, str] = UNSET,
+    event_ticker: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    creator_user_id: Union[Unset, str] = UNSET,
+) -> Response[Union[ErrorResponse, GetRFQsResponse]]:
     """Get RFQs
 
       Endpoint for getting RFQs
+
+    Args:
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        market_ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        status (Union[Unset, str]):
+        creator_user_id (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetRFQsResponse]
+        Response[Union[ErrorResponse, GetRFQsResponse]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        cursor=cursor,
+        limit=limit,
+        market_ticker=market_ticker,
+        event_ticker=event_ticker,
+        status=status,
+        creator_user_id=creator_user_id,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -113,22 +209,42 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetRFQsResponse]:
+    client: AuthenticatedClient,
+    cursor: Union[Unset, str] = UNSET,
+    limit: Union[Unset, int] = 100,
+    market_ticker: Union[Unset, str] = UNSET,
+    event_ticker: Union[Unset, str] = UNSET,
+    status: Union[Unset, str] = UNSET,
+    creator_user_id: Union[Unset, str] = UNSET,
+) -> Optional[Union[ErrorResponse, GetRFQsResponse]]:
     """Get RFQs
 
       Endpoint for getting RFQs
+
+    Args:
+        cursor (Union[Unset, str]):
+        limit (Union[Unset, int]):  Default: 100.
+        market_ticker (Union[Unset, str]):
+        event_ticker (Union[Unset, str]):
+        status (Union[Unset, str]):
+        creator_user_id (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetRFQsResponse
+        Union[ErrorResponse, GetRFQsResponse]
     """
 
     return (
         await asyncio_detailed(
             client=client,
+            cursor=cursor,
+            limit=limit,
+            market_ticker=market_ticker,
+            event_ticker=event_ticker,
+            status=status,
+            creator_user_id=creator_user_id,
         )
     ).parsed

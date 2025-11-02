@@ -1,12 +1,13 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
+from ..models.announcement_status import AnnouncementStatus
+from ..models.announcement_type import AnnouncementType
 
 T = TypeVar("T", bound="Announcement")
 
@@ -15,64 +16,56 @@ T = TypeVar("T", bound="Announcement")
 class Announcement:
     """
     Attributes:
-        delivery_time (Union[Unset, datetime.datetime]): The time the announcement was delivered.
-        message (Union[Unset, str]): The message contained within the announcement.
-        status (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        type_ (AnnouncementType): The type of the announcement.
+        message (str): The message contained within the announcement.
+        delivery_time (datetime.datetime): The time the announcement was delivered.
+        status (AnnouncementStatus): The current status of this announcement.
     """
 
-    delivery_time: Union[Unset, datetime.datetime] = UNSET
-    message: Union[Unset, str] = UNSET
-    status: Union[Unset, str] = UNSET
-    type_: Union[Unset, str] = UNSET
+    type_: AnnouncementType
+    message: str
+    delivery_time: datetime.datetime
+    status: AnnouncementStatus
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        delivery_time: Union[Unset, str] = UNSET
-        if not isinstance(self.delivery_time, Unset):
-            delivery_time = self.delivery_time.isoformat()
+        type_ = self.type_.value
 
         message = self.message
 
-        status = self.status
+        delivery_time = self.delivery_time.isoformat()
 
-        type_ = self.type_
+        status = self.status.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if delivery_time is not UNSET:
-            field_dict["delivery_time"] = delivery_time
-        if message is not UNSET:
-            field_dict["message"] = message
-        if status is not UNSET:
-            field_dict["status"] = status
-        if type_ is not UNSET:
-            field_dict["type"] = type_
+        field_dict.update(
+            {
+                "type": type_,
+                "message": message,
+                "delivery_time": delivery_time,
+                "status": status,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _delivery_time = d.pop("delivery_time", UNSET)
-        delivery_time: Union[Unset, datetime.datetime]
-        if isinstance(_delivery_time, Unset):
-            delivery_time = UNSET
-        else:
-            delivery_time = isoparse(_delivery_time)
+        type_ = AnnouncementType(d.pop("type"))
 
-        message = d.pop("message", UNSET)
+        message = d.pop("message")
 
-        status = d.pop("status", UNSET)
+        delivery_time = isoparse(d.pop("delivery_time"))
 
-        type_ = d.pop("type", UNSET)
+        status = AnnouncementStatus(d.pop("status"))
 
         announcement = cls(
-            delivery_time=delivery_time,
-            message=message,
-            status=status,
             type_=type_,
+            message=message,
+            delivery_time=delivery_time,
+            status=status,
         )
 
         announcement.additional_properties = d

@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_order_response import ModelGetOrderResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_order_response import GetOrderResponse
 from ...types import Response
 
 
@@ -22,11 +23,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetOrderResponse]:
+) -> Optional[Union[ErrorResponse, GetOrderResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetOrderResponse.from_dict(response.json())
+        response_200 = GetOrderResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -35,7 +48,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetOrderResponse]:
+) -> Response[Union[ErrorResponse, GetOrderResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,21 +60,21 @@ def _build_response(
 def sync_detailed(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetOrderResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetOrderResponse]]:
     """Get Order
 
       Endpoint for getting a single order.
 
     Args:
-        order_id (str): Order ID
+        order_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetOrderResponse]
+        Response[Union[ErrorResponse, GetOrderResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -78,21 +91,21 @@ def sync_detailed(
 def sync(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetOrderResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetOrderResponse]]:
     """Get Order
 
       Endpoint for getting a single order.
 
     Args:
-        order_id (str): Order ID
+        order_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetOrderResponse
+        Union[ErrorResponse, GetOrderResponse]
     """
 
     return sync_detailed(
@@ -104,21 +117,21 @@ def sync(
 async def asyncio_detailed(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetOrderResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetOrderResponse]]:
     """Get Order
 
       Endpoint for getting a single order.
 
     Args:
-        order_id (str): Order ID
+        order_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetOrderResponse]
+        Response[Union[ErrorResponse, GetOrderResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -133,21 +146,21 @@ async def asyncio_detailed(
 async def asyncio(
     order_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetOrderResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetOrderResponse]]:
     """Get Order
 
       Endpoint for getting a single order.
 
     Args:
-        order_id (str): Order ID
+        order_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetOrderResponse
+        Union[ErrorResponse, GetOrderResponse]
     """
 
     return (

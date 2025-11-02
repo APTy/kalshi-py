@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_order_group_response import ModelGetOrderGroupResponse
+from ...models.error_response import ErrorResponse
+from ...models.get_order_group_response import GetOrderGroupResponse
 from ...types import Response
 
 
@@ -22,11 +23,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetOrderGroupResponse]:
+) -> Optional[Union[ErrorResponse, GetOrderGroupResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetOrderGroupResponse.from_dict(response.json())
+        response_200 = GetOrderGroupResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -35,7 +48,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetOrderGroupResponse]:
+) -> Response[Union[ErrorResponse, GetOrderGroupResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,21 +60,21 @@ def _build_response(
 def sync_detailed(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetOrderGroupResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetOrderGroupResponse]]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetOrderGroupResponse]
+        Response[Union[ErrorResponse, GetOrderGroupResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -78,21 +91,21 @@ def sync_detailed(
 def sync(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetOrderGroupResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetOrderGroupResponse]]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetOrderGroupResponse
+        Union[ErrorResponse, GetOrderGroupResponse]
     """
 
     return sync_detailed(
@@ -104,21 +117,21 @@ def sync(
 async def asyncio_detailed(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelGetOrderGroupResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[ErrorResponse, GetOrderGroupResponse]]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetOrderGroupResponse]
+        Response[Union[ErrorResponse, GetOrderGroupResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -133,21 +146,21 @@ async def asyncio_detailed(
 async def asyncio(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelGetOrderGroupResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[ErrorResponse, GetOrderGroupResponse]]:
     """Get Order Group
 
       Retrieves details for a single order group including all order IDs and auto-cancel status.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetOrderGroupResponse
+        Union[ErrorResponse, GetOrderGroupResponse]
     """
 
     return (

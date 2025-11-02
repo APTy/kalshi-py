@@ -1,19 +1,21 @@
+import datetime
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_milestones_response import ModelGetMilestonesResponse
+from ...models.get_milestones_response import GetMilestonesResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    minimum_start_date: Union[Unset, str] = UNSET,
+    minimum_start_date: Union[Unset, datetime.datetime] = UNSET,
     category: Union[Unset, str] = UNSET,
     competition: Union[Unset, str] = UNSET,
+    source_id: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
@@ -21,11 +23,16 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["minimum_start_date"] = minimum_start_date
+    json_minimum_start_date: Union[Unset, str] = UNSET
+    if not isinstance(minimum_start_date, Unset):
+        json_minimum_start_date = minimum_start_date.isoformat()
+    params["minimum_start_date"] = json_minimum_start_date
 
     params["category"] = category
 
     params["competition"] = competition
+
+    params["source_id"] = source_id
 
     params["type"] = type_
 
@@ -48,11 +55,20 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetMilestonesResponse]:
+) -> Optional[Union[Any, GetMilestonesResponse]]:
     if response.status_code == 200:
-        response_200 = ModelGetMilestonesResponse.from_dict(response.json())
+        response_200 = GetMilestonesResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
+    if response.status_code == 500:
+        response_500 = cast(Any, None)
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -61,7 +77,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetMilestonesResponse]:
+) -> Response[Union[Any, GetMilestonesResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,41 +89,42 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    minimum_start_date: Union[Unset, str] = UNSET,
+    minimum_start_date: Union[Unset, datetime.datetime] = UNSET,
     category: Union[Unset, str] = UNSET,
     competition: Union[Unset, str] = UNSET,
+    source_id: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetMilestonesResponse]:
+) -> Response[Union[Any, GetMilestonesResponse]]:
     """Get Milestones
 
-      Endpoint for getting data about milestones with optional filtering.
+     Minimum start date to filter milestones. Format: RFC3339 timestamp
 
     Args:
-        minimum_start_date (Union[Unset, str]): Minimum start date to filter milestones. Format:
-            RFC3339 timestamp
-        category (Union[Unset, str]): Filter by milestone category
-        competition (Union[Unset, str]): Filter by competition
-        type_ (Union[Unset, str]): Filter by milestone type
-        related_event_ticker (Union[Unset, str]): Filter by related event ticker
-        limit (int): Number of milestones to return per page
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results
+        minimum_start_date (Union[Unset, datetime.datetime]):
+        category (Union[Unset, str]):
+        competition (Union[Unset, str]):
+        source_id (Union[Unset, str]):
+        type_ (Union[Unset, str]):
+        related_event_ticker (Union[Unset, str]):
+        limit (int):
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMilestonesResponse]
+        Response[Union[Any, GetMilestonesResponse]]
     """
 
     kwargs = _get_kwargs(
         minimum_start_date=minimum_start_date,
         category=category,
         competition=competition,
+        source_id=source_id,
         type_=type_,
         related_event_ticker=related_event_ticker,
         limit=limit,
@@ -124,35 +141,35 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    minimum_start_date: Union[Unset, str] = UNSET,
+    minimum_start_date: Union[Unset, datetime.datetime] = UNSET,
     category: Union[Unset, str] = UNSET,
     competition: Union[Unset, str] = UNSET,
+    source_id: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetMilestonesResponse]:
+) -> Optional[Union[Any, GetMilestonesResponse]]:
     """Get Milestones
 
-      Endpoint for getting data about milestones with optional filtering.
+     Minimum start date to filter milestones. Format: RFC3339 timestamp
 
     Args:
-        minimum_start_date (Union[Unset, str]): Minimum start date to filter milestones. Format:
-            RFC3339 timestamp
-        category (Union[Unset, str]): Filter by milestone category
-        competition (Union[Unset, str]): Filter by competition
-        type_ (Union[Unset, str]): Filter by milestone type
-        related_event_ticker (Union[Unset, str]): Filter by related event ticker
-        limit (int): Number of milestones to return per page
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results
+        minimum_start_date (Union[Unset, datetime.datetime]):
+        category (Union[Unset, str]):
+        competition (Union[Unset, str]):
+        source_id (Union[Unset, str]):
+        type_ (Union[Unset, str]):
+        related_event_ticker (Union[Unset, str]):
+        limit (int):
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMilestonesResponse
+        Union[Any, GetMilestonesResponse]
     """
 
     return sync_detailed(
@@ -160,6 +177,7 @@ def sync(
         minimum_start_date=minimum_start_date,
         category=category,
         competition=competition,
+        source_id=source_id,
         type_=type_,
         related_event_ticker=related_event_ticker,
         limit=limit,
@@ -170,41 +188,42 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    minimum_start_date: Union[Unset, str] = UNSET,
+    minimum_start_date: Union[Unset, datetime.datetime] = UNSET,
     category: Union[Unset, str] = UNSET,
     competition: Union[Unset, str] = UNSET,
+    source_id: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Response[ModelGetMilestonesResponse]:
+) -> Response[Union[Any, GetMilestonesResponse]]:
     """Get Milestones
 
-      Endpoint for getting data about milestones with optional filtering.
+     Minimum start date to filter milestones. Format: RFC3339 timestamp
 
     Args:
-        minimum_start_date (Union[Unset, str]): Minimum start date to filter milestones. Format:
-            RFC3339 timestamp
-        category (Union[Unset, str]): Filter by milestone category
-        competition (Union[Unset, str]): Filter by competition
-        type_ (Union[Unset, str]): Filter by milestone type
-        related_event_ticker (Union[Unset, str]): Filter by related event ticker
-        limit (int): Number of milestones to return per page
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results
+        minimum_start_date (Union[Unset, datetime.datetime]):
+        category (Union[Unset, str]):
+        competition (Union[Unset, str]):
+        source_id (Union[Unset, str]):
+        type_ (Union[Unset, str]):
+        related_event_ticker (Union[Unset, str]):
+        limit (int):
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMilestonesResponse]
+        Response[Union[Any, GetMilestonesResponse]]
     """
 
     kwargs = _get_kwargs(
         minimum_start_date=minimum_start_date,
         category=category,
         competition=competition,
+        source_id=source_id,
         type_=type_,
         related_event_ticker=related_event_ticker,
         limit=limit,
@@ -219,35 +238,35 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    minimum_start_date: Union[Unset, str] = UNSET,
+    minimum_start_date: Union[Unset, datetime.datetime] = UNSET,
     category: Union[Unset, str] = UNSET,
     competition: Union[Unset, str] = UNSET,
+    source_id: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
     related_event_ticker: Union[Unset, str] = UNSET,
     limit: int,
     cursor: Union[Unset, str] = UNSET,
-) -> Optional[ModelGetMilestonesResponse]:
+) -> Optional[Union[Any, GetMilestonesResponse]]:
     """Get Milestones
 
-      Endpoint for getting data about milestones with optional filtering.
+     Minimum start date to filter milestones. Format: RFC3339 timestamp
 
     Args:
-        minimum_start_date (Union[Unset, str]): Minimum start date to filter milestones. Format:
-            RFC3339 timestamp
-        category (Union[Unset, str]): Filter by milestone category
-        competition (Union[Unset, str]): Filter by competition
-        type_ (Union[Unset, str]): Filter by milestone type
-        related_event_ticker (Union[Unset, str]): Filter by related event ticker
-        limit (int): Number of milestones to return per page
-        cursor (Union[Unset, str]): Pagination cursor. Use the cursor value returned from the
-            previous response to get the next page of results
+        minimum_start_date (Union[Unset, datetime.datetime]):
+        category (Union[Unset, str]):
+        competition (Union[Unset, str]):
+        source_id (Union[Unset, str]):
+        type_ (Union[Unset, str]):
+        related_event_ticker (Union[Unset, str]):
+        limit (int):
+        cursor (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMilestonesResponse
+        Union[Any, GetMilestonesResponse]
     """
 
     return (
@@ -256,6 +275,7 @@ async def asyncio(
             minimum_start_date=minimum_start_date,
             category=category,
             competition=competition,
+            source_id=source_id,
             type_=type_,
             related_event_ticker=related_event_ticker,
             limit=limit,

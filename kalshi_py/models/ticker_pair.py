@@ -1,11 +1,10 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.ticker_pair_side import TickerPairSide
-from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="TickerPair")
 
@@ -14,54 +13,47 @@ T = TypeVar("T", bound="TickerPair")
 class TickerPair:
     """
     Attributes:
-        event_ticker (Union[Unset, str]): Event ticker identifier.
-        market_ticker (Union[Unset, str]): Market ticker identifier.
-        side (Union[Unset, TickerPairSide]): Side of the market (yes or no).
+        market_ticker (str): Market ticker identifier.
+        event_ticker (str): Event ticker identifier.
+        side (TickerPairSide): Side of the market (yes or no).
     """
 
-    event_ticker: Union[Unset, str] = UNSET
-    market_ticker: Union[Unset, str] = UNSET
-    side: Union[Unset, TickerPairSide] = UNSET
+    market_ticker: str
+    event_ticker: str
+    side: TickerPairSide
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        event_ticker = self.event_ticker
-
         market_ticker = self.market_ticker
 
-        side: Union[Unset, str] = UNSET
-        if not isinstance(self.side, Unset):
-            side = self.side.value
+        event_ticker = self.event_ticker
+
+        side = self.side.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if event_ticker is not UNSET:
-            field_dict["event_ticker"] = event_ticker
-        if market_ticker is not UNSET:
-            field_dict["market_ticker"] = market_ticker
-        if side is not UNSET:
-            field_dict["side"] = side
+        field_dict.update(
+            {
+                "market_ticker": market_ticker,
+                "event_ticker": event_ticker,
+                "side": side,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        event_ticker = d.pop("event_ticker", UNSET)
+        market_ticker = d.pop("market_ticker")
 
-        market_ticker = d.pop("market_ticker", UNSET)
+        event_ticker = d.pop("event_ticker")
 
-        _side = d.pop("side", UNSET)
-        side: Union[Unset, TickerPairSide]
-        if isinstance(_side, Unset):
-            side = UNSET
-        else:
-            side = TickerPairSide(_side)
+        side = TickerPairSide(d.pop("side"))
 
         ticker_pair = cls(
-            event_ticker=event_ticker,
             market_ticker=market_ticker,
+            event_ticker=event_ticker,
             side=side,
         )
 

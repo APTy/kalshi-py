@@ -13,8 +13,8 @@ T = TypeVar("T", bound="SettlementSource")
 class SettlementSource:
     """
     Attributes:
-        name (Union[Unset, str]): The official name of the settlement source.
-        url (Union[Unset, str]): The URL of the settlement source.
+        name (Union[Unset, str]): Name of the settlement source
+        url (Union[Unset, str]): URL to the settlement source
     """
 
     name: Union[Unset, str] = UNSET

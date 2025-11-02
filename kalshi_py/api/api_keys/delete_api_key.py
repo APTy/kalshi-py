@@ -22,6 +22,14 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[Any]:
     if response.status_code == 204:
         return None
+    if response.status_code == 400:
+        return None
+    if response.status_code == 401:
+        return None
+    if response.status_code == 404:
+        return None
+    if response.status_code == 500:
+        return None
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -40,7 +48,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     api_key: str,
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
 ) -> Response[Any]:
     """Delete API Key
 
@@ -48,7 +56,7 @@ def sync_detailed(
     deleted, the key can no longer be used for authentication. This action cannot be undone.
 
     Args:
-        api_key (str): API key ID to delete
+        api_key (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -72,7 +80,7 @@ def sync_detailed(
 async def asyncio_detailed(
     api_key: str,
     *,
-    client: Union[AuthenticatedClient, Client],
+    client: AuthenticatedClient,
 ) -> Response[Any]:
     """Delete API Key
 
@@ -80,7 +88,7 @@ async def asyncio_detailed(
     deleted, the key can no longer be used for authentication. This action cannot be undone.
 
     Args:
-        api_key (str): API key ID to delete
+        api_key (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

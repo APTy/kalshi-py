@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_empty_response import ModelEmptyResponse
+from ...models.empty_response import EmptyResponse
+from ...models.error_response import ErrorResponse
 from ...types import Response
 
 
@@ -22,11 +23,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelEmptyResponse]:
+) -> Optional[Union[EmptyResponse, ErrorResponse]]:
     if response.status_code == 200:
-        response_200 = ModelEmptyResponse.from_dict(response.json())
+        response_200 = EmptyResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
+
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
@@ -35,7 +48,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelEmptyResponse]:
+) -> Response[Union[EmptyResponse, ErrorResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -47,22 +60,22 @@ def _build_response(
 def sync_detailed(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelEmptyResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[EmptyResponse, ErrorResponse]]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
     after the limit was hit.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelEmptyResponse]
+        Response[Union[EmptyResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -79,22 +92,22 @@ def sync_detailed(
 def sync(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelEmptyResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[EmptyResponse, ErrorResponse]]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
     after the limit was hit.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelEmptyResponse
+        Union[EmptyResponse, ErrorResponse]
     """
 
     return sync_detailed(
@@ -106,22 +119,22 @@ def sync(
 async def asyncio_detailed(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Response[ModelEmptyResponse]:
+    client: AuthenticatedClient,
+) -> Response[Union[EmptyResponse, ErrorResponse]]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
     after the limit was hit.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelEmptyResponse]
+        Response[Union[EmptyResponse, ErrorResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -136,22 +149,22 @@ async def asyncio_detailed(
 async def asyncio(
     order_group_id: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-) -> Optional[ModelEmptyResponse]:
+    client: AuthenticatedClient,
+) -> Optional[Union[EmptyResponse, ErrorResponse]]:
     """Reset Order Group
 
       Resets the order group's matched contracts counter to zero, allowing new orders to be placed again
     after the limit was hit.
 
     Args:
-        order_group_id (str): Order group ID
+        order_group_id (str):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelEmptyResponse
+        Union[EmptyResponse, ErrorResponse]
     """
 
     return (

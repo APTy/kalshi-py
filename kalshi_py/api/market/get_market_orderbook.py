@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.model_get_market_orderbook_response import ModelGetMarketOrderbookResponse
+from ...models.error_response import ErrorResponse
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     ticker: str,
     *,
-    depth: Union[Unset, int] = UNSET,
+    depth: Union[Unset, int] = 0,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -29,22 +29,26 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ModelGetMarketOrderbookResponse]:
-    if response.status_code == 200:
-        response_200 = ModelGetMarketOrderbookResponse.from_dict(response.json())
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[ErrorResponse]:
+    if response.status_code == 401:
+        response_401 = ErrorResponse.from_dict(response.json())
 
-        return response_200
+        return response_401
+    if response.status_code == 404:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
+    if response.status_code == 500:
+        response_500 = ErrorResponse.from_dict(response.json())
+
+        return response_500
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ModelGetMarketOrderbookResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ErrorResponse]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,10 +60,10 @@ def _build_response(
 def sync_detailed(
     ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    depth: Union[Unset, int] = UNSET,
-) -> Response[ModelGetMarketOrderbookResponse]:
-    """Get Market Order Book
+    client: AuthenticatedClient,
+    depth: Union[Unset, int] = 0,
+) -> Response[ErrorResponse]:
+    """Get Market Orderbook
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
     bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no
@@ -69,16 +73,15 @@ def sync_detailed(
     order counts, organized from best to worst prices.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
-        depth (Union[Unset, int]): Maximum number of price levels to return per side (yes bids/no
-            bids). Defaults to all levels. Maximum value is 100.
+        ticker (str):
+        depth (Union[Unset, int]):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketOrderbookResponse]
+        Response[ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -96,10 +99,10 @@ def sync_detailed(
 def sync(
     ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    depth: Union[Unset, int] = UNSET,
-) -> Optional[ModelGetMarketOrderbookResponse]:
-    """Get Market Order Book
+    client: AuthenticatedClient,
+    depth: Union[Unset, int] = 0,
+) -> Optional[ErrorResponse]:
+    """Get Market Orderbook
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
     bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no
@@ -109,16 +112,15 @@ def sync(
     order counts, organized from best to worst prices.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
-        depth (Union[Unset, int]): Maximum number of price levels to return per side (yes bids/no
-            bids). Defaults to all levels. Maximum value is 100.
+        ticker (str):
+        depth (Union[Unset, int]):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketOrderbookResponse
+        ErrorResponse
     """
 
     return sync_detailed(
@@ -131,10 +133,10 @@ def sync(
 async def asyncio_detailed(
     ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    depth: Union[Unset, int] = UNSET,
-) -> Response[ModelGetMarketOrderbookResponse]:
-    """Get Market Order Book
+    client: AuthenticatedClient,
+    depth: Union[Unset, int] = 0,
+) -> Response[ErrorResponse]:
+    """Get Market Orderbook
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
     bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no
@@ -144,16 +146,15 @@ async def asyncio_detailed(
     order counts, organized from best to worst prices.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
-        depth (Union[Unset, int]): Maximum number of price levels to return per side (yes bids/no
-            bids). Defaults to all levels. Maximum value is 100.
+        ticker (str):
+        depth (Union[Unset, int]):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ModelGetMarketOrderbookResponse]
+        Response[ErrorResponse]
     """
 
     kwargs = _get_kwargs(
@@ -169,10 +170,10 @@ async def asyncio_detailed(
 async def asyncio(
     ticker: str,
     *,
-    client: Union[AuthenticatedClient, Client],
-    depth: Union[Unset, int] = UNSET,
-) -> Optional[ModelGetMarketOrderbookResponse]:
-    """Get Market Order Book
+    client: AuthenticatedClient,
+    depth: Union[Unset, int] = 0,
+) -> Optional[ErrorResponse]:
+    """Get Market Orderbook
 
       Endpoint for getting the current order book for a specific market.  The order book shows all active
     bid orders for both yes and no sides of a binary market. It returns yes bids and no bids only (no
@@ -182,16 +183,15 @@ async def asyncio(
     order counts, organized from best to worst prices.
 
     Args:
-        ticker (str): Market ticker - unique identifier for the specific market
-        depth (Union[Unset, int]): Maximum number of price levels to return per side (yes bids/no
-            bids). Defaults to all levels. Maximum value is 100.
+        ticker (str):
+        depth (Union[Unset, int]):  Default: 0.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ModelGetMarketOrderbookResponse
+        ErrorResponse
     """
 
     return (
