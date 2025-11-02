@@ -1,5 +1,7 @@
 # kalshi-py
 
+NOTE: This library is not up to date, as Kalshi doesn't implemen its own OpenAPI spec correctly, and so builds are broken.
+
 A client library for accessing Kalshi Trade API
 
 📚 **[Documentation](https://apty.github.io/kalshi-py/)** - Complete API reference, examples, and guides
